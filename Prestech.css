@@ -80,7 +80,9 @@ p {
 }
 #page-DISM {}
 #page-flushfill {}
-#page-landing {}
+#page-landing {
+    background: url(images/red-helmet.jpg);
+}
 #page-OSD {}
 #page-software-install {}
 #page-tools {}
@@ -124,11 +126,9 @@ p {
 }
 .categoryDiv {}
 .glass {
- 
+    background: url(images/red-helmet-glass.jpg);
 }
-.glass:before {
 
-}
 .icon {
     color: #FFF;
     display: inline-block;
@@ -160,8 +160,7 @@ p {
     height: 650px;
     width: 760px;
     padding: 10px;
-    background: gainsboro;
-    /* background: url(images/red-helmet.jpg); */
+
 }
 .softwareOSD{}
 .tpmError {
