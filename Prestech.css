@@ -1,0 +1,327 @@
+/*ELEMENT STYLES*/
+body {
+    color: #333;
+    height: 768px;
+    width: 1024px;
+    margin: 0px;
+    padding: 0px;
+}
+div{
+    box-sizing: border-box;
+}
+h1{
+    color: #FFF;
+}
+html {
+    color: #333;
+    background-size: cover;
+    height: 768px;
+    width: 1024px;
+    font-family: sans-serif;
+}
+li {
+    display: block;
+    font-weight: 400;
+    padding: 5px 20px;
+    color: #FFF;
+    background: #333;
+}
+ul{
+    font-weight: 400;
+    list-style: none;
+    margin: 0 10px;
+    padding: 0;
+}
+p {
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+}
+
+/*ID STYLES*/
+#buttonDiv {
+    width: 600px;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    padding: 12px;
+}
+#container{
+    display: inline-block;
+    height: 768px;
+    width: 1024px;
+    background: black;
+}
+#content{
+    height: 650px;
+    width: 1024px;
+    background: aliceblue;
+}
+#footer{
+    display: table-cell;
+    height: 43px;
+    width: 1024px;
+    background:darkred;
+}
+#header{
+    height: 75px;
+    width: 1024px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    background: darkred;
+}
+#header > h1{
+    margin: 0;
+}
+#outputDiv{
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);    
+}
+#page-DISM {}
+#page-flushfill {}
+#page-landing {}
+#page-OSD {}
+#page-software-install {}
+#page-tools {}
+#page-USMT {}
+#task-selection-div {}
+#osdInput {}
+#softwareDiv {}
+#softwareInput {}
+
+/*CLASS STYLES*/
+.button {
+    background: #222d32;
+    border: 1px inset black;
+    border-radius: 10px;
+    padding: 2px;
+    cursor: pointer;
+    color: white;
+}
+.button:hover {
+    background: #4B646F;
+    border: 1px inset dimgray;
+    border-radius: 10px;
+    padding: 2px;
+    cursor: pointer;
+    color: white;
+}
+.categoryDiv {
+    background: rgba(0,
+    0,
+    0,
+    0.5);
+    padding: 15px;
+    border-radius: 10px;
+}
+.categoryHeader {
+    width: 740px;
+    height: 50px;
+    font-size: 1.17em;
+    font-weight: bold;
+    text-align: center;
+}
+.categoryDiv {}
+.glass {
+ 
+}
+.glass:before {
+
+}
+.icon {
+    color: #FFF;
+    display: inline-block;
+    height: 75px;
+    width: 75px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.inputDiv {
+    border: 3px outset #4e4e4e;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+}
+.listOSD{
+    display: list-item;
+}
+.navigationbar {
+    position: relative;
+    float: left;
+    height: 650px;
+    width: 264px;
+    background: #222d32;
+}
+.pages {
+    position: relative;
+    float: right;
+    height: 650px;
+    width: 760px;
+    padding: 10px;
+    background: gainsboro;
+    /* background: url(images/red-helmet.jpg); */
+}
+.softwareOSD{}
+.tpmError {
+    color: firebrick;
+    font-style: bold;
+}
+.tpmStatus {
+    color: firebrick;
+    font-style: bold;
+    animation-name: tpmFrames;
+    animation-duration: 12s;
+    animation-timing-function: liner;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    perspective: 1000px;
+}
+.tpmStatus span:nth-child(3n+1) {
+    animation: tpmEP0 10s infinite both
+}
+.tpmStatus span:nth-child(3n+2) {
+    animation: tpmEP1 10s infinite both
+}
+.tpmStatus span:nth-child(3n+3) {
+    animation: tpmEP2 10s infinite both
+}
+@keyframes tpmFrames {
+    0% {
+        color: firebrick;
+    }
+    50% {
+        color: red;
+    }
+    100% {
+        color: firebrick;
+    }
+}
+@keyframes tpmEP0 {
+    from,
+    5%,
+    10%,
+    15%,
+    20%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -300px, 0);
+    }
+    5% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+    10% {
+        transform: translate3d(0, -10px, 0);
+    }
+    15% {
+        transform: translate3d(0, 5px, 0);
+    }
+    20% {
+        transform: none;
+    }
+    95% {
+        transform: none;
+    }
+    98% {
+        transform-origin: left bottom;
+        opacity: 1;
+    }
+    100% {
+        transform-origin: left bottom;
+        transform: rotate3d(0, 0, 1, -45deg);
+        opacity: 0;
+    }
+}
+@keyframes tpmEP1 {
+    from,
+    10%,
+    15%,
+    20%,
+    25%,
+    30%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -300px, 0);
+    }
+    10% {
+        opacity: 0;
+        transform: translate3d(0, -300px, 0);
+    }
+    15% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+    20% {
+        transform: translate3d(0, -10px, 0);
+    }
+    25% {
+        transform: translate3d(0, 5px, 0);
+    }
+    30% {
+        transform: none;
+    }
+    95% {
+        transform: none;
+    }
+    98% {
+        transform-origin: middle bottom;
+        opacity: 1;
+    }
+    100% {
+        transform-origin: middle bottom;
+        transform: rotate3d(1, 0, 0, 45deg);
+        opacity: 0;
+    }
+}
+@keyframes tpmEP2 {
+    from,
+    20%,
+    25%,
+    30%,
+    35%,
+    40%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -300px, 0);
+    }
+    20% {
+        opacity: 0;
+        transform: translate3d(0, -300px, 0);
+    }
+    25% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+    30% {
+        transform: translate3d(0, -10px, 0);
+    }
+    35% {
+        transform: translate3d(0, 5px, 0);
+    }
+    40% {
+        transform: none;
+    }
+    95% {
+        transform: none;
+    }
+    98% {
+        transform-origin: right bottom;
+        opacity: 1;
+    }
+    100% {
+        transform-origin: right bottom;
+        transform: rotate3d(0, 0, 1, 45deg);
+        opacity: 0;
+    }
+}

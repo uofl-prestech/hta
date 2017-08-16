@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OOP Task Sequence Selections</title>
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <script src="./jquery-1.11.1.min.js"></script>
+    <script type="text/vbscript" language="vbscript">
+        window.resizeTo 1024,768
+        window.moveTo 400, 200
+        On Error Resume Next 
+        'Set ProgressUI = CreateObject("Microsoft.SMS.TsProgressUI") 
+        'ProgressUI.CloseProgressDialog 
+        On Error goto 0
+    </script>
+    <link rel="stylesheet" href="Prestech.css">
+    <HTA:APPLICATION APPLICATIONNAME="OOP Task Sequence Selections"  
+    BORDER="thin"
+    INNERBORDER="no"
+    CAPTION="yes"
+    SCROLL="no"
+    WINDOWSTATE="normal">
+</head>
+
+<script language="vbscript" type="text/vbscript">
+
+'Set objects and declare global variables
+On Error Resume Next
+	Set env = CreateObject("Microsoft.SMS.TSEnvironment")
+	Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+On Error goto 0
+
+Sub ButtonFinishClick
+    ' ButtonFinishClick is executed by the "Finish" button.
+   
+    ' Set value of variable to true/false based on whether the checkbox is selected or not
+
+    If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked Then
+        strAdobeReaderDC = "true"
+        else strAdobeReaderDC = "false"
+    End If
+
+	If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked Then
+		strAdobeAcrobatProXI = "true"
+		else AdobeAcrobatProXI="false"
+	End If		
+   
+    If Chrome.Checked OR OSDChrome.Checked Then
+        strChrome = "true"
+        else strChrome = "false"
+    End If
+
+	If FileMaker.Checked OR OSDFileMaker.Checked Then
+        strFileMaker = "true"
+        else strFileMaker = "false"
+    End If
+      
+    If Office2016.Checked OR Office2016.Checked Then
+        strOffice2016 = "true"
+        else strOffice2016 = "false"
+    End If
+
+    If OSD.Checked Then
+        strOSD = "true"
+        strCompName = compName.value
+        else strOSD = "false"
+    End If
+	
+    ' Set value of variables that will be used by the task sequence, then close the window and allow the task sequence to continue.
+        
+    env("envAdobeReaderDC") = strAdobeReaderDC
+    env("envAdobeAcrobatProXI") = strAdobeAcrobatProXI
+    env("envChrome") = strChrome
+    env("FileMaker") = strFileMaker
+    env("envOffice2016") = strOffice2016
+    env("envOSD") = strOSD
+    env("OSDComputerName") = strCompName
+   
+    window.Close
+End Sub
+
+Sub TPMCheck
+	Dim bIsEnabled, bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning
+	bIsEnabled = "False"
+	bIsActivated = "False"
+	bIsOwned = "False"
+	strStatusMessage = "<h2 class=""tpmStatus"">ERROR - TPM Not Found</h2>"
+	strTPMWarning = "<h2 class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>"
+	Dim outputDiv: set outputDiv = document.getElementById("outputDiv")
+	outputDiv.innerHTML = ""
+	On Error Resume Next
+
+	'---------------------------------------------------------------------------------------- 
+	'Connect to TPM WMI provider 
+	'---------------------------------------------------------------------------------------- 
+	strConnectionStr1 = "winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm" 
+	Err.clear
+
+	Set objWMITPM = GetObject(strConnectionStr1) 
+	If Err.Number <> 0 Then
+		strStatusState = "Not Found"
+	End If 
+	Err.clear
+
+	Set objTpm = objWMITPM.Get("Win32_Tpm=@") 
+	If Err.Number <> 0 Then 
+		strStatusState = "Not Found"
+	End If 
+	Err.Clear
+
+	If strStatusState = "Not Found" Then
+		outputDiv.innerHTML = strStatusMessage
+		outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
+	else
+		'----------------------------------------------------------------------------------------- 
+		'Get TPM status data to determine if TPM is enabled, activated, and owned 
+		'----------------------------------------------------------------------------------------- 
+		nRC = objTpm.IsEnabled(bIsEnabled)
+
+		If nRC <> 0 OR bIsEnabled = "False" Then
+			strStatusState = "ERROR"
+			bIsEnabled = "<span class=""tpmError"">False</span>"
+		End If 
+
+		nRC = objTpm.IsActivated(bIsActivated)
+		If nRC <> 0 OR bIsActivated = "False" Then
+			strStatusState = "ERROR"
+			bIsActivated = "<span class=""tpmError"">False</span>"
+		End If 
+
+		nRC = objTpm.IsOwned(bIsOwned)
+		If nRC <> 0 OR bIsOwned = "False" Then
+			strStatusState = "ERROR"
+			bIsOwned = "<span class=""tpmError"">False</span>"
+		End If
+
+		outputDiv.innerHTML = "TPM found in the following state: <br>"
+		outputDiv.innerHTML = outputDiv.innerHTML & "Enabled - " & bIsEnabled & "<br>"
+		outputDiv.innerHTML = outputDiv.innerHTML & "Activated - " & bIsActivated & "<br>"
+		outputDiv.innerHTML = outputDiv.innerHTML & "Owned - " & bIsOwned & "<br>"
+
+		If strStatusState = "ERROR" Then
+			outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
+		else
+			outputDiv.innerHTML = outputDiv.innerHTML & "<h2>TPM Enabled and Activated</h2>"
+		End If
+	End If
+
+End Sub
+
+Sub ButtonExitClick
+	Window.Close
+End Sub
+
+</script>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Prestech HTA</h1>
+        </div>
+        <div id="content">
+            <div class="navigationbar">
+                <ul>
+                    <li>
+                        <div><img src="images/osd final.png" id="icon-osd" class="icon">OSD</div>
+                    </li>
+                    <li>
+                        <div><img src="images/ikons/copy_1.svg" id="icon-flushfill" class="icon">Flush and Fill</div>
+                    </li>
+                    <li>
+                        <div><img src="images/DISM final.png" id="icon-dism" class="icon">DISM</div>
+                    </li>
+                    <li>
+                        <div><img src="images/usmt final.png" id="icon-usmt" class="icon">USMT</div>
+                    </li>
+                    <li>
+                        <div><img src="images/ikons/computer_add.svg" id="icon-software" class="icon">Software Install</div>
+                    </li>
+                    <li>
+                        <div><img src="images/ikons/cog.svg" id="icon-tools" class="icon">Tools</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Landing Page-->
+            <div id="page-landing" class="pages glass">
+                <div class="categoryHeader">OOP Task Sequence Selections</div>
+            </div>
+
+            <!--OSD Page-->
+            <div id="page-OSD" class="pages glass">
+                <div class="categoryHeader">Operating System Deployment</div>
+                <div id="outputDiv"></div>
+                <div id="osdInput" class="inputDiv">
+                    <ul>
+                        <li class="listOSD">
+                            <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div><br></li>
+                        <li class="listOSD">
+                            <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div><br></li>
+                        <li class="listOSD">
+                            <div id="stepOSDSoftware"> Select Software to Install: <br>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeReaderDC"> Adobe Reader
+                                    DC</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat
+                                    Pro XI</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDChrome"> Chrome 58</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDFilemMaker"> FileMaker Pro 16</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32
+                                    Bit)</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--Flush and Fill Page-->
+            <div id="page-flushfill" class="pages glass">
+                <div class="categoryHeader">OS Upgrade with User Data Migration <br> ("Flush and Fill")</div>
+            </div>
+
+            <!--DISM Page-->
+            <div id="page-DISM" class="pages glass">
+                <div class="categoryHeader">Deployment Image Servicing and Management</div>
+            </div>
+
+            <!--USMT Page-->
+            <div id="page-USMT" class="pages glass">
+                <div class="categoryHeader">User State Migration Tool</div>
+            </div>
+
+            <!--Software Install Page-->
+            <div id="page-sofware-install" class="pages glass">
+                <div class="categoryHeader">Software Installation</div>
+                <div id="softwareInput" class="inputDiv">
+                    <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
+                    <input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI<br>
+                    <input type="checkbox" name="Chrome"> Chrome 58<br>
+                    <input type="checkbox" name="FilemMaker"> FileMaker Pro 16<br>
+                    <input type="checkbox" name="Office2016"> Office 2016 (32 Bit)<br>
+                </div>
+            </div>
+
+            <!--Troubleshooting Tools Page-->
+            <div id="page-tools" class="pages glass">
+                <div class="categoryHeader">Troubleshooting Tools</div>
+            </div>
+
+            <div id="footer">
+                <div id="buttonDiv">
+                    <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Continue</button>
+                    <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
+                    <button class="button" id="buttonHome">Home</button>
+                    <button class="button" id="buttonIncrease">Increase</button>
+                    <button class="button" id="buttonDecrease">Decrease</button>
+                    <button class="button" id="buttonTEST" onclick="vbscript:TPMCheck()">Run Sub</button>
+                </div>
+            </div>
+        </div>  <!--    End content    -->
+    </div> <!--    End container    -->
+
+</body>
+<script language="JavaScript">
+    $(document).ready(function() {
+        $('.pages').css('display', 'none');
+        $('#page-landing').css('display', 'block');
+    });
+    $('#icon-osd').on('click', function() {
+        $('.pages').css('display', 'none');
+        $('#page-OSD').css('display', 'block');
+        // TPMCheck();
+    });
+
+    $('#buttonHome').on('click', function() {
+        $('.pages').css('display', 'none');
+        $('#page-landing').css('display', 'block');
+    });
+
+    $('#buttonIncrease').on('click', function() {
+        $('.icon').animate({
+            height: '+=10',
+            width: '+=10'
+        }, 500);
+    });
+
+    $('#buttonDecrease').on('click', function() {
+        $('.icon').animate({
+            height: '-=10',
+            width: '-=10'
+        }, 500);
+    });
+
+    // $('div').hover(
+    //   function() {
+    // 	$( this ).css('background', 'rgba(255,64,64,0.4)');
+    //   }, function() {
+    // 	$( this ).css('background', 'none');
+    //   }
+    // );
+</script>
+
+</html>
