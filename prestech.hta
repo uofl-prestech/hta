@@ -42,7 +42,7 @@ Sub ButtonFinishClick
 
 	If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked Then
 		strAdobeAcrobatProXI = "true"
-		else AdobeAcrobatProXI="false"
+		else strAdobeAcrobatProXI="false"
 	End If		
    
     If Chrome.Checked OR OSDChrome.Checked Then
@@ -55,15 +55,21 @@ Sub ButtonFinishClick
         else strFileMaker = "false"
     End If
       
-    If Office2016.Checked OR Office2016.Checked Then
+    If Office2016.Checked OR OSDOffice2016.Checked Then
         strOffice2016 = "true"
         else strOffice2016 = "false"
     End If
 
     If OSD.Checked Then
         strOSD = "true"
+        strMBAM = "true"
         strCompName = compName.value
         else strOSD = "false"
+    End If
+
+    If MBAM.Checked Then
+        strMBAM = "true"
+        else strMBAM = "false"
     End If
 	
     ' Set value of variables that will be used by the task sequence, then close the window and allow the task sequence to continue.
@@ -71,10 +77,11 @@ Sub ButtonFinishClick
     env("envAdobeReaderDC") = strAdobeReaderDC
     env("envAdobeAcrobatProXI") = strAdobeAcrobatProXI
     env("envChrome") = strChrome
-    env("FileMaker") = strFileMaker
+    env("envFileMaker") = strFileMaker
     env("envOffice2016") = strOffice2016
     env("envOSD") = strOSD
     env("OSDComputerName") = strCompName
+    env("envMBAM") = strMBAM
    
     window.Close
 End Sub
@@ -205,7 +212,7 @@ End Sub
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat
                                     Pro XI</h4>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDChrome"> Chrome 58</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDFilemMaker"> FileMaker Pro 16</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDFileMaker"> FileMaker Pro 16</h4>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32
                                     Bit)</h4>
                             </div>
@@ -236,8 +243,9 @@ End Sub
                     <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
                     <input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI<br>
                     <input type="checkbox" name="Chrome"> Chrome 58<br>
-                    <input type="checkbox" name="FilemMaker"> FileMaker Pro 16<br>
+                    <input type="checkbox" name="FileMaker"> FileMaker Pro 16<br>
                     <input type="checkbox" name="Office2016"> Office 2016 (32 Bit)<br>
+                    <input type="checkbox" name="MBAM"> Bitlocker Agent<br>
                 </div>
             </div>
 
@@ -269,6 +277,11 @@ End Sub
         $('.pages').css('display', 'none');
         $('#page-OSD').css('display', 'block');
         // TPMCheck();
+    });
+
+    $('#icon-software').on('click', function() {
+        $('.pages').css('display', 'none');
+        $('#page-sofware-install').css('display', 'block');
     });
 
     $('#buttonHome').on('click', function() {
