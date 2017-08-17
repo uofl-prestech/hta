@@ -3,14 +3,14 @@
 
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <meta http-equiv="x-ua-compatible" content="ie=10">
     <script src="./jquery-1.11.1.min.js"></script>
     <script type="text/vbscript" language="vbscript">
         window.resizeTo 1024,768 window.moveTo 400, 200 On Error Resume Next Set ProgressUI = CreateObject("Microsoft.SMS.TsProgressUI")
         ProgressUI.CloseProgressDialog On Error goto 0
     </script>
     <link rel="stylesheet" href="Prestech.css">
-    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
+    <hta:application applicationname="OOP Task Sequence Selections" border="none" innerborder="no" caption="yes" scroll="no"
         windowstate="normal">
     </hta:application>
 </head>
@@ -83,10 +83,13 @@
                         <div><img src="images/ikons/cog.svg" id="icon-tools" class="icon">Tools</div>
                     </li>
                 </ul>
+                <!-- NEEDS CSS FORMATTING -->
+                <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button> 
+                <button class="button" id="buttonHome">Home</button>
             </div>
 
             <!--Landing Page-->
-            <div id="page-landing" class="pages glass">
+            <div id="page-landing" class="pages">
                 <div class="categoryHeader">OOP Task Sequence Selections</div>
             </div>
 
@@ -112,6 +115,7 @@
                                 </h4>
                             </div>
                         </li>
+                    <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                     </ul>
                 </div>
             </div>
@@ -149,14 +153,14 @@
             </div>
 
             <div id="footer">
-                <div id="buttonDiv">
-                    <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Continue</button>
-                    <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
-                    <button class="button" id="buttonHome">Home</button>
-                    <button class="button" id="buttonIncrease">Increase</button>
-                    <button class="button" id="buttonDecrease">Decrease</button>
-                    <button class="button" id="buttonTEST" onclick="vbscript:TPMCheck()">Run Sub</button>
-                </div>
+                <!-- <div id="buttonDiv"> -->
+                    <!-- <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Continue</button> -->
+                    <!-- <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button> -->
+                    <!-- <button class="button" id="buttonHome">Home</button> -->
+                    <!-- <button class="button" id="buttonIncrease">Increase</button> -->
+                    <!-- <button class="button" id="buttonDecrease">Decrease</button> -->
+                    <!-- <button class="button" id="buttonTEST" onclick="vbscript:TPMCheck()">Run Sub</button> -->
+                <!-- </div> -->
             </div>
         </div>
         <!--    End content    -->

@@ -23,8 +23,10 @@ li {
     display: block;
     font-weight: 400;
     padding: 5px 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     color: #FFF;
-    background: #333;
+    background-color: rgba(45, 45, 45, 0.75);
 }
 ul{
     font-weight: 400;
@@ -50,12 +52,11 @@ p {
     display: inline-block;
     height: 768px;
     width: 1024px;
-    background: black;
+    background: url(images/helmet-slate.png);
 }
 #content{
     height: 650px;
     width: 1024px;
-    background: aliceblue;
 }
 #footer{
     display: table-cell;
@@ -69,28 +70,26 @@ p {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    background: darkred;
+    background: rgba(0, 0, 0, 0.8);
 }
 #header > h1{
     margin: 0;
 }
 #outputDiv{
     text-align: center;
-    background: rgba(0, 0, 0, 0.8);    
+    background: rgba(0, 0, 0, 0.8);
 }
-#page-DISM {}
-#page-flushfill {}
-#page-landing {
-    background: url(images/red-helmet.jpg);
-}
-#page-OSD {}
-#page-software-install {}
-#page-tools {}
-#page-USMT {}
-#task-selection-div {}
-#osdInput {}
-#softwareDiv {}
-#softwareInput {}
+/* #page-DISM {} */
+/* #page-flushfill {} */
+/* #page-landing {} */
+/* #page-OSD {} */
+/* #page-software-install {} */
+/* #page-tools {} */
+/* #page-USMT {} */
+/* #task-selection-div {} */
+/* #osdInput {} */
+/* #softwareDiv {} */
+/* #softwareInput {} */
 
 /*CLASS STYLES*/
 .button {
@@ -138,11 +137,12 @@ p {
     font-weight: bold;
     text-align: center;
     color: #FFF;
+    background-color: darkred;
 }
 .categoryDiv {}
-.glass {
-    background: url(images/red-helmet-glass.jpg);
-}
+/* .glass { */
+    /* background: url(images/red-helmet-glass.jpg); */
+/* } */
 
 .icon {
     color: #FFF;
@@ -153,8 +153,7 @@ p {
     cursor: pointer;
 }
 .inputDiv {
-    border: 3px outset #4e4e4e;
-    border-radius: 10px;
+    border: none;
     width: 100%;
     height: auto;
     padding: 15px;
@@ -167,7 +166,7 @@ p {
     float: left;
     height: 650px;
     width: 264px;
-    background: #222d32;
+    background: rgb(34, 45, 50, 0.1);
 }
 .pages {
     position: relative;
@@ -179,11 +178,11 @@ p {
 }
 .softwareOSD{}
 .tpmError {
-    color: firebrick;
+    color: darkred;
     font-style: bold;
 }
 .tpmStatus {
-    color: firebrick;
+    color: darkred;
     font-style: bold;
     animation-name: tpmFrames;
     animation-duration: 12s;
