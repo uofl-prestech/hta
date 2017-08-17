@@ -17,7 +17,7 @@ html {
     background-size: cover;
     height: 768px;
     width: 1024px;
-    font-family: sans-serif;
+    font-family: "Segoe UI";
 }
 li {
     display: block;
@@ -40,7 +40,7 @@ p {
 
 /*ID STYLES*/
 #buttonDiv {
-    width: 600px;
+    width: 100%;
     position: relative;
     text-align: center;
     margin: auto;
@@ -61,7 +61,7 @@ p {
     display: table-cell;
     height: 43px;
     width: 1024px;
-    background:darkred;
+    background: #222d32;
 }
 #header{
     height: 75px;
@@ -94,20 +94,34 @@ p {
 
 /*CLASS STYLES*/
 .button {
-    background: #222d32;
-    border: 1px inset black;
-    border-radius: 10px;
-    padding: 2px;
+    background-color: darkred;
+    border: none;
+    padding: 12px 28px;
     cursor: pointer;
     color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .button:hover {
-    background: #4B646F;
-    border: 1px inset dimgray;
-    border-radius: 10px;
-    padding: 2px;
+    background-color: darkred
+    border: none;
+    padding: 12px 28px;
     cursor: pointer;
     color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.button:active{
+    background-color: black;
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .categoryDiv {
     background: rgba(0,
@@ -123,6 +137,7 @@ p {
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
+    color: #FFF;
 }
 .categoryDiv {}
 .glass {
