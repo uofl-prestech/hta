@@ -64,29 +64,31 @@
         <div id="content">
             <div class="navigationbar">
                 <ul>
-                    <li id="button-osd">
-                        <div><img src="images/osd final.png" class="icon">OSD</div>
+                    <li id="button-osd" class="first">
+                        <img src="images/osd final.png" class="icon">
+                        <span>OSD</span>
                     </li>
                     <li id="button-flushfill">
-                        <div><img src="images/ikons/copy_1.svg" class="icon">Flush and Fill</div>
-                        <!-- remove id="icon-xxx" -->
+                        <img src="images/flush and fill final.png" class="icon">
+                        <span>Flush and Fill</span>
                     </li>
                     <li id="button-dism">
-                        <div><img src="images/DISM final.png" class="icon">DISM</div>
+                        <img src="images/DISM final.png" class="icon">
+                        <span>DISM</span>
                     </li>
                     <li id="button-usmt">
-                        <div><img src="images/usmt final.png" class="icon">USMT</div>
+                        <img src="images/usmt final.png" class="icon">
+                        <span>USMT</span>
                     </li>
                     <li id="button-software">
-                        <div><img src="images/ikons/computer_add.svg" class="icon">Software Install</div>
+                        <img src="images/software install.png" class="icon">
+                        <span>Software Install</span>
                     </li>
                     <li id="button-tools">
-                        <div><img src="images/ikons/cog.svg" class="icon">Tools</div>
+                        <img src="images/tools final.png" class="icon">
+                        <span>Tools</span>
                     </li>
                 </ul>
-                <!-- NEEDS CSS FORMATTING -->
-                <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button> 
-                <button class="button" id="buttonHome">Home</button>
             </div>
 
             <!--Landing Page-->
@@ -152,8 +154,10 @@
             <div id="page-tools" class="pages glass">
                 <div class="categoryHeader">Troubleshooting Tools</div>
             </div>
-
+        <button class="button" id="buttonHome">Home</button>
+        <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
             <div id="footer">
+
             </div>
         </div>
         <!--    End content    -->
