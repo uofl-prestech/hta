@@ -64,23 +64,24 @@
         <div id="content">
             <div class="navigationbar">
                 <ul>
-                    <li>
-                        <div><img src="images/osd final.png" id="icon-osd" class="icon">OSD</div>
+                    <li id="button-osd">
+                        <div><img src="images/osd final.png" class="icon">OSD</div>
                     </li>
-                    <li>
-                        <div><img src="images/ikons/copy_1.svg" id="icon-flushfill" class="icon">Flush and Fill</div>
+                    <li id="button-flushfill">
+                        <div><img src="images/ikons/copy_1.svg" class="icon">Flush and Fill</div>
+                        <!-- remove id="icon-xxx" -->
                     </li>
-                    <li>
-                        <div><img src="images/DISM final.png" id="icon-dism" class="icon">DISM</div>
+                    <li id="button-dism">
+                        <div><img src="images/DISM final.png" class="icon">DISM</div>
                     </li>
-                    <li>
-                        <div><img src="images/usmt final.png" id="icon-usmt" class="icon">USMT</div>
+                    <li id="button-usmt">
+                        <div><img src="images/usmt final.png" class="icon">USMT</div>
                     </li>
-                    <li>
-                        <div><img src="images/ikons/computer_add.svg" id="icon-software" class="icon">Software Install</div>
+                    <li id="button-software">
+                        <div><img src="images/ikons/computer_add.svg" class="icon">Software Install</div>
                     </li>
-                    <li>
-                        <div><img src="images/ikons/cog.svg" id="icon-tools" class="icon">Tools</div>
+                    <li id="button-tools">
+                        <div><img src="images/ikons/cog.svg" class="icon">Tools</div>
                     </li>
                 </ul>
                 <!-- NEEDS CSS FORMATTING -->
@@ -94,7 +95,7 @@
             </div>
 
             <!--OSD Page-->
-            <div id="page-OSD" class="pages glass">
+            <div id="page-osd" class="pages glass">
                 <div class="categoryHeader">Operating System Deployment</div>
                 <div id="outputDiv"></div>
                 <div id="osdInput" class="inputDiv">
@@ -126,12 +127,12 @@
             </div>
 
             <!--DISM Page-->
-            <div id="page-DISM" class="pages glass">
+            <div id="page-dism" class="pages glass">
                 <div class="categoryHeader">Deployment Image Servicing and Management</div>
             </div>
 
             <!--USMT Page-->
-            <div id="page-USMT" class="pages glass">
+            <div id="page-usmt" class="pages glass">
                 <div class="categoryHeader">User State Migration Tool</div>
             </div>
 
@@ -153,14 +154,6 @@
             </div>
 
             <div id="footer">
-                <!-- <div id="buttonDiv"> -->
-                    <!-- <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Continue</button> -->
-                    <!-- <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button> -->
-                    <!-- <button class="button" id="buttonHome">Home</button> -->
-                    <!-- <button class="button" id="buttonIncrease">Increase</button> -->
-                    <!-- <button class="button" id="buttonDecrease">Decrease</button> -->
-                    <!-- <button class="button" id="buttonTEST" onclick="vbscript:TPMCheck()">Run Sub</button> -->
-                <!-- </div> -->
             </div>
         </div>
         <!--    End content    -->
@@ -173,29 +166,34 @@
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
     });
-    $('#icon-osd').on('click', function () {
+    $('#button-osd').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-OSD').css('display', 'block');
+        $('#page-osd').css('display', 'block');
         // TPMCheck();
     });
-
+    $('#button-flushfill').on('click', function () {
+        $('.pages').css('display', 'none');
+        $('#page-flushfill').css('display', 'block');
+    });
+    $('#button-dism').on('click', function () {
+        $('.pages').css('display', 'none');
+        $('#page-dism').css('display', 'block');
+    });
+    $('#button-usmt').on('click', function () {
+        $('.pages').css('display', 'none');
+        $('#page-usmt').css('display', 'block');
+    });
+    $('#button-software-install').on('click', function () {
+        $('.pages').css('display', 'none');
+        $('#page-software-install').css('display', 'block');
+    });
+    $('#button-tools').on('click', function () {
+        $('.pages').css('display', 'none');
+        $('#page-tools').css('display', 'block');
+    });     
     $('#buttonHome').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
-    });
-
-    $('#buttonIncrease').on('click', function () {
-        $('.icon').animate({
-            height: '+=10',
-            width: '+=10'
-        }, 500);
-    });
-
-    $('#buttonDecrease').on('click', function () {
-        $('.icon').animate({
-            height: '-=10',
-            width: '-=10'
-        }, 500);
     });
 
     // $('div').hover(

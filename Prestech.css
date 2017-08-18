@@ -19,21 +19,42 @@ html {
     width: 1024px;
     font-family: "Segoe UI";
 }
-li {
+.navigationbar li {
     display: block;
     font-weight: 400;
     padding: 5px 20px;
     margin-top: 12px;
     margin-bottom: 12px;
-    color: #FFF;
-    background-color: rgba(45, 45, 45, 0.75);
+    color: #efefef;
+    background-color: rgba(112, 128, 144, 0.75);
+    border-left: 5px solid rgba(47, 79, 79, 0.5);
 }
-ul{
+.navigationbar li:hover {
+    background-color: rgba(125, 139, 154, 0.75);
+    cursor: default;
+}
+.pages li {
+    display: block;
+    font-weight: 400;
+    padding: 5px 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: #efefef;
+    background-color: rgba(112, 128, 144, 0.75);
+}
+.navigationbar ul {
     font-weight: 400;
     list-style: none;
     margin: 0 10px;
     padding: 0;
 }
+.pages ul{
+    font-weight: 400;
+    list-style: none;
+    margin: 0 10px;
+    padding: 0;
+}
+
 p {
     text-align: center;
     padding: 10px;
@@ -63,6 +84,7 @@ p {
     height: 43px;
     width: 1024px;
     background: #222d32;
+    color: #efefef;
 }
 #header{
     height: 75px;
@@ -70,7 +92,7 @@ p {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    background: rgba(0, 0, 0, 0.8);
+    color: #FFF;
 }
 #header > h1{
     margin: 0;
@@ -96,17 +118,17 @@ p {
     background-color: darkred;
     border: none;
     padding: 12px 28px;
-    cursor: pointer;
+    cursor: default;
     color: white;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 .button:hover {
-    background-color: darkred
+    background-color: rgb(149,23,23);
     border: none;
     padding: 12px 28px;
-    cursor: pointer;
+    cursor: default;
     color: white;
     text-decoration: none;
     display: inline-block;
@@ -116,7 +138,7 @@ p {
     background-color: black;
     border: none;
     padding: 12px 28px;
-    cursor: pointer;
+    cursor: default;
     color: white;
     text-decoration: none;
     display: inline-block;
@@ -139,18 +161,11 @@ p {
     color: #FFF;
     background-color: darkred;
 }
-.categoryDiv {}
-/* .glass { */
-    /* background: url(images/red-helmet-glass.jpg); */
-/* } */
-
 .icon {
-    color: #FFF;
     display: inline-block;
     height: 75px;
     width: 75px;
     vertical-align: middle;
-    cursor: pointer;
 }
 .inputDiv {
     border: none;
@@ -176,7 +191,6 @@ p {
     padding: 10px;
 
 }
-.softwareOSD{}
 .tpmError {
     color: darkred;
     font-style: bold;
