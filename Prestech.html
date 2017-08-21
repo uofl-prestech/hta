@@ -59,7 +59,7 @@
 <body>
     <div id="container">
         <div id="header">
-            <h1>Prestech HTA</h1>
+            <h1>// PRESTECH HTA</h1>
         </div>
         <div id="content">
             <div class="navigationbar">
@@ -97,7 +97,7 @@
             </div>
 
             <!--OSD Page-->
-            <div id="page-osd" class="pages glass">
+            <div id="page-osd" class="pages">
                 <div class="categoryHeader">Operating System Deployment</div>
                 <div id="outputDiv"></div>
                 <div id="osdInput" class="inputDiv">
@@ -124,22 +124,34 @@
             </div>
 
             <!--Flush and Fill Page-->
-            <div id="page-flushfill" class="pages glass">
+            <div id="page-flushfill" class="pages">
                 <div class="categoryHeader">OS Upgrade with User Data Migration <br> ("Flush and Fill")</div>
             </div>
 
             <!--DISM Page-->
-            <div id="page-dism" class="pages glass">
+            <div id="page-dism" class="pages">
                 <div class="categoryHeader">Deployment Image Servicing and Management</div>
+                <br> Enter the Key to unlock Bitlocker: <br><br> Bitlocker Key:
+                <Input Name="blKey" Type="Text"
+                MaxLength="100" Size="35" Value="241879-537328-270765-452628-456291-096844-676181-216403"><br><br> Enter username of the user we are copying data for: <br><br> Username:
+                <Input Name="dismUsername"
+                Type="Text" Size="15"><br><br> Enter the drive letter of the External USB drive where the image will be stored:
+                <br><br> Drive Letter:
+                <Input Name="dismDrive" Type="Text" MaxLength="1" Size="15"><br><br> Enter the drive letter of the Windows partition to be imaged: <br><br> Drive Letter:
+                <Input Name="windowsDrive" Type="Text" MaxLength="1" Size="15"><br><br>
+                <Input Type="button" value="Capture Image" name="capture" onClick="vbscript:dismCapture()"><br><br>
+                <Input Type="button" value="Bitlocker Unlock" name="blUnlock" onClick="vbscript:BitlockerUnlock()"><br><br>
+                <div id="dismOutput"> </div>
+                </div>
             </div>
 
             <!--USMT Page-->
-            <div id="page-usmt" class="pages glass">
+            <div id="page-usmt" class="pages">
                 <div class="categoryHeader">User State Migration Tool</div>
             </div>
 
             <!--Software Install Page-->
-            <div id="page-sofware-install" class="pages glass">
+            <div id="page-sofware-install" class="pages">
                 <div class="categoryHeader">Software Installation</div>
                 <div id="softwareInput" class="inputDiv">
                     <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
@@ -151,13 +163,32 @@
             </div>
 
             <!--Troubleshooting Tools Page-->
-            <div id="page-tools" class="pages glass">
+            <div id="page-tools" class="pages">
                 <div class="categoryHeader">Troubleshooting Tools</div>
+                <div class="buttonDiv">
+                    <ul>
+                        <li>
+                        <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()">Bitlocker Info</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-cmdprompt" name="cmdWindow" onClick="vbscript:cmdPrompt()">Command Prompt</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-explorer" name="explorer" onClick="vbscript:explorer()">Explorer ++</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-logviewer" name="logViewer" onClick="vbscript:logViewer()">Log Viewer</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-pingtest" name="ping" onClick="vbscript:pingTest()">Ping Test</button>
+                        </li>                      
+                    </ul>
+                </div>
             </div>
-        <button class="button" id="buttonHome">Home</button>
-        <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
-            <div id="footer">
 
+            <div id="footer">
+                <button class="button" id="buttonHome">Home</button>
+                <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
             </div>
         </div>
         <!--    End content    -->
