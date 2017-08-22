@@ -15,10 +15,51 @@
     </hta:application>
 </head>
 
+<script language="vbscript" type="text/vbscript">
+
+    'Set objects and declare global variables On Error Resume Next Set env = CreateObject("Microsoft.SMS.TSEnvironment") Set
+    objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2") On Error goto 0 Sub ButtonFinishClick
+    ' ButtonFinishClick is executed by the "Finish" button. ' Set value of variable to true/false based on whether the checkbox
+    is selected or not If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked Then strAdobeReaderDC = "true" else strAdobeReaderDC
+    = "false" End If If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked Then strAdobeAcrobatProXI = "true" else
+    AdobeAcrobatProXI="false" End If If Chrome.Checked OR OSDChrome.Checked Then strChrome = "true" else strChrome = "false"
+    End If If FileMaker.Checked OR OSDFileMaker.Checked Then strFileMaker = "true" else strFileMaker = "false" End If If
+    Office2016.Checked OR Office2016.Checked Then strOffice2016 = "true" else strOffice2016 = "false" End If If OSD.Checked
+    Then strOSD = "true" strCompName = compName.value else strOSD = "false" End If ' Set value of variables that will be
+    used by the task sequence, then close the window and allow the task sequence to continue. env("envAdobeReaderDC") = strAdobeReaderDC
+    env("envAdobeAcrobatProXI") = strAdobeAcrobatProXI env("envChrome") = strChrome env("FileMaker") = strFileMaker env("envOffice2016")
+    = strOffice2016 env("envOSD") = strOSD env("OSDComputerName") = strCompName window.Close End Sub Sub TPMCheck Dim bIsEnabled,
+    bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning bIsEnabled
+    = "False" bIsActivated = "False" bIsOwned = "False" strStatusMessage = "
+    <h2 class="" tpmStatus "">ERROR - TPM Not Found</h2>" strTPMWarning = "
+    <h2 class="" tpmStatus ""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>" Dim outputDiv:
+    set outputDiv = document.getElementById("outputDiv") outputDiv.innerHTML = "" On Error Resume Next '----------------------------------------------------------------------------------------
+    'Connect to TPM WMI provider '----------------------------------------------------------------------------------------
+    strConnectionStr1 = "winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm"
+    Err.clear Set objWMITPM = GetObject(strConnectionStr1) If Err.Number
+    <> 0 Then strStatusState = "Not Found" End If Err.clear Set objTpm = objWMITPM.Get("Win32_Tpm=@") If Err.Number
+        <> 0 Then strStatusState = "Not Found" End If Err.Clear If strStatusState = "Not Found" Then outputDiv.innerHTML = strStatusMessage
+            outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning else '-----------------------------------------------------------------------------------------
+            'Get TPM status data to determine if TPM is enabled, activated, and owned '-----------------------------------------------------------------------------------------
+            nRC = objTpm.IsEnabled(bIsEnabled) If nRC
+            <> 0 OR bIsEnabled = "False" Then strStatusState = "ERROR" bIsEnabled = "<span class="" tpmError "">False</span>"
+                End If nRC = objTpm.IsActivated(bIsActivated) If nRC
+                <> 0 OR bIsActivated = "False" Then strStatusState = "ERROR" bIsActivated = "<span class="" tpmError "">False</span>"
+                    End If nRC = objTpm.IsOwned(bIsOwned) If nRC
+                    <> 0 OR bIsOwned = "False" Then strStatusState = "ERROR" bIsOwned = "<span class="" tpmError "">False</span>"
+                        End If outputDiv.innerHTML = "TPM found in the following state: <br>" outputDiv.innerHTML = outputDiv.innerHTML
+                        & "Enabled - " & bIsEnabled & "<br>" outputDiv.innerHTML = outputDiv.innerHTML & "Activated - " &
+                        bIsActivated & "<br>" outputDiv.innerHTML = outputDiv.innerHTML & "Owned - " & bIsOwned & "<br>"
+                        If strStatusState = "ERROR" Then outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning else outputDiv.innerHTML
+                        = outputDiv.innerHTML & "
+                        <h2>TPM Enabled and Activated</h2>" End If End If End Sub Sub ButtonExitClick Window.Close End Sub
+
+</script>
+
 <body>
     <div id="container">
         <div id="header">
-            <h1>Prestech HTA</h1>
+            <h1>// PRESTECH HTA</h1>
         </div>
         <div id="content">
             <div class="navigationbar">
@@ -56,9 +97,8 @@
             </div>
 
             <!--OSD Page-->
-            <div id="page-osd" class="pages glass">
+            <div id="page-osd" class="pages">
                 <div class="categoryHeader">Operating System Deployment</div>
-                <div id="outputDiv"></div>
                 <div id="osdInput" class="inputDiv">
                     <ul>
                         <li class="listOSD">
@@ -69,36 +109,57 @@
                             <div id="stepOSDSoftware"> Select Software to Install: <br>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeReaderDC"> Adobe Reader DC
                                 </h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro
-                                    XI</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDChrome"> Chrome 58</h4>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDFilemMaker"> FileMaker Pro 16</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32 Bit)
-                                </h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
                             </div>
                         </li>
                     <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                     </ul>
                 </div>
+                    <div id="osdOutput" class="outputDiv"></div>
             </div>
 
             <!--Flush and Fill Page-->
-            <div id="page-flushfill" class="pages glass">
-                <div class="categoryHeader">OS Upgrade with User Data Migration <br> ("Flush and Fill")</div>
+            <div id="page-flushfill" class="pages">
+                <div class="categoryHeader">OS Upgrade with User Data Migration: "Flush and Fill"</div>
             </div>
 
             <!--DISM Page-->
-            <div id="page-dism" class="pages glass">
+            <div id="page-dism" class="pages">
                 <div class="categoryHeader">Deployment Image Servicing and Management</div>
+                <div class="inputDiv">
+                    <ul>
+                        <li>
+                            Enter the key to unlock Bitlocker <br><br>
+                            Bitlocker Key: <input name="blKey" type="Text" maxlength="100" size="35" value="241879-537328-270765-452628-456291-096844-676181-216403"><br>
+                        </li>
+                        <li>
+                            Enter the AD username to be copied <br><br>
+                            Username: <input name="dismUsername" type="Text" size="15">
+                        </li>
+                        <li>
+                            Enter the drive letter of the External USB drive where the image will be stored:<br>
+                            Drive Letter: <input name="dismDrive" type="Text" maxlength="1" size="15"> <br>
+                            Enter the drive letter of the Windows partition to be imaged: <br>
+                            Drive Letter: <input name="windowsDrive" type="Text" maxlength="1" size="15">
+                        </li>
+                    </ul>
+                    <input type="button" value="Capture Image" name="capture" onclick="vbscript:dismCapture()"><br><br>
+                    <input type="button" value="Bitlocker Unlock" name="blUnlock" onclick="vbscript:BitlockerUnlock()"><br><br>
+                </div>
+                <div id="dismOutput" class="outputdiv">
+                    </div>
             </div>
 
             <!--USMT Page-->
-            <div id="page-usmt" class="pages glass">
+            <div id="page-usmt" class="pages">
                 <div class="categoryHeader">User State Migration Tool</div>
             </div>
 
             <!--Software Install Page-->
-            <div id="page-sofware-install" class="pages glass">
+            <div id="page-sofware-install" class="pages">
                 <div class="categoryHeader">Software Installation</div>
                 <div id="softwareInput" class="inputDiv">
                     <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
@@ -110,20 +171,41 @@
             </div>
 
             <!--Troubleshooting Tools Page-->
-            <div id="page-tools" class="pages glass">
+            <div id="page-tools" class="pages">
                 <div class="categoryHeader">Troubleshooting Tools</div>
+                <div class="inputDiv">
+                    <ul>
+                        <li>
+                        <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()">Bitlocker Info</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">Command Prompt</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()">Explorer ++</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">Log Viewer</button>
+                        </li>
+                        <li>
+                            <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">Ping Test</button>
+                        </li>                      
+                    </ul>
+                </div>
+                <div id="toolsOutput" class="outputDiv"></div>
             </div>
-        <button class="button" id="buttonHome">Home</button>
-        <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
-            <div id="footer">
-
-            </div>
-        </div>
         <!--    End content    -->
-    </div>
-    <!--    End container    -->
+        </div>
 
+        <div id="footer">
+            <button class="button" id="buttonHome">Home</button>
+            <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
+        </div>
+
+    <!--    End container    -->
+    </div>
 </body>
+
 <script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
