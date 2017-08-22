@@ -99,7 +99,6 @@
             <!--OSD Page-->
             <div id="page-osd" class="pages">
                 <div class="categoryHeader">Operating System Deployment</div>
-                <div id="outputDiv"></div>
                 <div id="osdInput" class="inputDiv">
                     <ul>
                         <li class="listOSD">
@@ -110,39 +109,48 @@
                             <div id="stepOSDSoftware"> Select Software to Install: <br>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeReaderDC"> Adobe Reader DC
                                 </h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro
-                                    XI</h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDChrome"> Chrome 58</h4>
                                 <h4><input type="checkbox" class="softwareOSD" name="OSDFilemMaker"> FileMaker Pro 16</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32 Bit)
-                                </h4>
+                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
                             </div>
                         </li>
                     <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                     </ul>
                 </div>
+                    <div id="osdOutput" class="outputDiv"></div>
             </div>
 
             <!--Flush and Fill Page-->
             <div id="page-flushfill" class="pages">
-                <div class="categoryHeader">OS Upgrade with User Data Migration <br> ("Flush and Fill")</div>
+                <div class="categoryHeader">OS Upgrade with User Data Migration: "Flush and Fill"</div>
             </div>
 
             <!--DISM Page-->
             <div id="page-dism" class="pages">
                 <div class="categoryHeader">Deployment Image Servicing and Management</div>
-                <br> Enter the Key to unlock Bitlocker: <br><br> Bitlocker Key:
-                <Input Name="blKey" Type="Text"
-                MaxLength="100" Size="35" Value="241879-537328-270765-452628-456291-096844-676181-216403"><br><br> Enter username of the user we are copying data for: <br><br> Username:
-                <Input Name="dismUsername"
-                Type="Text" Size="15"><br><br> Enter the drive letter of the External USB drive where the image will be stored:
-                <br><br> Drive Letter:
-                <Input Name="dismDrive" Type="Text" MaxLength="1" Size="15"><br><br> Enter the drive letter of the Windows partition to be imaged: <br><br> Drive Letter:
-                <Input Name="windowsDrive" Type="Text" MaxLength="1" Size="15"><br><br>
-                <Input Type="button" value="Capture Image" name="capture" onClick="vbscript:dismCapture()"><br><br>
-                <Input Type="button" value="Bitlocker Unlock" name="blUnlock" onClick="vbscript:BitlockerUnlock()"><br><br>
-                <div id="dismOutput"> </div>
+                <div class="inputDiv">
+                    <ul>
+                        <li>
+                            Enter the key to unlock Bitlocker <br><br>
+                            Bitlocker Key: <input name="blKey" type="Text" maxlength="100" size="35" value="241879-537328-270765-452628-456291-096844-676181-216403"><br>
+                        </li>
+                        <li>
+                            Enter the AD username to be copied <br><br>
+                            Username: <input name="dismUsername" type="Text" size="15">
+                        </li>
+                        <li>
+                            Enter the drive letter of the External USB drive where the image will be stored:<br>
+                            Drive Letter: <input name="dismDrive" type="Text" maxlength="1" size="15"> <br>
+                            Enter the drive letter of the Windows partition to be imaged: <br>
+                            Drive Letter: <input name="windowsDrive" type="Text" maxlength="1" size="15">
+                        </li>
+                    </ul>
+                    <input type="button" value="Capture Image" name="capture" onclick="vbscript:dismCapture()"><br><br>
+                    <input type="button" value="Bitlocker Unlock" name="blUnlock" onclick="vbscript:BitlockerUnlock()"><br><br>
                 </div>
+                <div id="dismOutput" class="outputdiv">
+                    </div>
             </div>
 
             <!--USMT Page-->
@@ -165,37 +173,39 @@
             <!--Troubleshooting Tools Page-->
             <div id="page-tools" class="pages">
                 <div class="categoryHeader">Troubleshooting Tools</div>
-                <div class="buttonDiv">
+                <div class="inputDiv">
                     <ul>
                         <li>
                         <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()">Bitlocker Info</button>
                         </li>
                         <li>
-                            <button class="button" id="button-cmdprompt" name="cmdWindow" onClick="vbscript:cmdPrompt()">Command Prompt</button>
+                            <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">Command Prompt</button>
                         </li>
                         <li>
-                            <button class="button" id="button-explorer" name="explorer" onClick="vbscript:explorer()">Explorer ++</button>
+                            <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()">Explorer ++</button>
                         </li>
                         <li>
-                            <button class="button" id="button-logviewer" name="logViewer" onClick="vbscript:logViewer()">Log Viewer</button>
+                            <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">Log Viewer</button>
                         </li>
                         <li>
-                            <button class="button" id="button-pingtest" name="ping" onClick="vbscript:pingTest()">Ping Test</button>
+                            <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">Ping Test</button>
                         </li>                      
                     </ul>
                 </div>
+                <div id="toolsOutput" class="outputDiv"></div>
             </div>
-
-            <div id="footer">
-                <button class="button" id="buttonHome">Home</button>
-                <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
-            </div>
-        </div>
         <!--    End content    -->
-    </div>
-    <!--    End container    -->
+        </div>
 
+        <div id="footer">
+            <button class="button" id="buttonHome">Home</button>
+            <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
+        </div>
+
+    <!--    End container    -->
+    </div>
 </body>
+
 <script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
