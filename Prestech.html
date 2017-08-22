@@ -3,19 +3,58 @@
 
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=9">
-    <link rel="stylesheet" href="./jquery-ui-1.11.4.custom/jquery-ui.css">
+    <meta http-equiv="x-ua-compatible" content="ie=10">
     <script src="./jquery-1.11.1.min.js"></script>
-    <script src="./jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-    <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
-    <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
-        window.resizeTo 1024,768
-        window.moveTo 400, 200
+        window.resizeTo 1024,768 window.moveTo 400, 200 On Error Resume Next Set ProgressUI = CreateObject("Microsoft.SMS.TsProgressUI")
+        ProgressUI.CloseProgressDialog On Error goto 0
     </script>
     <link rel="stylesheet" href="Prestech.css">
-    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no" windowstate="normal"></hta:application>
+    <hta:application applicationname="OOP Task Sequence Selections" border="none" innerborder="no" caption="yes" scroll="no"
+        windowstate="normal">
+    </hta:application>
 </head>
+
+<script language="vbscript" type="text/vbscript">
+
+    'Set objects and declare global variables On Error Resume Next Set env = CreateObject("Microsoft.SMS.TSEnvironment") Set
+    objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2") On Error goto 0 Sub ButtonFinishClick
+    ' ButtonFinishClick is executed by the "Finish" button. ' Set value of variable to true/false based on whether the checkbox
+    is selected or not If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked Then strAdobeReaderDC = "true" else strAdobeReaderDC
+    = "false" End If If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked Then strAdobeAcrobatProXI = "true" else
+    AdobeAcrobatProXI="false" End If If Chrome.Checked OR OSDChrome.Checked Then strChrome = "true" else strChrome = "false"
+    End If If FileMaker.Checked OR OSDFileMaker.Checked Then strFileMaker = "true" else strFileMaker = "false" End If If
+    Office2016.Checked OR Office2016.Checked Then strOffice2016 = "true" else strOffice2016 = "false" End If If OSD.Checked
+    Then strOSD = "true" strCompName = compName.value else strOSD = "false" End If ' Set value of variables that will be
+    used by the task sequence, then close the window and allow the task sequence to continue. env("envAdobeReaderDC") = strAdobeReaderDC
+    env("envAdobeAcrobatProXI") = strAdobeAcrobatProXI env("envChrome") = strChrome env("FileMaker") = strFileMaker env("envOffice2016")
+    = strOffice2016 env("envOSD") = strOSD env("OSDComputerName") = strCompName window.Close End Sub Sub TPMCheck Dim bIsEnabled,
+    bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning bIsEnabled
+    = "False" bIsActivated = "False" bIsOwned = "False" strStatusMessage = "
+    <h2 class="" tpmStatus "">ERROR - TPM Not Found</h2>" strTPMWarning = "
+    <h2 class="" tpmStatus ""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>" Dim outputDiv:
+    set outputDiv = document.getElementById("outputDiv") outputDiv.innerHTML = "" On Error Resume Next '----------------------------------------------------------------------------------------
+    'Connect to TPM WMI provider '----------------------------------------------------------------------------------------
+    strConnectionStr1 = "winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm"
+    Err.clear Set objWMITPM = GetObject(strConnectionStr1) If Err.Number
+    <> 0 Then strStatusState = "Not Found" End If Err.clear Set objTpm = objWMITPM.Get("Win32_Tpm=@") If Err.Number
+        <> 0 Then strStatusState = "Not Found" End If Err.Clear If strStatusState = "Not Found" Then outputDiv.innerHTML = strStatusMessage
+            outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning else '-----------------------------------------------------------------------------------------
+            'Get TPM status data to determine if TPM is enabled, activated, and owned '-----------------------------------------------------------------------------------------
+            nRC = objTpm.IsEnabled(bIsEnabled) If nRC
+            <> 0 OR bIsEnabled = "False" Then strStatusState = "ERROR" bIsEnabled = "<span class="" tpmError "">False</span>"
+                End If nRC = objTpm.IsActivated(bIsActivated) If nRC
+                <> 0 OR bIsActivated = "False" Then strStatusState = "ERROR" bIsActivated = "<span class="" tpmError "">False</span>"
+                    End If nRC = objTpm.IsOwned(bIsOwned) If nRC
+                    <> 0 OR bIsOwned = "False" Then strStatusState = "ERROR" bIsOwned = "<span class="" tpmError "">False</span>"
+                        End If outputDiv.innerHTML = "TPM found in the following state: <br>" outputDiv.innerHTML = outputDiv.innerHTML
+                        & "Enabled - " & bIsEnabled & "<br>" outputDiv.innerHTML = outputDiv.innerHTML & "Activated - " &
+                        bIsActivated & "<br>" outputDiv.innerHTML = outputDiv.innerHTML & "Owned - " & bIsOwned & "<br>"
+                        If strStatusState = "ERROR" Then outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning else outputDiv.innerHTML
+                        = outputDiv.innerHTML & "
+                        <h2>TPM Enabled and Activated</h2>" End If End If End Sub Sub ButtonExitClick Window.Close End Sub
+
+</script>
 
 <body>
     <div id="container">
@@ -90,46 +129,28 @@
             <!--DISM Page-->
             <div id="page-dism" class="pages">
                 <div class="categoryHeader">Deployment Image Servicing and Management</div>
-                <div id="dismInput" class="inputDiv">
+                <div class="inputDiv">
                     <ul>
-                        <li class="dismSteps">
-                            <div id="dismStep1">
-                                Run Bitlocker Info Tool <br><br>
-                                <input type="button" id="blInfo" value="Bitlocker Info"  name="Bitlocker"><br><br>
-                            </div>
+                        <li>
+                            Enter the key to unlock Bitlocker <br><br>
+                            Bitlocker Key: <input name="blKey" type="Text" maxlength="100" size="35" value="241879-537328-270765-452628-456291-096844-676181-216403"><br>
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep2">
-                                Enter the drive letter of the Windows partition to be imaged: <br><br> Drive Letter:
-                                <input name="windowsDrive" type="Text" maxlength="1" size="15">
-                            </div>
+                        <li>
+                            Enter the AD username to be copied <br><br>
+                            Username: <input name="dismUsername" type="Text" size="15">
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep3">
-                                Enter the Recovery Key to unlock Bitlocker: <br><br> <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858"><br><br>
-                                <input type="button" id="blUnlock" value="Bitlocker Unlock" name="blUnlock">
-                            </div>
-                        </li>
-                        <li class="dismSteps">
-                            <div id="dismStep4">
-                                Enter username of the user we are copying data for: <br><br> <input name="dismUsername" type="Text" size="15">
-                            </div>
-                        </li>
-                        <li class="dismSteps">
-                            <div id="dismStep5">
-                                 Enter the drive letter of the External USB drive where the image will be stored: <br><br>
-                                 Drive Letter: <input name="dismDrive" type="Text" maxlength="1" size="15">
-                            </div>
-                        </li>
-                        <li class="dismSteps">
-                            <div id="dismStep6">
-                                Capture Image <br><br>
-                                <input type="button" id="dismCap" value="Capture Image" name="capture"><br><br>
-                            </div>
+                        <li>
+                            Enter the drive letter of the External USB drive where the image will be stored:<br>
+                            Drive Letter: <input name="dismDrive" type="Text" maxlength="1" size="15"> <br>
+                            Enter the drive letter of the Windows partition to be imaged: <br>
+                            Drive Letter: <input name="windowsDrive" type="Text" maxlength="1" size="15">
                         </li>
                     </ul>
+                    <input type="button" value="Capture Image" name="capture" onclick="vbscript:dismCapture()"><br><br>
+                    <input type="button" value="Bitlocker Unlock" name="blUnlock" onclick="vbscript:BitlockerUnlock()"><br><br>
                 </div>
-                <div id="dismOutput" class="outputdiv"></div>
+                <div id="dismOutput" class="outputdiv">
+                    </div>
             </div>
 
             <!--USMT Page-->
@@ -144,9 +165,8 @@
                     <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
                     <input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI<br>
                     <input type="checkbox" name="Chrome"> Chrome 58<br>
-                    <input type="checkbox" name="FileMaker"> FileMaker Pro 16<br>
+                    <input type="checkbox" name="FilemMaker"> FileMaker Pro 16<br>
                     <input type="checkbox" name="Office2016"> Office 2016 (32 Bit)<br>
-                    <input type="checkbox" name="MBAM"> Bitlocker Agent<br>
                 </div>
             </div>
 
@@ -191,11 +211,10 @@
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
     });
-
-    $('#button-osd').on('click', function() {
+    $('#button-osd').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-osd').css('display', 'block');
-        TPMCheck();
+        // TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
         $('.pages').css('display', 'none');
@@ -220,30 +239,6 @@
     $('#buttonHome').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
-    });
-
-
-    $(function () {
-        $("#dismOutput").dialog({ 
-            autoOpen: false,
-            width: 700,
-            height: 500,
-            modal: true });
-    });
-    $('#blInfo').on('click', function () {
-        $("#dismOutput").dialog("option", "title", "Bitlocker Info");
-        $("#dismOutput").dialog("open");
-        BitlockerInfo();
-    });
-    $('#blUnlock').on('click', function () {
-        $("#dismOutput").dialog("option", "title", "Bitlocker Unlock Info");
-        $("#dismOutput").dialog("open");
-        BitlockerUnlock();
-    });
-     $('#dismCap').on('click', function () {
-        $("#dismOutput").dialog("option", "title", "DISM Capture Info");
-        $("#dismOutput").dialog("open");
-        dismCapture();
     });
 
     // $('div').hover(

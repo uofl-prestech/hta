@@ -1,4 +1,6 @@
 /*ELEMENT STYLES*/
+/* @import url(font path)  */
+
 body {
     color: #333;
     height: 768px;
@@ -9,29 +11,61 @@ body {
 div{
     box-sizing: border-box;
 }
-h1{
-    color: #FFF;
-}
 html {
     color: #333;
     background-size: cover;
     height: 768px;
     width: 1024px;
-    font-family: sans-serif;
+    font-family: "Segoe UI";
 }
-li {
-    display: block;
-    font-weight: 400;
-    padding: 5px 20px;
-    color: #FFF;
-    background: #333;
-}
-ul{
+.navigationbar ul {
     font-weight: 400;
     list-style: none;
     margin: 0 10px;
     padding: 0;
 }
+.navigationbar ul li {
+    display: block;
+    font-weight: 400;
+    padding: 5px 10px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    color: #CCCCCC;
+    background-color: rgba(0,0,0,0.35);
+    border-right: 4px solid rgba(120, 120, 120, 0.25)
+}
+.navigationbar ul li span {
+    padding-left: 15px;
+    width: 100%;
+    font-size: 16px; 
+}
+.navigationbar li:hover {
+    background-color: rgba(60, 60, 60, 0.35);
+    color: #FFF;
+    cursor: default;
+}
+.pages li {
+    display: block;
+    font-weight: 400;
+    padding: 5px 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    /* vertical-align: middle; */
+    color: #CCCCCC;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+.pages li:hover{
+    background-color: rgba(60, 60, 60, 0.35);
+    color: #FFF;
+    cursor: default;
+}
+.pages ul{
+    font-weight: 400;
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+}
+
 p {
     text-align: center;
     padding: 10px;
@@ -40,72 +74,96 @@ p {
 
 /*ID STYLES*/
 #buttonDiv {
-    width: 600px;
+    width: 100%;
     position: relative;
     text-align: center;
     margin: auto;
     padding: 12px;
 }
+#button-osd {
+    margin-top: 0;
+    padding-top: 0;
+}
+#buttonExit, #buttonHome {
+    margin: 2px;
+}
 #container{
     display: inline-block;
     height: 768px;
     width: 1024px;
-    background: black;
+    background: url(images/helmet-grey-blur.png);
 }
 #content{
-    height: 650px;
+    height: 600px;
     width: 1024px;
-    background: aliceblue;
+    margin-top: 25px;
+    color: white;
 }
 #footer{
-    display: table-cell;
-    height: 43px;
+    display: inline-block;
+    height: 45px;
     width: 1024px;
-    background:darkred;
+    padding-left: 30px;
+    background: rgba(37, 193, 105, 0.56);
 }
 #header{
-    height: 75px;
+    height: 81px;
     width: 1024px;
+    border-bottom: 2px solid rgba(122, 122, 122, 0.35);
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    background: darkred;
+    padding-right: 20px;
+    color: rgba(204, 204, 204, 0.75);
+    letter-spacing: 3px;
+    font-weight: 200;
 }
 #header > h1{
     margin: 0;
 }
-#outputDiv{
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);    
-}
-#page-DISM {}
-#page-flushfill {}
-#page-landing {}
-#page-OSD {}
-#page-software-install {}
-#page-tools {}
-#page-USMT {}
-#task-selection-div {}
-#osdInput {}
-#softwareDiv {}
-#softwareInput {}
+
+/* #page-DISM {} */
+/* #page-flushfill {} */
+/* #page-landing {} */
+/* #page-OSD {} */
+/* #page-software-install {} */
+/* #page-tools {} */
+/* #page-USMT {} */
+/* #task-selection-div {} */
+/* #osdInput {}
+/* #softwareDiv {} */
+/* #softwareInput {} */
 
 /*CLASS STYLES*/
 .button {
-    background: #222d32;
-    border: 1px inset black;
-    border-radius: 10px;
-    padding: 2px;
-    cursor: pointer;
-    color: white;
+    background-color: darkred;
+    border: none;
+    padding: 12px 28px;
+    cursor: default;
+    color: #CCC;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .button:hover {
-    background: #4B646F;
-    border: 1px inset dimgray;
-    border-radius: 10px;
-    padding: 2px;
-    cursor: pointer;
-    color: white;
+    background-color: rgb(149,23,23);
+    border: none;
+    padding: 12px 28px;
+    cursor: default;
+    color: #FFF;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.button:active{
+    background-color: black;
+    border: none;
+    padding: 12px 28px;
+    cursor: default;
+    color: #FFF;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .categoryDiv {
     background: rgba(0,
@@ -116,33 +174,27 @@ p {
     border-radius: 10px;
 }
 .categoryHeader {
-    width: 740px;
+    width: 750px;
     height: 50px;
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
-}
-.categoryDiv {}
-.glass {
- 
-}
-.glass:before {
-
+    padding: 10px 15px;
+    color: rgba(204, 204, 204, 1);
+    background-color: rgba(139,0,0,0.6);
 }
 .icon {
-    color: #FFF;
     display: inline-block;
     height: 75px;
     width: 75px;
     vertical-align: middle;
-    cursor: pointer;
 }
 .inputDiv {
-    border: 3px outset #4e4e4e;
-    border-radius: 10px;
-    width: 100%;
-    height: auto;
-    padding: 15px;
+    border: none;
+    float: left;
+    width: 375px;
+    height: 550px;
+    margin-right: 5px;
 }
 .listOSD{
     display: list-item;
@@ -150,26 +202,33 @@ p {
 .navigationbar {
     position: relative;
     float: left;
-    height: 650px;
+    height: 600px;
     width: 264px;
-    background: #222d32;
+    background: rgb(34, 45, 50, 0.1);
+}
+.outputDiv {
+    float: right;
+    width: 365px;
+    height: 550px;
+    margin-left: 5px;
+    margin-right: 10px;
+    padding: 0px;
+    text-align: center;
+    background: rgba(104, 110, 175, 0.65);
 }
 .pages {
     position: relative;
     float: right;
-    height: 650px;
+    height: 600px;
     width: 760px;
-    padding: 10px;
-    background: gainsboro;
-    /* background: url(images/red-helmet.jpg); */
+
 }
-.softwareOSD{}
 .tpmError {
-    color: firebrick;
+    color: darkred;
     font-style: bold;
 }
 .tpmStatus {
-    color: firebrick;
+    color: darkred;
     font-style: bold;
     animation-name: tpmFrames;
     animation-duration: 12s;
