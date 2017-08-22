@@ -6,6 +6,43 @@ ProgressUI.CloseProgressDialog
 Set env = CreateObject("Microsoft.SMS.TSEnvironment")
 Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
 
+'************************************ Ping test subroutines ************************************
+Dim iTimerID
+Dim pingShell, pingShellExec
+Sub pingTest
+    Dim comspec, strObj
+    dim pingTestDiv: set pingTestDiv = document.getElementById("toolsOutput")
+    pingTestDiv.innerHTML = "<p class='cmdHeading'>Network connectivity test: </p>"
+    Set pingShell = CreateObject("WScript.Shell")
+    comspec = pingShell.ExpandEnvironmentStrings("%comspec%")
+    Set pingShellExec = pingShell.Exec(comspec & " /c ping.exe www.google.com")
+	iTimerID = window.setInterval("vbscript:writePing()", 10)
+End Sub
+
+Sub writePing
+	dim pingTestDiv: set pingTestDiv = document.getElementById("toolsOutput")
+	pingTestDiv.innerHTML = pingTestDiv.innerHTML & pingShellExec.StdOut.ReadLine() & "<br>"
+	If pingShellExec.Status = 1 Then
+		window.clearInterval(iTimerID)
+		pingTestDiv.innerHTML = pingTestDiv.innerHTML & pingShellExec.StdOut.ReadAll() & "<br>"
+	End If
+
+End Sub
+
+'************************************ Open new command prompt ************************************
+Sub cmdPrompt
+	Dim cmdShell, cmdShellExec, comspec, strObj
+    Set cmdShell = CreateObject("WScript.Shell")
+	cmdShell.Run "cmd /k"
+End Sub
+
+'************************************ Open cmtrace64 log viewer ************************************
+Sub logViewer
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+	strCurDir = cmdShell.CurrentDirectory
+	cmdShell.Run strCurDir & "\cmtrace64.exe"
+End Sub
 
 '************************************ DISM Capture Image subroutine ************************************
 Sub dismCapture

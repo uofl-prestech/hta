@@ -5,7 +5,7 @@ Sub TPMCheck
 	bIsOwned = "False"
 	strStatusMessage = "<h2 class=""tpmStatus"">ERROR - TPM Not Found</h2>"
 	strTPMWarning = "<h2 class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>"
-	Dim outputDiv: set outputDiv = document.getElementById("outputDiv")
+	Dim outputDiv: set outputDiv = document.getElementById("osdOutput")
 	outputDiv.innerHTML = ""
 	On Error Resume Next
 

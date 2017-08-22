@@ -79,7 +79,7 @@
                     <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                     </ul>
                 </div>
-                    <div id="osdOutput" class="outputDiv"></div>
+                    <!-- <div id="osdOutput" class="outputDiv"></div> -->
             </div>
 
             <!--Flush and Fill Page-->
@@ -129,7 +129,7 @@
                         </li>
                     </ul>
                 </div>
-                <div id="dismOutput" class="outputdiv"></div>
+                <!-- <div id="dismOutput" class="outputdiv"></div> -->
             </div>
 
             <!--USMT Page-->
@@ -195,7 +195,8 @@
     $('#button-osd').on('click', function() {
         $('.pages').css('display', 'none');
         $('#page-osd').css('display', 'block');
-        TPMCheck();
+        $('#page-osd').append('<div id="dismOutput" class="outputdiv">placeholder</div>');
+        // TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
         $('.pages').css('display', 'none');
@@ -223,26 +224,27 @@
     });
 
 
-    $(function () {
-        $("#dismOutput").dialog({ 
-            autoOpen: false,
-            width: 700,
-            height: 500,
-            modal: true });
-    });
+
+    // $(function () {
+    //     $("#dismOutput").dialog({ 
+    //         autoOpen: false,
+    //         width: 700,
+    //         height: 500,
+    //         modal: true });
+    // });
     $('#blInfo').on('click', function () {
-        $("#dismOutput").dialog("option", "title", "Bitlocker Info");
-        $("#dismOutput").dialog("open");
+        // $("#dismOutput").dialog("option", "title", "Bitlocker Info");
+        // $("#dismOutput").dialog("open");
         BitlockerInfo();
     });
     $('#blUnlock').on('click', function () {
-        $("#dismOutput").dialog("option", "title", "Bitlocker Unlock Info");
-        $("#dismOutput").dialog("open");
+        // $("#dismOutput").dialog("option", "title", "Bitlocker Unlock Info");
+        // $("#dismOutput").dialog("open");
         BitlockerUnlock();
     });
      $('#dismCap').on('click', function () {
-        $("#dismOutput").dialog("option", "title", "DISM Capture Info");
-        $("#dismOutput").dialog("open");
+        // $("#dismOutput").dialog("option", "title", "DISM Capture Info");
+        // $("#dismOutput").dialog("open");
         dismCapture();
     });
 
