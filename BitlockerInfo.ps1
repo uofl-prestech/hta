@@ -111,4 +111,4 @@
 
 	#Write-Output $driveList | Format-List
 
-	$driveList | ForEach-Object{$_ | convertTo-HTML -Fragment}
+	$driveList | ForEach-Object{$_ | convertTo-HTML -Fragment -As "List" -PostContent "<br>"}
