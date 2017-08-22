@@ -46,7 +46,7 @@
                         <span>Software Install</span>
                     </li>
                     <li id="button-tools">
-                        <img src="images/tools final.png" class="icon">
+                        <img src="images/tools-icon.png" class="icon">
                         <span>Tools</span>
                     </li>
                 </ul>
@@ -95,7 +95,7 @@
                         <li class="dismSteps">
                             <div id="dismStep1">
                                 Run Bitlocker Info Tool <br><br>
-                                <input type="button" id="blInfo" value="Bitlocker Info"  name="Bitlocker"><br><br>
+                                <button class="button" id="blInfo" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br><br>
                             </div>
                         </li>
                         <li class="dismSteps">
@@ -107,7 +107,7 @@
                         <li class="dismSteps">
                             <div id="dismStep3">
                                 Enter the Recovery Key to unlock Bitlocker: <br><br> <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858"><br><br>
-                                <input type="button" id="blUnlock" value="Bitlocker Unlock" name="blUnlock">
+                                <button class="button" id="blUnlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                             </div>
                         </li>
                         <li class="dismSteps">
@@ -138,7 +138,7 @@
             </div>
 
             <!--Software Install Page-->
-            <div id="page-sofware-install" class="pages">
+            <div id="page-software-install" class="pages">
                 <div class="categoryHeader">Software Installation</div>
                 <div id="softwareInput" class="inputDiv">
                     <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
@@ -156,19 +156,19 @@
                 <div class="inputDiv">
                     <ul>
                         <li>
-                        <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()">Bitlocker Info</button>
+                        <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         </li>
                         <li>
-                            <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">Command Prompt</button>
+                            <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
                         </li>
                         <li>
-                            <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()">Explorer ++</button>
+                            <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         </li>
                         <li>
-                            <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">Log Viewer</button>
+                            <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
                         </li>
                         <li>
-                            <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">Ping Test</button>
+                            <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         </li>                      
                     </ul>
                 </div>
@@ -195,7 +195,7 @@
     $('#button-osd').on('click', function() {
         $('.pages').css('display', 'none');
         $('#page-osd').css('display', 'block');
-        $('#page-osd').append('<div id="dismOutput" class="outputdiv">placeholder</div>');
+        $('#page-osd').append('<div id="generalOutput" class="outputdiv">placeholder</div>');
         // TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
@@ -210,7 +210,7 @@
         $('.pages').css('display', 'none');
         $('#page-usmt').css('display', 'block');
     });
-    $('#button-software-install').on('click', function () {
+    $('#button-software').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-software-install').css('display', 'block');
     });
