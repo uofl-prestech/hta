@@ -135,6 +135,15 @@
             <!--USMT Page-->
             <div id="page-usmt" class="pages">
                 <div class="categoryHeader">User State Migration Tool</div>
+                    Enter username of the user we are copying data for<br><br>
+                    Username: <input name="usmtUsername" type="Text" size="15"><br><br>
+                    Enter the drive letter of the External USB drive where the USMT data will be stored: <br><br>
+                    <div id="driveLetter">Drive Letter:</div>
+                    <input name="usmtDrive" type="Text" maxlength="1" size="15"><br><br>
+                    <br><br>
+                    <button class="button" id="run-usmt-button" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>
+                    Command that will execute: <br>
+                    <div id="general-output"> </div>
             </div>
 
             <!--Software Install Page-->
@@ -195,8 +204,7 @@
     $('#button-osd').on('click', function() {
         $('.pages').css('display', 'none');
         $('#page-osd').css('display', 'block');
-        $('#page-osd').append('<div id="generalOutput" class="outputdiv">placeholder</div>');
-        // TPMCheck();
+        TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
         $('.pages').css('display', 'none');
@@ -221,8 +229,11 @@
     $('#buttonHome').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
-    });
+    }); 
 
+    $('#run-usmt-button').on('click', function () {
+        runUSMT()
+    });
 
 
     // $(function () {

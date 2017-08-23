@@ -44,31 +44,6 @@ Sub logViewer
 	cmdShell.Run strCurDir & "\cmtrace64.exe"
 End Sub
 
-'************************************ DISM Capture Image subroutine ************************************
-Sub dismCapture
-	Dim dismShell, strName, destPath, sourcePath, returnCode
-	dim dismDiv: set dismDiv = document.getElementById("generalOutput")
-    strSourcePath = windowsDrive.value
-    strDestPath = dismDrive.value
-    strName = dismUsername.value
-	Set dismShell = CreateObject("WScript.Shell")
-
-	dismDiv.innerHTML = "Running Command: X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"
-	returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
-	
-	Set fso = CreateObject("Scripting.FileSystemObject")
-	fileName = "X:\dism.log"
-	' Set myFile = fso.OpenTextFile(fileName, 1)
-	' Do While myFile.AtEndOfStream <> True
-	'    textLine = myFile.ReadLine
-	'    strRead = strRead & textLine & "<br>"
-	' Loop
-	' myFile.Close
-	
-     dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " & returnCode
-
-End Sub
-
 '************************************ Convert Bytes to KB, MB, GB, TB subroutine************************************
 Function ConvertSize(Size)
 	suffix = " Bytes" 
@@ -141,38 +116,52 @@ Sub ButtonFinishClick
     window.close
 End Sub
 
+'************************************ DISM Capture Image subroutine ************************************
+Sub dismCapture
+	Dim dismShell, strName, destPath, sourcePath, returnCode
+	Dim dismDiv: Set dismDiv = document.getElementById("generalOutput")
+    strSourcePath = windowsDrive.value
+    strDestPath = dismDrive.value
+    strName = dismUsername.value
+	Set dismShell = CreateObject("WScript.Shell")
+
+	dismDiv.innerHTML = "Running Command: X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"
+	returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
+	
+    dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " & returnCode
+
+End Sub
+
 '************************************ Execute DISM script ************************************
 Sub runDISM_TS
-    Dim oShell
-    Set oShell = CreateObject("WScript.Shell")
-
     env("envDismSelected") = "true"
     env("dismSourceDrive") = windowsDrive.value
     env("bitlockerKey") = blKey.value
     env("dismDestDrive") = dismDrive.value
     env("dismUsername") = dismUsername.value
 
-    Dim dismShell, strName, strDestPath, strSourcePath
-    Set dismShell = CreateObject("WScript.Shell")
-    strSourcePath = windowsDrive.value
-    strDestPath = dismDrive.value
-    strName = dismUsername.value
-
-    returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
-
-    ' Set fso = CreateObject("Scripting.FileSystemObject")
-    ' fileName = "X:\dism.log"
-    ' Set myFile = fso.OpenTextFile(fileName,1)
-
-    ' Do While myFile.AtEndOfStream <> True
-    '     textLine = myFile.ReadLine
-    '     strRead = strRead & textLine & "<br>"
-    ' Loop
-    ' myFile.Close
-
-    wscript.echo "Capture Finished! <br><br> Return Code: " & returnCode
+    window.close
 
 End Sub
+
+'************************************ USMT Scanstate subroutine ************************************
+Sub runUSMT
+	Dim getUser, WshShell, destDrive, scanStateDiv
+    Set scanStateDiv = document.getElementById("general-output")
+	Set WshShell = CreateObject("WScript.Shell")
+	getUser = usmtUsername.Value
+	destDrive = usmtDrive.Value
+
+    scanStateDiv.innerHTML = "X:\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:X:\USMT\offline.xml /i:X:\USMT\migdocs.xml /i:X:\USMT\migapp.xml /i:X:\USMT\oop.xml /progress:X:\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5, 1, True"
+
+    WshShell.run "X:\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:X:\USMT\offline.xml /i:X:\USMT\migdocs.xml /i:X:\USMT\migapp.xml /i:X:\USMT\oop.xml /progress:X:\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5", 1, True
+
+	WshShell.run "%comspec% /c cmtrace.exe X:\prog.log"
+	
+    scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
+
+End Sub
+
 
 '************************************ Exit HTA subroutine ************************************
 Sub ButtonExitClick
