@@ -3,66 +3,27 @@
 
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=10">
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <link rel="stylesheet" href="./jquery-ui-1.11.4.custom/jquery-ui.css">
     <script src="./jquery-1.11.1.min.js"></script>
+    <script src="./jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
+    <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
-        window.resizeTo 1024,768 window.moveTo 400, 200 On Error Resume Next Set ProgressUI = CreateObject("Microsoft.SMS.TsProgressUI")
-        ProgressUI.CloseProgressDialog On Error goto 0
+        window.resizeTo 1024,768 window.moveTo 400, 200
     </script>
     <link rel="stylesheet" href="Prestech.css">
-    <hta:application applicationname="OOP Task Sequence Selections" border="none" innerborder="no" caption="yes" scroll="no"
-        windowstate="normal">
-    </hta:application>
+    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
+        windowstate="normal"></hta:application>
 </head>
-
-<script language="vbscript" type="text/vbscript">
-
-    'Set objects and declare global variables On Error Resume Next Set env = CreateObject("Microsoft.SMS.TSEnvironment") Set
-    objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2") On Error goto 0 Sub ButtonFinishClick
-    ' ButtonFinishClick is executed by the "Finish" button. ' Set value of variable to true/false based on whether the checkbox
-    is selected or not If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked Then strAdobeReaderDC = "true" else strAdobeReaderDC
-    = "false" End If If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked Then strAdobeAcrobatProXI = "true" else
-    AdobeAcrobatProXI="false" End If If Chrome.Checked OR OSDChrome.Checked Then strChrome = "true" else strChrome = "false"
-    End If If FileMaker.Checked OR OSDFileMaker.Checked Then strFileMaker = "true" else strFileMaker = "false" End If If
-    Office2016.Checked OR Office2016.Checked Then strOffice2016 = "true" else strOffice2016 = "false" End If If OSD.Checked
-    Then strOSD = "true" strCompName = compName.value else strOSD = "false" End If ' Set value of variables that will be
-    used by the task sequence, then close the window and allow the task sequence to continue. env("envAdobeReaderDC") = strAdobeReaderDC
-    env("envAdobeAcrobatProXI") = strAdobeAcrobatProXI env("envChrome") = strChrome env("FileMaker") = strFileMaker env("envOffice2016")
-    = strOffice2016 env("envOSD") = strOSD env("OSDComputerName") = strCompName window.Close End Sub Sub TPMCheck Dim bIsEnabled,
-    bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning bIsEnabled
-    = "False" bIsActivated = "False" bIsOwned = "False" strStatusMessage = "
-    <h2 class="" tpmStatus "">ERROR - TPM Not Found</h2>" strTPMWarning = "
-    <h2 class="" tpmStatus ""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>" Dim outputDiv:
-    set outputDiv = document.getElementById("outputDiv") outputDiv.innerHTML = "" On Error Resume Next '----------------------------------------------------------------------------------------
-    'Connect to TPM WMI provider '----------------------------------------------------------------------------------------
-    strConnectionStr1 = "winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm"
-    Err.clear Set objWMITPM = GetObject(strConnectionStr1) If Err.Number
-    <> 0 Then strStatusState = "Not Found" End If Err.clear Set objTpm = objWMITPM.Get("Win32_Tpm=@") If Err.Number
-        <> 0 Then strStatusState = "Not Found" End If Err.Clear If strStatusState = "Not Found" Then outputDiv.innerHTML = strStatusMessage
-            outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning else '-----------------------------------------------------------------------------------------
-            'Get TPM status data to determine if TPM is enabled, activated, and owned '-----------------------------------------------------------------------------------------
-            nRC = objTpm.IsEnabled(bIsEnabled) If nRC
-            <> 0 OR bIsEnabled = "False" Then strStatusState = "ERROR" bIsEnabled = "<span class="" tpmError "">False</span>"
-                End If nRC = objTpm.IsActivated(bIsActivated) If nRC
-                <> 0 OR bIsActivated = "False" Then strStatusState = "ERROR" bIsActivated = "<span class="" tpmError "">False</span>"
-                    End If nRC = objTpm.IsOwned(bIsOwned) If nRC
-                    <> 0 OR bIsOwned = "False" Then strStatusState = "ERROR" bIsOwned = "<span class="" tpmError "">False</span>"
-                        End If outputDiv.innerHTML = "TPM found in the following state: <br>" outputDiv.innerHTML = outputDiv.innerHTML
-                        & "Enabled - " & bIsEnabled & "<br>" outputDiv.innerHTML = outputDiv.innerHTML & "Activated - " &
-                        bIsActivated & "<br>" outputDiv.innerHTML = outputDiv.innerHTML & "Owned - " & bIsOwned & "<br>"
-                        If strStatusState = "ERROR" Then outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning else outputDiv.innerHTML
-                        = outputDiv.innerHTML & "
-                        <h2>TPM Enabled and Activated</h2>" End If End If End Sub Sub ButtonExitClick Window.Close End Sub
-
-</script>
 
 <body>
     <div id="container">
         <div id="header">
             <h1>// PRESTECH HTA</h1>
         </div>
-        <div id="content">
-            <div class="navigationbar">
+        <div id="main">
+            <div class="navigation-bar">
                 <ul>
                     <li id="button-osd" class="first">
                         <img src="images/osd final.png" class="icon">
@@ -85,124 +46,135 @@
                         <span>Software Install</span>
                     </li>
                     <li id="button-tools">
-                        <img src="images/tools final.png" class="icon">
+                        <img src="images/tools-icon.png" class="icon">
                         <span>Tools</span>
                     </li>
                 </ul>
+                <button class="button" id="button-home">Home</button>
+                <button class="button" id="button-exit" onclick="vbscript:ButtonExitClick()">Exit</button>
             </div>
 
             <!--Landing Page-->
             <div id="page-landing" class="pages">
-                <div class="categoryHeader">OOP Task Sequence Selections</div>
+                <div class="category-header">OOP Task Sequence Selections</div>
             </div>
 
             <!--OSD Page-->
             <div id="page-osd" class="pages">
-                <div class="categoryHeader">Operating System Deployment</div>
-                <div id="osdInput" class="inputDiv">
+                <div class="category-header">Operating System Deployment</div>
+                <div id="osd-input" class="input-div">
                     <ul>
-                        <li class="listOSD">
+                        <li class="list-osd">
                             <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div><br></li>
-                        <li class="listOSD">
+                        <li class="list-osd">
                             <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div><br></li>
-                        <li class="listOSD">
+                        <li class="list-osd">
                             <div id="stepOSDSoftware"> Select Software to Install: <br>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeReaderDC"> Adobe Reader DC
+                                <h4><input type="checkbox" class="software-osd" name="OSDAdobeReaderDC"> Adobe Reader DC
                                 </h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDChrome"> Chrome 58</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDFilemMaker"> FileMaker Pro 16</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro
+                                    XI</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDChrome"> Chrome 58</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDFilemMaker"> FileMaker Pro 16</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
                             </div>
                         </li>
-                    <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
+                        <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                     </ul>
                 </div>
-                    <div id="osdOutput" class="outputDiv"></div>
+                <!-- <div id="osdOutput" class="output-div"></div> -->
             </div>
 
             <!--Flush and Fill Page-->
             <div id="page-flushfill" class="pages">
-                <div class="categoryHeader">OS Upgrade with User Data Migration: "Flush and Fill"</div>
+                <div class="category-header">OS Upgrade with User Data Migration: "Flush and Fill"</div>
             </div>
 
             <!--DISM Page-->
             <div id="page-dism" class="pages">
-                <div class="categoryHeader">Deployment Image Servicing and Management</div>
-                <div class="inputDiv">
+                <div class="category-header">Deployment Image Servicing and Management</div>
+                <div id="dism-input" class="input-div">
                     <ul>
-                        <li>
-                            Enter the key to unlock Bitlocker <br><br>
-                            Bitlocker Key: <input name="blKey" type="Text" maxlength="100" size="35" value="241879-537328-270765-452628-456291-096844-676181-216403"><br>
+                        <li class="dism-steps">
+                                <button class="button" id="bl-info" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
                         </li>
-                        <li>
-                            Enter the AD username to be copied <br><br>
-                            Username: <input name="dismUsername" type="Text" size="15">
+                        <li class="dism-steps">
+                            <div id="dism-step2">
+                                <p>Enter the drive letter of the Windows partition to be imaged.</p>
+                                <p>Drive Letter:</p><input name="windowsDrive" type="Text" maxlength="1" size="15">
+                            </div>
                         </li>
-                        <li>
-                            Enter the drive letter of the External USB drive where the image will be stored:<br>
-                            Drive Letter: <input name="dismDrive" type="Text" maxlength="1" size="15"> <br>
-                            Enter the drive letter of the Windows partition to be imaged: <br>
-                            Drive Letter: <input name="windowsDrive" type="Text" maxlength="1" size="15">
+                        <li class="dism-steps">
+                            <div id="dism-step3">
+                                <p>Enter the Recovery Key to unlock Bitlocker.</p>
+                                <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858">
+                                <button class="button" id="bl-unlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                            </div>
+                        </li>
+                        <li class="dism-steps">
+                            <div id="dism-step4">
+                                <p>Enter the username of the user we are copying data for.</p>
+                                <input name="dismUsername" type="Text" size="15">
+                            </div>
+                        </li>
+                        <li class="dism-steps">
+                            <div id="dism-step5">
+                                <p>Enter the drive letter of the External USB drive where the image will be stored.</p>
+                                <p>Drive Letter:</p><input name="dismDrive" type="Text" maxlength="1" size="15">
+                            </div>
+                        </li>
+                        <li class="dism-steps">
+                            <div id="dism-step6">
+                                <input class="button" type="button" id="dismCap" value="Capture Image" name="capture">
+                            </div>
                         </li>
                     </ul>
-                    <input type="button" value="Capture Image" name="capture" onclick="vbscript:dismCapture()"><br><br>
-                    <input type="button" value="Bitlocker Unlock" name="blUnlock" onclick="vbscript:BitlockerUnlock()"><br><br>
                 </div>
-                <div id="dismOutput" class="outputdiv">
-                    </div>
+                <!-- <div id="dism-output" class="output-div"></div> -->
             </div>
 
             <!--USMT Page-->
             <div id="page-usmt" class="pages">
-                <div class="categoryHeader">User State Migration Tool</div>
+                <div class="category-header">User State Migration Tool</div>
             </div>
 
             <!--Software Install Page-->
-            <div id="page-sofware-install" class="pages">
-                <div class="categoryHeader">Software Installation</div>
-                <div id="softwareInput" class="inputDiv">
-                    <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
-                    <input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI<br>
-                    <input type="checkbox" name="Chrome"> Chrome 58<br>
-                    <input type="checkbox" name="FilemMaker"> FileMaker Pro 16<br>
-                    <input type="checkbox" name="Office2016"> Office 2016 (32 Bit)<br>
+            <div id="page-software-install" class="pages">
+                <div class="category-header">Software Installation</div>
+                <div id="software-input" class="input-div">
+                    <ul>
+                        <li>
+                            <div>Select software to install:<br>
+                            <h4><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</h4>
+                            <h4><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
+                            <h4><input type="checkbox" name="Chrome"> Chrome 58</h4>
+                            <h4><input type="checkbox" name="FileMaker"> FileMaker Pro 16</h4>
+                            <h4><input type="checkbox" name="Office2016"> Office 2016 (32 Bit)</h4>
+                            <h4><input type="checkbox" name="MBAM"> Bitlocker Agent</h4>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
             <!--Troubleshooting Tools Page-->
             <div id="page-tools" class="pages">
-                <div class="categoryHeader">Troubleshooting Tools</div>
-                <div class="inputDiv">
-                    <ul>
-                        <li>
-                        <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()">Bitlocker Info</button>
-                        </li>
-                        <li>
-                            <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">Command Prompt</button>
-                        </li>
-                        <li>
-                            <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()">Explorer ++</button>
-                        </li>
-                        <li>
-                            <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">Log Viewer</button>
-                        </li>
-                        <li>
-                            <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">Ping Test</button>
-                        </li>                      
-                    </ul>
+                <div class="category-header">Troubleshooting Tools</div>
+                <div class="input-div">
+                    <div class="tools-button-bar">
+                            <button class="button, button-tools" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                            <button class="button, button-tools" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
+                            <button class="button, button-tools" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
+                            <button class="button, button-tools" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
+                            <button class="button, button-tools" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                    </div>
                 </div>
-                <div id="toolsOutput" class="outputDiv"></div>
+            <div id="general-output" class="output-div">.general-output</div>
             </div>
-        <!--    End content    -->
-        </div>
 
-        <div id="footer">
-            <button class="button" id="buttonHome">Home</button>
-            <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
+            <!--    End main    -->
         </div>
-
-    <!--    End container    -->
+        <!--    End container    -->
     </div>
 </body>
 
@@ -211,6 +183,7 @@
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
     });
+
     $('#button-osd').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-osd').css('display', 'block');
@@ -228,17 +201,42 @@
         $('.pages').css('display', 'none');
         $('#page-usmt').css('display', 'block');
     });
-    $('#button-software-install').on('click', function () {
+    $('#button-software').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-software-install').css('display', 'block');
     });
     $('#button-tools').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-tools').css('display', 'block');
-    });     
-    $('#buttonHome').on('click', function () {
+    });
+    $('#button-home').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
+    });
+
+
+
+    // $(function () {
+    //     $("#dismOutput").dialog({ 
+    //         autoOpen: false,
+    //         width: 700,
+    //         height: 500,
+    //         modal: true });
+    // });
+    $('#blInfo').on('click', function () {
+        // $("#dismOutput").dialog("option", "title", "Bitlocker Info");
+        // $("#dismOutput").dialog("open");
+        BitlockerInfo();
+    });
+    $('#blUnlock').on('click', function () {
+        // $("#dismOutput").dialog("option", "title", "Bitlocker Unlock Info");
+        // $("#dismOutput").dialog("open");
+        BitlockerUnlock();
+    });
+    $('#dismCap').on('click', function () {
+        // $("#dismOutput").dialog("option", "title", "DISM Capture Info");
+        // $("#dismOutput").dialog("open");
+        dismCapture();
     });
 
     // $('div').hover(
