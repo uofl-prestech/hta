@@ -23,7 +23,7 @@
             <h1>// PRESTECH HTA</h1>
         </div>
         <div id="content">
-            <div class="navigationbar">
+            <div class="navigation-bar">
                 <ul>
                     <li id="button-osd" class="first">
                         <img src="images/osd final.png" class="icon">
@@ -50,86 +50,88 @@
                         <span>Tools</span>
                     </li>
                 </ul>
+                <button class="button" id="button-home">Home</button>
+                <button class="button" id="button-exit" onclick="vbscript:ButtonExitClick()">Exit</button>
             </div>
 
             <!--Landing Page-->
             <div id="page-landing" class="pages">
-                <div class="categoryHeader">OOP Task Sequence Selections</div>
+                <div class="category-header">OOP Task Sequence Selections</div>
             </div>
 
             <!--OSD Page-->
             <div id="page-osd" class="pages">
-                <div class="categoryHeader">Operating System Deployment</div>
-                <div id="osdInput" class="inputDiv">
+                <div class="category-header">Operating System Deployment</div>
+                <div id="osd-input" class="input-div">
                     <ul>
-                        <li class="listOSD">
+                        <li class="list-osd">
                             <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div><br></li>
-                        <li class="listOSD">
+                        <li class="list-osd">
                             <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div><br></li>
-                        <li class="listOSD">
+                        <li class="list-osd">
                             <div id="stepOSDSoftware"> Select Software to Install: <br>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeReaderDC"> Adobe Reader DC
+                                <h4><input type="checkbox" class="software-osd" name="OSDAdobeReaderDC"> Adobe Reader DC
                                 </h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDChrome"> Chrome 58</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDFilemMaker"> FileMaker Pro 16</h4>
-                                <h4><input type="checkbox" class="softwareOSD" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDChrome"> Chrome 58</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDFilemMaker"> FileMaker Pro 16</h4>
+                                <h4><input type="checkbox" class="software-osd" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
                             </div>
                         </li>
-                    <button class="button" id="buttonFinish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
+                    <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                     </ul>
                 </div>
-                    <!-- <div id="osdOutput" class="outputDiv"></div> -->
+                    <!-- <div id="osdOutput" class="output-div"></div> -->
             </div>
 
             <!--Flush and Fill Page-->
             <div id="page-flushfill" class="pages">
-                <div class="categoryHeader">OS Upgrade with User Data Migration: "Flush and Fill"</div>
+                <div class="category-header">OS Upgrade with User Data Migration: "Flush and Fill"</div>
             </div>
 
             <!--DISM Page-->
             <div id="page-dism" class="pages">
-                <div class="categoryHeader">Deployment Image Servicing and Management</div>
-                <div id="dismInput" class="inputDiv">
+                <div class="category-header">Deployment Image Servicing and Management</div>
+                <div id="dism-input" class="input-div">
                     <ul>
-                        <li class="dismSteps">
-                            <div id="dismStep1">
+                        <li class="dism-steps">
+                            <div id="dism-step1">
                                 Run Bitlocker Info Tool <br><br>
-                                <button class="button" id="blInfo" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br><br>
+                                <button class="button" id="bl-info" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br><br>
                             </div>
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep2">
+                        <li class="dism-steps">
+                            <div id="dism-step2">
                                 Enter the drive letter of the Windows partition to be imaged: <br><br> Drive Letter:
                                 <input name="windowsDrive" type="Text" maxlength="1" size="15">
                             </div>
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep3">
+                        <li class="dism-steps">
+                            <div id="dism-step3">
                                 Enter the Recovery Key to unlock Bitlocker: <br><br> <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858"><br><br>
-                                <button class="button" id="blUnlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                                <button class="button" id="bl-unlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                             </div>
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep4">
-                                Enter username of the user we are copying data for: <br><br> <input name="dismUsername" type="Text" size="15">
+                        <li class="dism-steps">
+                            <div id="dism-step4">
+                                Enter the username of the user we are copying data for: <br><br> <input name="dismUsername" type="Text" size="15">
                             </div>
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep5">
+                        <li class="dism-steps">
+                            <div id="dism-step5">
                                  Enter the drive letter of the External USB drive where the image will be stored: <br><br>
                                  Drive Letter: <input name="dismDrive" type="Text" maxlength="1" size="15">
                             </div>
                         </li>
-                        <li class="dismSteps">
-                            <div id="dismStep6">
+                        <li class="dism-steps">
+                            <div id="dism-step6">
                                 Capture Image <br><br>
                                 <input type="button" id="dismCap" value="Capture Image" name="capture"><br><br>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <!-- <div id="dismOutput" class="outputdiv"></div> -->
+                <!-- <div id="dism-output" class="output-div"></div> -->
             </div>
 
             <!--USMT Page-->
@@ -148,8 +150,8 @@
 
             <!--Software Install Page-->
             <div id="page-software-install" class="pages">
-                <div class="categoryHeader">Software Installation</div>
-                <div id="softwareInput" class="inputDiv">
+                <div class="category-header">Software Installation</div>
+                <div id="software-input" class="input-div">
                     <input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC<br>
                     <input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI<br>
                     <input type="checkbox" name="Chrome"> Chrome 58<br>
@@ -161,8 +163,8 @@
 
             <!--Troubleshooting Tools Page-->
             <div id="page-tools" class="pages">
-                <div class="categoryHeader">Troubleshooting Tools</div>
-                <div class="inputDiv">
+                <div class="category-header">Troubleshooting Tools</div>
+                <div class="input-div">
                     <ul>
                         <li>
                         <button class="button" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
@@ -181,15 +183,16 @@
                         </li>                      
                     </ul>
                 </div>
-                <div id="toolsOutput" class="outputDiv"></div>
+                <div id="tools-output" class="output-div"></div>
             </div>
+            <div id="general-output" class="output-div">placeholder</div>
         <!--    End content    -->
         </div>
 
-        <div id="footer">
-            <button class="button" id="buttonHome">Home</button>
-            <button class="button" id="buttonExit" onclick="vbscript:ButtonExitClick()">Exit</button>
-        </div>
+        <!-- <div id="footer"> -->
+            <!-- <button class="button" id="button-home">Home</button> -->
+            <!-- <button class="button" id="button-exit" onclick="vbscript:ButtonExitClick()">Exit</button> -->
+        <!-- </div> -->
 
     <!--    End container    -->
     </div>
@@ -226,7 +229,7 @@
         $('.pages').css('display', 'none');
         $('#page-tools').css('display', 'block');
     });     
-    $('#buttonHome').on('click', function () {
+    $('#button-home').on('click', function () {
         $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'block');
     }); 
