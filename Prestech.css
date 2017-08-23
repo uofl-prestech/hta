@@ -18,13 +18,13 @@ html {
     width: 1024px;
     font-family: "Segoe UI";
 }
-.navigationbar ul {
+.navigation-bar ul {
     font-weight: 400;
     list-style: none;
     margin: 0 10px;
     padding: 0;
 }
-.navigationbar ul li {
+.navigation-bar ul li {
     display: block;
     font-weight: 400;
     padding: 5px 10px;
@@ -34,12 +34,12 @@ html {
     background-color: rgba(0,0,0,0.35);
     border-right: 4px solid rgba(120, 120, 120, 0.25)
 }
-.navigationbar ul li span {
+.navigation-bar ul li span {
     padding-left: 15px;
     width: 100%;
     font-size: 16px; 
 }
-.navigationbar li:hover {
+.navigation-bar li:hover {
     background-color: rgba(60, 60, 60, 0.35);
     color: #FFF;
     cursor: default;
@@ -69,11 +69,12 @@ html {
 p {
     text-align: center;
     padding: 10px;
-    /* position: absolute; */
+    font-size: 
+
 }
 
 /*ID STYLES*/
-#buttonDiv {
+#button-div {
     width: 100%;
     position: relative;
     text-align: center;
@@ -84,7 +85,7 @@ p {
     margin-top: 0;
     padding-top: 0;
 }
-#buttonExit, #buttonHome {
+#button-exit, #button-home {
     margin: 2px;
 }
 #container{
@@ -94,18 +95,18 @@ p {
     background: url(images/helmet-grey-blur.png);
 }
 #content{
-    height: 600px;
+    height: 645px;
     width: 1024px;
     margin-top: 25px;
     color: white;
 }
-#footer{
-    display: inline-block;
-    height: 45px;
-    width: 1024px;
-    padding-left: 30px;
-    background: rgba(37, 193, 105, 0.56);
-}
+/* #footer{ */
+    /* display: inline-block; */
+    /* height: 45px; */
+    /* width: 1024px; */
+    /* padding-left: 30px; */
+    /* background: rgba(37, 193, 105, 0.56); */
+/* } */
 #header{
     height: 50px;
     /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
@@ -134,6 +135,14 @@ p {
 /* #osdInput {}
 /* #softwareDiv {} */
 /* #softwareInput {} */
+
+#tools-output {
+    background: rgba(0, 0, 0, 0.75);
+    color: #CCC;
+    border: 3px double #CCC;
+    padding: 10px;
+    font-size: 14px;
+}
 
 /*CLASS STYLES*/
 .button {
@@ -166,7 +175,7 @@ p {
     display: inline-block;
     font-size: 16px;
 }
-.categoryDiv {
+.category-div {
     background: rgba(0,
     0,
     0,
@@ -174,7 +183,7 @@ p {
     padding: 15px;
     border-radius: 10px;
 }
-.categoryHeader {
+.category-header {
     width: 750px;
     height: 50px;
     font-size: 1.17em;
@@ -200,24 +209,24 @@ p {
     border-radius: 25px;
     vertical-align: middle;
 }
-.inputDiv {
+.input-div {
     border: none;
     float: left;
     width: 375px;
     height: 550px;
     margin-right: 5px;
 }
-.listOSD{
+.list-osd{
     display: list-item;
 }
-.navigationbar {
+.navigation-bar {
     position: relative;
     float: left;
-    height: 600px;
+    height: 640px;
     width: 264px;
     background: rgb(34, 45, 50, 0.1);
 }
-.outputDiv {
+.output-div {
     float: right;
     width: 365px;
     height: 550px;
@@ -230,15 +239,15 @@ p {
 .pages {
     position: relative;
     float: right;
-    height: 600px;
+    height: 645px;
     width: 760px;
 
 }
-.tpmError {
+.tpm-error {
     color: darkred;
     font-style: bold;
 }
-.tpmStatus {
+.tpm-status {
     color: darkred;
     font-style: bold;
     animation-name: tpmFrames;
@@ -248,13 +257,13 @@ p {
     animation-fill-mode: both;
     perspective: 1000px;
 }
-.tpmStatus span:nth-child(3n+1) {
+.tpm-status span:nth-child(3n+1) {
     animation: tpmEP0 10s infinite both
 }
-.tpmStatus span:nth-child(3n+2) {
+.tpm-status span:nth-child(3n+2) {
     animation: tpmEP1 10s infinite both
 }
-.tpmStatus span:nth-child(3n+3) {
+.tpm-status span:nth-child(3n+3) {
     animation: tpmEP2 10s infinite both
 }
 @keyframes tpmFrames {
