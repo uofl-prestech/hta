@@ -26,7 +26,7 @@ Dim iTimerID
 Dim pingShell, pingShellExec
 Sub pingTest
     Dim comspec, strObj
-    dim pingTestDiv: set pingTestDiv = document.getElementById("pingTestOutput")
+    dim pingTestDiv: set pingTestDiv = document.getElementById("general-output")
     pingTestDiv.innerHTML = "<p class='cmdHeading'>Network connectivity test: </p>"
     Set pingShell = CreateObject("WScript.Shell")
     comspec = pingShell.ExpandEnvironmentStrings("%comspec%")
@@ -35,7 +35,7 @@ Sub pingTest
 End Sub
 
 Sub writePing
-	dim pingTestDiv: set pingTestDiv = document.getElementById("pingTestOutput")
+	dim pingTestDiv: set pingTestDiv = document.getElementById("general-output")
 	pingTestDiv.innerHTML = pingTestDiv.innerHTML & pingShellExec.StdOut.ReadLine() & "<br>"
 	If pingShellExec.Status = 1 Then
 		window.clearInterval(iTimerID)

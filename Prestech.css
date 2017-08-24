@@ -95,8 +95,11 @@ p {
     margin-top: 25px;
     color: white;
 }
+.on-load{
+    opacity: 0;
+}
 #header{
-    height: 50px;
+    height: 60px;
     /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
     width: 1024px;
     border-bottom: 2px solid rgba(122, 122, 122, 0.35);
@@ -178,6 +181,7 @@ p {
 .tools-button-bar {
     background-color: none!important;
     text-align: center;
+    padding: 50px 0px;
 }
 .category-div {
     background: rgba(0,

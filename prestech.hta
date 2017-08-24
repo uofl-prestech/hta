@@ -19,10 +19,10 @@
 
 <body>
     <div id="container">
-        <div id="header">
+        <div id="header" class="on-load">
             <h1>// PRESTECH HTA</h1>
         </div>
-        <div id="main">
+        <div id="main" class="on-load">
             <div class="navigation-bar">
                 <ul>
                     <li id="button-osd" class="first">
@@ -215,8 +215,6 @@
         $('#page-landing').css('display', 'block');
     });
 
-
-
     // $(function () {
     //     $("#dismOutput").dialog({ 
     //         autoOpen: false,
@@ -247,6 +245,7 @@
     // 	$( this ).css('background', 'none');
     //   }
     // );
+    $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
 
 </script>
 
