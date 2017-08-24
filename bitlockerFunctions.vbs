@@ -5,7 +5,7 @@ Sub TPMCheck
 	bIsOwned = "False"
 	strStatusMessage = "<h2 class=""tpmStatus"">ERROR - TPM Not Found</h2>"
 	strTPMWarning = "<h2 class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>"
-	Dim outputDiv: set outputDiv = document.getElementById("osdOutput")
+	Dim outputDiv: set outputDiv = document.getElementById("general-output")
 	outputDiv.innerHTML = ""
 	On Error Resume Next
 
@@ -70,7 +70,7 @@ End Sub
 '************************************ Bitlocker Info subroutine ************************************
 Sub BitlockerInfo
 	Dim cmdShell, outData
-	Dim driveDiv:set driveDiv = document.getElementById("dismOutput")
+	Dim driveDiv:set driveDiv = document.getElementById("general-output")
 	
     Set cmdShell = CreateObject("WScript.Shell")
 	Set outData = cmdShell.Exec("powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file BitlockerInfo.ps1")
@@ -83,7 +83,7 @@ Sub BitlockerUnlock
 	Dim cmdShell, key, drive
 	key = blKey.Value
 	drive = windowsDrive.Value
-	Dim driveDiv:set driveDiv = document.getElementById("dismOutput")
+	Dim driveDiv:set driveDiv = document.getElementById("general-output")
 	
 	Set cmdShell = CreateObject("Wscript.Shell")
 	Set outData = cmdShell.Exec("Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34))

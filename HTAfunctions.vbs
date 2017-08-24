@@ -40,33 +40,7 @@ End Sub
 Sub logViewer
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
-	strCurDir = cmdShell.CurrentDirectory
-	cmdShell.Run strCurDir & "\cmtrace64.exe"
-End Sub
-
-'************************************ DISM Capture Image subroutine ************************************
-Sub dismCapture
-	Dim dismShell, strName, destPath, sourcePath, returnCode
-	dim dismDiv: set dismDiv = document.getElementById("general-output")
-    strSourcePath = windowsDrive.value
-    strDestPath = dismDrive.value
-    strName = dismUsername.value
-	Set dismShell = CreateObject("WScript.Shell")
-
-	dismDiv.innerHTML = "Running Command: X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"
-	returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
-	
-	Set fso = CreateObject("Scripting.FileSystemObject")
-	fileName = "X:\dism.log"
-	' Set myFile = fso.OpenTextFile(fileName, 1)
-	' Do While myFile.AtEndOfStream <> True
-	'    textLine = myFile.ReadLine
-	'    strRead = strRead & textLine & "<br>"
-	' Loop
-	' myFile.Close
-	
-     dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " & returnCode
-
+	cmdShell.Run ".\cmtrace64.exe"
 End Sub
 
 '************************************ Convert Bytes to KB, MB, GB, TB subroutine************************************

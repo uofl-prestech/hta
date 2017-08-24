@@ -10,7 +10,8 @@
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
-        window.resizeTo 1024,768 window.moveTo 400, 200
+        window.resizeTo 1024,768
+        window.moveTo 400, 200
     </script>
     <link rel="stylesheet" href="Prestech.css">
     <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
@@ -54,134 +55,132 @@
                 <button class="button" id="button-exit" onclick="vbscript:ButtonExitClick()">Exit</button>
             </div>
 
-            <!--Landing Page-->
-            <div id="page-landing" class="pages">
-                <div class="category-header">OOP Task Sequence Selections</div>
-            </div>
+            <div id="content">
 
-            <!--OSD Page-->
-            <div id="page-osd" class="pages">
-                <div class="category-header">Operating System Deployment</div>
-                <div id="osd-input" class="input-div">
-                    <ul>
-                        <li class="list-osd">
-                            <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div><br></li>
-                        <li class="list-osd">
-                            <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div><br></li>
-                        <li class="list-osd">
-                            <div id="stepOSDSoftware"> Select Software to Install: <br>
-                                <h4><input type="checkbox" class="software-osd" name="OSDAdobeReaderDC"> Adobe Reader DC
-                                </h4>
-                                <h4><input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI"> Adobe Acrobat Pro
-                                    XI
-                                </h4>
-                                <h4><input type="checkbox" class="software-osd" name="OSDChrome"> Chrome 58</h4>
-                                <h4><input type="checkbox" class="software-osd" name="OSDFilemMaker"> FileMaker Pro 16</h4>
-                                <h4><input type="checkbox" class="software-osd" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
-                            </div>
-                        </li>
-                        <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
-                    </ul>
+                <!--Landing Page-->
+                <div id="page-landing" class="pages">
+                    <div class="category-header">OOP Task Sequence Selections</div>
                 </div>
-                <!-- <div id="osdOutput" class="output-div"></div> -->
-            </div>
 
-            <!--Flush and Fill Page-->
-            <div id="page-flushfill" class="pages">
-                <div class="category-header">OS Upgrade with User Data Migration: "Flush and Fill"</div>
-            </div>
-
-            <!--DISM Page-->
-            <div id="page-dism" class="pages">
-                <div class="category-header">Deployment Image Servicing and Management</div>
-                <div id="dism-input" class="input-div">
-                    <ul>
-                        <li class="dism-steps">
-                            <button class="button" id="bl-info" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
-                        </li>
-                        <li class="dism-steps">
-                            <div id="dism-step2">
-                                <p>Enter the drive letter of the Windows partition to be imaged.</p>
-                                <p>Drive Letter:</p><input name="windowsDrive" type="Text" maxlength="1" size="15">
-                            </div>
-                        </li>
-                        <li class="dism-steps">
-                            <div id="dism-step3">
-                                <p>Enter the Recovery Key to unlock Bitlocker.</p>
-                                <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858">
-                                <button class="button" id="bl-unlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
-                            </div>
-                        </li>
-                        <li class="dism-steps">
-                            <div id="dism-step4">
-                                <p>Enter the username of the user we are copying data for.</p>
-                                <input name="dismUsername" type="Text" size="15">
-                            </div>
-                        </li>
-                        <li class="dism-steps">
-                            <div id="dism-step5">
-                                <p>Enter the drive letter of the External USB drive where the image will be stored.</p>
-                                <p>Drive Letter:</p><input name="dismDrive" type="Text" maxlength="1" size="15">
-                            </div>
-                        </li>
-                        <li class="dism-steps">
-                            <div id="dism-step6">
-                                <input class="button" type="button" id="dismCap" value="Capture Image" name="capture">
-                            </div>
-                        </li>
-                    </ul>
+                <!--OSD Page-->
+                <div id="page-osd" class="pages">
+                    <div class="category-header">Operating System Deployment</div>
+                    <div id="osd-input" class="input-div">
+                        <ul>
+                            <li class="list-osd">
+                                <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div><br></li>
+                            <li class="list-osd">
+                                <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div><br></li>
+                            <li class="list-osd">
+                                <div id="stepOSDSoftware"> Select Software to Install: <br>
+                                    <h4><input type="checkbox" class="software-osd" name="OSDAdobeReaderDC"> Adobe Reader DC
+                                    </h4>
+                                    <h4><input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI"> Adobe Acrobat
+                                        Pro XI
+                                    </h4>
+                                    <h4><input type="checkbox" class="software-osd" name="OSDChrome"> Chrome 58</h4>
+                                    <h4><input type="checkbox" class="software-osd" name="OSDFilemMaker"> FileMaker Pro 16</h4>
+                                    <h4><input type="checkbox" class="software-osd" name="OSDOffice2016"> Office 2016 (32 Bit)</h4>
+                                </div>
+                            </li>
+                            <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
+                        </ul>
+                    </div>
                 </div>
-                <!-- <div id="dism-output" class="output-div"></div> -->
-            </div>
 
-            <!--USMT Page-->
-            <div id="page-usmt" class="pages">
-                <div class="categoryHeader">User State Migration Tool</div>
-                    Enter username of the user we are copying data for<br><br>
-                    Username: <input name="usmtUsername" type="Text" size="15"><br><br>
-                    Enter the drive letter of the External USB drive where the USMT data will be stored: <br><br>
+                <!-- Flush and Fill Page -->
+                <div id="page-flushfill" class="pages">
+                    <div class="category-header">OS Upgrade with User Data Migration: "Flush and Fill"</div>
+                </div>
+
+                <!--DISM Page-->
+                <div id="page-dism" class="pages">
+                    <div class="category-header">Deployment Image Servicing and Management</div>
+                    <div id="dism-input" class="input-div">
+                        <ul>
+                            <li class="dism-steps">
+                                <button class="button" id="bl-info" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
+                            </li>
+                            <li class="dism-steps">
+                                <div id="dism-step2">
+                                    <p>Enter the drive letter of the Windows partition to be imaged.</p>
+                                    <p>Drive Letter:</p><input name="windowsDrive" type="Text" maxlength="1" size="15">
+                                </div>
+                            </li>
+                            <li class="dism-steps">
+                                <div id="dism-step3">
+                                    <p>Enter the Recovery Key to unlock Bitlocker.</p>
+                                    <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858">
+                                    <button class="button" id="bl-unlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                                </div>
+                            </li>
+                            <li class="dism-steps">
+                                <div id="dism-step4">
+                                    <p>Enter the username of the user we are copying data for.</p>
+                                    <input name="dismUsername" type="Text" size="15">
+                                </div>
+                            </li>
+                            <li class="dism-steps">
+                                <div id="dism-step5">
+                                    <p>Enter the drive letter of the External USB drive where the image will be stored.</p>
+                                    <p>Drive Letter:</p><input name="dismDrive" type="Text" maxlength="1" size="15">
+                                </div>
+                            </li>
+                            <li class="dism-steps">
+                                <div id="dism-step6">
+                                    <button class="button" id="dism-capture" name="capture"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--USMT Page-->
+                <div id="page-usmt" class="pages">
+                    <div class="categoryHeader">User State Migration Tool</div>
+                    Enter username of the user we are copying data for<br><br> Username: <input name="usmtUsername" type="Text"
+                        size="15"><br><br> Enter the drive letter of the External USB drive where the USMT data will be stored:
+                    <br><br>
                     <div id="driveLetter">Drive Letter:</div>
                     <input name="usmtDrive" type="Text" maxlength="1" size="15"><br><br>
                     <br><br>
-                    <button class="button" id="run-usmt-button" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>
-                    Command that will execute: <br>
-                    <!-- <div id="general-output"> </div> -->
-            </div>
-
-            <!--Software Install Page-->
-            <div id="page-software-install" class="pages">
-                <div class="category-header">Software Installation</div>
-                <div id="software-input" class="input-div">
-                    <ul>
-                        <li>
-                            <div>Select software to install:<br>
-                                <h4><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</h4>
-                                <h4><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
-                                <h4><input type="checkbox" name="Chrome"> Chrome 58</h4>
-                                <h4><input type="checkbox" name="FileMaker"> FileMaker Pro 16</h4>
-                                <h4><input type="checkbox" name="Office2016"> Office 2016 (32 Bit)</h4>
-                                <h4><input type="checkbox" name="MBAM"> Bitlocker Agent</h4>
-                            </div>
-                        </li>
-                    </ul>
+                    <button class="button" id="run-usmt-button" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>                    Command that will execute: <br>
                 </div>
-            </div>
 
-            <!--Troubleshooting Tools Page-->
-            <div id="page-tools" class="pages">
-                <div class="category-header">Troubleshooting Tools</div>
-                <div class="input-div">
-                    <div class="tools-button-bar">
-                        <button class="button, button-tools" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
-                        <button class="button, button-tools" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
-                        <button class="button, button-tools" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
-                        <button class="button, button-tools" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
-                        <button class="button, button-tools" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                <!--Software Install Page-->
+                <div id="page-software-install" class="pages">
+                    <div class="category-header">Software Installation</div>
+                    <div id="software-input" class="input-div">
+                        <ul>
+                            <li>
+                                <div>Select software to install:<br>
+                                    <h4><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</h4>
+                                    <h4><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
+                                    <h4><input type="checkbox" name="Chrome"> Chrome 58</h4>
+                                    <h4><input type="checkbox" name="FileMaker"> FileMaker Pro 16</h4>
+                                    <h4><input type="checkbox" name="Office2016"> Office 2016 (32 Bit)</h4>
+                                    <h4><input type="checkbox" name="MBAM"> Bitlocker Agent</h4>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Troubleshooting Tools Page-->
+                <div id="page-tools" class="pages">
+                    <div class="category-header">Troubleshooting Tools</div>
+                    <div class="input-div">
+                        <div class="tools-button-bar">
+                            <button class="button, button-tools" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                            <button class="button, button-tools" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
+                            <button class="button, button-tools" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
+                            <button class="button, button-tools" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
+                            <button class="button, button-tools" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                        </div>
                     </div>
                 </div>
                 <div id="general-output" class="output-div">.general-output</div>
             </div>
-
             <!--    End main    -->
         </div>
         <!--    End container    -->
@@ -191,38 +190,38 @@
 <script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
-        $('#page-landing').css('display', 'block');
+        $('#page-landing').css('display', 'inline-block');
     });
 
     $('#button-osd').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-osd').css('display', 'block');
+        $('#page-osd').css('display', 'inline-block');
         // TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-flushfill').css('display', 'block');
+        $('#page-flushfill').css('display', 'inline-block');
     });
     $('#button-dism').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-dism').css('display', 'block');
+        $('#page-dism').css('display', 'inline-block');
     });
     $('#button-usmt').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-usmt').css('display', 'block');
+        $('#page-usmt').css('display', 'inline-block');
     });
     $('#button-software').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-software-install').css('display', 'block');
+        $('#page-software-install').css('display', 'inline-block');
     });
     $('#button-tools').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-tools').css('display', 'block');
+        $('#page-tools').css('display', 'inline-block');
     });
     $('#button-home').on('click', function () {
         $('.pages').css('display', 'none');
-        $('#page-landing').css('display', 'block');
-    }); 
+        $('#page-landing').css('display', 'inline-block');
+    });
 
     // $(function () {
     //     $("#dismOutput").dialog({ 
@@ -231,17 +230,20 @@
     //         height: 500,
     //         modal: true });
     // });
-    $('#blInfo').on('click', function () {
+    $('#button-bitlocker').on('click', function () {
+        BitlockerInfo();
+    });
+    $('#bl-info').on('click', function () {
         // $("#dismOutput").dialog("option", "title", "Bitlocker Info");
         // $("#dismOutput").dialog("open");
         BitlockerInfo();
     });
-    $('#blUnlock').on('click', function () {
+    $('#bl-unlock').on('click', function () {
         // $("#dismOutput").dialog("option", "title", "Bitlocker Unlock Info");
         // $("#dismOutput").dialog("open");
         BitlockerUnlock();
     });
-    $('#dismCap').on('click', function () {
+    $('#dism-capture').on('click', function () {
         // $("#dismOutput").dialog("option", "title", "DISM Capture Info");
         // $("#dismOutput").dialog("open");
         dismCapture();

@@ -89,6 +89,10 @@ p {
     width: 1024px;
     background: url(images/helmet-grey-blur.png);
 }
+#content{
+    display: inline-block;
+    vertical-align: top;
+}
 #main{
     height: 645px;
     width: 1024px;
@@ -133,6 +137,8 @@ p {
     border: 3px double #CCC;
     padding: 10px;
     font-size: 14px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 /*CLASS STYLES*/
@@ -192,7 +198,7 @@ p {
     border-radius: 10px;
 }
 .category-header {
-    width: 750px;
+    width: 360px;
     height: 50px;
     font-size: 1.17em;
     font-weight: bold;
@@ -220,7 +226,6 @@ p {
 .input-div {
     border: none;
     display: block;
-    float: left;
     width: 375px;
     height: 550px;
     margin-right: 5px;
@@ -230,13 +235,12 @@ p {
 }
 .navigation-bar {
     position: relative;
-    float: left;
     height: 640px;
     width: 264px;
+    display: inline-block;
     background: rgb(34, 45, 50, 0.1);
 }
 .output-div {
-    float: right;
     width: 365px;
     height: 550px;
     margin-left: 5px;
@@ -247,9 +251,10 @@ p {
 }
 .pages {
     position: relative;
-    float: right;
+    display:inline-block;
+    vertical-align: top;
     height: 645px;
-    width: 760px;
+    width: 360px;
 
 }
 .tpm-error {
