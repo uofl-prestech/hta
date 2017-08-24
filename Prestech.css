@@ -135,6 +135,9 @@ p {
     background: rgba(0, 0, 0, 0.75);
     color: #CCC;
     border: 3px double #CCC;
+    width: 355px;
+    height: 540px;
+    margin: 5px;
     padding: 10px;
     font-size: 14px;
     display: inline-block;
@@ -151,9 +154,10 @@ p {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin: 20px;
 }
 
-.button-tools {
+/* .button-tools {
     background-color: darkred;
     border: none;
     padding: 12px 28px;
@@ -163,7 +167,7 @@ p {
     display: inline-block;
     font-size: 16px;
     margin: 20px;
-}
+} */
 .button:hover {
     background-color: rgb(149,23,23);
     border: none;
@@ -246,7 +250,6 @@ p {
     margin-left: 5px;
     margin-right: 10px;
     padding: 0px;
-    text-align: center;
     background: rgba(104, 110, 175, 0.65);
 }
 .pages {

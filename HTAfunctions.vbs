@@ -43,6 +43,13 @@ Sub logViewer
 	cmdShell.Run ".\cmtrace64.exe"
 End Sub
 
+'************************************ Open Explorer++ file manager ************************************
+Sub explorer
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+	cmdShell.Run ".\explorerpp.exe"
+End Sub
+
 '************************************ Convert Bytes to KB, MB, GB, TB subroutine************************************
 Function ConvertSize(Size)
 	suffix = " Bytes" 
@@ -118,7 +125,7 @@ End Sub
 '************************************ DISM Capture Image subroutine ************************************
 Sub dismCapture
 	Dim dismShell, strName, destPath, sourcePath, returnCode
-	Dim dismDiv: Set dismDiv = document.getElementById("generalOutput")
+	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
     strSourcePath = windowsDrive.value
     strDestPath = dismDrive.value
     strName = dismUsername.value
