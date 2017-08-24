@@ -44,7 +44,6 @@ Sub logViewer
 	cmdShell.Run strCurDir & "\cmtrace64.exe"
 End Sub
 
-<<<<<<< HEAD
 '************************************ DISM Capture Image subroutine ************************************
 Sub dismCapture
 	Dim dismShell, strName, destPath, sourcePath, returnCode
@@ -70,8 +69,6 @@ Sub dismCapture
 
 End Sub
 
-=======
->>>>>>> 9c1cbfe0c42092be66362ca94567ab3e0eca0f48
 '************************************ Convert Bytes to KB, MB, GB, TB subroutine************************************
 Function ConvertSize(Size)
 	suffix = " Bytes" 
