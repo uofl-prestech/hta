@@ -10,7 +10,7 @@
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
-        <!-- window.resizeTo 1024,768 window.moveTo 400, 200 -->
+        window.resizeTo 1024,768 window.moveTo 400, 200
     </script>
     <link rel="stylesheet" href="Prestech.css">
     <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
@@ -136,7 +136,14 @@
 
             <!--USMT Page-->
             <div id="page-usmt" class="pages">
-                <div class="category-header">User State Migration Tool</div>
+                <div class="categoryHeader">User State Migration Tool</div>
+                Enter username of the user we are copying data for<br><br> Username: <input name="usmtUsername" type="Text"
+                    size="15"><br><br> Enter the drive letter of the External USB drive where the USMT data will be stored: <br><br>
+                <div id="driveLetter">Drive Letter:</div>
+                <input name="usmtDrive" type="Text" maxlength="1" size="15"><br><br>
+                <br><br>
+                <button class="button" id="run-usmt-button" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>                Command that will execute: <br>
+                <!-- <div id="general-output"> </div> -->
             </div>
 
             <!--Software Install Page-->
@@ -163,14 +170,16 @@
                 <div class="category-header">Troubleshooting Tools</div>
                 <div class="input-div">
                     <div class="tools-button-bar">
-                        <button class="button, button-tools" id="button-bitlocker" onclick="vbscript:ButtonFinishClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
-                        <button class="button, button-tools" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
-                        <button class="button, button-tools" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
-                        <button class="button, button-tools" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
-                        <button class="button, button-tools" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                        <button class="button" id="button-bitlocker" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
+                        <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
+                        <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
+                        <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                     </div>
                 </div>
-                <div id="general-output" class="output-div">.general-output</div>
+                <div class="output-div">
+                    <div id="general-output">.general-output</div>
+                </div>
             </div>
 
             <!--    End main    -->

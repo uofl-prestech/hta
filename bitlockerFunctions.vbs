@@ -70,7 +70,7 @@ End Sub
 '************************************ Bitlocker Info subroutine ************************************
 Sub BitlockerInfo
 	Dim cmdShell, outData
-	Dim driveDiv:set driveDiv = document.getElementById("dismOutput")
+	Dim driveDiv:set driveDiv = document.getElementById("general-output")
 	
     Set cmdShell = CreateObject("WScript.Shell")
 	Set outData = cmdShell.Exec("powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file BitlockerInfo.ps1")
