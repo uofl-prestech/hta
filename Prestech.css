@@ -203,7 +203,7 @@ p {
 }
 .category-header {
     width: 360px;
-    height: 50px;
+    min-height: 50px;
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
