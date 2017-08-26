@@ -142,6 +142,8 @@ p {
     font-size: 14px;
     display: inline-block;
     vertical-align: top;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 /*CLASS STYLES*/
@@ -203,13 +205,16 @@ p {
 }
 .category-header {
     width: 360px;
-    height: 50px;
+    min-height: 50px;
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
     padding: 10px 15px;
     color: rgba(204, 204, 204, 1);
     background-color: rgba(139,0,0,0.6);
+}
+.drive-input{
+    text-align: center;
 }
 .icon {
     display: inline-block;
@@ -233,6 +238,7 @@ p {
     width: 375px;
     height: 550px;
     margin-right: 5px;
+    overflow: auto;
 }
 .list-osd{
     display: list-item;
@@ -251,6 +257,7 @@ p {
     margin-right: 10px;
     padding: 0px;
     background: rgba(104, 110, 175, 0.65);
+    overflow: auto;
 }
 .pages {
     position: relative;

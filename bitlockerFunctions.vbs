@@ -81,8 +81,23 @@ End Sub
 '************************************ Unlock Bitlocker Drive subroutine ************************************
 Sub BitlockerUnlock
 	Dim cmdShell, key, drive
-	key = blKey.Value
-	drive = windowsDrive.Value
+
+	If blKey.Value <> "" Then
+		key = blKey.Value
+	ElseIf usmtBlKey.Value <> "" Then
+		key = usmtBlKey.Value
+	Else
+		Exit Sub
+	End If
+
+	If windowsDrive.Value <> "" Then
+		drive = windowsDrive.Value
+	ElseIf usmtWindowsDrive.Value <> "" Then
+		drive = usmtWindowsDrive.Value
+	Else
+		Exit Sub
+	End If
+
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
 	
 	Set cmdShell = CreateObject("Wscript.Shell")
