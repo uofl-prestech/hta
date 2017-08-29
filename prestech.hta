@@ -56,15 +56,21 @@
             </div>
 
             <div id="content">
-            <div class="category-header">OOP Task Sequence Selections</div>
+                <div class="category-header">
+                    <h4 id="header-landing" class="header-text">OOP Task Sequence Selections</h4>
+                    <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
+                    <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
+                    <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
+                    <h4 id="header-usmt" class="header-text">User State Migration Tool</h4>
+                    <h4 id="header-software" class="header-text">Software Installation</h4>
+                    <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
+                </div>
                 <!--Landing Page-->
                 <div id="page-landing" class="pages">
-                    <div class="category-header">OOP Task Sequence Selections</div>
                 </div>
 
                 <!--OSD Page-->
                 <div id="page-osd" class="pages">
-                    <div class="category-header">Operating System Deployment</div>
                     <div id="osd-input" class="input-div">
                         <ul>
                             <li class="list-osd">
@@ -90,12 +96,10 @@
 
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
-                    <div class="category-header">OS Upgrade with User Data Migration: "Flush and Fill"</div>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
-                    <div class="category-header">Deployment Image Servicing and Management</div>
                     <div id="dism-input" class="input-div">
                         <ul>
                             <li class="dism-steps">
@@ -139,16 +143,6 @@
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
-                    <div class="category-header">User State Migration Tool</div>
-<<<<<<< HEAD
-                    Enter username of the user we are copying data for<br><br> Username: <input name="usmtUsername" type="Text"
-                        size="15"><br><br> Enter the drive letter of the External USB drive where the USMT data will be stored:
-                    <br><br>
-                    <div id="driveLetter">Drive Letter:</div>
-                    <input name="usmtDrive" type="Text" maxlength="1" size="15"><br><br>
-                    <br><br>
-                    <button class="button" id="run-usmt-button" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>                    Command that will execute: <br>
-=======
                     <div id="usmt-input" class="input-div">
                         <ul>
                             <li class="usmt-steps">
@@ -191,12 +185,10 @@
                             </li>
                         </ul>
                     </div>
->>>>>>> 00c43bc0a1fe731b5eb797505fd71419e5651661
                 </div>
 
                 <!--Software Install Page-->
                 <div id="page-software-install" class="pages">
-                    <div class="category-header">Software Installation</div>
                     <div id="software-input" class="input-div">
                         <ul>
                             <li>
@@ -215,7 +207,6 @@
 
             <!--Troubleshooting Tools Page-->
             <div id="page-tools" class="pages">
-                <div class="category-header">Troubleshooting Tools</div>
                 <div class="input-div">
                     <div class="tools-button-bar">
                         <button class="button" id="button-bitlocker" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
@@ -236,37 +227,53 @@
 <script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
+        $('#header-landing').css('display', 'inline');
     });
 
     $('#button-osd').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display','none');
         $('#page-osd').css('display', 'inline-block');
+        $('#header-osd').css('display', 'inline');
         // TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
         $('#page-flushfill').css('display', 'inline-block');
+        $('#header-flushfill').css('display', 'inline');
     });
     $('#button-dism').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
         $('#page-dism').css('display', 'inline-block');
+        $('#header-dism').css('display', 'inline');
     });
     $('#button-usmt').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display','none');
         $('#page-usmt').css('display', 'inline-block');
+        $('#header-usmt').css('display', 'inline');
     });
     $('#button-software').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display','none');
         $('#page-software-install').css('display', 'inline-block');
+        $('#header-software').css('display', 'inline');
     });
     $('#button-tools').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display','none');
         $('#page-tools').css('display', 'inline-block');
+        $('#header-tools').css('display', 'inline');
     });
     $('#button-home').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
+        $('#header-landing').css('display', 'inline');
     });
 
     // $(function () {

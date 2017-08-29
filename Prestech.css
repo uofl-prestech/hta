@@ -22,6 +22,12 @@ html {
     width: 1024px;
     font-family: "Segoe UI";
 }
+h1, h2, h3, h4 {
+    font-weight: 400;
+}
+h4 {
+    font-size: 14px;
+}
 .navigation-bar ul {
     font-weight: 400;
     list-style: none;
@@ -204,7 +210,7 @@ p {
     border-radius: 10px;
 }
 .category-header {
-    width: 360px;
+    width: 100%;
     min-height: 50px;
     font-size: 1.17em;
     font-weight: bold;
