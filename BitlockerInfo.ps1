@@ -3,10 +3,52 @@
 #Decription:
 #Collect encryption information and volume information for each volume on the computer
 #and combine all of the information into on ArrayList of objects for output as HTML
+#Get the ID and security principal of the current user account
+$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
+ 
+# Get the security principal for the Administrator role
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+ 
+# Check to see if we are currently running "as Administrator"
+if ($myWindowsPrincipal.IsInRole($adminRole))
+   {
+		# We are running "as Administrator" - so change the title and background color to indicate this
+		$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
+		$Host.UI.RawUI.BackgroundColor = "Red"
+		#clear-host
+   }
+else
+   {
+	
+		# Start the new process
+		#Start-Process powershell.exe -PassThru -Wait -file $myInvocation.MyCommand.Definition;
+
+		$startInfo = New-Object System.Diagnostics.ProcessStartInfo
+		$startInfo.FileName = "powershell.exe"
+		$startInfo.Arguments = "$($myInvocation.MyCommand.Definition) -Verb RunAs"
+		$startInfo.RedirectStandardOutput = $true
+		$startInfo.UseShellExecute = $false
+		$startInfo.CreateNoWindow = $false
+		
+		$process = New-Object System.Diagnostics.Process
+		$process.StartInfo = $startInfo
+		$process.Start() | Out-Null
+		$standardOut = $process.StandardOutput.ReadToEnd()
+		$process.WaitForExit()
+		$standardOut
+		# Exit from the current, unelevated, process
+
+		Write-Host "Script 2 return"
+		return
+   }
+# Run your code that needs to be elevated here
+Write-Host -NoNewLine "Running as Admin"
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 #*****************Bitlocker Info*****************
 #Bitlocker Information
-	$WMIVolumes = Get-WMIobject -namespace "Root\cimv2\security\MicrosoftVolumeEncryption" -ClassName "Win32_EncryptableVolume"
+	$WMIVolumes = Get-WMIobject -namespace "Root\cimv2\security\MicrosoftVolumeEncryption" -ClassName "Win32_EncryptableVolume" -Credential $Credential
 
 #Create an ArrayList variable named $encryptedVolumes to hold encryption information for each drive
 	[System.Collections.ArrayList]$encryptedVolumes = @()
@@ -112,3 +154,4 @@
 	#Write-Output $driveList | Format-List
 
 	$driveList | ForEach-Object{$_ | convertTo-HTML -Fragment -As "List" -PostContent "<br>"}
+	return $driveList

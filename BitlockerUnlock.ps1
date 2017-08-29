@@ -4,8 +4,7 @@
 #Unlock a Bitlocker encrypted drive
 param([string]$blKey, [string]$drive)
 
-Import-Module bitlocker
-
+Import-Module -Name "$($pwd)\Bitlocker"
 
 #$SecureString = ConvertTo-SecureString $blKey -AsPlainText -Force
 

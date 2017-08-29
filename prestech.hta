@@ -99,31 +99,33 @@
                     <div id="dism-input" class="input-div">
                         <ul>
                             <li class="dism-steps">
-                                <button class="button" id="bl-info" name="Bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
+                                <div id="dism-step1">
+                                    <button class="button button-bl-info" id="bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
+                                </div>
                             </li>
                             <li class="dism-steps">
                                 <div id="dism-step2">
-                                    <p>Enter the drive letter of the Windows partition to be imaged.</p>
-                                    <p>Drive Letter:</p><input name="windowsDrive" type="Text" maxlength="1" size="15">
+                                    <p>Enter the drive letter of the Windows partition to be imaged</p>
+                                    <span>Drive Letter:    </span><input class="drive-input" name="windowsDrive" type="Text" maxlength="1" size="1">
                                 </div>
                             </li>
                             <li class="dism-steps">
                                 <div id="dism-step3">
-                                    <p>Enter the Recovery Key to unlock Bitlocker.</p>
+                                    <p>Enter the Recovery Key to unlock Bitlocker</p>
                                     <input name="blKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858">
-                                    <button class="button" id="bl-unlock" name="blUnlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                                    <button class="button button-bl-unlock" id="bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                                 </div>
                             </li>
                             <li class="dism-steps">
                                 <div id="dism-step4">
-                                    <p>Enter the username of the user we are copying data for.</p>
+                                    <p>Enter the username of the user we are copying data for</p>
                                     <input name="dismUsername" type="Text" size="15">
                                 </div>
                             </li>
                             <li class="dism-steps">
                                 <div id="dism-step5">
-                                    <p>Enter the drive letter of the External USB drive where the image will be stored.</p>
-                                    <p>Drive Letter:</p><input name="dismDrive" type="Text" maxlength="1" size="15">
+                                    <p>Enter the drive letter of the External USB drive where the image will be stored</p>
+                                    <span>Drive Letter:    </span><input class="drive-input" name="dismDrive" type="Text" maxlength="1" size="1">
                                 </div>
                             </li>
                             <li class="dism-steps">
@@ -138,6 +140,7 @@
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <div class="category-header">User State Migration Tool</div>
+<<<<<<< HEAD
                     Enter username of the user we are copying data for<br><br> Username: <input name="usmtUsername" type="Text"
                         size="15"><br><br> Enter the drive letter of the External USB drive where the USMT data will be stored:
                     <br><br>
@@ -145,6 +148,50 @@
                     <input name="usmtDrive" type="Text" maxlength="1" size="15"><br><br>
                     <br><br>
                     <button class="button" id="run-usmt-button" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>                    Command that will execute: <br>
+=======
+                    <div id="usmt-input" class="input-div">
+                        <ul>
+                            <li class="usmt-steps">
+                                <div id="usmt-step1">
+                                    <button class="button button-bl-info" id="usmt-bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
+                                </div>
+                            </li>
+                            <li class="usmt-steps">
+                                <div id="usmt-step2">
+                                    <p>Enter the drive letter of the Windows partition</p>
+                                    <span>Drive Letter:    </span><input class="drive-input" name="usmtWindowsDrive" type="Text"
+                                        maxlength="1" size="1">
+                                </div>
+                            </li>
+                            <li class="usmt-steps">
+                                <div id="usmt-step3">
+                                    <p>Enter the Recovery Key to unlock Bitlocker</p>
+                                    <input name="usmtBlKey" type="Text" maxlength="100" size="35" value="083028-485397-003157-146949-446820-226391-406692-473858">
+                                    <button class="button button-bl-unlock" id="usmt-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                                </div>
+                            </li>
+                            <li class="usmt-steps">
+                                <div id="usmt-step4">
+                                    <p>Enter username of the user we are copying data for</p>
+                                    <span>Username:    </span>
+                                    <input id="usmt-username-input" name="usmtUsername" type="Text" size="15">
+                                </div>
+                            </li>
+                            <li class="usmt-steps">
+                                <div id="usmt-step5">
+                                    <p>Enter the drive letter of the External USB drive where the USMT data will be stored</p>
+                                    <span id="driveLetter">Drive Letter:</span>
+                                    <input id="usmt-drive-input" class="drive-input" name="usmtDrive" type="Text" maxlength="1" size="1"><br><br>
+                                </div>
+                            </li>
+                            <li class="usmt-steps">
+                                <div id="usmt-step6">
+                                    <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+>>>>>>> 00c43bc0a1fe731b5eb797505fd71419e5651661
                 </div>
 
                 <!--Software Install Page-->
@@ -232,30 +279,25 @@
     $('#button-bitlocker').on('click', function () {
         BitlockerInfo();
     });
-    $('#bl-info').on('click', function () {
-        // $("#dismOutput").dialog("option", "title", "Bitlocker Info");
-        // $("#dismOutput").dialog("open");
+    $('.button-bl-info').on('click', function () {
         BitlockerInfo();
     });
-    $('#bl-unlock').on('click', function () {
-        // $("#dismOutput").dialog("option", "title", "Bitlocker Unlock Info");
-        // $("#dismOutput").dialog("open");
+    $('.button-bl-unlock').on('click', function () {
         BitlockerUnlock();
     });
     $('#dism-capture').on('click', function () {
-        // $("#dismOutput").dialog("option", "title", "DISM Capture Info");
-        // $("#dismOutput").dialog("open");
         dismCapture();
     });
+    $('#run-usmt').on('click', function () {
+        runUSMT("true");
+    });
 
-    // $('div').hover(
-    //   function() {
-    // 	$( this ).css('background', 'rgba(255,64,64,0.4)');
-    //   }, function() {
-    // 	$( this ).css('background', 'none');
-    //   }
-    // );
+    $("#usmt-drive-input, #usmt-username-input").keyup(function () {
+        runUSMT("false");
+    });
+
     $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
+
 
 </script>
 

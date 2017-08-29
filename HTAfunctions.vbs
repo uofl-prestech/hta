@@ -151,20 +151,38 @@ Sub runDISM_TS
 End Sub
 
 '************************************ USMT Scanstate subroutine ************************************
-Sub runUSMT
-	Dim getUser, WshShell, destDrive, scanStateDiv
+Sub runUSMT(buttonClicked)
+	Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode
     Set scanStateDiv = document.getElementById("general-output")
-	Set WshShell = CreateObject("WScript.Shell")
+    Set WshShell = CreateObject("WScript.Shell")
+    strCurrentDir = WshShell.currentDirectory
 	getUser = usmtUsername.Value
 	destDrive = usmtDrive.Value
 
-    scanStateDiv.innerHTML = "X:\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:X:\USMT\offline.xml /i:X:\USMT\migdocs.xml /i:X:\USMT\migapp.xml /i:X:\USMT\oop.xml /progress:X:\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5, 1, True"
+    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5, 1, True"
 
-    WshShell.run "X:\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:X:\USMT\offline.xml /i:X:\USMT\migdocs.xml /i:X:\USMT\migapp.xml /i:X:\USMT\oop.xml /progress:X:\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5", 1, True
+    If buttonClicked = "true" AND getUser <> "" AND destDrive <> "" Then
+        returnCode = WshShell.run(strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:" & strCurrentDir & "\USMT\offline.xml /i:" & strCurrentDir & "\USMT\migdocs.xml /i:" & strCurrentDir & "\USMT\migapp.xml /i:" & strCurrentDir & "\USMT\oopexcludes.xml /progress:" & strCurrentDir & "\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5", 1, True)
 
-	WshShell.run "%comspec% /c cmtrace.exe X:\prog.log"
-	
-    scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
+        If returnCode = 0 Then
+            WshShell.run "%comspec% /c cmtrace.exe " & strCurrentDir & "\prog.log"
+            scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
+        Else
+            scanStateDiv.innerHTML = "Error Code: " & returnCode
+            
+            Set fso = CreateObject("Scripting.FileSystemObject")
+            'fileName = destDrive & ":\USMT\" & getUser & "\scanstate.log"
+            fileName = "A:\prestechHTA\prestech\USMT\scanstate.log"
+            Set myFile = fso.OpenTextFile(fileName, 1)
+            Do While myFile.AtEndOfStream <> True
+                textLine = myFile.ReadLine
+                strRead = strRead & textLine & "<br>"
+            Loop
+            myFile.Close
+
+            scanStateDiv.innerHTML = scanStateDiv.innerHTML & "<br><br> Scanstate Failed! <br><br>" & strRead
+        End If
+    End If
 
 End Sub
 
