@@ -26,7 +26,7 @@ h1, h2, h3, h4 {
     font-weight: 400;
 }
 h4 {
-    font-size: 14px;
+    font-size: 15px;
 }
 .navigation-bar ul {
     font-weight: 400;
@@ -40,17 +40,15 @@ h4 {
     padding: 5px 10px;
     margin-top: 13px;
     margin-bottom: 13px;
-    color: #CCCCCC;
-    background-color: rgba(0,0,0,0.35);
-    border-right: 4px solid rgba(120, 120, 120, 0.25)
+
 }
 .navigation-bar ul li span {
     padding-left: 15px;
     width: 100%;
     font-size: 16px; 
 }
-.navigation-bar li:hover {
-    background-color: rgba(60, 60, 60, 0.35);
+.button-nav:hover {
+    background-color: rgba(85, 85, 85, 0.10);
     color: #FFF;
     cursor: default;
 }
@@ -62,13 +60,13 @@ h4 {
     margin-bottom: 5px;
     /* vertical-align: middle; */
     color: #CCCCCC;
-    background-color: rgba(0, 0, 0, 0.35);
+    /* background-color: rgba(0, 0, 0, 0.35); */
 }
-.pages li:hover{
-    background-color: rgba(60, 60, 60, 0.35);
+/* .pages li:hover{
+    background-color: rgba(85, 85, 85, 0.10);
     color: #FFF;
     cursor: default;
-}
+} */
 .pages ul{
     font-weight: 400;
     list-style: none;
@@ -77,7 +75,7 @@ h4 {
 }
 
 p {
-    text-align: center;
+    /* text-align: center; */
     font-size: 12px;
 }
 
@@ -93,11 +91,12 @@ p {
     display: inline-block;
     height: 768px;
     width: 1024px;
-    background: url(images/helmet-grey-blur.png);
+    background: url(images/helmet-grey-blur1.png);
 }
 #content{
     display: inline-block;
     vertical-align: top;
+    height: 650px;
 }
 #main{
     height: 645px;
@@ -117,7 +116,7 @@ p {
     vertical-align: middle;
     text-align: center;
     padding-right: 20px;
-    color: rgba(204, 204, 204, 0.75);
+    color: rgba(225, 225, 225, 1);
     letter-spacing: 3px;
     font-weight: 200;
 }
@@ -143,7 +142,7 @@ p {
     border: 3px double #CCC;
     width: 355px;
     height: 540px;
-    margin: 5px;
+    margin: 5px 0px 0px 5px;
     padding: 10px;
     font-size: 14px;
     display: inline-block;
@@ -163,6 +162,13 @@ p {
     display: inline-block;
     font-size: 16px;
     margin: 20px;
+}
+.button-nav {
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    color: #CCCCCC;
+    /* background-color: rgba(0, 0, 0, 0.35); */
+    /* border-right: 4px solid rgba(120, 120, 120, 0.25) */
+    
 }
 
 /* .button-tools {
@@ -241,7 +247,7 @@ p {
 .input-div {
     border: none;
     display: block;
-    width: 375px;
+    width: 365px;
     height: 550px;
     margin-right: 5px;
     overflow: auto;
@@ -254,7 +260,7 @@ p {
     height: 640px;
     width: 264px;
     display: inline-block;
-    background: rgb(34, 45, 50, 0.1);
+    background: rgb(34, 45, 50, 1);
 }
 .output-div {
     width: 365px;
@@ -269,7 +275,7 @@ p {
     position: relative;
     display:inline-block;
     vertical-align: top;
-    height: 645px;
+    height: 600px;
     width: 360px;
 
 }
