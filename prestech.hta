@@ -50,8 +50,10 @@
                         <span>Tools</span>
                     </li>
                 </ul>
-                <button class="button button-nav" id="button-home">Home</button>
-                <button class="button button-nav" id="button-exit" onclick="vbscript:ButtonExitClick()">Exit</button>
+                <div class="">
+                    <button class="button-exithome">Home</button>
+                    <button class="button-exithome" onclick="vbscript:ButtonExitClick()">Exit</button>
+                </div>
             </div>
 
             <div id="content">
@@ -73,11 +75,14 @@
                     <div id="osd-input" class="input-div">
                         <ul>
                             <li class="list-osd">
-                                <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div></li>
+                                <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div>
+                            </li>
                             <li class="list-osd">
-                                <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div></li>
+                                <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" name="compName"> </div>
+                            </li>
                             <li class="list-osd">
-                                <div id="stepOSDSoftware"><h4>Select Software to Install:</h4>
+                                <div id="stepOSDSoftware">
+                                    <h4>Select Software to Install:</h4>
                                     <p><input type="checkbox" class="software-osd" name="OSDAdobeReaderDC"> Adobe Reader DC
                                     </p>
                                     <p><input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI"> Adobe Acrobat
@@ -193,7 +198,8 @@
                     <div id="software-input" class="input-div">
                         <ul>
                             <li>
-                                <div><h4>Select software to install:</h4>
+                                <div>
+                                    <h4>Select software to install:</h4>
                                     <p><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</p>
                                     <p><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</p>
                                     <p><input type="checkbox" name="Chrome"> Chrome 58</p>
@@ -220,10 +226,10 @@
                 </div>
                 <div id="general-output"></div>
             </div>
-                <!--    End main    -->
-            </div>
-            <!--    End container    -->
+            <!--    End main    -->
         </div>
+        <!--    End container    -->
+    </div>
 </body>
 
 <script language="JavaScript">
@@ -238,7 +244,7 @@
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
     });
-    $('.button-output').on('click', function() {
+    $('.button-output').on('click', function () {
         $("#general-output").css('visibility', 'visible');
     });
     $('#button-osd').on('click', function () {
@@ -270,9 +276,6 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
-    $("#osd-input").accordion{
-            header: ".list-osd"
-        });
 
     // $(function () {
     //     $("#dismOutput").dialog({ 

@@ -47,11 +47,6 @@ h4 {
     width: 100%;
     font-size: 16px; 
 }
-.button-nav:hover {
-    background-color: rgba(85, 85, 85, 0.10);
-    color: #FFF;
-    cursor: default;
-}
 .pages li {
     display: block;
     font-size: 12px;
@@ -84,9 +79,6 @@ p {
     margin-top: 0;
     padding-top: 0;
 }
-#button-exit, #button-home {
-    margin: 2px;
-}
 #container{
     display: inline-block;
     height: 768px;
@@ -96,10 +88,10 @@ p {
 #content{
     display: inline-block;
     vertical-align: top;
-    height: 650px;
+    height: 680px;
 }
 #main{
-    height: 645px;
+    height: 680px;
     width: 1024px;
     margin-top: 25px;
     color: white;
@@ -137,7 +129,7 @@ p {
 /* #softwareInput {} */
 
 #general-output {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.80);
     color: #CCC;
     border: 3px double #CCC;
     width: 355px;
@@ -163,27 +155,8 @@ p {
     font-size: 16px;
     margin: 20px;
 }
-.button-nav {
-    border: 1px solid rgba(80, 80, 80, 0.5);
-    color: #CCCCCC;
-    /* background-color: rgba(0, 0, 0, 0.35); */
-    /* border-right: 4px solid rgba(120, 120, 120, 0.25) */
-    
-}
-
-/* .button-tools {
-    background-color: darkred;
-    border: none;
-    padding: 12px 28px;
-    cursor: default;
-    color: #CCC;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 20px;
-} */
 .button:hover {
-    background-color: rgb(149,23,23);
+    background-color: rgb(149, 23, 23);
     border: none;
     padding: 12px 28px;
     cursor: default;
@@ -192,7 +165,7 @@ p {
     display: inline-block;
     font-size: 16px;
 }
-.button:active{
+.button:active {
     background-color: black;
     border: none;
     padding: 12px 28px;
@@ -201,6 +174,37 @@ p {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+.button-nav {
+    background-color: rgba(85, 85, 85, 0.10);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    color: #CCCCCC;
+    /* background-color: rgba(0, 0, 0, 0.35); */
+    /* border-right: 4px solid rgba(120, 120, 120, 0.25) */
+}
+.button-nav:hover {
+    background-color: rgba(85, 85, 85, 0.20);
+    color: #FFF;
+    cursor: default;
+}
+.button-exithome, .button-exit:hover {
+    padding: 15px 36px;
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    cursor: default;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.button-exithome {
+    margin: 0px 10px 0px 10px;
+    background-color: rgba(85, 85, 85, 0.10);
+    cursor: default;
+    color: #CCCCCC;
+}
+.button-exithome:hover {
+    background-color: rgba(85, 85, 85, 0.20);
+    cursor: default;
+    color: #FFF;
 }
 .tools-button-bar {
     background-color: none!important;
@@ -257,7 +261,7 @@ p {
 }
 .navigation-bar {
     position: relative;
-    height: 640px;
+    height: 680px;
     width: 264px;
     display: inline-block;
     background: rgb(34, 45, 50, 1);
@@ -275,7 +279,7 @@ p {
     position: relative;
     display:inline-block;
     vertical-align: top;
-    height: 600px;
+    height: 655px;
     width: 360px;
 }
 .tpm-error {
