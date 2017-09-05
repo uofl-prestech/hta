@@ -3,7 +3,7 @@ Set ProgressUI = CreateObject("Microsoft.SMS.TsProgressUI")
 ProgressUI.CloseProgressDialog 
 
 'Set objects and declare global variables
-Set env = CreateObject("Microsoft.SMS.TSEnvironment")
+'Set env = CreateObject("Microsoft.SMS.TSEnvironment")
 Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
 
 '************************************ Ping test subroutines ************************************
@@ -70,46 +70,47 @@ End Function
 '************************************ Execute OSD subroutine ************************************
 Sub ButtonFinishClick
     ' Set value of variable to true/false based on whether the checkbox is selected or not
-
-    If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked Then
+    Set env = CreateObject("Microsoft.SMS.TSEnvironment")
+    'MsgBox "Begin Finish Subroutine"
+    If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked OR fnfAdobeReaderDC.Checked Then
         strAdobeReaderDC = "true"
         else strAdobeReaderDC = "false"
     End If
-
-	If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked Then
+    'MsgBox "AdobeReaderDC = " & strAdobeReaderDC
+	If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked OR fnfAdobeAcrobatProXI.Checked Then
 		strAdobeAcrobatProXI = "true"
 		else strAdobeAcrobatProXI="false"
 	End If		
-   
-    If Chrome.Checked OR OSDChrome.Checked Then
+   'MsgBox "AdobeAcrobatProXI = " & strAdobeAcrobatProXI
+    If Chrome.Checked OR OSDChrome.Checked OR fnfChrome.Checked Then
         strChrome = "true"
         else strChrome = "false"
     End If
-
-	If FileMaker.Checked OR OSDFileMaker.Checked Then
+    'MsgBox "Chrome = " & strChrome
+	If FileMaker.Checked OR OSDFileMaker.Checked OR fnfFileMaker.Checked Then
         strFileMaker = "true"
         else strFileMaker = "false"
     End If
-      
-    If Office2016.Checked OR OSDOffice2016.Checked Then
+    'MsgBox "FileMaker = " & strFileMaker
+    If Office2016.Checked OR OSDOffice2016.Checked OR fnfOffice2016.Checked Then
         strOffice2016 = "true"
         else strOffice2016 = "false"
     End If
-
-    If OSD.Checked Then
+    'MsgBox "Office2016 = " & strOffice2016
+    If OSD.Checked OR fnfOSD.Checked Then
         strOSD = "true"
-        strMBAM = "true"
+        MBAM.Checked = "True"
         strCompName = compName.value
         else strOSD = "false"
     End If
-
+    'MsgBox "OSD = " & strOSD & vbCrLf & "MBAM = " & strMBAM & vbCrLf & "CompName = " & strCompName
     If MBAM.Checked Then
         strMBAM = "true"
         else strMBAM = "false"
     End If
 	
     ' Set value of variables that will be used by the task sequence, then close the window and allow the task sequence to continue.
-        
+    'MsgBox "Set Environment Variables"   
     env("envAdobeReaderDC") = strAdobeReaderDC
     env("envAdobeAcrobatProXI") = strAdobeAcrobatProXI
     env("envChrome") = strChrome
@@ -118,8 +119,9 @@ Sub ButtonFinishClick
     env("envOSD") = strOSD
     env("OSDComputerName") = strCompName
     env("envMBAM") = strMBAM
-   
+    'MsgBox "End Finish Subroutine"
     window.close
+    'MsgBox "Window Closed"
 End Sub
 
 '************************************ DISM Capture Image subroutine ************************************
@@ -165,14 +167,14 @@ Sub runUSMT(buttonClicked)
         returnCode = WshShell.run(strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:" & strCurrentDir & "\USMT\offline.xml /i:" & strCurrentDir & "\USMT\migdocs.xml /i:" & strCurrentDir & "\USMT\migapp.xml /i:" & strCurrentDir & "\USMT\oopexcludes.xml /progress:" & strCurrentDir & "\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5", 1, True)
 
         If returnCode = 0 Then
-            WshShell.run "%comspec% /c cmtrace.exe " & strCurrentDir & "\prog.log"
+            'WshShell.run "%comspec% /c cmtrace.exe " & strCurrentDir & "\prog.log"
             scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
         Else
             scanStateDiv.innerHTML = "Error Code: " & returnCode
             
             Set fso = CreateObject("Scripting.FileSystemObject")
-            'fileName = destDrive & ":\USMT\" & getUser & "\scanstate.log"
-            fileName = "A:\prestechHTA\prestech\USMT\scanstate.log"
+            fileName = destDrive & ":\USMT\" & getUser & "\scanstate.log"
+            'fileName = "A:\prestechHTA\prestech\USMT\scanstate.log"
             Set myFile = fso.OpenTextFile(fileName, 1)
             Do While myFile.AtEndOfStream <> True
                 textLine = myFile.ReadLine
@@ -186,6 +188,24 @@ Sub runUSMT(buttonClicked)
 
 End Sub
 
+Sub runFlushFill
+    windowsDrive.Value = fnfWindowsDrive.Value
+    dismDrive.Value = fnfDrive.Value
+    dismUsername.Value = fnfUsername.Value
+    usmtUsername.Value = fnfUsername.Value
+    usmtDrive.Value = fnfDrive.Value
+    compName.Value = fnfCompName.Value
+    'dismMsgResult = MsgBox ("Run DISM?",vbYesNo+vbInformation, "")
+    'If dismMsgResult = 6 Then
+        dismCapture
+    'End If
+    'usmtMsgResult = MsgBox ("Run USMT?",vbYesNo+vbInformation, "")
+    'If usmtMsgResult = 6 Then
+        runUSMT "true"
+    'End If
+    'MsgBox "Finish"
+    ButtonFinishClick
+End Sub
 
 '************************************ Exit HTA subroutine ************************************
 Sub ButtonExitClick

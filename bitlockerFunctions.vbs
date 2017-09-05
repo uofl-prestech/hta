@@ -69,13 +69,23 @@ End Sub
 
 '************************************ Bitlocker Info subroutine ************************************
 Sub BitlockerInfo
-	Dim cmdShell, outData
+	Const ForReading = 1
+	Const TriStateTrue = -1	'Open file as Unicode
+	Dim cmdShell
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
-	
+
     Set cmdShell = CreateObject("WScript.Shell")
-	Set outData = cmdShell.Exec("powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file BitlockerInfo.ps1")
-	outData.StdIn.Close
-	driveDiv.innerHTML = "<div>" & outData.StdOut.ReadAll & "</div><br>"
+	cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	fileName = "bitlockerinfo.txt"
+	Set myFile = fso.OpenTextFile(fileName, ForReading, false, TriStateTrue)
+	Do While myFile.AtEndOfStream <> True
+	   textLine = myFile.ReadLine
+	   strRead = strRead & textLine & vbCrLf
+	Loop
+	myFile.Close
+	driveDiv.innerHTML = "<H2>Bitlocker Info</H2><div>" & strRead & "</div><br>"
 End Sub
 
 '************************************ Unlock Bitlocker Drive subroutine ************************************
@@ -86,6 +96,8 @@ Sub BitlockerUnlock
 		key = blKey.Value
 	ElseIf usmtBlKey.Value <> "" Then
 		key = usmtBlKey.Value
+	ElseIf fnfBlKey.Value <> "" Then
+		key = fnfBlKey.Value
 	Else
 		Exit Sub
 	End If
@@ -94,14 +106,16 @@ Sub BitlockerUnlock
 		drive = windowsDrive.Value
 	ElseIf usmtWindowsDrive.Value <> "" Then
 		drive = usmtWindowsDrive.Value
+	ElseIf fnfWindowsDrive.Value <> "" Then
+		drive = fnfWindowsDrive.Value
 	Else
 		Exit Sub
 	End If
 
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
-	
+	MsgBox("Bitlocker Key = " & key & vbCrLf & "Windows Drive = " & drive)
 	Set cmdShell = CreateObject("Wscript.Shell")
-	Set outData = cmdShell.Exec("Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34))
+	Set outData = cmdShell.Exec("Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File ./BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34))
 	outData.StdIn.Close
 	driveDiv.innerHTML = "<div>" & outData.StdOut.ReadAll & "</div><br>" 
 End Sub

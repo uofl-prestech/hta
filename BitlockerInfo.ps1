@@ -4,6 +4,9 @@
 #Collect encryption information and volume information for each volume on the computer
 #and combine all of the information into on ArrayList of objects for output as HTML
 #Get the ID and security principal of the current user account
+param (
+    [string]$directory = ""
+ )
 $myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
 $myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
  
@@ -16,35 +19,28 @@ if ($myWindowsPrincipal.IsInRole($adminRole))
 		# We are running "as Administrator" - so change the title and background color to indicate this
 		$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
 		$Host.UI.RawUI.BackgroundColor = "Red"
-		#clear-host
+		Set-Location $directory
    }
 else
    {
-	
 		# Start the new process
-		#Start-Process powershell.exe -PassThru -Wait -file $myInvocation.MyCommand.Definition;
-
 		$startInfo = New-Object System.Diagnostics.ProcessStartInfo
-		$startInfo.FileName = "powershell.exe"
-		$startInfo.Arguments = "$($myInvocation.MyCommand.Definition) -Verb RunAs"
-		$startInfo.RedirectStandardOutput = $true
-		$startInfo.UseShellExecute = $false
-		$startInfo.CreateNoWindow = $false
+    	$startInfo.FileName = "powershell.exe"
+    	$startInfo.Arguments = "-executionpolicy bypass -file $($myInvocation.MyCommand.Definition) -directory $($PWD)"
+    	$startInfo.Verb = "Runas"
 		
 		$process = New-Object System.Diagnostics.Process
 		$process.StartInfo = $startInfo
-		$process.Start() | Out-Null
-		$standardOut = $process.StandardOutput.ReadToEnd()
+		$process.Start()
 		$process.WaitForExit()
-		$standardOut
+    	#$User2 = Read-Host -Prompt "Input the user name $($PWD)"
 		# Exit from the current, unelevated, process
-
-		Write-Host "Script 2 return"
+		#$driveTable = Get-Content bitlockerinfo.html
 		return
    }
 # Run your code that needs to be elevated here
-Write-Host -NoNewLine "Running as Admin"
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+#Write-Host -NoNewLine "Running as Admin"
+#$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 #*****************Bitlocker Info*****************
 #Bitlocker Information
@@ -152,6 +148,5 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 	$driveList = $driveList | select * -ExcludeProperty Freespace, Capacity, DriveLetter, "Trusted Platform Module (TPM)" | sort-object Name
 
 	#Write-Output $driveList | Format-List
-
-	$driveList | ForEach-Object{$_ | convertTo-HTML -Fragment -As "List" -PostContent "<br>"}
-	return $driveList
+	$driveList | ForEach-Object {$_ | convertTo-HTML -Fragment -As "List" -PostContent "<br>"} > .\bitlockerinfo.txt
+	return

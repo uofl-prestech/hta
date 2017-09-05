@@ -51,10 +51,9 @@ html {
 .pages li {
     display: block;
     font-size: 12px;
-    padding: 10px 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    /* vertical-align: middle; */
+    padding: 0px;
+    margin: 0px;
+    vertical-align: middle;
     color: #CCCCCC;
     background-color: rgba(0, 0, 0, 0.35);
 }
@@ -76,6 +75,13 @@ p {
 }
 
 /*ID STYLES*/
+#accordion h3{
+    padding: 1em 2.2em;
+    margin: 1px;
+}
+#accordion div{
+    padding: 10px;
+}
 #button-osd {
     margin-top: 0;
     padding-top: 0;
