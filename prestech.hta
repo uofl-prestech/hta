@@ -10,8 +10,7 @@
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
-        window.resizeTo 1024,768
-        window.moveTo 400, 200
+        window.resizeTo 1024,768 window.moveTo 400, 200
     </script>
     <link rel="stylesheet" href="Prestech.css">
     <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
@@ -26,49 +25,58 @@
         <div id="main" class="on-load">
             <div class="navigation-bar">
                 <ul>
-                    <li id="button-osd" class="first">
+                    <li id="button-osd" class="first button-nav">
                         <img src="images/osd final.png" class="icon">
                         <span>OSD</span>
                     </li>
-                    <li id="button-flushfill">
+                    <li id="button-flushfill" class="button-nav">
                         <img src="images/flush and fill final.png" class="icon">
                         <span>Flush and Fill</span>
                     </li>
-                    <li id="button-dism">
+                    <li id="button-dism" class="button-nav">
                         <img src="images/DISM final.png" class="icon">
                         <span>DISM</span>
                     </li>
-                    <li id="button-usmt">
+                    <li id="button-usmt" class="button-nav">
                         <img src="images/usmt final.png" class="icon">
                         <span>USMT</span>
                     </li>
-                    <li id="button-software">
+                    <li id="button-software" class="button-nav">
                         <img src="images/software install.png" class="icon">
                         <span>Software Install</span>
                     </li>
-                    <li id="button-tools">
+                    <li id="button-tools" class="button-nav">
                         <img src="images/tools-icon.png" class="icon">
                         <span>Tools</span>
                     </li>
                 </ul>
-                <button class="button" id="button-home">Home</button>
-                <button class="button" id="button-exit" onclick="vbscript:ButtonExitClick()">Exit</button>
+                <div class="">
+                    <button class="button-exithome">Home</button>
+                    <button class="button-exithome" onclick="vbscript:ButtonExitClick()">Exit</button>
+                </div>
             </div>
 
             <div id="content">
-
+                <div class="category-header">
+                    <h4 id="header-landing" class="header-text">OOP Task Sequence Selections</h4>
+                    <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
+                    <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
+                    <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
+                    <h4 id="header-usmt" class="header-text">User State Migration Tool</h4>
+                    <h4 id="header-software" class="header-text">Software Installation</h4>
+                    <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
+                </div>
                 <!--Landing Page-->
                 <div id="page-landing" class="pages">
-                    <div class="category-header">OOP Task Sequence Selections</div>
                 </div>
 
                 <!--OSD Page-->
                 <div id="page-osd" class="pages">
-                    <div class="category-header">Operating System Deployment</div>
                     <div id="osd-input" class="input-div">
                         <ul>
                             <li class="list-osd">
-                                <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div><br></li>
+                                <div id="stepOSD"><input type="checkbox" name="OSD"> Format Drive and Deploy Image </div>
+                            </li>
                             <li class="list-osd">
                                 <div id="stepCompName"> Enter Computer Name: <br><br> <input type="text" id="osdCompName" name="compName"> </div><br></li>
                             <li class="list-osd">
@@ -152,18 +160,17 @@
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
-                    <div class="category-header">Deployment Image Servicing and Management</div>
                     <div id="dism-input" class="input-div">
                         <ul>
                             <li class="dism-steps">
                                 <div id="dism-step1">
-                                    <button class="button button-bl-info" id="bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
+                                    <button class="button button-bl-info" id="bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                                 </div>
                             </li>
                             <li class="dism-steps">
                                 <div id="dism-step2">
                                     <p>Enter the drive letter of the Windows partition to be imaged</p>
-                                    <span>Drive Letter:    </span><input class="drive-input" name="windowsDrive" type="Text"
+                                    <span>Drive Letter:</span><input class="drive-input" name="windowsDrive" type="Text"
                                         maxlength="1" size="1">
                                 </div>
                             </li>
@@ -198,7 +205,6 @@
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
-                    <div class="category-header">User State Migration Tool</div>
                     <div id="usmt-input" class="input-div">
                         <ul>
                             <li class="usmt-steps">
@@ -245,17 +251,17 @@
 
                 <!--Software Install Page-->
                 <div id="page-software-install" class="pages">
-                    <div class="category-header">Software Installation</div>
                     <div id="software-input" class="input-div">
                         <ul>
                             <li>
-                                <div>Select software to install:<br>
-                                    <h4><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</h4>
-                                    <h4><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
-                                    <h4><input type="checkbox" name="Chrome"> Chrome 58</h4>
-                                    <h4><input type="checkbox" name="FileMaker"> FileMaker Pro 16</h4>
-                                    <h4><input type="checkbox" name="Office2016"> Office 2016 (32 Bit)</h4>
-                                    <h4><input type="checkbox" name="MBAM"> Bitlocker Agent</h4>
+                                <div>
+                                    <h4>Select software to install:</h4>
+                                    <p><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</p>
+                                    <p><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</p>
+                                    <p><input type="checkbox" name="Chrome"> Chrome 58</p>
+                                    <p><input type="checkbox" name="FileMaker"> FileMaker Pro 16</p>
+                                    <p><input type="checkbox" name="Office2016"> Office 2016 (32 Bit)</p>
+                                    <p><input type="checkbox" name="MBAM"> Bitlocker Agent</p>
                                 </div>
                             </li>
                         </ul>
@@ -276,46 +282,57 @@
                     </div>
                 </div>
                 <div id="general-output">.general-output</div>
-                <!--    End main    -->
+                <!--    End content    -->
             </div>
-            <!--    End container    -->
+            <!--    End main    -->
         </div>
+        <!--    End container    -->
+    </div>
 </body>
 
 <script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
+        $('#header-landing').css('display', 'inline');
+        // $("#general-output").css('visibility', 'hidden');
     });
-
-    $('#button-osd').on('click', function () {
+    $('.button-nav').on('click', function () {
         $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
+    });
+    $('.button-output').on('click', function () {
+        $("#general-output").css('visibility', 'visible');
+    });
+    $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
+        $('#header-osd').css('display', 'inline');
         // TPMCheck();
     });
     $('#button-flushfill').on('click', function () {
-        $('.pages').css('display', 'none');
         $('#page-flushfill').css('display', 'inline-block');
+        $('#header-flushfill').css('display', 'inline');
     });
     $('#button-dism').on('click', function () {
-        $('.pages').css('display', 'none');
         $('#page-dism').css('display', 'inline-block');
+        $('#header-dism').css('display', 'inline');
     });
     $('#button-usmt').on('click', function () {
-        $('.pages').css('display', 'none');
         $('#page-usmt').css('display', 'inline-block');
+        $('#header-usmt').css('display', 'inline');
     });
     $('#button-software').on('click', function () {
-        $('.pages').css('display', 'none');
         $('#page-software-install').css('display', 'inline-block');
+        $('#header-software').css('display', 'inline');
     });
     $('#button-tools').on('click', function () {
-        $('.pages').css('display', 'none');
         $('#page-tools').css('display', 'inline-block');
+        $('#header-tools').css('display', 'inline');
     });
     $('#button-home').on('click', function () {
-        $('.pages').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
+        $('#header-landing').css('display', 'inline');
     });
 
     // $(function () {
