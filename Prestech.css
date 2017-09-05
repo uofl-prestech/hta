@@ -52,7 +52,7 @@ h4 {
     font-size: 12px;
     padding: 0px;
     margin: 0px;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     color: #CCCCCC;
     /* background-color: rgba(0, 0, 0, 0.35); */
 }
@@ -99,7 +99,7 @@ p {
 #main{
     height: 680px;
     width: 1024px;
-    margin-top: 25px;
+    margin-top: 15px;
     color: white;
 }
 .on-load{
@@ -163,6 +163,7 @@ p {
 }
 .button:hover {
     background-color: rgb(149, 23, 23);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.50);
     border: none;
     padding: 12px 28px;
     cursor: default;
@@ -172,7 +173,7 @@ p {
     font-size: 16px;
 }
 .button:active {
-    background-color: black;
+    background-color: rgb(126, 23, 23);
     border: none;
     padding: 12px 28px;
     cursor: default;
@@ -188,8 +189,9 @@ p {
     /* background-color: rgba(0, 0, 0, 0.35); */
     /* border-right: 4px solid rgba(120, 120, 120, 0.25) */
 }
-.button-nav:hover {
+.button-nav:hover, .button-nav:focus {
     background-color: rgba(85, 85, 85, 0.20);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.50);
     color: #FFF;
     cursor: default;
 }
@@ -211,6 +213,7 @@ p {
     background-color: rgba(85, 85, 85, 0.20);
     cursor: default;
     color: #FFF;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.50);
 }
 .tools-button-bar {
     background-color: none!important;
@@ -218,10 +221,7 @@ p {
     padding: 50px 0px;
 }
 .category-div {
-    background: rgba(0,
-    0,
-    0,
-    0.5);
+    background: rgba(0, 0, 0, 0.5);
     padding: 15px;
     border-radius: 10px;
 }
