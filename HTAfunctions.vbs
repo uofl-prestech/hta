@@ -153,7 +153,7 @@ Sub runDISM_TS
 End Sub
 
 '************************************ USMT Scanstate subroutine ************************************
-Sub runUSMT(buttonClicked)
+Sub usmtScanstate(buttonClicked)
 	Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode
     Set scanStateDiv = document.getElementById("general-output")
     Set WshShell = CreateObject("WScript.Shell")
@@ -188,6 +188,18 @@ Sub runUSMT(buttonClicked)
 
 End Sub
 
+'************************************ Execute DISM script ************************************
+Sub usmtLoadstate
+    env("envUsmtLoadstate") = "true"
+    env("envUsmtSourceDrive") = windowsDrive.Value
+    env("envUsmtDestDrive") = usmtDrive.Value
+    env("envUsmtUsername") = usmtUsername.Value
+
+    window.close
+
+End Sub
+
+'************************************ Execute Flush and Fill script ************************************
 Sub runFlushFill
     windowsDrive.Value = fnfWindowsDrive.Value
     dismDrive.Value = fnfDrive.Value
@@ -197,12 +209,18 @@ Sub runFlushFill
     compName.Value = fnfCompName.Value
     'dismMsgResult = MsgBox ("Run DISM?",vbYesNo+vbInformation, "")
     'If dismMsgResult = 6 Then
+    If dismCheckBox.Checked Then
         dismCapture
-    'End If
+    End If
     'usmtMsgResult = MsgBox ("Run USMT?",vbYesNo+vbInformation, "")
     'If usmtMsgResult = 6 Then
-        runUSMT "true"
-    'End If
+    If scanStateCheckBox.Checked Then
+        usmtScanstate "true"
+    End If
+
+    If loadStateCheckBox.Checked Then
+        usmtLoadstate
+    End IF
     'MsgBox "Finish"
     ButtonFinishClick
 End Sub

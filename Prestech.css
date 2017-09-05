@@ -288,6 +288,18 @@ p {
     height: 655px;
     width: 360px;
 }
+.smallButton{
+    background-color: darkred;
+    border: none;
+    padding: 4px 6px;
+    cursor: pointer;
+    color: #CCC;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 5px;
+    float: left;
+}
 .tpm-error {
     color: darkred;
     font-style: bold;
