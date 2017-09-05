@@ -74,11 +74,11 @@ p {
 }
 
 /*ID STYLES*/
-#accordion h3{
+.accordion h3{
     padding: 1em 2.2em;
     margin: 1px;
 }
-#accordion div{
+.accordion div{
     padding: 10px;
 }
 #button-osd {
