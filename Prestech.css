@@ -61,7 +61,7 @@ h4 {
     color: #FFF;
     cursor: default;
 } */
-.pages ul{
+.pages ul {
     font-weight: 400;
     list-style: none;
     margin: 0px;
@@ -74,38 +74,64 @@ p {
 }
 
 /*ID STYLES*/
-.accordion h3{
+.accordion h3 {
     padding: 1em 2.2em;
     margin: 1px;
 }
-.accordion div{
+.accordion div {
     padding: 10px;
+}
+.ui-corner-all {
+    border-radius: 0px;
+}
+.ui-state-default {
+    border: 1px solid #49796b;
+    background: #49796b;
+    font-weight: bold;
+    color: #fafafa;
+}
+.ui-state-active {
+    border: 1px solid #5f9ea0;
+    background: #5f9ea0;
+    font-weight: bold;
+    color: #ffffff;
+}
+.ui-state-hover {
+    border: 1px solid #317873;
+    background: #317873;
+    font-weight: bold;
+    color: #ffffff;
+}
+.ui-widget-content {
+    background-color: rgba(85, 85, 85, 0.10);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    color: #CCCCCC;
 }
 #button-osd {
     margin-top: 0;
     padding-top: 0;
 }
-#container{
+#container {
     display: inline-block;
     height: 768px;
     width: 1024px;
-    background: url(images/helmet-grey-blur1.png);
+    background: url(images/helmet-grey-blur2.png);
 }
-#content{
+#content {
     display: inline-block;
     vertical-align: top;
     height: 680px;
 }
-#main{
+#main {
     height: 680px;
     width: 1024px;
     margin-top: 15px;
     color: white;
 }
-.on-load{
+.on-load {
     opacity: 0;
 }
-#header{
+#header {
     height: 60px;
     /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
     width: 1024px;
@@ -118,7 +144,7 @@ p {
     letter-spacing: 3px;
     font-weight: 200;
 }
-#header > h1{
+#header > h1 {
     margin: 0;
 }
 
@@ -235,7 +261,7 @@ p {
     color: rgba(204, 204, 204, 1);
     background-color: rgba(139,0,0,0.6);
 }
-.drive-input{
+.drive-input {
     text-align: center;
 }
 .icon {
@@ -262,7 +288,7 @@ p {
     margin-right: 5px;
     overflow: auto;
 }
-.list-osd{
+.list-osd {
     display: list-item;
 }
 .navigation-bar {
@@ -288,7 +314,7 @@ p {
     height: 655px;
     width: 360px;
 }
-.smallButton{
+.smallButton {
     background-color: darkred;
     border: none;
     padding: 4px 6px;
