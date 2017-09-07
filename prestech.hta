@@ -5,12 +5,16 @@
     <title>OOP Task Sequence Selections</title>
     <meta http-equiv="x-ua-compatible" content="ie=9">
     <link rel="stylesheet" href="./jquery-ui-1.11.4.custom/jquery-ui.css">
+    <link rel="stylesheet" href="style/jquery.jscrollpane.css">
     <script src="./jquery-1.11.1.min.js"></script>
     <script src="./jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="script/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script> 
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
-        window.resizeTo 1024,768 window.moveTo 400, 200
+        window.resizeTo 1024,768
+        window.moveTo 400, 200
     </script>
     <link rel="stylesheet" href="Prestech.css">
     <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
@@ -58,8 +62,8 @@
 
             <div id="content">
                 <div class="category-header">
-                    <button class="smallButton" id="button-ShowAll">Expand</button>
-                    <button class="smallButton" id="button-HideAll">Collapse</button>
+                    <button class="small-button" id="button-ShowAll"><img src="images/expand.png" class="icon-only"></button>
+                    <button class="small-button" id="button-HideAll"><img src="images/collapse.png" class="icon-only"></button>
                     <h4 id="header-landing" class="header-text">OOP Task Sequence Selections</h4>
                     <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
                     <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
@@ -95,15 +99,13 @@
                                     to Install
                                 </h3>
                                 <div id="osd-step3" class="ui-widget-content">
-                                    <h4><input type="checkbox" id="osdAdobeReaderDC" class="software-osd" name="OSDAdobeReaderDC">Adobe
-                                        Reader DC</h4>
-                                    <h4><input type="checkbox" id="osdAdobeAcrobatProXI" class="software-osd" name="OSDAdobeAcrobatProXI">Adobe
-                                        Acrobat Pro XI</h4>
-                                    <h4><input type="checkbox" id="osdChrome" class="software-osd" name="OSDChrome">Chrome 58</h4>
-                                    <h4><input type="checkbox" id="osdFileMaker" class="software-osd" name="OSDFileMaker">FileMaker
-                                        Pro 16</h4>
-                                    <h4><input type="checkbox" id="osdOffice2016" class="software-osd" name="OSDOffice2016">Office
-                                        2016 (32 Bit)</h4>
+                                    <input type="checkbox" id="osdAdobeReaderDC" class="software-osd" name="OSDAdobeReaderDC">Adobe
+                                        Reader DC<br>
+                                    <input type="checkbox" id="osdAdobeAcrobatProXI" class="software-osd" name="OSDAdobeAcrobatProXI">Adobe
+                                        Acrobat Pro XI<br>
+                                    <input type="checkbox" id="osdChrome" class="software-osd" name="OSDChrome">Chrome 58<br>
+                                    <input type="checkbox" id="osdFileMaker" class="software-osd" name="OSDFileMaker">FileMaker Pro 16<br>
+                                    <input type="checkbox" id="osdOffice2016" class="software-osd" name="OSDOffice2016">Office 2016 (32 Bit)<br>
                                 </div>
                             </li>
                             <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
@@ -188,12 +190,11 @@
                                     to Install
                                 </h3>
                                 <div id="fnf-step8" class="ui-widget-content">
-                                    <h4><input type="checkbox" class="software-osd" name="fnfAdobeReaderDC"> Adobe Reader DC</h4>
-                                    <h4><input type="checkbox" class="software-osd" name="fnfAdobeAcrobatProXI"> Adobe Acrobat
-                                        Pro XI</h4>
-                                    <h4><input type="checkbox" class="software-osd" name="fnfChrome"> Chrome 58</h4>
-                                    <h4><input type="checkbox" class="software-osd" name="fnfFileMaker"> FileMaker Pro 16</h4>
-                                    <h4><input type="checkbox" class="software-osd" name="fnfOffice2016"> Office 2016 (32 Bit)</h4>
+                                    <input type="checkbox" class="software-osd" name="fnfAdobeReaderDC"> Adobe Reader DC<br>
+                                    <input type="checkbox" class="software-osd" name="fnfAdobeAcrobatProXI"> Adobe Acrobat Pro XI<br>
+                                    <input type="checkbox" class="software-osd" name="fnfChrome"> Chrome 58<br>
+                                    <input type="checkbox" class="software-osd" name="fnfFileMaker"> FileMaker Pro 16<br>
+                                    <input type="checkbox" class="software-osd" name="fnfOffice2016"> Office 2016 (32 Bit)<br>
                                 </div>
                             </li>
                         </ul>
@@ -326,16 +327,17 @@
                 <!--Software Install Page-->
                 <div id="page-software-install" class="pages">
                     <div id="software-input" class="input-div">
-                        <ul>
-                            <li>
-                                <div>
-                                    <h4>Select software to install:</h4>
-                                    <p><input type="checkbox" name="AdobeReaderDC"> Adobe Reader DC</p>
-                                    <p><input type="checkbox" name="AdobeAcrobatProXI"> Adobe Acrobat Pro XI</p>
-                                    <p><input type="checkbox" name="Chrome"> Chrome 58</p>
-                                    <p><input type="checkbox" name="FileMaker"> FileMaker Pro 16</p>
-                                    <p><input type="checkbox" name="Office2016"> Office 2016 (32 Bit)</p>
-                                    <p><input type="checkbox" name="MBAM"> Bitlocker Agent</p>
+                        <ul class="accordion ui-accordion">
+                            <li class="osd-steps">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
+                                </h3>
+                                <div class="ui-widget-content">
+                                    <input type="checkbox" class="software-osd" name="OSDAdobeReaderDC">Adobe Reader DC<br>
+                                    <input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI">Adobe Acrobat Pro XI<br>
+                                    <input type="checkbox" class="software-osd" name="OSDChrome">Chrome 58<br>
+                                    <input type="checkbox" class="software-osd" name="OSDFileMaker">FileMaker Pro 16<br>
+                                    <input type="checkbox" class="software-osd" name="OSDOffice2016">Office 2016 (32 Bit)<br>
                                 </div>
                             </li>
                         </ul>
@@ -420,6 +422,9 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
+    // $(function(){
+    //     $('.scroll-pane').jScrollPane();
+    // });
 
     // $(function () {
     //     $("#dismOutput").dialog({ 
