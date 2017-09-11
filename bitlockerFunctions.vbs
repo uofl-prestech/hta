@@ -113,7 +113,7 @@ Sub BitlockerUnlock
 	End If
 
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
-	MsgBox("Bitlocker Key = " & key & vbCrLf & "Windows Drive = " & drive)
+	'MsgBox("Bitlocker Key = " & key & vbCrLf & "Windows Drive = " & drive)
 	Set cmdShell = CreateObject("Wscript.Shell")
 	Set outData = cmdShell.Exec("Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File ./BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34))
 	outData.StdIn.Close

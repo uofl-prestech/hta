@@ -8,5 +8,5 @@ usmtDrive = envUsmtDestDrive
 '**********
 '* MAIN *
 '**********
- ReturnCode = objShell.Run ("cmd /c " & GetScriptPath & "\USMT\loadstate.exe D:\USMT\" & getUser & " /i:D:\USMT\migapp.xml /i:D:\USMT\migdocs.xml", 1, True)	
+ ReturnCode = objShell.Run ("cmd /k " & GetScriptPath & "\USMT\loadstate.exe /c " & usmtDrive & ":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:USMT\loadstate.log", 1, True)
  Wscript.Quit(ReturnCode)

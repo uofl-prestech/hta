@@ -5,7 +5,9 @@
     <title>OOP Task Sequence Selections</title>
     <meta http-equiv="x-ua-compatible" content="ie=9">
     <link rel="stylesheet" href="./jquery-ui-1.11.4.custom/jquery-ui.css">
+    <link rel="stylesheet" href="./js/jquery.mCustomScrollbar.css">
     <script src="./jquery-1.11.1.min.js"></script>
+    <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="./jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
@@ -65,12 +67,17 @@
                     <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
                     <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
                     <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
-                    <h4 id="header-usmt" class="header-text">User State Migration Tool</h4>
+                    <h4 id="header-usmt" class="header-text">
+                        <button class="smallButton usmtStates" id="button-ScanState">Scan</button>
+                        <button class="smallButton usmtStates" id="button-LoadState">Load</button>
+                        User State Migration Tool
+                    </h4>
                     <h4 id="header-software" class="header-text">Software Installation</h4>
                     <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
                 </div>
                 <!--Landing Page-->
                 <div id="page-landing" class="pages">
+                    <div id="landing-page-input" class="input-div"></div>
                 </div>
 
                 <!--OSD Page-->
@@ -139,15 +146,21 @@
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock Bitlocker
                                 </h3>
                                 <div id="fnf-step4" class="ui-widget-content">
-                                    <input name="fnfBlKey" type="Text" maxlength="100" size="35" value="524040-163009-565158-446017-323081-469150-421465-452760">
+                                    <input name="fnfBlKey" type="Text" maxlength="100" size="35" value="">
                                     <button class="button button-bl-unlock" id="fnf-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                                 </div>
                             </li>
                             <li class="fnf-steps">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user we are copying data for
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will be copied
                                 </h3>
-                                <div id="fnf-step5" class="ui-widget-content">
+                                <div id="fnf-step5" class="ui-widget-content usmt-users"></div>
+                            </li>
+                            <li class="fnf-steps">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter username of the primary user of this computer
+                                </h3>
+                                <div id="fnf-step6" class="ui-widget-content usmt-users">
                                     <span>Username: &nbsp&nbsp </span>
                                     <input name="fnfUsername" type="Text" size="15">
                                 </div>
@@ -156,7 +169,7 @@
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the data will be stored
                                 </h3>
-                                <div id="fnf-step6" class="ui-widget-content">
+                                <div id="fnf-step7" class="ui-widget-content">
                                     <span>Drive Letter: &nbsp&nbsp </span><input class="drive-input" name="fnfDrive" type="Text" maxlength="1" size="1">
                                 </div>
                             </li>
@@ -164,12 +177,12 @@
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
                                 </h3>
-                                <div id="fnf-step7" class="ui-widget-content"> Computer Name: &nbsp&nbsp <input type="text" name="fnfCompName"> <br></div></li>
+                                <div id="fnf-step8" class="ui-widget-content"> Computer Name: &nbsp&nbsp <input type="text" name="fnfCompName"> <br></div></li>
                             <li class="fnf-steps">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
                                 </h3>
-                                <div id="fnf-step8" class="ui-widget-content">
+                                <div id="fnf-step9" class="ui-widget-content">
                                     <h4><input type="checkbox" class="software-osd" name="fnfAdobeReaderDC"> Adobe Reader DC</h4>
                                     <h4><input type="checkbox" class="software-osd" name="fnfAdobeAcrobatProXI"> Adobe Acrobat Pro XI</h4>
                                     <h4><input type="checkbox" class="software-osd" name="fnfChrome"> Chrome 58</h4>
@@ -209,7 +222,7 @@
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock Bitlocker
                                 </h3>
                                 <div id="dism-step3" class="ui-widget-content">
-                                    <input name="blKey" type="Text" maxlength="100" size="35" value="524040-163009-565158-446017-323081-469150-421465-452760">
+                                    <input name="blKey" type="Text" maxlength="100" size="35" value="279928-068002-277409-568579-228426-635107-413721-236665">
                                     <button class="button button-bl-unlock" id="bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                                 </div>
                             </li>
@@ -242,7 +255,7 @@
                 <div id="page-usmt" class="pages">
                     <div id="usmt-input" class="input-div">
                         <ul class="accordion ui-accordion">
-                            <li class="usmt-steps">
+                            <li class="usmt-steps scanState">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
                                 </h3>
@@ -250,7 +263,7 @@
                                     <button class="button button-bl-info" id="usmt-bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button><br>
                                 </div>
                             </li>
-                            <li class="usmt-steps">
+                            <li class="usmt-steps scanState">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the Windows partition
                                 </h3>
@@ -259,36 +272,43 @@
                                         maxlength="1" size="1">
                                 </div>
                             </li>
-                            <li class="usmt-steps">
+                            <li class="usmt-steps scanState">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock Bitlocker
                                 </h3>
                                 <div id="usmt-step3" class="ui-widget-content">
-                                    <input name="usmtBlKey" type="Text" maxlength="100" size="35" value="524040-163009-565158-446017-323081-469150-421465-452760">
+                                    <input name="usmtBlKey" type="Text" maxlength="100" size="35" value="">
                                     <button class="button button-bl-unlock" id="usmt-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                                 </div>
                             </li>
+                            <li class="usmt-steps scanState">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will be copied
+                                </h3>
+                                <div id="usmt-step4" class="ui-widget-content usmt-users"></div>
+                            </li>
                             <li class="usmt-steps">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter username of the user we are copying data for
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter username of the primary user of this computer
                                 </h3>
-                                <div id="usmt-step4" class="ui-widget-content">
+                                <div id="usmt-step5" class="ui-widget-content usmt-users">
                                     <span>Username: &nbsp&nbsp </span>
-                                    <input id="usmt-username-input" name="usmtUsername" type="Text" size="15">
+                                    <input name="usmtUsername" type="Text" size="15">
                                 </div>
                             </li>
                             <li class="usmt-steps">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the USMT data will be stored
                                 </h3>
-                                <div id="usmt-step5" class="ui-widget-content">
+                                <div id="usmt-step6" class="ui-widget-content">
                                     <span id="driveLetter">Drive Letter: &nbsp&nbsp </span>
                                     <input id="usmt-drive-input" class="drive-input" name="usmtDrive" type="Text" maxlength="1" size="1"><br><br>
                                 </div>
                             </li>
                         </ul>
                         <div id="usmt-begin">
-                            <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button><br><br>
+                            <button class="button scanState" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
+                            <button class="button" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button><br><br>
                         </div>
                     </div>
                 </div>
@@ -346,14 +366,21 @@
             $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
             return false;
         }).next().hide();
-        // $("#general-output").css('visibility', 'hidden');
+        
+        listDrives()
+        $(".input-div").mCustomScrollbar({
+            theme: "minimal",
+            autoHideScrollbar: true
+        });
     });
 
     $('#button-ShowAll').on('click', function () {
         $('.ui-widget-content').show('fast');
+        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     });
     $('#button-HideAll').on('click', function () {
         $('.ui-widget-content').hide('fast');
+        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
     $('.button-nav').on('click', function () {
         $('.pages').css('display', 'none');
@@ -370,6 +397,10 @@
     $('#button-flushfill').on('click', function () {
         $('#page-flushfill').css('display', 'inline-block');
         $('#header-flushfill').css('display', 'inline');
+        if ($("#fnf-username-input").length == 0 || $("#usmt-username-input").length == 0)
+        {
+           enumUsers()
+        }
     });
     $('#button-dism').on('click', function () {
         $('#page-dism').css('display', 'inline-block');
@@ -378,6 +409,9 @@
     $('#button-usmt').on('click', function () {
         $('#page-usmt').css('display', 'inline-block');
         $('#header-usmt').css('display', 'inline');
+        if ($("#fnf-username-input").length == 0 || $("#usmt-username-input").length == 0) {
+           enumUsers()
+        }
     });
     $('#button-software').on('click', function () {
         $('#page-software-install').css('display', 'inline-block');
@@ -411,14 +445,23 @@
     $('#dism-capture').on('click', function () {
         dismCapture();
     });
+    $('#button-ScanState').on('click', function () {
+        $('.scanState').css('display', 'list-item');
+    });    
+    $('#button-LoadState').on('click', function () {
+        $('.scanState').css('display', 'none');
+    });
+    $('#run-LoadState').on('click', function () {
+        usmtLoadstate()
+    });
     $('#run-usmt').on('click', function () {
-        runUSMT("true");
+        usmtScanstate("true");
     });
     $('#fnf-capture').on('click', function () {
         runFlushFill();
     });
     $("#usmt-drive-input, #usmt-username-input").keyup(function () {
-        runUSMT("false");
+        usmtScanstate("false");
     });
 
     $(".on-load").delay(200).animate({ "opacity": "1" }, 700);

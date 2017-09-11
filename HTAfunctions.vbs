@@ -3,7 +3,7 @@ Set ProgressUI = CreateObject("Microsoft.SMS.TsProgressUI")
 ProgressUI.CloseProgressDialog 
 
 'Set objects and declare global variables
-'Set env = CreateObject("Microsoft.SMS.TSEnvironment")
+Set env = CreateObject("Microsoft.SMS.TSEnvironment")
 Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
 
 '************************************ Ping test subroutines ************************************
@@ -26,6 +26,25 @@ Sub writePing
 		window.clearInterval(iTimerID)
 		pingTestDiv.innerHTML = pingTestDiv.innerHTML & pingShellExec.StdOut.ReadAll() & "<br>"
 	End If
+
+End Sub
+
+'************************************ List local drives ************************************
+Sub listDrives
+	Dim landingPageDiv: Set landingPageDiv = document.getElementById("landing-page-input")
+	landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
+	strComputer = "."
+	Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+	Set colItems = objWMIService.ExecQuery("Select * from Win32_Volume")
+	
+	For Each objItem In colItems
+	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Caption: " & objItem.Caption & "<br>"
+	    landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
+	    landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity) & "<br>"
+	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Type: " & objItem.DriveType & "<br>"
+	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "File System: " & objItem.FileSystem & " | "
+	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Label: " & objItem.Label & "<br><br>"
+	Next
 
 End Sub
 
@@ -99,7 +118,7 @@ Sub ButtonFinishClick
     'MsgBox "Office2016 = " & strOffice2016
     If OSD.Checked OR fnfOSD.Checked Then
         strOSD = "true"
-        MBAM.Checked = "True"
+        MBAM.Checked = "true"
         strCompName = compName.value
         else strOSD = "false"
     End If
@@ -152,19 +171,82 @@ Sub runDISM_TS
 
 End Sub
 
+'************************************ Enumerate users ************************************
+Sub enumUsers
+    Const HKLM = &H80000002
+    Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength
+    'Dim landingPageDiv: Set landingPageDiv = document.getElementById("landing-page-input")
+    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<h2 class='cmdHeading'>User List: </h2>"
+    Dim usmtUserNameDiv: Set usmtUserNameDiv = document.getElementById("usmt-step4")
+    Dim fnfUserNameDiv: Set fnfUserNameDiv = document.getElementById("fnf-step5")
+
+    set objshell = CreateObject("Wscript.shell")
+    strComputer = "."
+    strHivePath = "C:\Windows\System32\Config\SOFTWARE"
+    strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+    
+    objshell.Run "%comspec% /c reg.exe load HKLM\TempSoftware " & strHivePath, 0, true
+    
+    If Err <> 0 Then
+        usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "Could not load HKLM\TempSoftware<br><br>"
+        fnfUserNameDiv.innerHTML = fnfUserNameDiv.innerHTML & "Could not load HKLM\TempSoftware<br><br>"
+        strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+        Err.Clear
+    End If
+
+    Set objReg = GetObject("winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv")
+
+    objReg.EnumKey HKLM, strKeyPath, arrSubKeys
+
+    selectLength = 0
+    For Each subkey In arrSubKeys
+        strSubKeyPath = "HKEY_LOCAL_MACHINE\" & strKeyPath & "\" & subkey & "\ProfileImagePath"
+        profilePath = objshell.regRead(strSubKeyPath)
+        profilePath = Split(profilePath, "\")
+        userName = profilePath(Ubound(profilePath))
+
+        If NOT (strcomp(userName,"systemprofile",0) = 0 OR strcomp(userName,"LocalService",0) = 0 OR strcomp(userName,"NetworkService",0) = 0 _
+            OR strcomp(userName,"defaultuser0",0) = 0 OR strcomp(userName,"sccmpush",0) = 0) Then
+            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "User: <b>" & userName & "</b> ==> SID: <b id=" & userName & ">" & subkey & "</b><br>"
+            'usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "<option value=""all"">I love all sports!</option>"
+            htmlString = htmlString & "<option value=" & subkey & ">" & userName & "</option>"
+            selectLength = selectLength + 1
+        End If
+    Next
+    usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
+    usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "<select id=""usmt-username-input"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
+    fnfUserNameDiv.innerHTML = fnfUserNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
+    fnfUserNameDiv.innerHTML = fnfUserNameDiv.innerHTML & "<select id=""fnf-username-input"" name=""fnfUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
+
+    objshell.Run "%comspec% /c reg.exe unload HKLM\TempSoftware", 0, true
+
+End Sub
+
 '************************************ USMT Scanstate subroutine ************************************
 Sub usmtScanstate(buttonClicked)
-	Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode
+    Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString
+    userArray = Array()
     Set scanStateDiv = document.getElementById("general-output")
     Set WshShell = CreateObject("WScript.Shell")
     strCurrentDir = WshShell.currentDirectory
+
+    For i = 0 to (usmtUsernameList.Options.Length - 1)
+        If (usmtUsernameList.Options(i).Selected) Then
+            ReDim Preserve userArray(UBound(userArray) + 1)
+            userArray(UBound(userArray)) = usmtUsernameList.Options(i).Value
+            userIncludeString = userIncludeString & "/ui:" & usmtUsernameList.Options(i).Value & " "
+        End If
+    Next
+    userArraySize = Ubound(userArray)
+
 	getUser = usmtUsername.Value
 	destDrive = usmtDrive.Value
 
-    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5, 1, True"
+    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 <br> /ue:* " & userIncludeString & ", 1, True"
 
     If buttonClicked = "true" AND getUser <> "" AND destDrive <> "" Then
-        returnCode = WshShell.run(strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:" & strCurrentDir & "\USMT\offline.xml /i:" & strCurrentDir & "\USMT\migdocs.xml /i:" & strCurrentDir & "\USMT\migapp.xml /i:" & strCurrentDir & "\USMT\oopexcludes.xml /progress:" & strCurrentDir & "\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5", 1, True)
+        'returnCode = WshShell.run(strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:" & strCurrentDir & "\USMT\offline.xml /i:" & strCurrentDir & "\USMT\migdocs.xml /i:" & strCurrentDir & "\USMT\migapp.xml /i:" & strCurrentDir & "\USMT\oopexcludes.xml /progress:" & strCurrentDir & "\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
+        returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
 
         If returnCode = 0 Then
             'WshShell.run "%comspec% /c cmtrace.exe " & strCurrentDir & "\prog.log"
@@ -188,9 +270,22 @@ Sub usmtScanstate(buttonClicked)
 
 End Sub
 
-'************************************ Execute DISM script ************************************
+'************************************ Execute Loadstate ************************************
 Sub usmtLoadstate
-    env("envUsmtLoadstate") = "true"
+    Dim ReturnCode, getUser, sourceDrive, strCurrentDir
+    Dim objShell : Set objShell = CreateObject("WScript.Shell")
+    strCurrentDir = objShell.currentDirectory
+    getUser = usmtUsername.Value
+    sourceDrive = usmtDrive.Value
+
+    ReturnCode = objShell.Run ("cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&sourceDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&sourceDrive&":\USMT\"&getUser&"\loadstate.log", 1, True)	
+    Wscript.Quit(ReturnCode)
+
+End Sub
+
+'************************************ Set up Loadstate ************************************
+Sub usmtLoadstate_TS
+    env("envUsmtLoadstate") = "True"
     env("envUsmtSourceDrive") = windowsDrive.Value
     env("envUsmtDestDrive") = usmtDrive.Value
     env("envUsmtUsername") = usmtUsername.Value
@@ -215,11 +310,17 @@ Sub runFlushFill
     'usmtMsgResult = MsgBox ("Run USMT?",vbYesNo+vbInformation, "")
     'If usmtMsgResult = 6 Then
     If scanStateCheckBox.Checked Then
+        For i = 0 to (fnfUsernameList.Options.Length - 1)
+            If (fnfUsernameList.Options(i).Selected) Then
+                usmtUsernameList.Options(i).Selected = True
+            End If
+        Next
         usmtScanstate "true"
     End If
 
     If loadStateCheckBox.Checked Then
-        usmtLoadstate
+        MsgBox("Set Environment variables for USMT Loadstate")
+        usmtLoadstate_TS
     End IF
     'MsgBox "Finish"
     ButtonFinishClick
