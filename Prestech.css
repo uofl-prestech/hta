@@ -1,6 +1,8 @@
 /*ELEMENT STYLES*/
 /* @import url(font path)  */
-
+input:focus {
+    outline: none !important;
+}
 body {
     color: #333;
     height: 768px;
@@ -61,7 +63,7 @@ h4 {
     color: #FFF;
     cursor: default;
 } */
-.pages ul{
+.pages ul {
     font-weight: 400;
     list-style: none;
     margin: 0px;
@@ -74,38 +76,52 @@ p {
 }
 
 /*ID STYLES*/
-.accordion h3{
+.accordion h3 {
     padding: 1em 2.2em;
     margin: 1px;
 }
-.accordion div{
+.accordion div {
     padding: 10px;
+}
+.ui-corner-all {
+    border-radius: 0px;
+}
+.ui-state-default {
+    border: 1px solid rgba(70, 120, 110, 0.6);
+    background: rgba(70, 120, 110, 0.6);
+    font-weight: bold;
+    color: #fafafa;
+}
+.ui-widget-content {
+    background: rgba(85, 85, 85, 0.10);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    color: #CCCCCC;
 }
 #button-osd {
     margin-top: 0;
     padding-top: 0;
 }
-#container{
+#container {
     display: inline-block;
     height: 768px;
     width: 1024px;
-    background: url(images/helmet-grey-blur1.png);
+    background: url(images/helmet-grey-blur2.png);
 }
-#content{
+#content {
     display: inline-block;
     vertical-align: top;
     height: 680px;
 }
-#main{
+#main {
     height: 680px;
     width: 1024px;
     margin-top: 15px;
     color: white;
 }
-.on-load{
+.on-load {
     opacity: 0;
 }
-#header{
+#header {
     height: 60px;
     /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
     width: 1024px;
@@ -118,7 +134,7 @@ p {
     letter-spacing: 3px;
     font-weight: 200;
 }
-#header > h1{
+#header > h1 {
     margin: 0;
 }
 
@@ -137,9 +153,9 @@ p {
 #general-output {
     background: rgba(0, 0, 0, 0.80);
     color: #CCC;
-    border: 3px double #CCC;
+    border: 3px double rgba(70, 120, 110, 0.6);
     width: 355px;
-    height: 540px;
+    height: 550px;
     margin: 5px 0px 0px 5px;
     padding: 10px;
     font-size: 14px;
@@ -150,48 +166,44 @@ p {
 }
 
 /*CLASS STYLES*/
-.button {
+.small-button {
+    padding: 4px 6px;
+    margin: 5px;
+}
+.button, .small-button {
     background-color: darkred;
     border: none;
-    padding: 12px 28px;
     cursor: default;
     color: #CCC;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 20px;
+    font-size: 13px;
+    outline: none;
 }
-.button:hover {
+.button {
+    padding: 10px 20px;
+    margin: 5px;
+}
+.button:hover, .small-button:hover {
     background-color: rgb(149, 23, 23);
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40);
     border: none;
-    padding: 12px 28px;
-    cursor: default;
     color: #FFF;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
 }
-.button:active {
+.button:active, .small-button:active {
     background-color: rgb(126, 23, 23);
     border: none;
-    padding: 12px 28px;
-    cursor: default;
     color: #FFF;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
 }
 .button-nav {
     background-color: rgba(85, 85, 85, 0.10);
     border: 1px solid rgba(80, 80, 80, 0.5);
     color: #CCCCCC;
-    /* background-color: rgba(0, 0, 0, 0.35); */
-    /* border-right: 4px solid rgba(120, 120, 120, 0.25) */
+    outline: none;
 }
 .button-nav:hover, .button-nav:focus {
     background-color: rgba(85, 85, 85, 0.20);
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40);
     color: #FFF;
     cursor: default;
 }
@@ -208,12 +220,13 @@ p {
     background-color: rgba(85, 85, 85, 0.10);
     cursor: default;
     color: #CCCCCC;
+    outline: none;
 }
 .button-exithome:hover {
     background-color: rgba(85, 85, 85, 0.20);
     cursor: default;
     color: #FFF;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40);
 }
 .tools-button-bar {
     background-color: none!important;
@@ -235,7 +248,7 @@ p {
     color: rgba(204, 204, 204, 1);
     background-color: rgba(139,0,0,0.6);
 }
-.drive-input{
+.drive-input {
     text-align: center;
 }
 .icon {
@@ -244,15 +257,15 @@ p {
     width: 75px;
     vertical-align: middle;
 }
-.icon-tools {
+.icon-tools, .icon-only {
     display: inline-block;
     height: 25px;
     width: 25px;
-    margin-right: 5px;
-    /* padding: 3px; */
-    /* background-color: rgba(255, 255, 255, 0.20); */
-    border-radius: 25px;
+    /* border-radius: 25px; */
     vertical-align: middle;
+}
+.icon-tools {
+    margin-right: 5px;
 }
 .input-div {
     border: none;
@@ -262,7 +275,7 @@ p {
     margin-right: 5px;
     overflow: auto;
 }
-.list-osd{
+.list-osd {
     display: list-item;
 }
 .navigation-bar {
@@ -285,20 +298,10 @@ p {
     position: relative;
     display:inline-block;
     vertical-align: top;
+    margin-top: 5px;
     height: 655px;
     width: 360px;
-}
-.smallButton{
-    background-color: darkred;
-    border: none;
-    padding: 4px 6px;
-    cursor: pointer;
-    color: #CCC;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    margin: 5px;
-    float: left;
+    /* overflow: auto; */
 }
 .tpm-error {
     color: darkred;
