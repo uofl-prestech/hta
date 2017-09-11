@@ -164,6 +164,9 @@ p {
     word-wrap: break-word;
     overflow: auto;
 }
+#run-LoadState{
+    display: none;
+}
 
 /*CLASS STYLES*/
 .small-button {

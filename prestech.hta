@@ -70,8 +70,8 @@
                     <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
                     <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
                     <h4 id="header-usmt" class="header-text">
-                        <button class="smallButton usmtStates" id="button-ScanState">Scan</button>
-                        <button class="smallButton usmtStates" id="button-LoadState">Load</button>
+                        <button class="small-button usmtStates" id="button-ScanState">Scan</button>
+                        <button class="small-button usmtStates" id="button-LoadState">Load</button>
                         User State Migration Tool
                     </h4>
                     <h4 id="header-software" class="header-text">Software Installation</h4>
@@ -333,7 +333,7 @@
                             </li>
                         </ul>
                         <div id="usmt-begin">
-                            <button class="button scanState" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
+                            <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
                             <button class="button" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button><br><br>
                         </div>
                     </div>
@@ -476,9 +476,13 @@
     });
     $('#button-ScanState').on('click', function () {
         $('.scanState').css('display', 'list-item');
+        $('#run-usmt').css('display', 'inline-block');
+        $('#run-LoadState').css('display', 'none');
     });    
     $('#button-LoadState').on('click', function () {
         $('.scanState').css('display', 'none');
+        $('#run-LoadState').css('display', 'inline-block');
+        $('#run-usmt').css('display', 'none');
     });
     $('#run-LoadState').on('click', function () {
         usmtLoadstate()
