@@ -50,9 +50,16 @@ End Sub
 
 '************************************ Open new command prompt ************************************
 Sub cmdPrompt
-	Dim cmdShell, cmdShellExec, comspec, strObj
+	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 	cmdShell.Run "cmd /k"
+End Sub
+
+'************************************ Open powershell prompt ************************************
+Sub psPrompt
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+    cmdShell.Run "Powershell.exe -noprofile -noexit -executionpolicy bypass"
 End Sub
 
 '************************************ Open cmtrace64 log viewer ************************************
