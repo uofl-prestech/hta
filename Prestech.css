@@ -87,7 +87,7 @@ p {
     border-radius: 0px;
 }
 .ui-state-default {
-    border: 1px solid rgba(70, 120, 110, 0.6);
+    border: 1px solid rgba(70, 120, 110, 1);
     background: rgba(70, 120, 110, 0.6);
     font-weight: bold;
     color: #fafafa;
@@ -113,9 +113,8 @@ p {
     height: 680px;
 }
 #main {
-    height: 680px;
+    height: 708px;
     width: 1024px;
-    margin-top: 15px;
     color: white;
 }
 .on-load {
@@ -125,14 +124,17 @@ p {
     height: 60px;
     /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
     width: 1024px;
-    border-bottom: 2px solid rgba(122, 122, 122, 0.35);
+    /* border-bottom: 2px solid rgba(255, 0, 0, 0.50); */
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     padding-right: 20px;
-    color: rgba(225, 225, 225, 1);
+    color: rgba(255, 0, 0, 0.75);
     letter-spacing: 3px;
     font-weight: 200;
+}
+#header, #main {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 #header > h1 {
     margin: 0;
@@ -151,12 +153,12 @@ p {
 /* #softwareInput {} */
 
 #general-output {
-    background: rgba(0, 0, 0, 0.80);
+    background: rgba(0, 0, 0, 0.75);
     color: #CCC;
     border: 3px double rgba(70, 120, 110, 0.6);
     width: 355px;
     height: 550px;
-    margin: 5px 0px 0px 5px;
+    margin: 7px 0px 0px 5px;
     padding: 10px;
     font-size: 14px;
     display: inline-block;
@@ -198,19 +200,20 @@ p {
     border: none;
     color: #FFF;
 }
-.button-nav {
+.button-nav, .button-exithome {
     background-color: rgba(85, 85, 85, 0.10);
-    border: 1px solid rgba(80, 80, 80, 0.5);
+    border: 1px solid rgba(70, 120, 110, 0.25);
     color: #CCCCCC;
     outline: none;
 }
-.button-nav:hover, .button-nav:focus {
-    background-color: rgba(85, 85, 85, 0.20);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40);
+.button-nav:hover, .button-nav:focus, .button-exithome:hover {
+    background-color: rgba(70, 120, 110, 0.20);
+    box-shadow: 0px 0px 15px rgba(70, 120, 110, 0.75);
+    border: 1px solid rgba(70, 120, 110, 1);
     color: #FFF;
     cursor: default;
 }
-.button-exithome, .button-exit:hover {
+.button-exithome {
     padding: 15px 36px;
     border: 1px solid rgba(80, 80, 80, 0.5);
     cursor: default;
@@ -220,16 +223,6 @@ p {
 }
 .button-exithome {
     margin: 0px 10px 0px 10px;
-    background-color: rgba(85, 85, 85, 0.10);
-    cursor: default;
-    color: #CCCCCC;
-    outline: none;
-}
-.button-exithome:hover {
-    background-color: rgba(85, 85, 85, 0.20);
-    cursor: default;
-    color: #FFF;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40);
 }
 .tools-button-bar {
     background-color: none!important;
@@ -248,7 +241,7 @@ p {
     font-weight: bold;
     text-align: center;
     padding: 10px 15px;
-    color: rgba(204, 204, 204, 1);
+    color: #CCCCCC;
     background-color: rgba(139,0,0,0.6);
 }
 .drive-input {
@@ -287,6 +280,10 @@ p {
     width: 264px;
     display: inline-block;
     background: rgb(34, 45, 50, 1);
+    margin-top: 15px;
+}
+.navigation-bar, #content {
+    margin-top: 15px;
 }
 .output-div {
     width: 365px;

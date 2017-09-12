@@ -9,8 +9,6 @@
     <script src="./jquery-1.11.1.min.js"></script>
     <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="./jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="script/jquery.mousewheel.js"></script>
-    <script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script> 
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
@@ -25,7 +23,7 @@
 <body>
     <div id="container">
         <div id="header" class="on-load">
-            <h1>// PRESTECH HTA</h1>
+            <h1>PRESTECH HTA</h1>
         </div>
         <div id="main" class="on-load">
             <div class="navigation-bar">
@@ -56,8 +54,8 @@
                     </li>
                 </ul>
                 <div class="">
-                    <button class="button-exithome">Home</button>
-                    <button class="button-exithome" onclick="vbscript:ButtonExitClick()">Exit</button>
+                    <button id="button-home" class="button-exithome button-nav">Home</button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()">Exit</button>
                 </div>
             </div>
 
@@ -456,17 +454,6 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
-    // $(function(){
-    //     $('.scroll-pane').jScrollPane();
-    // });
-
-    // $(function () {
-    //     $("#dismOutput").dialog({ 
-    //         autoOpen: false,
-    //         width: 700,
-    //         height: 500,
-    //         modal: true });
-    // });
     $('#button-bitlocker').on('click', function () {
         BitlockerInfo();
     });
