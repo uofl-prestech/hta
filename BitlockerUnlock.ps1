@@ -3,9 +3,13 @@
 #Decription:
 #Unlock a Bitlocker encrypted drive
 param([string]$blKey, [string]$drive)
-
-Import-Module -Name "$($pwd)\Bitlocker"
+$Error.clear()
+Import-Module -Name "$($pwd)\Bitlocker" -WarningAction silentlyContinue
 
 #$SecureString = ConvertTo-SecureString $blKey -AsPlainText -Force
 
 Unlock-BitLocker -MountPoint "$($drive):" -RecoveryPassword $blKey
+
+Foreach ($Errors in $Error) {
+    $Errors.ToString()
+}

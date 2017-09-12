@@ -1,18 +1,4 @@
 [System.File]
-"%SystemRoot%\Panther\* [*]"
-"%SystemRoot%\Prefetch\* [*]"
-"%SystemRoot%\Tracing\* [*]"
-"%SystemRoot%\System32\wdi\sqm\* [*]"
-"%SystemRoot%\system32\migwiz\dlmanifests\* [*]"
-"%SystemRoot%\syswow64\migwiz\dlmanifests\* [*]"
-"%SystemRoot%\system32\migwiz\ReplacementManifests\* [*]"
-"%SystemRoot%\syswow64\migwiz\ReplacementManifests\* [*]"
-"%SystemDrive%\build\* [*]"
-"%SystemDrive%\InstalledRepository\* [*]"
-"%SystemDrive%\Packages\* [*]"
-"%SystemRoot%\system32\DriverStore\* [*]"
-"%SystemRoot%\system32\SMI\* [*]"
-"%SystemRoot%\servicing\* [*]"
 "%SystemRoot%\inf\nfssvr\$ [dsctrs.ini]"
 "%SystemRoot%\system32\$ [nfsmgmt.msc]"
 "%SystemRoot%\Diagnostics\* [*]"
@@ -360,7 +346,6 @@
 "%CSIDL_PROGRAMS%\accessories\system tools [msdt.lnk]"
 "%CSIDL_PROGRAMS%\accessories\system tools [power.lnk]"
 "%CSIDL_PROGRAMS%\accessories\system tools [show desktop.lnk]"
-"%CSIDL_PROGRAMS%\accessories [command prompt.lnk]"
 "%CSIDL_PROGRAMS%\accessories [desktop.ini]"
 "%CSIDL_PROGRAMS%\accessories [help.lnk]"
 "%CSIDL_PROGRAMS%\accessories [notepad.lnk]"
@@ -372,3 +357,4 @@
 "%CSIDL_PROGRAMS% [turn uap settings on or off.lnk]"
 
 [User.Registry]
+"HKCU\Software\Microsoft\Windows\CurrentVersion\Run [Windows Media Center]"

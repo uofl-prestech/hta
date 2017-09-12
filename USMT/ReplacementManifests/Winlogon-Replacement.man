@@ -14,7 +14,7 @@
   <configuration
       xmlns:asmv2="urn:schemas-microsoft-com:asm.v3"
       xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
-      buildFilter="not build.arch = wow64"
+      buildFilter="not build.isWow"
       >
     <configurationSchema>
       <xsd:schema
@@ -172,6 +172,9 @@
             <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [cachedlogonscount]</pattern>
             <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [USERINIT]</pattern>
             <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [Shell]</pattern>
+            <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [ARSOUserConsent]</pattern>
+            <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [TBALIgnorePolicyTestHook]</pattern>
+            <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [ForceAutoLockOnLogon]</pattern>
           </objectSet>
         </include>
         <rules context="System">
@@ -202,6 +205,9 @@
             <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [DisableCad]</pattern>
             <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [cachedlogonscount]</pattern>
             <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [Shell]</pattern>
+            <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [ARSOUserConsent]</pattern>
+            <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [TBALIgnorePolicyTestHook]</pattern>
+            <pattern type="Registry">HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon [ForceAutoLockOnLogon]</pattern>
           </objectSet>
         </merge>
       </rules>

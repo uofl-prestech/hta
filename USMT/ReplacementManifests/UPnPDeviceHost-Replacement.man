@@ -10,6 +10,7 @@
       language="neutral"
       name="Microsoft-Windows-UPnPDeviceHost"
       processorArchitecture="*"
+      product="$(build.product)"
       publicKeyToken="$(Build.WindowsPublicKeyToken)"
       version="0.0.0.0"
       versionScope="nonSxS"

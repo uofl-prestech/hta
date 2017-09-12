@@ -26,13 +26,14 @@ else
 		# Start the new process
 		$startInfo = New-Object System.Diagnostics.ProcessStartInfo
     	$startInfo.FileName = "powershell.exe"
-    	$startInfo.Arguments = "-executionpolicy bypass -file $($myInvocation.MyCommand.Definition) -directory $($PWD)"
+		$startInfo.Arguments = "-executionpolicy bypass -file $($myInvocation.MyCommand.Definition) -directory $($PWD)"
     	$startInfo.Verb = "Runas"
-		
+
 		$process = New-Object System.Diagnostics.Process
 		$process.StartInfo = $startInfo
 		$process.Start()
 		$process.WaitForExit()
+
     	#$User2 = Read-Host -Prompt "Input the user name $($PWD)"
 		# Exit from the current, unelevated, process
 		#$driveTable = Get-Content bitlockerinfo.html

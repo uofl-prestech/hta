@@ -14,10 +14,9 @@
       versionScope="nonSxS"
       />
   <migration scope="Upgrade,MigWiz,USMT"
-      replacementVersionRange="6.0-6.1.6936.0"
+      replacementVersionRange="6.0-10.0.14352"
       replacementSettingsVersionRange="0"
       settingsVersion="0"
-      alwaysProcess="6.0-6.1.6936.0"
       >
     <machineSpecific>
       <migXml xmlns="">

@@ -22,10 +22,6 @@
     <machineSpecific>
       <migXml xmlns="">
         <!-- Migrate system Locale data -->
-        <plugin
-            classId="{36af497c-c440-4282-a59e-02ed63498b7c}"
-            file="microsoft-international-core\nlscoremig.dll"
-            />
         <rules context="System">
           <include>
             <objectSet>
@@ -62,10 +58,6 @@
     </machineSpecific>
     <migXml xmlns="">
       <!-- Migrate system data -->
-      <plugin
-          classId="{36af497c-c440-4282-a59e-02ed63498b7c}"
-          file="microsoft-international-core\nlscoremig.dll"
-          />
       <rules context="System">
         <include>
           <objectSet>
@@ -164,10 +156,6 @@
         <machineSpecific>
           <migXml xmlns="">
             <!-- Migrate system Locale data -->
-            <plugin
-                classId="{36af497c-c440-4282-a59e-02ed63498b7c}"
-                file="microsoft-international-core\nlscoremig.dll"
-                />
             <rules context="System">
               <merge script="MigXmlHelper.SourcePriority()">
                 <objectSet>
@@ -189,10 +177,6 @@
         </machineSpecific>
         <migXml xmlns="">
           <!-- Migrate system data -->
-          <plugin
-              classId="{36af497c-c440-4282-a59e-02ed63498b7c}"
-              file="microsoft-international-core\nlscoremig.dll"
-              />
           <rules context="System">
             <merge script="MigXmlHelper.SourcePriority()">
               <objectSet>

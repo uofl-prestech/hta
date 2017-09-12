@@ -1,4 +1,6 @@
 Sub TPMCheck
+	htaLog.WriteLine(Now & " ***** Begin Sub TPMCheck *****")
+
 	Dim bIsEnabled, bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning
 	bIsEnabled = "False"
 	bIsActivated = "False"
@@ -15,6 +17,8 @@ Sub TPMCheck
 	strConnectionStr1 = "winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm" 
 	Err.clear
 
+	htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)""")
+
 	Set objWMITPM = GetObject(strConnectionStr1) 
 	If Err.Number <> 0 Then
 		strStatusState = "Not Found"
@@ -28,6 +32,7 @@ Sub TPMCheck
 	Err.Clear
 
 	If strStatusState = "Not Found" Then
+		htaLog.WriteLine(Now & " || Error: " & Err.Number & ". " & Err.Description & ". TPM Not Found")
 		outputDiv.innerHTML = strStatusMessage
 		outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
 	else
@@ -38,18 +43,21 @@ Sub TPMCheck
 
 		If nRC <> 0 OR bIsEnabled = "False" Then
 			strStatusState = "ERROR"
+			htaLog.WriteLine(Now & " || TPM not enabled")
 			bIsEnabled = "<span class=""tpmError"">False</span>"
 		End If 
 
 		nRC = objTpm.IsActivated(bIsActivated)
 		If nRC <> 0 OR bIsActivated = "False" Then
 			strStatusState = "ERROR"
+			htaLog.WriteLine(Now & " || TPM not activated")
 			bIsActivated = "<span class=""tpmError"">False</span>"
 		End If 
 
 		nRC = objTpm.IsOwned(bIsOwned)
 		If nRC <> 0 OR bIsOwned = "False" Then
 			strStatusState = "ERROR"
+			htaLog.WriteLine(Now & " || TPM not owned")
 			bIsOwned = "<span class=""tpmError"">False</span>"
 		End If
 
@@ -61,21 +69,30 @@ Sub TPMCheck
 		If strStatusState = "ERROR" Then
 			outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
 		else
+			htaLog.WriteLine(Now & " || TPM is enabled and activated")
 			outputDiv.innerHTML = outputDiv.innerHTML & "<h2>TPM Enabled and Activated</h2>"
 		End If
 	End If
+
+	htaLog.WriteLine(Now & " ***** End Sub TPMCheck *****")
 
 End Sub
 
 '************************************ Bitlocker Info subroutine ************************************
 Sub BitlockerInfo
+	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerInfo *****")
+
 	Const ForReading = 1
 	Const TriStateTrue = -1	'Open file as Unicode
 	Dim cmdShell
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
+	Set cmdShell = CreateObject("WScript.Shell")
+	
+	htaLog.WriteLine(Now & " || Executing command: cmdShell.Run ""powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1"", 1, true")
 
-    Set cmdShell = CreateObject("WScript.Shell")
 	cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+
+	htaLog.WriteLine(Now & " || Creating bitlockerinfo.txt file at " & strLogDir)
 
 	Set fso = CreateObject("Scripting.FileSystemObject")
 	fileName = "bitlockerinfo.txt"
@@ -85,13 +102,21 @@ Sub BitlockerInfo
 	   strRead = strRead & textLine & vbCrLf
 	Loop
 	myFile.Close
+	htaLog.WriteLine(Now & " || Bitlocker info:")
+	htaLog.WriteLine(strRead)
 	driveDiv.innerHTML = "<H2>Bitlocker Info</H2><div>" & strRead & "</div><br>"
+
+	htaLog.WriteLine(Now & " ***** End Sub BitlockerInfo *****")
+
 End Sub
 
 '************************************ Unlock Bitlocker Drive subroutine ************************************
 Sub BitlockerUnlock
-	Dim cmdShell, key, drive
+	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerUnlock *****")
+	htaLog.WriteLine(Now & " || blKey.Value = " & blKey.Value & ", usmtBlKey.Value = " & usmtBlKey.Value & ", fnfBlKey.Value = " & fnfBlKey.Value)
 
+	Dim cmdShell, key, drive, blOutput
+	
 	If blKey.Value <> "" Then
 		key = blKey.Value
 	ElseIf usmtBlKey.Value <> "" Then
@@ -101,6 +126,8 @@ Sub BitlockerUnlock
 	Else
 		Exit Sub
 	End If
+
+	htaLog.WriteLine(Now & " || windowsDrive.Value = " & windowsDrive.Value & ", usmtWindowsDrive.Value = " & usmtWindowsDrive.Value & ", fnfWindowsDrive.Value = " & fnfWindowsDrive.Value)
 
 	If windowsDrive.Value <> "" Then
 		drive = windowsDrive.Value
@@ -112,10 +139,20 @@ Sub BitlockerUnlock
 		Exit Sub
 	End If
 
+	htaLog.WriteLine(Now & " || Bitlocker Key = " & key & ", Windows Drive = " & drive)
+
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
-	'MsgBox("Bitlocker Key = " & key & vbCrLf & "Windows Drive = " & drive)
 	Set cmdShell = CreateObject("Wscript.Shell")
+
+	htaLog.WriteLine(Now & " || Executing command: cmdShell.Exec(""Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File ./BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34) & ")")
+
 	Set outData = cmdShell.Exec("Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File ./BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34))
 	outData.StdIn.Close
-	driveDiv.innerHTML = "<div>" & outData.StdOut.ReadAll & "</div><br>" 
+
+	blOutput = outData.StdOut.ReadAll
+	htaLog.WriteLine(Now & " || " & blOutput)
+	driveDiv.innerHTML = "<div>" & blOutput & "</div><br>"
+
+	htaLog.WriteLine(Now & " ***** End Sub BitlockerUnlock *****")
+
 End Sub

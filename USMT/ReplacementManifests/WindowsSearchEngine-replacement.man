@@ -17,7 +17,7 @@
   <migration
       alwaysProcess="yes"
       replacementSettingsVersionRange="0"
-      replacementVersionRange="6.0.0-6.3.*"
+      replacementVersionRange="6.0-10.0"
       scope="Upgrade,MigWiz,USMT,Data"
       settingsVersion="0"
       >
@@ -66,6 +66,11 @@
     <machineSpecific>
       <migXml xmlns="">
         <rules context="System">
+          <detects>
+            <detect>
+              <condition>MigXmlHelper.IsUpgrade()</condition>
+            </detect>
+          </detects>
           <include>
             <objectSet>
               <pattern type="Registry">HKLM\Software\Microsoft\Windows Search [IndexerCatalogVersion]</pattern>
