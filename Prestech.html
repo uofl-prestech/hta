@@ -15,7 +15,7 @@
         window.resizeTo 1024,768 window.moveTo 400, 200
     </script>
     <link rel="stylesheet" href="Prestech.css">
-    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
+    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="yes"
         windowstate="normal"></hta:application>
 </head>
 
@@ -80,42 +80,9 @@
                 </div>
 
                 <!--OSD Page-->
-                <div id="page-osd" class="pages">
-                    <div id="osd-input" class="input-div">
-                        <ul class="accordion ui-accordion">
-                            <li class="osd-steps">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
-                                </h3>
-                                <div id="osd-step1" class="ui-widget-content"><input type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
-                            </li>
-                            <li class="osd-steps">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer
-                                    Name
-                                </h3>
-                                <div id="osd-step2" class="ui-widget-content"> Computer Name: &nbsp&nbsp <input type="text" id="osdCompName" name="compName"> <br></div>
-                            </li>
-                            <li class="osd-steps">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software
-                                    to Install
-                                </h3>
-                                <div id="osd-step3" class="ui-widget-content">
-                                    <input type="checkbox" id="osdAdobeReaderDC" class="software-osd" name="OSDAdobeReaderDC">Adobe
-                                    Reader DC<br>
-                                    <input type="checkbox" id="osdAdobeAcrobatProXI" class="software-osd" name="OSDAdobeAcrobatProXI">Adobe
-                                    Acrobat Pro XI<br>
-                                    <input type="checkbox" id="osdChrome" class="software-osd" name="OSDChrome">Chrome 58<br>
-                                    <input type="checkbox" id="osdFileMaker" class="software-osd" name="OSDFileMaker">FileMaker
-                                    Pro 16<br>
-                                    <input type="checkbox" id="osdOffice2016" class="software-osd" name="OSDOffice2016">Office
-                                    2016 (32 Bit)<br>
-                                </div>
-                            </li>
-                            <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
-                        </ul>
-                    </div>
+                <div id="page-osd" class="pages input-div">
+                    <ul id="ul-osd" class="accordion ui-accordion"></ul>
+                    <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                 </div>
 
                 <!-- Flush and Fill Page -->
@@ -124,8 +91,7 @@
                         <ul class="accordion ui-accordion">
                             <li class="fnf-steps">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill
-                                    Options
-                                </h3>
+                                    Options</h3>
                                 <div id="fnf-step1" class="ui-widget-content">
                                     <input type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)? <br>
                                     <input type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)? <br>
@@ -159,7 +125,7 @@
                                     Recovery Key to unlock Bitlocker
                                 </h3>
                                 <div id="fnf-step4" class="ui-widget-content">
-                                    <input name="fnfBlKey" type="Text" maxlength="100" size="35" value="">
+                                    <input name="fnfBlKey" type="Text" maxlength="100" size="35" value="560692-256773-600336-665643-616429-091344-471416-281105">
                                     <button class="button button-bl-unlock" id="fnf-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
                                 </div>
                             </li>
@@ -356,12 +322,13 @@
                                     to Install
                                 </h3>
                                 <div class="ui-widget-content">
-                                    <input type="checkbox" class="software-osd" name="OSDAdobeReaderDC">Adobe Reader DC<br>
-                                    <input type="checkbox" class="software-osd" name="OSDAdobeAcrobatProXI">Adobe Acrobat
-                                    Pro XI<br>
-                                    <input type="checkbox" class="software-osd" name="OSDChrome">Chrome 58<br>
-                                    <input type="checkbox" class="software-osd" name="OSDFileMaker">FileMaker Pro 16<br>
-                                    <input type="checkbox" class="software-osd" name="OSDOffice2016">Office 2016 (32 Bit)<br>
+                                    <input type="checkbox" class="software-osd" name="AdobeReaderDC">Adobe Reader DC<br>
+                                    <input type="checkbox" class="software-osd" name="AdobeAcrobatProXI">Adobe Acrobat Pro
+                                    XI<br>
+                                    <input type="checkbox" class="software-osd" name="Chrome">Chrome 58<br>
+                                    <input type="checkbox" class="software-osd" name="FileMaker">FileMaker Pro 16<br>
+                                    <input type="checkbox" class="software-osd" name="Office2016">Office 2016 (32 Bit)<br>
+                                    <input type="checkbox" class="software-osd" name="MBAM">MBAM Client (Bitlocker) <br>
                                 </div>
                             </li>
                         </ul>
@@ -388,6 +355,44 @@
         </div>
         <!--    End container    -->
     </div>
+
+    <!--    OSD Options    -->
+    <template id="temp-osd-options">
+        <li id="li-osd-options" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
+            </h3>
+            <div id="div-format-drive" class="ui-widget-content"><input type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
+        </li>
+    </template>
+
+    <!--    Computer Name    -->
+    <template id="temp-computer-name">
+        <li id="li-computer-name" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
+            </h3>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp&nbsp <input type="text" name="compName"> <br></div>
+        </li>
+    </template>
+
+    <!--    Software Install    -->
+    <template id="temp-software-install">
+        <li id="li-software-install" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
+            </h3>
+            <div id="div-software-install" class="ui-widget-content">
+                <input type="checkbox" id="AdobeReaderDC" class="software-install" name="AdobeReaderDC">Adobe Reader DC<br>
+                <input type="checkbox" id="AdobeAcrobatProXI" class="software-install" name="AdobeAcrobatProXI">Adobe Acrobat
+                Pro XI<br>
+                <input type="checkbox" id="Chrome" class="software-install" name="Chrome">Chrome 58<br>
+                <input type="checkbox" id="FileMaker" class="software-install" name="FileMaker">FileMaker Pro 16<br>
+                <input type="checkbox" id="Office2016" class="software-install" name="Office2016">Office 2016 (32 Bit)<br>
+            </div>
+        </li>
+    </template>
+
 </body>
 
 <script language="JavaScript">
@@ -403,7 +408,7 @@
             return false;
         }).next().hide();
 
-        listDrives()
+        //listDrives()
         $(".input-div").mCustomScrollbar({
             theme: "minimal",
             autoHideScrollbar: true
@@ -433,6 +438,24 @@
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
         // TPMCheck();
+
+        if ($("#ul-osd > #li-osd-options").length == 0)
+        {
+            var template = $("#temp-osd-options").html();
+            template += $("#temp-computer-name").html();
+            template += $("#temp-software-install").html();
+            $("#ul-osd").append(template);
+            $('.accordion h3').click(function () {
+                $(this).next().toggle('fast');
+                $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
+                return false;
+            }).next().hide();
+        }
+        else
+        {
+            //$("#ul-osd").empty();
+        }
+
     });
     $('#button-flushfill').on('click', function () {
         $('#page-flushfill').css('display', 'inline-block');

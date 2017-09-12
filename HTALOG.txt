@@ -1,0 +1,138 @@
+
+====================== Begin Logging at 9/12/2017 3:46:40 PM ======================
+9/12/2017 3:46:40 PM ***** Begin Sub listDrives *****
+9/12/2017 3:46:40 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+
+====================== Begin Logging at 9/12/2017 3:49:10 PM ======================
+9/12/2017 3:49:10 PM ***** Begin Sub listDrives *****
+9/12/2017 3:49:10 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 3:49:15 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/12/2017 3:49:15 PM || Win32_EncryptableVolume instance
+9/12/2017 3:49:15 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+ || Encrypted
+9/12/2017 3:49:15 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 3:49:15 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 3:49:15 PM || "Drive Letter: C: | Capacity: 231.1 GB | Encryption Status: 
+9/12/2017 3:49:15 PM || "Drive Letter:  | Capacity: 300 MB | Encryption Status: 
+9/12/2017 3:49:15 PM || "Drive Letter:  | Capacity: 870 MB | Encryption Status: 
+9/12/2017 3:49:15 PM || "Drive Letter: A: | Capacity: 931.5 GB | Encryption Status: 
+9/12/2017 3:49:15 PM || "Drive Letter: D: | Capacity:  Bytes | Encryption Status: 
+9/12/2017 3:49:15 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/12/2017 3:52:27 PM ======================
+9/12/2017 3:52:27 PM ***** Begin Sub listDrives *****
+9/12/2017 3:52:27 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 3:52:32 PM || Error. Must run as Administrator to check encryption status
+9/12/2017 3:52:32 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/12/2017 3:52:32 PM || Win32_EncryptableVolume instance
+9/12/2017 3:52:32 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+ || Encrypted
+9/12/2017 3:52:32 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 3:52:32 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 3:52:32 PM || "Drive Letter: C: | Capacity: 231.1 GB | Encryption Status: 
+9/12/2017 3:52:32 PM || "Drive Letter:  | Capacity: 300 MB | Encryption Status: 
+9/12/2017 3:52:32 PM || "Drive Letter:  | Capacity: 870 MB | Encryption Status: 
+9/12/2017 3:52:32 PM || "Drive Letter: A: | Capacity: 931.5 GB | Encryption Status: 
+9/12/2017 3:52:32 PM || "Drive Letter: D: | Capacity:  Bytes | Encryption Status: 
+9/12/2017 3:52:32 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/12/2017 3:54:02 PM ======================
+9/12/2017 3:54:02 PM ***** Begin Sub listDrives *****
+9/12/2017 3:54:02 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 3:54:07 PM || Error. Must run as Administrator to check encryption status
+9/12/2017 3:54:07 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 3:54:07 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 3:54:08 PM || "Drive Letter: C: | Capacity: 231.1 GB | 9/12/2017 3:54:08 PM || "Drive Letter:  | Capacity: 300 MB | 9/12/2017 3:54:08 PM || "Drive Letter:  | Capacity: 870 MB | 9/12/2017 3:54:08 PM || "Drive Letter: A: | Capacity: 931.5 GB | 9/12/2017 3:54:08 PM || "Drive Letter: D: | Capacity:  Bytes | 9/12/2017 3:54:08 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/12/2017 3:58:58 PM ======================
+9/12/2017 3:58:58 PM ***** Begin Sub listDrives *****
+9/12/2017 3:58:58 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 3:59:03 PM || Error. Must run as Administrator to check encryption status
+9/12/2017 3:59:03 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 3:59:03 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 3:59:03 PM || "Drive Letter: C: | Capacity: 231.1 GB9/12/2017 3:59:03 PM || "Drive Letter:  | Capacity: 300 MB9/12/2017 3:59:03 PM || "Drive Letter:  | Capacity: 870 MB9/12/2017 3:59:03 PM || "Drive Letter: A: | Capacity: 931.5 GB9/12/2017 3:59:03 PM || "Drive Letter: D: | Capacity:  Bytes9/12/2017 3:59:03 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/12/2017 3:59:22 PM ======================
+9/12/2017 3:59:22 PM ***** Begin Sub listDrives *****
+9/12/2017 3:59:22 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 3:59:27 PM || Error. Must run as Administrator to check encryption status
+9/12/2017 3:59:27 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 3:59:27 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 3:59:27 PM || "Drive Letter: C: | Capacity: 231.1 GB9/12/2017 3:59:27 PM || "Drive Letter:  | Capacity: 300 MB9/12/2017 3:59:27 PM || "Drive Letter:  | Capacity: 870 MB9/12/2017 3:59:27 PM || "Drive Letter: A: | Capacity: 931.5 GB9/12/2017 3:59:27 PM || "Drive Letter: D: | Capacity:  Bytes9/12/2017 3:59:27 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/12/2017 4:11:25 PM ======================
+9/12/2017 4:11:25 PM ***** Begin Sub listDrives *****
+9/12/2017 4:11:25 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 4:11:30 PM || Error. Must run as Administrator to check encryption status
+9/12/2017 4:11:30 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 4:11:30 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 4:11:31 PM || "Drive Letter: C: | Capacity: 231.1 GB9/12/2017 4:11:31 PM || "Drive Letter:  | Capacity: 300 MB9/12/2017 4:11:31 PM || "Drive Letter:  | Capacity: 870 MB9/12/2017 4:11:31 PM || "Drive Letter: A: | Capacity: 931.5 GB9/12/2017 4:11:31 PM || "Drive Letter: D: | Capacity:  Bytes9/12/2017 4:11:31 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/12/2017 4:23:41 PM ======================
+9/12/2017 4:23:41 PM ***** Begin Sub listDrives *****
+9/12/2017 4:23:41 PM || Executing command: GetObject("winmgmts:\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/12/2017 4:23:46 PM || Error. Must run as Administrator to check encryption status
+9/12/2017 4:23:46 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/12/2017 4:23:46 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/12/2017 4:23:46 PM || "Drive Letter: C: | Capacity: 231.1 GB9/12/2017 4:23:46 PM || "Drive Letter:  | Capacity: 300 MB9/12/2017 4:23:46 PM || "Drive Letter:  | Capacity: 870 MB9/12/2017 4:23:46 PM || "Drive Letter: A: | Capacity: 931.5 GB9/12/2017 4:23:46 PM || "Drive Letter: D: | Capacity:  Bytes9/12/2017 4:23:46 PM ***** End Sub listDrives *****
+9/12/2017 4:23:51 PM ***** Begin Sub enumUsers *****
+9/12/2017 4:23:51 PM || strComputer = "."
+9/12/2017 4:23:51 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/12/2017 4:23:51 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/12/2017 4:23:51 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/12/2017 4:23:51 PM || Error Number: -2147024894
+9/12/2017 4:23:51 PM || Error Description: Invalid root in registry key "HKEY_LOCAL_MACHINE\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList".
+9/12/2017 4:23:51 PM || Could not load HKLM\TempSoftware
+9/12/2017 4:23:51 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/12/2017 4:23:51 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/12/2017 4:23:51 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/12/2017 4:23:51 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/12/2017 4:23:51 PM || userName = systemprofile
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/12/2017 4:23:51 PM || userName = LocalService
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/12/2017 4:23:51 PM || userName = NetworkService
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = C:\Users\defaultuser0
+9/12/2017 4:23:51 PM || userName = defaultuser0
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = C:\Users\sccmpush
+9/12/2017 4:23:51 PM || userName = sccmpush
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = C:\Users\t1rcm01
+9/12/2017 4:23:51 PM || userName = t1rcm01
+9/12/2017 4:23:51 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/12/2017 4:23:51 PM || profilePath = C:\Users\rcmcda01
+9/12/2017 4:23:51 PM || userName = rcmcda01
+9/12/2017 4:23:51 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/12/2017 4:23:51 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/12/2017 4:25:21 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:25:48 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:27:12 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:27:33 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:35:07 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:36:37 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:39:39 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:39:59 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:42:32 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:45:23 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:45:52 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:46:26 PM ======================
+
+====================== Begin Logging at 9/12/2017 4:56:12 PM ======================
