@@ -54,7 +54,7 @@ End Sub
 Sub listDrives
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
     Dim strComputer, objWMIService, colItems, drivesHashTable, admin
-	Dim landingPageDiv: Set landingPageDiv = document.getElementById("landing-page-input")
+	Dim landingPageDiv: Set landingPageDiv = document.getElementById("page-landing")
 	landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
     strComputer = "."
     
@@ -193,69 +193,55 @@ Sub ButtonFinishClick
     htaLog.WriteLine(Now & " ***** Begin Sub ButtonFinishClick *****")
 
     ' Set value of variable to true/false based on whether the checkbox is selected or not
-    'Set env = CreateObject("Microsoft.SMS.TSEnvironment")
-    'MsgBox "Begin Finish Subroutine"
     htaLog.WriteLine(Now & " || Adobe Reader DC checked?")
     htaLog.Write(Now & " || AdobeReaderDC.Checked = " & AdobeReaderDC.Checked)
-    htaLog.Write(" || OSDAdobeReaderDC.Checked = " & OSDAdobeReaderDC.Checked)
-    htaLog.Write(" || fnfAdobeReaderDC.Checked = " & fnfAdobeReaderDC.Checked & vbCrLf)
 
-    If AdobeReaderDC.Checked OR OSDAdobeReaderDC.Checked OR fnfAdobeReaderDC.Checked Then
+    If AdobeReaderDC.Checked Then
         strAdobeReaderDC = "true"
         else strAdobeReaderDC = "false"
     End If
-    'MsgBox "AdobeReaderDC = " & strAdobeReaderDC
 
     htaLog.WriteLine(Now & " || Adobe Acrobat Pro XI checked?")
     htaLog.Write(Now & " || AdobeAcrobatProXI.Checked = " & AdobeAcrobatProXI.Checked)
-    htaLog.Write(" || OSDAdobeAcrobatProXI.Checked = " & OSDAdobeAcrobatProXI.Checked)
-    htaLog.Write(" || fnfAdobeAcrobatProXI.Checked = " & fnfAdobeAcrobatProXI.Checked & vbCrLf)
-	If AdobeAcrobatProXI.Checked OR OSDAdobeAcrobatProXI.Checked OR fnfAdobeAcrobatProXI.Checked Then
+
+	If AdobeAcrobatProXI.Checked Then
 		strAdobeAcrobatProXI = "true"
 		else strAdobeAcrobatProXI="false"
 	End If		
-   'MsgBox "AdobeAcrobatProXI = " & strAdobeAcrobatProXI
 
     htaLog.WriteLine(Now & " || Chrome checked?")
     htaLog.Write(Now & " || Chrome.Checked = " & Chrome.Checked)
-    htaLog.Write(" || OSDChrome.Checked = " & OSDChrome.Checked)
-    htaLog.Write(" || fnfChrome.Checked = " & fnfChrome.Checked & vbCrLf)
-    If Chrome.Checked OR OSDChrome.Checked OR fnfChrome.Checked Then
+
+    If Chrome.Checked Then
         strChrome = "true"
         else strChrome = "false"
     End If
-    'MsgBox "Chrome = " & strChrome
 
     htaLog.WriteLine(Now & " || FileMaker checked?")
     htaLog.Write(Now & " || FileMaker.Checked = " & FileMaker.Checked)
-    htaLog.Write(" || OSDFileMaker.Checked = " & OSDFileMaker.Checked)
-    htaLog.Write(" || fnfFileMaker.Checked = " & fnfFileMaker.Checked & vbCrLf)
-	If FileMaker.Checked OR OSDFileMaker.Checked OR fnfFileMaker.Checked Then
+
+	If FileMaker.Checked Then
         strFileMaker = "true"
         else strFileMaker = "false"
     End If
-    'MsgBox "FileMaker = " & strFileMaker
 
     htaLog.WriteLine(Now & " || Office2016 checked?")
     htaLog.Write(Now & " || Office2016.Checked = " & Office2016.Checked)
-    htaLog.Write(" || OSDOffice2016.Checked = " & OSDOffice2016.Checked)
-    htaLog.Write(" || fnfOffice2016.Checked = " & fnfOffice2016.Checked & vbCrLf)
-    If Office2016.Checked OR OSDOffice2016.Checked OR fnfOffice2016.Checked Then
+
+    If Office2016.Checked Then
         strOffice2016 = "true"
         else strOffice2016 = "false"
     End If
-    'MsgBox "Office2016 = " & strOffice2016
 
     htaLog.WriteLine(Now & " || OSD checked?")
     htaLog.Write(Now & " || OSD.Checked = " & OSD.Checked)
-    htaLog.Write(" || fnfOSD.Checked = " & fnfOSD.Checked & vbCrLf)
-    If OSD.Checked OR fnfOSD.Checked Then
+
+    If OSD.Checked OR fnfOsdCheckBox.Checked Then
         strOSD = "true"
         MBAM.Checked = "true"
         strCompName = compName.value
         else strOSD = "false"
     End If
-    'MsgBox "OSD = " & strOSD & vbCrLf & "MBAM = " & strMBAM & vbCrLf & "CompName = " & strCompName
 
     htaLog.WriteLine(Now & " || MBAM checked?")
     htaLog.WriteLine(Now & " || MBAM.Checked = " & MBAM.Checked)
@@ -296,8 +282,8 @@ Sub dismCapture
 	Dim dismShell, strName, destPath, sourcePath, returnCode
 	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
     strSourcePath = windowsDrive.value
-    strDestPath = dismDrive.value
-    strName = dismUsername.value
+    strDestPath = externalDrive.value
+    strName = primaryUsername.value
     Set dismShell = CreateObject("WScript.Shell")
     
     htaLog.WriteLine(Now & " || strSourcePath = " & strSourcePath)
@@ -326,16 +312,16 @@ Sub runDISM_TS
     htaLog.WriteLine(Now & " || Setting Environment Variables")
 
     env("envDismSelected") = "true"
-    env("dismSourceDrive") = windowsDrive.value
-    env("bitlockerKey") = blKey.value
-    env("dismDestDrive") = dismDrive.value
-    env("dismUsername") = dismUsername.value
+    env("envWindowsDrive") = windowsDrive.value
+    env("envBitlockerKey") = blKey.value
+    env("envExternalDrive") = externalDrive.value
+    env("envPrimaryUsername") = primaryUsername.value
 
     htaLog.WriteLine(Now & " || env(""envDismSelected"") = " & env("envDismSelected"))
-    htaLog.WriteLine(Now & " || env(""dismSourceDrive"") = " & env("dismSourceDrive"))
-    htaLog.WriteLine(Now & " || env(""bitlockerKey"") = " & env("bitlockerKey"))
-    htaLog.WriteLine(Now & " || env(""dismDestDrive"") = " & env("dismDestDrive"))
-    htaLog.WriteLine(Now & " || env(""dismUserName"") = " & env("dismUserName"))
+    htaLog.WriteLine(Now & " || env(""envWindowsDrive"") = " & env("envWindowsDrive"))
+    htaLog.WriteLine(Now & " || env(""envBitlockerKey"") = " & env("envBitlockerKey"))
+    htaLog.WriteLine(Now & " || env(""envExternalDrive"") = " & env("envExternalDrive"))
+    htaLog.WriteLine(Now & " || env(""envPrimaryUsername"") = " & env("envPrimaryUsername"))
 
     htaLog.WriteLine(Now & " ***** End Sub runDISM_TS *****")
 
@@ -348,13 +334,13 @@ Sub enumUsers
     htaLog.WriteLine(Now & " ***** Begin Sub enumUsers *****")
 
     Const HKLM = &H80000002
-    Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength
-    'Dim landingPageDiv: Set landingPageDiv = document.getElementById("landing-page-input")
+    Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength, strSourcePath
+    'Dim landingPageDiv: Set landingPageDiv = document.getElementById("page-landing")
     'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<h2 class='cmdHeading'>User List: </h2>"
-    Dim usmtUserNameDiv: Set usmtUserNameDiv = document.getElementById("usmt-step4")
-    Dim fnfUserNameDiv: Set fnfUserNameDiv = document.getElementById("fnf-step5")
+    Dim userNameDiv: Set userNameDiv = document.getElementById("div-select-users")
     set objshell = CreateObject("Wscript.shell")
     strComputer = "."
+    'strSourcePath = windowsDrive.value
     strHivePath = "C:\Windows\System32\Config\SOFTWARE"
     strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
 
@@ -374,8 +360,7 @@ Sub enumUsers
         htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
         htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
         htaLog.WriteLine(Now & " || Could not load HKLM\TempSoftware")
-        usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "Could not load HKLM\TempSoftware<br><br>"
-        fnfUserNameDiv.innerHTML = fnfUserNameDiv.innerHTML & "Could not load HKLM\TempSoftware<br><br>"
+        userNameDiv.innerHTML = userNameDiv.innerHTML & "Could not load HKLM\TempSoftware<br><br>"
         strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
 
         htaLog.WriteLine(Now & " || strKeyPath = ""Software\Microsoft\Windows NT\CurrentVersion\ProfileList""")
@@ -408,17 +393,13 @@ Sub enumUsers
 
         If NOT (strcomp(userName,"systemprofile",0) = 0 OR strcomp(userName,"LocalService",0) = 0 OR strcomp(userName,"NetworkService",0) = 0 _
             OR strcomp(userName,"defaultuser0",0) = 0 OR strcomp(userName,"sccmpush",0) = 0) Then
-            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "User: <b>" & userName & "</b> ==> SID: <b id=" & userName & ">" & subkey & "</b><br>"
-            'usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "<option value=""all"">I love all sports!</option>"
             htmlString = htmlString & "<option value=" & subkey & ">" & userName & "</option>"
             selectLength = selectLength + 1
         End If
     Next
-    usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
-    usmtUserNameDiv.innerHTML = usmtUserNameDiv.innerHTML & "<select id=""usmt-username-input"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
-    fnfUserNameDiv.innerHTML = fnfUserNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
-    fnfUserNameDiv.innerHTML = fnfUserNameDiv.innerHTML & "<select id=""fnf-username-input"" name=""fnfUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
-
+    userNameDiv.innerHTML = userNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
+    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""usmt-username-input"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
+    
     htaLog.WriteLine(Now & " || Executing command: objShell.Run(""cmd /c reg.exe unload HKLM\TempSoftware"", 0, true)")
     objshell.Run "%comspec% /c reg.exe unload HKLM\TempSoftware", 0, true
 
@@ -450,8 +431,8 @@ Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " || userIncludeString = " & userIncludeString)
     userArraySize = Ubound(userArray)
 
-	getUser = usmtUsername.Value
-	destDrive = usmtDrive.Value
+	getUser = primaryUsername.Value
+	destDrive = windowsDrive.Value
 
     htaLog.WriteLine(Now & " || usmtUsername.Value = " & getUser)
     htaLog.WriteLine(Now & " || usmtDrive.Value = " & destDrive)
@@ -485,7 +466,7 @@ Sub usmtScanstate(buttonClicked)
                 strRead = strRead & textLine & "<br>"
             Loop
             myFile.Close
-             htaLog.WriteLine(Now & " || Scanstate log can be found at " & fileName)
+            htaLog.WriteLine(Now & " || Scanstate log can be found at " & fileName)
             scanStateDiv.innerHTML = scanStateDiv.innerHTML & "<br><br> Scanstate Failed! <br><br>" & strRead
         End If
     End If
@@ -501,8 +482,8 @@ Sub usmtLoadstate
     Dim ReturnCode, getUser, sourceDrive, strCurrentDir
     Dim objShell : Set objShell = CreateObject("WScript.Shell")
     strCurrentDir = objShell.currentDirectory
-    getUser = usmtUsername.Value
-    sourceDrive = usmtDrive.Value
+    getUser = primaryUsername.Value
+    sourceDrive = externalDrive.Value
 
     htaLog.WriteLine(Now & " || strCurrentDir = " & strCurrentDir)
     htaLog.WriteLine(Now & " || getUser = " & getuser)
@@ -524,14 +505,14 @@ Sub usmtLoadstate_TS
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate_TS *****")
 
     env("envUsmtLoadstate") = "True"
-    env("envUsmtSourceDrive") = windowsDrive.Value
-    env("envUsmtDestDrive") = usmtDrive.Value
-    env("envUsmtUsername") = usmtUsername.Value
+    env("envWindowsDrive") = windowsDrive.Value
+    env("envExternalDrive") = externalDrive.Value
+    env("envPrimaryUsername") = primaryUsername.Value
 
     htaLog.WriteLine(Now & " || env(""envUsmtLoadstate"") = " & env("envUsmtLoadstate"))
-    htaLog.WriteLine(Now & " || env(""envUsmtSourceDrive"") = " & env("envUsmtSourceDrive"))
-    htaLog.WriteLine(Now & " || env(""envUsmtDestDrive"") = " & env("envUsmtDestDrive"))
-    htaLog.WriteLine(Now & " || env(""envUsmtUsername"") = " & env("envUsmtUsername"))
+    htaLog.WriteLine(Now & " || env(""envWindowsDrive"") = " & env("envWindowsDrive"))
+    htaLog.WriteLine(Now & " || env(""envExternalDrive"") = " & env("envExternalDrive"))
+    htaLog.WriteLine(Now & " || env(""envPrimaryUsername"") = " & env("envPrimaryUsername"))
 
     htaLog.WriteLine(Now & " ***** End Sub usmtLoadstate_TS *****")
 
@@ -541,18 +522,9 @@ End Sub
 Sub runFlushFill
     htaLog.WriteLine(Now & " ***** Begin Sub runFlushFill *****")
 
-    windowsDrive.Value = fnfWindowsDrive.Value
-    dismDrive.Value = fnfDrive.Value
-    dismUsername.Value = fnfUsername.Value
-    usmtUsername.Value = fnfUsername.Value
-    usmtDrive.Value = fnfDrive.Value
-    compName.Value = fnfCompName.Value
-
     htaLog.WriteLine(Now & " || windowsDrive.Value = " & windowsDrive.Value)
-    htaLog.WriteLine(Now & " || dismDrive.Value = " & dismDrive.Value)
-    htaLog.WriteLine(Now & " || dismUsername.Value = " & dismUsername.Value)
-    htaLog.WriteLine(Now & " || usmtUsername.Value = " & usmtUsername.Value)
-    htaLog.WriteLine(Now & " || usmtDrive.Value = " & usmtDrive.Value)
+    htaLog.WriteLine(Now & " || externalDrive.Value = " & externalDrive.Value)
+    htaLog.WriteLine(Now & " || primaryUsername.Value = " & primaryUsername.Value)
     htaLog.WriteLine(Now & " || compName.Value = " & compName.Value)
     htaLog.WriteLine(Now & " || dismCheckBox.Checked = " & dismCheckBox.Checked)
 
