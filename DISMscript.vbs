@@ -1,9 +1,9 @@
 '************************************ DISM Capture Image  ************************************
 Dim dismShell, strName, strDestPath, strSourcePath, blShell, key
-strSourcePath = env("dismSourceDrive")
-strDestPath = env("dismDestDrive")
-strName = env("dismUsername")
-key = env("bitlockerKey")
+strSourcePath = env("envWindowsDrive ")
+strDestPath = env("envExternalDrive ")
+strName = env("envPrimaryUsername")
+key = env("envBitlockerKey")
 
 '********** Unlock Bitlocker Drive  **********
 Set blShell = CreateObject("Wscript.Shell")
