@@ -808,3 +808,7 @@
 9/13/2017 1:15:16 PM || userName = rcmcda01
 9/13/2017 1:15:16 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
 9/13/2017 1:15:16 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/13/2017 1:22:01 PM ======================
+
+====================== Begin Logging at 9/13/2017 1:22:06 PM ======================
