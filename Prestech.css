@@ -271,6 +271,9 @@ p {
     margin-right: 5px;
     overflow: auto;
 }
+.li-content{
+    display: block;
+}
 .list-osd {
     display: list-item;
 }
