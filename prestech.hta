@@ -3,7 +3,7 @@
 
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <meta http-equiv="x-ua-compatible" content="ie=10">
     <link rel="stylesheet" href="./js/jquery-ui-1.11.4.custom/jquery-ui.css">
     <link rel="stylesheet" href="./js/jquery.mCustomScrollbar.css">
     <script src="./js/html5shiv.min.js"></script>
@@ -112,8 +112,7 @@
                 </div>
 
                 <!--Troubleshooting Tools Page-->
-                <div id="page-tools" class="pages">
-                    <div class="input-div">
+                <div id="page-tools" class="pages input-div">
                         <div class="tools-button-bar">
                             <button class="button" id="button-bitlocker" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                             <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
@@ -122,7 +121,6 @@
                             <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                             <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
                         </div>
-                    </div>
                 </div>
                 <div id="general-output">.general-output</div>
                 <!--    End content    -->
@@ -138,7 +136,7 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
-            <div id="div-format-drive" class="ui-widget-content"><input type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
+            <div id="div-format-drive" class="ui-widget-content"><input id="input-osd-checkbox" type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
         </li>
     </template>
 
@@ -148,7 +146,7 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
             </h3>
-            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp&nbsp <input type="text" name="compName"> <br></div>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" type="text" name="compName"> <br></div>
         </li>
     </template>
 
@@ -176,7 +174,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button class="button button-bl-info" id="bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                <button id="bl-info" class="button button-bl-info" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -188,7 +186,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the Windows partition to be imaged
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input class="drive-input" name="windowsDrive" type="Text" maxlength="1" size="1">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input" name="windowsDrive" type="Text" maxlength="1" size="1">
             </div>
         </li>
     </template>
@@ -200,8 +198,8 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock Bitlocker
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
-                <input name="blKey" type="Text" maxlength="100" size="35" value="">
-                <button class="button button-bl-unlock" id="bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <input id="input-bitlocker-key" name="blKey" type="Text" maxlength="100" size="35" value="test">
+                <button id="bl-unlock" class="button button-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -214,7 +212,7 @@
             </h3>
             <div id="div-primary-username" class="ui-widget-content">
                 <span>Username: &nbsp&nbsp </span>
-                <input name="primaryUsername" type="Text" size="15">
+                <input id="input-primary-username" name="primaryUsername" type="Text" size="15">
             </div>
         </li>
     </template>
@@ -226,7 +224,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the image will be stored
             </h3>
             <div id="div-external-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input class="drive-input" name="externalDrive" type="Text" maxlength="1" size="1">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input" name="externalDrive" type="Text" maxlength="1" size="1">
             </div>
         </li>
     </template>
@@ -247,10 +245,10 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
             <div id="div-fnf-options" class="ui-widget-content">
-                <input type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)? <br>
-                <input type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)? <br>
-                <input type="checkbox" name="fnfOsdCheckBox"> Format Drive and Deploy Image (OSD)? <br>
-                <input type="checkbox" name="loadStateCheckBox"> Restore User Data after OSD (USMT Loadstate)?
+                <input id="input-dism-checkbox" type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)? <br>
+                <input id="input-scanstate-checkbox" type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)? <br>
+                <input id="input-fnfosd-checkbox" type="checkbox" name="fnfOsdCheckBox"> Format Drive and Deploy Image (OSD)? <br>
+                <input id="input-loadstate-checkbox" type="checkbox" name="loadStateCheckBox"> Restore User Data after OSD (USMT Loadstate)?
                 <br>
             </div>
         </li>
@@ -358,6 +356,12 @@
             $("#ul-dism").append(template);
             initAccordion();
         }
+
+        $("#bl-unlock").on('click', function () {
+            var drive = $("#input-windows-drive").val();
+            var key = $("#input-bitlocker-key").val();
+            BitlockerUnlock(drive, key);
+        });
     });
 
     $('#button-usmt').on('click', function () {
@@ -401,18 +405,13 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
-    $('#button-bitlocker').on('click', function () {
-        BitlockerInfo();
-    });
-    $('.button-bl-info').on('click', function () {
-        BitlockerInfo();
-    });
-    $('.button-bl-unlock').on('click', function () {
-        BitlockerUnlock();
-    });
     $('#dism-capture').on('click', function () {
-        dismCapture();
+        var windowsDrive = $("#input-windows-drive").val();
+        var externalDrive = $("#input-external-drive").val();
+        var primaryUsername = $("#input-primary-username").val();
+        dismCapture(windowsDrive, externalDrive, primaryUsername);
     });
+
     $('#button-ScanState').on('click', function () {
         $('.scanState').css('display', 'list-item');
         $('#run-usmt').css('display', 'inline-block');
@@ -424,15 +423,31 @@
         $('#run-usmt').css('display', 'none');
     });
     $('#run-LoadState').on('click', function () {
-        usmtLoadstate()
+        var externalDrive = $("#input-external-drive").val();
+        var primaryUsername = $("#input-primary-username").val();
+        usmtLoadstate(externalDrive, primaryUsername);
+        
     });
     $('#run-usmt').on('click', function () {
-        usmtScanstate("true");
+        var externalDrive = $("#input-external-drive").val();
+        var primaryUsername = $("#input-primary-username").val();
+        usmtScanstate("true", externalDrive, primaryUsername);
     });
     $('#fnf-capture').on('click', function () {
+        var windowsDrive = $("#input-windows-drive").val();
+        var externalDrive = $("#input-external-drive").val();
+        var primaryUsername = $("#input-primary-username").val();
+        var compName = $("#input-comp-name").val();
+        var dismCheckBox = $("#input-dism-checkbox").val();
+        var scanstateCheckBox = $("#input-scanstate-checkbox").val();
+        var fnfosdCheckBox = $("#input-fnfosd-checkbox").val();
+        var loadstateCheckBox = $("#input-loadstate-checkbox").val();
+
+        //software install variables go here
+
         runFlushFill();
     });
-    $("#usmt-drive-input, #usmt-username-input").keyup(function () {
+    $("#input-windows-drive, #input-primary-username").keyup(function () {
         usmtScanstate("false");
     });
 

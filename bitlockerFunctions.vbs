@@ -111,27 +111,12 @@ Sub BitlockerInfo
 End Sub
 
 '************************************ Unlock Bitlocker Drive subroutine ************************************
-Sub BitlockerUnlock
+Function BitlockerUnlock(drive, key)
 	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerUnlock *****")
-	htaLog.WriteLine(Now & " || blKey.Value = " & blKey.Value)
+	Dim cmdShell, blOutput
 
-	Dim cmdShell, key, drive, blOutput
-	
-	If blKey.Value <> "" Then
-		key = blKey.Value
-	Else
-		htaLog.WriteLine(Now & " || Bitlocker Key field is empty. Exiting BitlockerUnlock routine.")
-		Exit Sub
-	End If
-
-	htaLog.WriteLine(Now & " || windowsDrive.Value = " & windowsDrive.Value)
-
-	If windowsDrive.Value <> "" Then
-		drive = windowsDrive.Value
-	Else
-		htaLog.WriteLine(Now & " || windowsDrive field is empty. Exiting BitlockerUnlock routine.")
-		Exit Sub
-	End If
+	htaLog.WriteLine(Now & " || windowsDrive.Value = " & drive)
+	htaLog.WriteLine(Now & " || blKey.Value = " & key)
 
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
 	Set cmdShell = CreateObject("Wscript.Shell")
@@ -147,4 +132,4 @@ Sub BitlockerUnlock
 
 	htaLog.WriteLine(Now & " ***** End Sub BitlockerUnlock *****")
 
-End Sub
+End Function

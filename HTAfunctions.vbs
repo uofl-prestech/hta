@@ -59,7 +59,7 @@ Sub listDrives
     strComputer = "."
     
     On Error Resume Next
-    htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption"")")
+    htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=impersonate, authenticationLevel=pktPrivacy}!\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption"")")
     Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption")
     If Err <> 0 Then
         htaLog.WriteLine(Now & " || Error. Must run as Administrator to check encryption status")
@@ -276,14 +276,14 @@ Sub ButtonFinishClick
 End Sub
 
 '************************************ DISM Capture Image subroutine ************************************
-Sub dismCapture
+Sub dismCapture(windowsDrive, externalDrive, primaryUsername)
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
 
 	Dim dismShell, strName, destPath, sourcePath, returnCode
 	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
-    strSourcePath = windowsDrive.value
-    strDestPath = externalDrive.value
-    strName = primaryUsername.value
+    strSourcePath = windowsDrive
+    strDestPath = externalDrive
+    strName = primaryUsername
     Set dismShell = CreateObject("WScript.Shell")
     
     htaLog.WriteLine(Now & " || strSourcePath = " & strSourcePath)
@@ -292,7 +292,7 @@ Sub dismCapture
 
     dismDiv.innerHTML = "Running Command: X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"
     
-    htaLog.Writeline(Now & " || returnCode = dismShell.run (""cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:""&strDestPath&"":\""&strName&"".wim /CaptureDir:""&strSourcePath&"":\ /Name:""&CHR(34) & strName &CHR(34) &"" /ScratchDir:""&strDestPath&"":\ /LogPath:X:\dism.log"", 1, True)")
+    htaLog.Writeline(Now & " || returnCode = dismShell.run (""cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"", 1, True)")
 
 	returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
 	
@@ -408,7 +408,7 @@ Sub enumUsers
 End Sub
 
 '************************************ USMT Scanstate subroutine ************************************
-Sub usmtScanstate(buttonClicked)
+Sub usmtScanstate(buttonClicked, externalDrive, primaryUsername)
     htaLog.WriteLine(Now & " ***** Begin Sub usmtScanstate(buttonClicked) *****")
 
     Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString
@@ -431,8 +431,8 @@ Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " || userIncludeString = " & userIncludeString)
     userArraySize = Ubound(userArray)
 
-	getUser = primaryUsername.Value
-	destDrive = windowsDrive.Value
+	getUser = primaryUsername
+	destDrive = externalDrive
 
     htaLog.WriteLine(Now & " || usmtUsername.Value = " & getUser)
     htaLog.WriteLine(Now & " || usmtDrive.Value = " & destDrive)
@@ -444,7 +444,6 @@ Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, True)")
 
     If buttonClicked = "true" AND getUser <> "" AND destDrive <> "" Then
-        'returnCode = WshShell.run(strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /offline:" & strCurrentDir & "\USMT\offline.xml /i:" & strCurrentDir & "\USMT\migdocs.xml /i:" & strCurrentDir & "\USMT\migapp.xml /i:" & strCurrentDir & "\USMT\oopexcludes.xml /progress:" & strCurrentDir & "\prog.log /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
         returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
 
         If returnCode = 0 Then
@@ -476,14 +475,14 @@ Sub usmtScanstate(buttonClicked)
 End Sub
 
 '************************************ Execute Loadstate ************************************
-Sub usmtLoadstate
+Sub usmtLoadstate(externalDrive, primaryUsername)
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate *****")
 
     Dim ReturnCode, getUser, sourceDrive, strCurrentDir
     Dim objShell : Set objShell = CreateObject("WScript.Shell")
     strCurrentDir = objShell.currentDirectory
-    getUser = primaryUsername.Value
-    sourceDrive = externalDrive.Value
+    getUser = primaryUsername
+    sourceDrive = externalDrive
 
     htaLog.WriteLine(Now & " || strCurrentDir = " & strCurrentDir)
     htaLog.WriteLine(Now & " || getUser = " & getuser)
@@ -501,13 +500,13 @@ Sub usmtLoadstate
 End Sub
 
 '************************************ Set up Loadstate ************************************
-Sub usmtLoadstate_TS
+Sub usmtLoadstate_TS(windowsDrive, externalDrive, primaryUsername)
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate_TS *****")
 
     env("envUsmtLoadstate") = "True"
-    env("envWindowsDrive") = windowsDrive.Value
-    env("envExternalDrive") = externalDrive.Value
-    env("envPrimaryUsername") = primaryUsername.Value
+    env("envWindowsDrive") = windowsDrive
+    env("envExternalDrive") = externalDrive
+    env("envPrimaryUsername") = primaryUsername
 
     htaLog.WriteLine(Now & " || env(""envUsmtLoadstate"") = " & env("envUsmtLoadstate"))
     htaLog.WriteLine(Now & " || env(""envWindowsDrive"") = " & env("envWindowsDrive"))
@@ -549,7 +548,7 @@ Sub runFlushFill
 
     If loadStateCheckBox.Checked Then
         htaLog.WriteLine(Now & " || loadStateCheckBox is checked. Run usmtLoadstate_TS routine")
-        usmtLoadstate_TS
+        usmtLoadstate_TS(windowsDrive, externalDrive, primaryUsername)
     End IF
 
     htaLog.WriteLine(Now & " || Run ButtonFinishClick routine")
