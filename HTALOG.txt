@@ -61,3 +61,454 @@
 9/14/2017 2:24:34 PM || Scanstate Failed!
 9/14/2017 2:24:34 PM || Error Number: 0
 9/14/2017 2:24:34 PM || Error Description: 
+
+====================== Begin Logging at 9/14/2017 2:40:38 PM ======================
+9/14/2017 2:40:38 PM ***** Begin Sub listDrives *****
+9/14/2017 2:40:38 PM || Error. Must run as Administrator to check encryption status
+9/14/2017 2:40:38 PM || Skipping check for Encryption Status
+9/14/2017 2:40:38 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/14/2017 2:40:38 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/14/2017 2:40:38 PM || "Drive Letter: C: | Capacity: 231.1 GB
+9/14/2017 2:40:38 PM || "Drive Letter:  | Capacity: 300 MB
+9/14/2017 2:40:38 PM || "Drive Letter:  | Capacity: 870 MB
+9/14/2017 2:40:38 PM || "Drive Letter: A: | Capacity: 931.5 GB
+9/14/2017 2:40:38 PM || "Drive Letter: D: | Capacity:  Bytes
+9/14/2017 2:40:38 PM ***** End Sub listDrives *****
+9/14/2017 2:40:44 PM ***** Begin Sub notepadPP *****
+9/14/2017 2:40:44 PM || Executing command: .\tools\npp\notepadpp.exe
+9/14/2017 2:40:45 PM ***** End Sub notepadPP *****
+9/14/2017 2:40:53 PM ***** Begin Sub enumUsers *****
+9/14/2017 2:40:53 PM || strComputer = "."
+9/14/2017 2:40:53 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 2:40:53 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 2:40:53 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 2:40:53 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 2:40:53 PM || Error Number: -2147024894
+9/14/2017 2:40:53 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 2:40:53 PM || Could not load HKLM\TempSoftware
+9/14/2017 2:40:53 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 2:40:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 2:40:53 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 2:40:53 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 2:40:53 PM || userName = systemprofile
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 2:40:53 PM || userName = LocalService
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 2:40:53 PM || userName = NetworkService
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 2:40:53 PM || userName = defaultuser0
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = C:\Users\sccmpush
+9/14/2017 2:40:53 PM || userName = sccmpush
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 2:40:53 PM || userName = t1rcm01
+9/14/2017 2:40:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 2:40:53 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 2:40:53 PM || userName = rcmcda01
+9/14/2017 2:40:53 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 2:40:53 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/14/2017 3:10:17 PM ======================
+9/14/2017 3:10:17 PM ***** Begin Sub listDrives *****
+9/14/2017 3:10:17 PM || Error. Must run as Administrator to check encryption status
+9/14/2017 3:10:17 PM || Skipping check for Encryption Status
+9/14/2017 3:10:17 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/14/2017 3:10:17 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/14/2017 3:10:17 PM || "Drive Letter: C: | Capacity: 231.1 GB
+9/14/2017 3:10:17 PM || "Drive Letter:  | Capacity: 300 MB
+9/14/2017 3:10:17 PM || "Drive Letter:  | Capacity: 870 MB
+9/14/2017 3:10:17 PM || "Drive Letter: A: | Capacity: 931.5 GB
+9/14/2017 3:10:17 PM || "Drive Letter: D: | Capacity:  Bytes
+9/14/2017 3:10:17 PM ***** End Sub listDrives *****
+9/14/2017 3:10:19 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:10:19 PM || strComputer = "."
+9/14/2017 3:10:19 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:10:19 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:10:19 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:10:19 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:10:19 PM || Error Number: -2147024894
+9/14/2017 3:10:19 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:10:19 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:10:19 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:10:19 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:10:19 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:10:19 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:10:19 PM || userName = systemprofile
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:10:19 PM || userName = LocalService
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:10:19 PM || userName = NetworkService
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:10:19 PM || userName = defaultuser0
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:10:19 PM || userName = sccmpush
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:10:19 PM || userName = t1rcm01
+9/14/2017 3:10:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:10:19 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:10:19 PM || userName = rcmcda01
+9/14/2017 3:10:19 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:10:19 PM ***** End Sub enumUsers *****
+9/14/2017 3:10:55 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:10:55 PM || strComputer = "."
+9/14/2017 3:10:55 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:10:55 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:10:55 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:10:55 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:10:55 PM || Error Number: -2147024894
+9/14/2017 3:10:55 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:10:55 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:10:55 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:10:55 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:10:55 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:10:56 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:10:56 PM || userName = systemprofile
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:10:56 PM || userName = LocalService
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:10:56 PM || userName = NetworkService
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:10:56 PM || userName = defaultuser0
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:10:56 PM || userName = sccmpush
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:10:56 PM || userName = t1rcm01
+9/14/2017 3:10:56 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:10:56 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:10:56 PM || userName = rcmcda01
+9/14/2017 3:10:56 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:10:56 PM ***** End Sub enumUsers *****
+9/14/2017 3:11:04 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:11:04 PM || strComputer = "."
+9/14/2017 3:11:04 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:11:04 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:11:04 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:11:04 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:11:04 PM || Error Number: -2147024894
+9/14/2017 3:11:04 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:11:04 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:11:04 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:11:04 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:11:04 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:11:04 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:11:04 PM || userName = systemprofile
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:11:04 PM || userName = LocalService
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:11:04 PM || userName = NetworkService
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:11:04 PM || userName = defaultuser0
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:11:04 PM || userName = sccmpush
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:11:04 PM || userName = t1rcm01
+9/14/2017 3:11:04 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:11:04 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:11:04 PM || userName = rcmcda01
+9/14/2017 3:11:04 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:11:04 PM ***** End Sub enumUsers *****
+9/14/2017 3:11:07 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:11:07 PM || strComputer = "."
+9/14/2017 3:11:07 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:11:07 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:11:07 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:11:07 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:11:07 PM || Error Number: -2147024894
+9/14/2017 3:11:07 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:11:07 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:11:07 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:11:07 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:11:07 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:11:07 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:11:07 PM || userName = systemprofile
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:11:07 PM || userName = LocalService
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:11:07 PM || userName = NetworkService
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:11:07 PM || userName = defaultuser0
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:11:07 PM || userName = sccmpush
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:11:07 PM || userName = t1rcm01
+9/14/2017 3:11:07 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:11:07 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:11:07 PM || userName = rcmcda01
+9/14/2017 3:11:07 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:11:07 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/14/2017 3:13:38 PM ======================
+9/14/2017 3:13:38 PM ***** Begin Sub listDrives *****
+9/14/2017 3:13:38 PM || Error. Must run as Administrator to check encryption status
+9/14/2017 3:13:38 PM || Skipping check for Encryption Status
+9/14/2017 3:13:38 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/14/2017 3:13:38 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/14/2017 3:13:38 PM || "Drive Letter: C: | Capacity: 231.1 GB
+9/14/2017 3:13:38 PM || "Drive Letter:  | Capacity: 300 MB
+9/14/2017 3:13:38 PM || "Drive Letter:  | Capacity: 870 MB
+9/14/2017 3:13:38 PM || "Drive Letter: A: | Capacity: 931.5 GB
+9/14/2017 3:13:38 PM || "Drive Letter: D: | Capacity:  Bytes
+9/14/2017 3:13:38 PM ***** End Sub listDrives *****
+9/14/2017 3:13:40 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:13:40 PM || strComputer = "."
+9/14/2017 3:13:40 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:13:40 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:40 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:13:40 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:13:40 PM || Error Number: -2147024894
+9/14/2017 3:13:40 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:13:40 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:13:40 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:40 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:13:40 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:13:40 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:13:40 PM || userName = systemprofile
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:13:40 PM || userName = LocalService
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:13:40 PM || userName = NetworkService
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:13:40 PM || userName = defaultuser0
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:13:40 PM || userName = sccmpush
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:13:40 PM || userName = t1rcm01
+9/14/2017 3:13:40 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:13:40 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:13:40 PM || userName = rcmcda01
+9/14/2017 3:13:40 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:13:40 PM ***** End Sub enumUsers *****
+9/14/2017 3:13:43 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:13:43 PM || strComputer = "."
+9/14/2017 3:13:43 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:13:43 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:43 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:13:43 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:13:43 PM || Error Number: -2147024894
+9/14/2017 3:13:43 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:13:43 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:13:43 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:13:43 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:13:43 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:13:43 PM || userName = systemprofile
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:13:43 PM || userName = LocalService
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:13:43 PM || userName = NetworkService
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:13:43 PM || userName = defaultuser0
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:13:43 PM || userName = sccmpush
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:13:43 PM || userName = t1rcm01
+9/14/2017 3:13:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:13:43 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:13:43 PM || userName = rcmcda01
+9/14/2017 3:13:43 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:13:43 PM ***** End Sub enumUsers *****
+9/14/2017 3:13:49 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:13:49 PM || strComputer = "."
+9/14/2017 3:13:49 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:13:49 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:49 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:13:49 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:13:49 PM || Error Number: -2147024894
+9/14/2017 3:13:49 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:13:49 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:13:49 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:49 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:13:49 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:13:49 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:13:49 PM || userName = systemprofile
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:13:49 PM || userName = LocalService
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:13:49 PM || userName = NetworkService
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:13:49 PM || userName = defaultuser0
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:13:49 PM || userName = sccmpush
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:13:49 PM || userName = t1rcm01
+9/14/2017 3:13:49 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:13:49 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:13:49 PM || userName = rcmcda01
+9/14/2017 3:13:49 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:13:49 PM ***** End Sub enumUsers *****
+9/14/2017 3:13:53 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:13:53 PM || strComputer = "."
+9/14/2017 3:13:53 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:13:53 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:53 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:13:53 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:13:53 PM || Error Number: -2147024894
+9/14/2017 3:13:53 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:13:53 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:13:53 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:13:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:13:53 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:13:53 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:13:53 PM || userName = systemprofile
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:13:53 PM || userName = LocalService
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:13:53 PM || userName = NetworkService
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:13:53 PM || userName = defaultuser0
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:13:53 PM || userName = sccmpush
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:13:53 PM || userName = t1rcm01
+9/14/2017 3:13:53 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:13:53 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:13:53 PM || userName = rcmcda01
+9/14/2017 3:13:53 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:13:53 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/14/2017 3:15:24 PM ======================
+9/14/2017 3:15:24 PM ***** Begin Sub listDrives *****
+9/14/2017 3:15:24 PM || Error. Must run as Administrator to check encryption status
+9/14/2017 3:15:24 PM || Skipping check for Encryption Status
+9/14/2017 3:15:24 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/14/2017 3:15:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/14/2017 3:15:24 PM || "Drive Letter: C: | Capacity: 231.1 GB
+9/14/2017 3:15:24 PM || "Drive Letter:  | Capacity: 300 MB
+9/14/2017 3:15:24 PM || "Drive Letter:  | Capacity: 870 MB
+9/14/2017 3:15:24 PM || "Drive Letter: A: | Capacity: 931.5 GB
+9/14/2017 3:15:24 PM || "Drive Letter: D: | Capacity:  Bytes
+9/14/2017 3:15:24 PM ***** End Sub listDrives *****
+9/14/2017 3:15:26 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:15:26 PM || strComputer = "."
+9/14/2017 3:15:26 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:15:26 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:15:26 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:15:26 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:15:26 PM || Error Number: -2147024894
+9/14/2017 3:15:26 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:15:26 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:15:26 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:15:26 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:15:26 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:15:26 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:15:26 PM || userName = systemprofile
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:15:26 PM || userName = LocalService
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:15:26 PM || userName = NetworkService
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:15:26 PM || userName = defaultuser0
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:15:26 PM || userName = sccmpush
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:15:26 PM || userName = t1rcm01
+9/14/2017 3:15:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:15:26 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:15:26 PM || userName = rcmcda01
+9/14/2017 3:15:26 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:15:26 PM ***** End Sub enumUsers *****
+9/14/2017 3:15:29 PM ***** Begin Sub enumUsers *****
+9/14/2017 3:15:29 PM || strComputer = "."
+9/14/2017 3:15:29 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 3:15:29 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:15:29 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 3:15:29 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 3:15:29 PM || Error Number: -2147024894
+9/14/2017 3:15:29 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 3:15:29 PM || Could not load HKLM\TempSoftware
+9/14/2017 3:15:29 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 3:15:29 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 3:15:29 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 3:15:29 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 3:15:29 PM || userName = systemprofile
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 3:15:29 PM || userName = LocalService
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 3:15:29 PM || userName = NetworkService
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 3:15:29 PM || userName = defaultuser0
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = C:\Users\sccmpush
+9/14/2017 3:15:29 PM || userName = sccmpush
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 3:15:29 PM || userName = t1rcm01
+9/14/2017 3:15:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 3:15:29 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 3:15:29 PM || userName = rcmcda01
+9/14/2017 3:15:29 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 3:15:29 PM ***** End Sub enumUsers *****

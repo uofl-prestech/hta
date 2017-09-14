@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=10">
+    <meta http-equiv="x-ua-compatible" content="ie=9">
     <link rel="stylesheet" href="./js/jquery-ui-1.11.4.custom/jquery-ui.css">
     <link rel="stylesheet" href="./js/jquery.mCustomScrollbar.css">
     <script src="./js/html5shiv.min.js"></script>
@@ -76,42 +77,40 @@
                     <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
                 </div>
                 <!--Landing Page-->
-                <div id="page-landing" class="pages input-div"></div>
+                <div id="page-landing" class="pages"></div>
 
                 <!--OSD Page-->
-                <div id="page-osd" class="pages input-div">
+                <div id="page-osd" class="pages">
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
                 </div>
 
                 <!-- Flush and Fill Page -->
-                <div id="page-flushfill" class="pages input-div">
+                <div id="page-flushfill" class="pages">
                     <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button" id="fnf-capture" name="fnfCapture"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
                 </div>
 
                 <!--DISM Page-->
-                <div id="page-dism" class="pages input-div">
+                <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button" id="dism-capture" name="capture"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
                 </div>
 
                 <!--USMT Page-->
-                <div id="page-usmt" class="pages input-div">
+                <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <div id="usmt-begin">
-                        <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                        <button class="button" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button><br><br>
-                    </div>
+                    <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
+                    <button class="button" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
-                <div id="page-software-install" class="pages input-div">
+                <div id="page-software-install" class="pages">
                     <ul id="ul-software-install" class="accordion ui-accordion ul-elements"></ul>
                 </div>
 
                 <!--Troubleshooting Tools Page-->
-                <div id="page-tools" class="pages input-div">
+                <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
                         <button class="button" id="button-bitlocker" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
@@ -119,6 +118,7 @@
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
                         <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
+                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">Notepad ++</button>
                     </div>
                 </div>
                 <div id="general-output">.general-output</div>
@@ -135,7 +135,7 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
-            <div id="div-format-drive" class="ui-widget-content"><input type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
+            <div id="div-format-drive" class="ui-widget-content"><input id="input-osd-checkbox" type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
         </li>
     </template>
 
@@ -145,7 +145,7 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
             </h3>
-            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input type="text" name="compName"> <br></div>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" type="text" name="compName"> <br></div>
         </li>
     </template>
 
@@ -187,7 +187,7 @@
                 Windows partition to be imaged
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp; &nbsp; </span><input id="input-windows-drive" class="drive-input" name="windowsDrive"
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input" name="windowsDrive"
                     type="Text" maxlength="1" size="1">
             </div>
         </li>
@@ -202,7 +202,7 @@
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
                 <input id="input-bitlocker-key" name="blKey" type="Text" maxlength="100" size="35" value="test">
-                <button id="bl-unlock" class="button button-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <button id="bl-unlock" class="button button-bl-unlock" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -215,7 +215,7 @@
                 we are copying data for
             </h3>
             <div id="div-primary-username" class="ui-widget-content">
-                <span>Username: &nbsp; &nbsp; </span>
+                <span>Username: &nbsp&nbsp </span>
                 <input id="input-primary-username" name="primaryUsername" type="Text" size="15">
             </div>
         </li>
@@ -229,8 +229,8 @@
                 External USB drive where the image will be stored
             </h3>
             <div id="div-external-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp; &nbsp; </span><input class="drive-input" name="externalDrive" type="Text" maxlength="1"
-                    size="1">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input" name="externalDrive"
+                    type="Text" maxlength="1" size="1">
             </div>
         </li>
     </template>
@@ -252,10 +252,13 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
             <div id="div-fnf-options" class="ui-widget-content">
-                <input type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)? <br>
-                <input type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)? <br>
-                <input type="checkbox" name="fnfOsdCheckBox"> Format Drive and Deploy Image (OSD)? <br>
-                <input type="checkbox" name="loadStateCheckBox"> Restore User Data after OSD (USMT Loadstate)?
+                <input id="input-dism-checkbox" type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)? <br>
+                <input id="input-scanstate-checkbox" type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)?
+                <br>
+                <input id="input-fnfosd-checkbox" type="checkbox" name="fnfOsdCheckBox"> Format Drive and Deploy Image (OSD)?
+                <br>
+                <input id="input-loadstate-checkbox" type="checkbox" name="loadStateCheckBox"> Restore User Data after OSD
+                (USMT Loadstate)?
                 <br>
             </div>
         </li>
@@ -263,15 +266,15 @@
 
 </body>
 
-<script type="text/javascript" language="JavaScript">
+<script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
 
-        //listDrives()
-        $(".input-div").mCustomScrollbar({
+        listDrives()
+        $(".pages").mCustomScrollbar({
             theme: "minimal",
             autoHideScrollbar: true
         });
@@ -362,12 +365,6 @@
             $("#ul-dism").append(template);
             initAccordion();
         }
-
-        $("#bl-unlock").on('click', function () {
-            var drive = $("#input-windows-drive").val();
-            var key = $("#input-bitlocker-key").val();
-            BitlockerUnlock(drive, key);
-        });
     });
 
     $('#button-usmt').on('click', function () {
@@ -411,10 +408,10 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
-
     $('#dism-capture').on('click', function () {
         dismCapture();
     });
+
     $('#button-ScanState').on('click', function () {
         $('.scanState').css('display', 'list-item');
         $('#run-usmt').css('display', 'inline-block');
@@ -426,7 +423,7 @@
         $('#run-usmt').css('display', 'none');
     });
     $('#run-LoadState').on('click', function () {
-        usmtLoadstate()
+        usmtLoadstate();
     });
     $('#run-usmt').on('click', function () {
         usmtScanstate("true");

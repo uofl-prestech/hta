@@ -157,7 +157,7 @@ p {
     color: #CCC;
     border: 3px double rgba(70, 120, 110, 0.6);
     width: 355px;
-    height: 550px;
+    height: 582px;
     margin: 7px 0px 0px 5px;
     padding: 10px;
     font-size: 14px;
@@ -263,14 +263,6 @@ p {
 .icon-tools {
     margin-right: 5px;
 }
-.input-div {
-    border: none;
-    display: block;
-    width: 365px;
-    height: 550px;
-    margin-right: 5px;
-    overflow: auto;
-}
 .li-content{
     display: block;
 }
@@ -302,9 +294,11 @@ p {
     display:inline-block;
     vertical-align: top;
     margin-top: 5px;
-    height: 655px;
+    margin-right: 5px;
     width: 360px;
-    /* overflow: auto; */
+    height: 582px;
+    border: none;
+    overflow: auto;
 }
 .tpm-error {
     color: darkred;
