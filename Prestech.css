@@ -202,7 +202,7 @@ p {
 }
 .button-nav, .button-exithome {
     background-color: rgba(85, 85, 85, 0.10);
-    border: 1px solid rgba(85, 85, 85, 1);
+    border: 1px solid rgba(70, 70, 70, 0.75);
     color: #CCCCCC;
     outline: none;
 }
