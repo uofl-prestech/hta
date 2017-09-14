@@ -1,0 +1,63 @@
+
+====================== Begin Logging at 9/14/2017 2:24:18 PM ======================
+9/14/2017 2:24:18 PM ***** Begin Sub listDrives *****
+9/14/2017 2:24:18 PM || Error. Must run as Administrator to check encryption status
+9/14/2017 2:24:18 PM || Skipping check for Encryption Status
+9/14/2017 2:24:18 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/14/2017 2:24:18 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/14/2017 2:24:18 PM || "Drive Letter: C: | Capacity: 231.1 GB
+9/14/2017 2:24:18 PM || "Drive Letter:  | Capacity: 300 MB
+9/14/2017 2:24:18 PM || "Drive Letter:  | Capacity: 870 MB
+9/14/2017 2:24:18 PM || "Drive Letter: A: | Capacity: 931.5 GB
+9/14/2017 2:24:18 PM || "Drive Letter: D: | Capacity:  Bytes
+9/14/2017 2:24:18 PM ***** End Sub listDrives *****
+9/14/2017 2:24:20 PM ***** Begin Sub enumUsers *****
+9/14/2017 2:24:20 PM || strComputer = "."
+9/14/2017 2:24:20 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/14/2017 2:24:20 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 2:24:20 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/14/2017 2:24:20 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/14/2017 2:24:20 PM || Error Number: -2147024894
+9/14/2017 2:24:20 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/14/2017 2:24:20 PM || Could not load HKLM\TempSoftware
+9/14/2017 2:24:20 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/14/2017 2:24:20 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/14/2017 2:24:20 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/14/2017 2:24:20 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/14/2017 2:24:20 PM || userName = systemprofile
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/14/2017 2:24:20 PM || userName = LocalService
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/14/2017 2:24:20 PM || userName = NetworkService
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = C:\Users\defaultuser0
+9/14/2017 2:24:20 PM || userName = defaultuser0
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = C:\Users\sccmpush
+9/14/2017 2:24:20 PM || userName = sccmpush
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = C:\Users\t1rcm01
+9/14/2017 2:24:20 PM || userName = t1rcm01
+9/14/2017 2:24:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/14/2017 2:24:20 PM || profilePath = C:\Users\rcmcda01
+9/14/2017 2:24:20 PM || userName = rcmcda01
+9/14/2017 2:24:20 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/14/2017 2:24:20 PM ***** End Sub enumUsers *****
+9/14/2017 2:24:34 PM ***** Begin Sub usmtScanstate(buttonClicked) *****
+9/14/2017 2:24:34 PM || strCurrentDir = A:\prestechHTA\prestech
+9/14/2017 2:24:34 PM || usmtUsernameList.Options.Length = 2
+9/14/2017 2:24:34 PM || usmtUsernameList.Options(0) = S-1-5-21-839522115-261903793-682003330-173149, Selected = False
+9/14/2017 2:24:34 PM || usmtUsernameList.Options(1) = S-1-5-21-839522115-261903793-682003330-23393, Selected = True
+9/14/2017 2:24:34 PM || userIncludeString = /ui:S-1-5-21-839522115-261903793-682003330-23393 
+9/14/2017 2:24:34 PM || usmtUsername.Value = rcmcda01
+9/14/2017 2:24:34 PM || usmtDrive.Value = D
+9/14/2017 2:24:34 PM || Execute Scanstate if buttonClicked = true, getUser is not blank, and destDrive is not blank
+9/14/2017 2:24:34 PM || buttonClicked = true, getUser = rcmcda01, destDrive = D
+9/14/2017 2:24:34 PM || Executing command: WshShell.Run ("cmd /c A:\prestechHTA\prestech\USMT\scanstate.exe D:\USMT\rcmcda01 /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:D:\USMT\rcmcda01\scanstate.log /listfiles:D:\USMT\rcmcda01\filesCopied.log /V:5 /ue:* /ui:S-1-5-21-839522115-261903793-682003330-23393 , 1, True)
+9/14/2017 2:24:34 PM || Scanstate Failed!
+9/14/2017 2:24:34 PM || Error Number: 0
+9/14/2017 2:24:34 PM || Error Description: 

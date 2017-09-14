@@ -111,12 +111,14 @@ Sub BitlockerInfo
 End Sub
 
 '************************************ Unlock Bitlocker Drive subroutine ************************************
-Function BitlockerUnlock(drive, key)
+Sub BitlockerUnlock()
 	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerUnlock *****")
-	Dim cmdShell, blOutput
+	Dim cmdShell, blOutput, drive, key
+	drive = document.getElementById("input-windows-drive").Value
+	key = document.getElementById("input-bitlocker-key").Value
 
-	htaLog.WriteLine(Now & " || windowsDrive.Value = " & drive)
-	htaLog.WriteLine(Now & " || blKey.Value = " & key)
+	htaLog.WriteLine(Now & " || document.getElementById(""input-windows-drive"").Value = " & drive)
+	htaLog.WriteLine(Now & " || document.getElementById(""input-bitlocker-key"").Value = " & key)
 
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
 	Set cmdShell = CreateObject("Wscript.Shell")
@@ -132,4 +134,4 @@ Function BitlockerUnlock(drive, key)
 
 	htaLog.WriteLine(Now & " ***** End Sub BitlockerUnlock *****")
 
-End Function
+End Sub

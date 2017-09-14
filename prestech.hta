@@ -3,7 +3,7 @@
 
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=10">
+    <meta http-equiv="x-ua-compatible" content="ie=9">
     <link rel="stylesheet" href="./js/jquery-ui-1.11.4.custom/jquery-ui.css">
     <link rel="stylesheet" href="./js/jquery.mCustomScrollbar.css">
     <script src="./js/html5shiv.min.js"></script>
@@ -199,7 +199,7 @@
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
                 <input id="input-bitlocker-key" name="blKey" type="Text" maxlength="100" size="35" value="test">
-                <button id="bl-unlock" class="button button-bl-unlock"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <button id="bl-unlock" class="button button-bl-unlock" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -263,7 +263,7 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
 
-        //listDrives()
+        listDrives()
         $(".input-div").mCustomScrollbar({
             theme: "minimal",
             autoHideScrollbar: true
@@ -356,12 +356,6 @@
             $("#ul-dism").append(template);
             initAccordion();
         }
-
-        $("#bl-unlock").on('click', function () {
-            var drive = $("#input-windows-drive").val();
-            var key = $("#input-bitlocker-key").val();
-            BitlockerUnlock(drive, key);
-        });
     });
 
     $('#button-usmt').on('click', function () {
@@ -406,10 +400,7 @@
         $('#header-landing').css('display', 'inline');
     });
     $('#dism-capture').on('click', function () {
-        var windowsDrive = $("#input-windows-drive").val();
-        var externalDrive = $("#input-external-drive").val();
-        var primaryUsername = $("#input-primary-username").val();
-        dismCapture(windowsDrive, externalDrive, primaryUsername);
+        dismCapture();
     });
 
     $('#button-ScanState').on('click', function () {
@@ -423,28 +414,12 @@
         $('#run-usmt').css('display', 'none');
     });
     $('#run-LoadState').on('click', function () {
-        var externalDrive = $("#input-external-drive").val();
-        var primaryUsername = $("#input-primary-username").val();
-        usmtLoadstate(externalDrive, primaryUsername);
-        
+        usmtLoadstate();
     });
     $('#run-usmt').on('click', function () {
-        var externalDrive = $("#input-external-drive").val();
-        var primaryUsername = $("#input-primary-username").val();
-        usmtScanstate("true", externalDrive, primaryUsername);
+        usmtScanstate("true");
     });
     $('#fnf-capture').on('click', function () {
-        var windowsDrive = $("#input-windows-drive").val();
-        var externalDrive = $("#input-external-drive").val();
-        var primaryUsername = $("#input-primary-username").val();
-        var compName = $("#input-comp-name").val();
-        var dismCheckBox = $("#input-dism-checkbox").val();
-        var scanstateCheckBox = $("#input-scanstate-checkbox").val();
-        var fnfosdCheckBox = $("#input-fnfosd-checkbox").val();
-        var loadstateCheckBox = $("#input-loadstate-checkbox").val();
-
-        //software install variables go here
-
         runFlushFill();
     });
     $("#input-windows-drive, #input-primary-username").keyup(function () {
