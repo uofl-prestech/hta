@@ -156,10 +156,24 @@ Sub logViewer
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
-    htaLog.WriteLine(Now & " || Executing command: .\cmtrace64.exe")
-    cmdShell.Run ".\cmtrace64.exe"
+    htaLog.WriteLine(Now & " || Executing command: .\tools\cmtrace64.exe")
+    cmdShell.Run ".\tools\cmtrace64.exe"
     
     htaLog.WriteLine(Now & " ***** End Sub logViewer *****")
+
+End Sub
+
+'************************************ Open Notepad ++ ************************************
+Sub notepadPP
+    htaLog.WriteLine(Now & " ***** Begin Sub notepadPP *****")
+
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+
+    htaLog.WriteLine(Now & " || Executing command: .\tools\npp\notepadpp.exe")
+    cmdShell.Run ".\tools\npp\notepadpp.exe"
+    
+    htaLog.WriteLine(Now & " ***** End Sub notepadPP *****")
 
 End Sub
 
@@ -169,7 +183,7 @@ Sub explorer
 
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
-    cmdShell.Run ".\explorerpp.exe"
+    cmdShell.Run ".\tools\explorerpp.exe"
     
     htaLog.WriteLine(Now & " ***** End Sub explorer *****")
 
