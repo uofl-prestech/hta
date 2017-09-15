@@ -327,12 +327,14 @@ Sub dismCapture
     
     htaLog.Writeline(Now & " || returnCode = dismShell.run (""cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"", 1, True)")
 
-	returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
+    dismShell.run "cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True
+    
+    'returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
 	
-    dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " & returnCode
+    dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " ' & returnCode
 
     htaLog.WriteLine(Now & " || Capture finished!")
-    htaLog.WriteLine(Now & " || Return Code: " & returnCode)
+    'htaLog.WriteLine(Now & " || Return Code: " & returnCode)
 
     htaLog.WriteLine(Now & " ***** End Sub dismCapture *****")
 
@@ -519,8 +521,6 @@ End Sub
 '************************************ Execute Loadstate ************************************
 Sub usmtLoadstate
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate *****")
-
-'Dim GetScriptPath : GetScriptPath = Left(WScript.ScriptFullName, InstrRev(WScript.ScriptFullName, "\", -1, 1) - 1)
 
     Dim ReturnCode, getUser, sourceDrive, strCurrentDir
     Dim objShell : Set objShell = CreateObject("WScript.Shell")
