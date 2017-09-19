@@ -309,7 +309,7 @@ Sub ButtonFinishClick
 End Sub
 
 '************************************ DISM Capture Image subroutine ************************************
-Sub dismCapture
+Function dismCapture
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
 
 	Dim dismShell, strName, destPath, sourcePath, returnCode
@@ -326,19 +326,17 @@ Sub dismCapture
     dismDiv.innerHTML = "Running Command: X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"
     
     htaLog.Writeline(Now & " || returnCode = dismShell.run (""cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log"", 1, True)")
-
-    dismShell.run "cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True
     
-    'returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
-	
-    dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " ' & returnCode
+    returnCode = dismShell.run("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:"&strDestPath&":\"&strName&".wim /CaptureDir:"&strSourcePath&":\ /Name:"&CHR(34) & strName &CHR(34) &" /ScratchDir:"&strDestPath&":\ /LogPath:X:\dism.log", 1, True)
+
+    dismDiv.innerHTML = "Capture Finished! <br><br> Return Code: " & returnCode
 
     htaLog.WriteLine(Now & " || Capture finished!")
-    'htaLog.WriteLine(Now & " || Return Code: " & returnCode)
+    htaLog.WriteLine(Now & " || Return Code: " & returnCode)
 
     htaLog.WriteLine(Now & " ***** End Sub dismCapture *****")
-
-End Sub
+    dismCapture = returnCode
+End Function
 
 '************************************ Execute DISM script ************************************
 Sub runDISM_TS
@@ -370,9 +368,8 @@ Sub enumUsers
 
     Const HKLM = &H80000002
     Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength, strSourcePath
-    'Dim landingPageDiv: Set landingPageDiv = document.getElementById("page-landing")
-    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<h2 class='cmdHeading'>User List: </h2>"
     Dim userNameDiv: Set userNameDiv = document.getElementById("div-select-users")
+    userNameDiv.innerHTML = ""
     set objshell = CreateObject("Wscript.shell")
     strComputer = "."
     'strSourcePath = windowsDrive.value
@@ -481,14 +478,14 @@ Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " || usmtUsername.Value = " & getUser)
     htaLog.WriteLine(Now & " || usmtDrive.Value = " & destDrive)
 
-    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 <br> /ue:* " & userIncludeString & ", 1, True"
+    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 <br> /ue:* " & userIncludeString & ", 1, False"
 
     htaLog.WriteLine(Now & " || Execute Scanstate if buttonClicked = true, getUser is not blank, and destDrive is not blank")
     htaLog.WriteLine(Now & " || buttonClicked = " & buttonClicked & ", getUser = " & getUser & ", destDrive = " & destDrive)
-    htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, True)")
+    htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, False)")
 
     If buttonClicked = "true" AND getUser <> "" AND destDrive <> "" Then
-        returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
+        returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, False)
 
         If returnCode = 0 Then
             htaLog.WriteLine(Now & " || Scanstate Complete!")
@@ -533,7 +530,7 @@ Sub usmtLoadstate
     htaLog.WriteLine(Now & " || sourceDrive = " & sourceDrive)
     htaLog.WriteLine(Now & " || Executing command: objShell.Run (""cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&sourceDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&sourceDrive&":\USMT\"&getUser&"\loadstate.log"", 1, True)")
 
-    ReturnCode = objShell.Run ("cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&sourceDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&sourceDrive&":\USMT\"&getUser&"\loadstate.log", 1, True)
+    ReturnCode = objShell.Run ("cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&sourceDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&sourceDrive&":\USMT\"&getUser&"\loadstate.log", 1, False)
     
     htaLog.WriteLine(Now & " || Return Code: " & ReturnCode)
 

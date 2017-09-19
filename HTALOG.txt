@@ -1,172 +1,372 @@
 
-====================== Begin Logging at 9/15/2017 8:46:08 AM ======================
-9/15/2017 8:46:08 AM ***** Begin Sub listDrives *****
-9/15/2017 8:46:08 AM || Error. Must run as Administrator to check encryption status
-9/15/2017 8:46:08 AM || Skipping check for Encryption Status
-9/15/2017 8:46:08 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
-9/15/2017 8:46:08 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
-9/15/2017 8:46:08 AM || "Drive Letter: C: | Capacity: 231.1 GB
-9/15/2017 8:46:08 AM || "Drive Letter:  | Capacity: 300 MB
-9/15/2017 8:46:08 AM || "Drive Letter:  | Capacity: 870 MB
-9/15/2017 8:46:08 AM || "Drive Letter: A: | Capacity: 931.5 GB
-9/15/2017 8:46:08 AM || "Drive Letter: D: | Capacity:  Bytes
-9/15/2017 8:46:08 AM ***** End Sub listDrives *****
-9/15/2017 8:46:10 AM ***** Begin Sub enumUsers *****
-9/15/2017 8:46:10 AM || strComputer = "."
-9/15/2017 8:46:10 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
-9/15/2017 8:46:10 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
-9/15/2017 8:46:10 AM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
-9/15/2017 8:46:10 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
-9/15/2017 8:46:10 AM || Error Number: -2147024894
-9/15/2017 8:46:10 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
-9/15/2017 8:46:10 AM || Could not load HKLM\TempSoftware
-9/15/2017 8:46:10 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
-9/15/2017 8:46:10 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
-9/15/2017 8:46:10 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
-9/15/2017 8:46:10 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = %systemroot%\system32\config\systemprofile
-9/15/2017 8:46:10 AM || userName = systemprofile
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
-9/15/2017 8:46:10 AM || userName = LocalService
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
-9/15/2017 8:46:10 AM || userName = NetworkService
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = C:\Users\defaultuser0
-9/15/2017 8:46:10 AM || userName = defaultuser0
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = C:\Users\sccmpush
-9/15/2017 8:46:10 AM || userName = sccmpush
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = C:\Users\t1rcm01
-9/15/2017 8:46:10 AM || userName = t1rcm01
-9/15/2017 8:46:10 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
-9/15/2017 8:46:10 AM || profilePath = C:\Users\rcmcda01
-9/15/2017 8:46:10 AM || userName = rcmcda01
-9/15/2017 8:46:10 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
-9/15/2017 8:46:10 AM ***** End Sub enumUsers *****
+====================== Begin Logging at 9/18/2017 3:03:34 PM ======================
+9/18/2017 3:03:34 PM ***** Begin Sub listDrives *****
+9/18/2017 3:03:34 PM || User is running script as admin
+9/18/2017 3:03:34 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:03:34 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:03:34 PM || Win32_EncryptableVolume instance
+9/18/2017 3:03:34 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:03:34 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:03:34 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:03:34 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:03:34 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:03:34 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:03:34 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:03:34 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:03:34 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:03:34 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:03:34 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:03:34 PM ***** End Sub listDrives *****
 
-====================== Begin Logging at 9/15/2017 9:42:34 AM ======================
-9/15/2017 9:42:34 AM ***** Begin Sub listDrives *****
-9/15/2017 9:42:34 AM || Error. Must run as Administrator to check encryption status
-9/15/2017 9:42:34 AM || Skipping check for Encryption Status
-9/15/2017 9:42:34 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
-9/15/2017 9:42:34 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
-9/15/2017 9:42:34 AM || "Drive Letter: C: | Capacity: 231.1 GB
-9/15/2017 9:42:34 AM || "Drive Letter:  | Capacity: 300 MB
-9/15/2017 9:42:34 AM || "Drive Letter:  | Capacity: 870 MB
-9/15/2017 9:42:34 AM || "Drive Letter: A: | Capacity: 931.5 GB
-9/15/2017 9:42:34 AM || "Drive Letter: D: | Capacity:  Bytes
-9/15/2017 9:42:34 AM ***** End Sub listDrives *****
-9/15/2017 9:42:36 AM ***** Begin Sub enumUsers *****
-9/15/2017 9:42:36 AM || strComputer = "."
-9/15/2017 9:42:36 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
-9/15/2017 9:42:36 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
-9/15/2017 9:42:36 AM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
-9/15/2017 9:42:37 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
-9/15/2017 9:42:37 AM || Error Number: -2147024894
-9/15/2017 9:42:37 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
-9/15/2017 9:42:37 AM || Could not load HKLM\TempSoftware
-9/15/2017 9:42:37 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
-9/15/2017 9:42:37 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
-9/15/2017 9:42:37 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
-9/15/2017 9:42:37 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = %systemroot%\system32\config\systemprofile
-9/15/2017 9:42:37 AM || userName = systemprofile
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
-9/15/2017 9:42:37 AM || userName = LocalService
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
-9/15/2017 9:42:37 AM || userName = NetworkService
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = C:\Users\defaultuser0
-9/15/2017 9:42:37 AM || userName = defaultuser0
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = C:\Users\sccmpush
-9/15/2017 9:42:37 AM || userName = sccmpush
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = C:\Users\t1rcm01
-9/15/2017 9:42:37 AM || userName = t1rcm01
-9/15/2017 9:42:37 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
-9/15/2017 9:42:37 AM || profilePath = C:\Users\rcmcda01
-9/15/2017 9:42:37 AM || userName = rcmcda01
-9/15/2017 9:42:37 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
-9/15/2017 9:42:37 AM ***** End Sub enumUsers *****
-9/15/2017 9:42:52 AM ***** Begin Sub usmtScanstate(buttonClicked) *****
-9/15/2017 9:42:52 AM || strCurrentDir = A:\prestechHTA\prestech
-9/15/2017 9:42:52 AM || usmtUsernameList.Options.Length = 2
-9/15/2017 9:42:52 AM || usmtUsernameList.Options(0) = S-1-5-21-839522115-261903793-682003330-173149, Selected = False
-9/15/2017 9:42:52 AM || usmtUsernameList.Options(1) = S-1-5-21-839522115-261903793-682003330-23393, Selected = True
-9/15/2017 9:42:52 AM || userIncludeString = /ui:S-1-5-21-839522115-261903793-682003330-23393 
-9/15/2017 9:42:52 AM || usmtUsername.Value = rcmcda01
-9/15/2017 9:42:52 AM || usmtDrive.Value = A
-9/15/2017 9:42:52 AM || Execute Scanstate if buttonClicked = true, getUser is not blank, and destDrive is not blank
-9/15/2017 9:42:52 AM || buttonClicked = true, getUser = rcmcda01, destDrive = A
-9/15/2017 9:42:52 AM || Executing command: WshShell.Run ("cmd /c A:\prestechHTA\prestech\USMT\scanstate.exe A:\USMT\rcmcda01 /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:A:\USMT\rcmcda01\scanstate.log /listfiles:A:\USMT\rcmcda01\filesCopied.log /V:5 /ue:* /ui:S-1-5-21-839522115-261903793-682003330-23393 , 1, True)
-9/15/2017 9:42:53 AM || Scanstate Failed!
-9/15/2017 9:42:53 AM || Error Number: 0
-9/15/2017 9:42:53 AM || Error Description: 
-9/15/2017 9:42:53 AM || Scanstate log can be found at A:\USMT\rcmcda01\scanstate.log
-9/15/2017 9:42:53 AM ***** End Sub usmtScanstate(buttonClicked) *****
-9/15/2017 9:43:17 AM ***** Begin Sub dismCapture *****
-9/15/2017 9:43:17 AM || strSourcePath = C
-9/15/2017 9:43:17 AM || strDestPath = A
-9/15/2017 9:43:17 AM || strName = rcmcda01
-9/15/2017 9:43:17 AM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:A:\rcmcda01.wim /CaptureDir:C:\ /Name:"rcmcda01" /ScratchDir:A:\ /LogPath:X:\dism.log", 1, True)
-9/15/2017 9:43:17 AM || Capture finished!
-9/15/2017 9:43:17 AM || Return Code: 1
-9/15/2017 9:43:17 AM ***** End Sub dismCapture *****
+====================== Begin Logging at 9/18/2017 3:10:47 PM ======================
+9/18/2017 3:10:47 PM ***** Begin Sub listDrives *****
+9/18/2017 3:10:47 PM || User is running script as admin
+9/18/2017 3:10:47 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:10:47 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:10:47 PM || Win32_EncryptableVolume instance
+9/18/2017 3:10:47 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:10:47 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:10:47 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:10:47 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:10:47 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:10:47 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:10:47 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:10:47 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:10:47 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:10:47 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:10:47 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:10:47 PM ***** End Sub listDrives *****
+9/18/2017 3:11:01 PM ***** Begin Sub dismCapture *****
+9/18/2017 3:11:01 PM || strSourcePath = E
+9/18/2017 3:11:01 PM || strDestPath = A
+9/18/2017 3:11:01 PM || strName = flashdrive
+9/18/2017 3:11:01 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:A:\flashdrive.wim /CaptureDir:E:\ /Name:"flashdrive" /ScratchDir:A:\ /LogPath:X:\dism.log", 1, True)
 
-====================== Begin Logging at 9/15/2017 9:46:13 AM ======================
-9/15/2017 9:46:13 AM ***** Begin Sub listDrives *****
-9/15/2017 9:46:13 AM || Error. Must run as Administrator to check encryption status
-9/15/2017 9:46:13 AM || Skipping check for Encryption Status
-9/15/2017 9:46:13 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
-9/15/2017 9:46:13 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
-9/15/2017 9:46:13 AM || "Drive Letter: C: | Capacity: 231.1 GB
-9/15/2017 9:46:13 AM || "Drive Letter: E: | Capacity: 32 GB
-9/15/2017 9:46:13 AM || "Drive Letter:  | Capacity: 300 MB
-9/15/2017 9:46:13 AM || "Drive Letter:  | Capacity: 870 MB
-9/15/2017 9:46:13 AM || "Drive Letter: A: | Capacity: 931.5 GB
-9/15/2017 9:46:13 AM || "Drive Letter: D: | Capacity:  Bytes
-9/15/2017 9:46:13 AM ***** End Sub listDrives *****
-9/15/2017 9:47:13 AM ***** Begin Sub enumUsers *****
-9/15/2017 9:47:13 AM || strComputer = "."
-9/15/2017 9:47:13 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
-9/15/2017 9:47:13 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
-9/15/2017 9:47:13 AM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
-9/15/2017 9:47:13 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
-9/15/2017 9:47:13 AM || Error Number: -2147024894
-9/15/2017 9:47:13 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
-9/15/2017 9:47:13 AM || Could not load HKLM\TempSoftware
-9/15/2017 9:47:13 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
-9/15/2017 9:47:13 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
-9/15/2017 9:47:13 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
-9/15/2017 9:47:13 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = %systemroot%\system32\config\systemprofile
-9/15/2017 9:47:13 AM || userName = systemprofile
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
-9/15/2017 9:47:13 AM || userName = LocalService
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
-9/15/2017 9:47:13 AM || userName = NetworkService
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = C:\Users\defaultuser0
-9/15/2017 9:47:13 AM || userName = defaultuser0
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = C:\Users\sccmpush
-9/15/2017 9:47:13 AM || userName = sccmpush
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = C:\Users\t1rcm01
-9/15/2017 9:47:13 AM || userName = t1rcm01
-9/15/2017 9:47:13 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
-9/15/2017 9:47:13 AM || profilePath = C:\Users\rcmcda01
-9/15/2017 9:47:13 AM || userName = rcmcda01
-9/15/2017 9:47:13 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
-9/15/2017 9:47:13 AM ***** End Sub enumUsers *****
+====================== Begin Logging at 9/18/2017 3:20:24 PM ======================
+9/18/2017 3:20:24 PM ***** Begin Sub listDrives *****
+9/18/2017 3:20:24 PM || User is running script as admin
+9/18/2017 3:20:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:20:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:20:24 PM || Win32_EncryptableVolume instance
+9/18/2017 3:20:24 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:20:24 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:20:24 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:20:24 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:20:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:20:24 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:20:24 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:20:24 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:20:24 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:20:24 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:20:24 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:20:24 PM ***** End Sub listDrives *****
+9/18/2017 3:20:33 PM ***** Begin Sub dismCapture *****
+9/18/2017 3:20:33 PM || strSourcePath = e
+9/18/2017 3:20:33 PM || strDestPath = a
+9/18/2017 3:20:33 PM || strName = flash
+9/18/2017 3:20:33 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:a:\flash.wim /CaptureDir:e:\ /Name:"flash" /ScratchDir:a:\ /LogPath:X:\dism.log", 1, True)
+9/18/2017 3:20:33 PM || Capture finished!
+9/18/2017 3:20:33 PM ***** End Sub dismCapture *****
+
+====================== Begin Logging at 9/18/2017 3:21:54 PM ======================
+9/18/2017 3:21:54 PM ***** Begin Sub listDrives *****
+9/18/2017 3:21:54 PM || User is running script as admin
+9/18/2017 3:21:54 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:21:54 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:21:54 PM || Win32_EncryptableVolume instance
+9/18/2017 3:21:54 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:21:54 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:21:54 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:21:54 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:21:54 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:21:54 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:21:54 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:21:54 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:21:54 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:21:54 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:21:54 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:21:54 PM ***** End Sub listDrives *****
+9/18/2017 3:22:02 PM ***** Begin Sub dismCapture *****
+9/18/2017 3:22:02 PM || strSourcePath = E
+9/18/2017 3:22:02 PM || strDestPath = A
+9/18/2017 3:22:02 PM || strName = flash
+9/18/2017 3:22:02 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:A:\flash.wim /CaptureDir:E:\ /Name:"flash" /ScratchDir:A:\ /LogPath:X:\dism.log", 1, True)
+9/18/2017 3:22:02 PM || Capture finished!
+9/18/2017 3:22:02 PM ***** End Sub dismCapture *****
+
+====================== Begin Logging at 9/18/2017 3:22:37 PM ======================
+9/18/2017 3:22:37 PM ***** Begin Sub listDrives *****
+9/18/2017 3:22:37 PM || User is running script as admin
+9/18/2017 3:22:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:22:37 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:22:37 PM || Win32_EncryptableVolume instance
+9/18/2017 3:22:37 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:22:37 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:22:37 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:22:37 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:22:37 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:22:37 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:22:37 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:22:37 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:22:37 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:22:37 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:22:37 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:22:37 PM ***** End Sub listDrives *****
+9/18/2017 3:22:45 PM ***** Begin Sub dismCapture *****
+9/18/2017 3:22:45 PM || strSourcePath = E
+9/18/2017 3:22:45 PM || strDestPath = A
+9/18/2017 3:22:45 PM || strName = flasj
+9/18/2017 3:22:45 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:A:\flasj.wim /CaptureDir:E:\ /Name:"flasj" /ScratchDir:A:\ /LogPath:X:\dism.log", 1, True)
+9/18/2017 3:23:29 PM || Capture finished!
+9/18/2017 3:23:29 PM ***** End Sub dismCapture *****
+
+====================== Begin Logging at 9/18/2017 3:25:32 PM ======================
+9/18/2017 3:25:32 PM ***** Begin Sub listDrives *****
+9/18/2017 3:25:32 PM || User is running script as admin
+9/18/2017 3:25:32 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:25:32 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:25:32 PM || Win32_EncryptableVolume instance
+9/18/2017 3:25:32 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:25:32 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:25:32 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:25:32 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:25:32 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:25:32 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:25:32 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:25:32 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:25:32 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:25:32 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:25:32 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:25:32 PM ***** End Sub listDrives *****
+9/18/2017 3:25:40 PM ***** Begin Sub dismCapture *****
+9/18/2017 3:25:40 PM || strSourcePath = e
+9/18/2017 3:25:40 PM || strDestPath = a
+9/18/2017 3:25:40 PM || strName = flash
+9/18/2017 3:25:40 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:a:\flash.wim /CaptureDir:e:\ /Name:"flash" /ScratchDir:a:\ /LogPath:X:\dism.log", 1, True)
+9/18/2017 3:26:25 PM || Capture finished!
+9/18/2017 3:26:25 PM ***** End Sub dismCapture *****
+
+====================== Begin Logging at 9/18/2017 3:26:49 PM ======================
+9/18/2017 3:26:49 PM ***** Begin Sub listDrives *****
+9/18/2017 3:26:49 PM || User is running script as admin
+9/18/2017 3:26:49 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:26:49 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:26:49 PM || Win32_EncryptableVolume instance
+9/18/2017 3:26:49 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:26:49 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:26:49 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:26:49 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:26:49 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:26:49 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:26:49 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:26:49 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:26:49 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:26:49 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:26:49 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:26:49 PM ***** End Sub listDrives *****
+9/18/2017 3:26:57 PM ***** Begin Sub enumUsers *****
+9/18/2017 3:26:57 PM || strComputer = "."
+9/18/2017 3:26:57 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/18/2017 3:26:57 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:26:57 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/18/2017 3:26:57 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/18/2017 3:26:57 PM || Error Number: -2147024894
+9/18/2017 3:26:57 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/18/2017 3:26:57 PM || Could not load HKLM\TempSoftware
+9/18/2017 3:26:57 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:26:57 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/18/2017 3:26:57 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/18/2017 3:26:57 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/18/2017 3:26:57 PM || userName = systemprofile
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/18/2017 3:26:57 PM || userName = LocalService
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/18/2017 3:26:57 PM || userName = NetworkService
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = C:\Users\defaultuser0
+9/18/2017 3:26:57 PM || userName = defaultuser0
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = C:\Users\sccmpush
+9/18/2017 3:26:57 PM || userName = sccmpush
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = C:\Users\t1rcm01
+9/18/2017 3:26:57 PM || userName = t1rcm01
+9/18/2017 3:26:57 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/18/2017 3:26:57 PM || profilePath = C:\Users\rcmcda01
+9/18/2017 3:26:57 PM || userName = rcmcda01
+9/18/2017 3:26:57 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/18/2017 3:26:58 PM ***** End Sub enumUsers *****
+9/18/2017 3:27:00 PM ***** Begin Sub enumUsers *****
+9/18/2017 3:27:00 PM || strComputer = "."
+9/18/2017 3:27:00 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/18/2017 3:27:00 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:27:00 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/18/2017 3:27:00 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/18/2017 3:27:00 PM || Error Number: -2147024894
+9/18/2017 3:27:00 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/18/2017 3:27:00 PM || Could not load HKLM\TempSoftware
+9/18/2017 3:27:00 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:27:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/18/2017 3:27:00 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/18/2017 3:27:00 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/18/2017 3:27:00 PM || userName = systemprofile
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/18/2017 3:27:00 PM || userName = LocalService
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/18/2017 3:27:00 PM || userName = NetworkService
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = C:\Users\defaultuser0
+9/18/2017 3:27:00 PM || userName = defaultuser0
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = C:\Users\sccmpush
+9/18/2017 3:27:00 PM || userName = sccmpush
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = C:\Users\t1rcm01
+9/18/2017 3:27:00 PM || userName = t1rcm01
+9/18/2017 3:27:00 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/18/2017 3:27:00 PM || profilePath = C:\Users\rcmcda01
+9/18/2017 3:27:00 PM || userName = rcmcda01
+9/18/2017 3:27:00 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/18/2017 3:27:00 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/18/2017 3:27:49 PM ======================
+9/18/2017 3:27:49 PM ***** Begin Sub listDrives *****
+9/18/2017 3:27:49 PM || User is running script as admin
+9/18/2017 3:27:49 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/18/2017 3:27:49 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/18/2017 3:27:49 PM || Win32_EncryptableVolume instance
+9/18/2017 3:27:49 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/18/2017 3:27:49 PM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:27:49 PM || Drive Letter: E: || ProtectionStatus: 0 || Not Encrypted
+9/18/2017 3:27:49 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/18/2017 3:27:49 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/18/2017 3:27:49 PM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/18/2017 3:27:49 PM || "Drive Letter: E: | Capacity: 7.4 GBEncryption Status: Not Encrypted
+9/18/2017 3:27:49 PM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/18/2017 3:27:49 PM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/18/2017 3:27:49 PM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/18/2017 3:27:49 PM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/18/2017 3:27:49 PM ***** End Sub listDrives *****
+9/18/2017 3:28:06 PM ***** Begin Sub dismCapture *****
+9/18/2017 3:28:06 PM || strSourcePath = E
+9/18/2017 3:28:06 PM || strDestPath = A
+9/18/2017 3:28:06 PM || strName = flash
+9/18/2017 3:28:06 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile:A:\flash.wim /CaptureDir:E:\ /Name:"flash" /ScratchDir:A:\ /LogPath:X:\dism.log", 1, True)
+9/18/2017 3:28:17 PM ***** Begin Sub enumUsers *****
+9/18/2017 3:28:17 PM || strComputer = "."
+9/18/2017 3:28:17 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/18/2017 3:28:17 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:28:17 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/18/2017 3:28:17 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/18/2017 3:28:17 PM || Error Number: -2147024894
+9/18/2017 3:28:17 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/18/2017 3:28:17 PM || Could not load HKLM\TempSoftware
+9/18/2017 3:28:17 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:28:17 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/18/2017 3:28:17 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/18/2017 3:28:17 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/18/2017 3:28:17 PM || userName = systemprofile
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/18/2017 3:28:17 PM || userName = LocalService
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/18/2017 3:28:17 PM || userName = NetworkService
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = C:\Users\defaultuser0
+9/18/2017 3:28:17 PM || userName = defaultuser0
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = C:\Users\sccmpush
+9/18/2017 3:28:17 PM || userName = sccmpush
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = C:\Users\t1rcm01
+9/18/2017 3:28:17 PM || userName = t1rcm01
+9/18/2017 3:28:17 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/18/2017 3:28:17 PM || profilePath = C:\Users\rcmcda01
+9/18/2017 3:28:17 PM || userName = rcmcda01
+9/18/2017 3:28:17 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/18/2017 3:28:17 PM ***** End Sub enumUsers *****
+9/18/2017 3:28:32 PM ***** Begin Sub enumUsers *****
+9/18/2017 3:28:32 PM || strComputer = "."
+9/18/2017 3:28:32 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/18/2017 3:28:32 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:28:32 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/18/2017 3:28:32 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/18/2017 3:28:32 PM || Error Number: -2147024894
+9/18/2017 3:28:32 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/18/2017 3:28:32 PM || Could not load HKLM\TempSoftware
+9/18/2017 3:28:32 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:28:32 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/18/2017 3:28:32 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/18/2017 3:28:32 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/18/2017 3:28:32 PM || userName = systemprofile
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/18/2017 3:28:32 PM || userName = LocalService
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/18/2017 3:28:32 PM || userName = NetworkService
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = C:\Users\defaultuser0
+9/18/2017 3:28:32 PM || userName = defaultuser0
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = C:\Users\sccmpush
+9/18/2017 3:28:32 PM || userName = sccmpush
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = C:\Users\t1rcm01
+9/18/2017 3:28:32 PM || userName = t1rcm01
+9/18/2017 3:28:32 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/18/2017 3:28:32 PM || profilePath = C:\Users\rcmcda01
+9/18/2017 3:28:32 PM || userName = rcmcda01
+9/18/2017 3:28:32 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/18/2017 3:28:32 PM ***** End Sub enumUsers *****
+9/18/2017 3:28:33 PM ***** Begin Sub enumUsers *****
+9/18/2017 3:28:33 PM || strComputer = "."
+9/18/2017 3:28:33 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/18/2017 3:28:33 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:28:33 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/18/2017 3:28:33 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/18/2017 3:28:33 PM || Error Number: -2147024894
+9/18/2017 3:28:33 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/18/2017 3:28:33 PM || Could not load HKLM\TempSoftware
+9/18/2017 3:28:33 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/18/2017 3:28:33 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/18/2017 3:28:33 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/18/2017 3:28:33 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/18/2017 3:28:33 PM || userName = systemprofile
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/18/2017 3:28:33 PM || userName = LocalService
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/18/2017 3:28:33 PM || userName = NetworkService
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = C:\Users\defaultuser0
+9/18/2017 3:28:33 PM || userName = defaultuser0
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = C:\Users\sccmpush
+9/18/2017 3:28:33 PM || userName = sccmpush
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = C:\Users\t1rcm01
+9/18/2017 3:28:33 PM || userName = t1rcm01
+9/18/2017 3:28:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/18/2017 3:28:33 PM || profilePath = C:\Users\rcmcda01
+9/18/2017 3:28:33 PM || userName = rcmcda01
+9/18/2017 3:28:33 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/18/2017 3:28:33 PM ***** End Sub enumUsers *****
+9/18/2017 3:28:44 PM || Capture finished!
+9/18/2017 3:28:44 PM ***** End Sub dismCapture *****

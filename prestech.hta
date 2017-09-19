@@ -276,11 +276,13 @@
         listDrives()
         $(".pages").mCustomScrollbar({
             theme: "minimal",
-            autoHideScrollbar: true
+            autoHideScrollbar: true,
+            live: "once"
         });
         $("#general-output").mCustomScrollbar({
             theme: "minimal",
-            autoHideScrollbar: true
+            autoHideScrollbar: true,
+            live: "once"
         });
     });
 
@@ -409,7 +411,18 @@
         $('#header-landing').css('display', 'inline');
     });
     $('#dism-capture').on('click', function () {
-        dismCapture();
+        //Disable scroll bar replacement because it causes a slow script warning after dism finishes
+  		$(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
+        dismCapture()
+
+        //Re-enable scroll bar replacement
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
+
     });
 
     $('#button-ScanState').on('click', function () {
@@ -423,12 +436,30 @@
         $('#run-usmt').css('display', 'none');
     });
     $('#run-LoadState').on('click', function () {
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
         usmtLoadstate();
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
     });
     $('#run-usmt').on('click', function () {
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
         usmtScanstate("true");
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
     });
     $('#fnf-capture').on('click', function () {
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
         runFlushFill();
     });
     $("#input-windows-drive, #input-primary-username").keyup(function () {
