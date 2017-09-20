@@ -11,6 +11,7 @@
     <script src="./js/jquery-1.11.1.min.js"></script>
     <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="./js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script src="./js/spin.js"></script>
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script type="text/vbscript" language="vbscript">
@@ -112,13 +113,13 @@
                 <!--Troubleshooting Tools Page-->
                 <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
-                        <button class="button" id="button-bitlocker" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button bl-info" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
                         <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
-                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">Notepad ++</button>
+                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon.png" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
                 <div id="general-output">.general-output</div>
@@ -174,7 +175,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info" onclick="vbscript:BitlockerInfo()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                <button id="bl-info" class="button button-bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -315,6 +316,16 @@
         $("#general-output").css('visibility', 'visible');
     });
 
+    $('.button-bl-info').on('click', function () {
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        bitlockerinfo();
+        spinner(opts).stop(target);
+    });
+
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
@@ -412,7 +423,7 @@
     });
     $('#dism-capture').on('click', function () {
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
-  		$(".pages").mCustomScrollbar("disable");
+        $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
 
         dismCapture()

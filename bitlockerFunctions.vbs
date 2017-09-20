@@ -86,6 +86,7 @@ Sub BitlockerInfo
 	Const TriStateTrue = -1	'Open file as Unicode
 	Dim cmdShell
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")
+
 	Set cmdShell = CreateObject("WScript.Shell")
 	
 	htaLog.WriteLine(Now & " || Executing command: cmdShell.Run ""powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1"", 1, true")

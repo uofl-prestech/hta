@@ -165,6 +165,7 @@ p {
     vertical-align: top;
     word-wrap: break-word;
     overflow: auto;
+    position: relative;
 }
 #run-LoadState{
     display: none;
