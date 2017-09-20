@@ -1032,3 +1032,1419 @@
 9/19/2017 2:01:40 PM || "Drive Letter: D: | Capacity:  Bytes
 9/19/2017 2:01:40 PM || "Drive Letter: H: | Capacity:  Bytes
 9/19/2017 2:01:40 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 12:57:12 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:57:26 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:57:52 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:57:56 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:58:17 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:58:32 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:58:34 PM ======================
+
+====================== Begin Logging at 9/20/2017 12:59:41 PM ======================
+9/20/2017 12:59:41 PM ***** Begin Sub listDrives *****
+9/20/2017 12:59:41 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 12:59:41 PM || Skipping check for Encryption Status
+9/20/2017 12:59:41 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 12:59:41 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 12:59:41 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 12:59:41 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 12:59:41 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 12:59:41 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 12:59:41 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 12:59:41 PM ***** End Sub listDrives *****
+9/20/2017 12:59:54 PM ***** Begin Sub pingTest *****
+9/20/2017 12:59:54 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 12:59:54 PM ***** End Sub pingTest *****
+9/20/2017 12:59:54 PM || 
+9/20/2017 12:59:54 PM || Pinging www.google.com [74.125.129.105] with 32 bytes of data:
+9/20/2017 12:59:54 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 12:59:55 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 12:59:56 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 12:59:56 PM ***** Begin Sub psPrompt *****
+9/20/2017 12:59:56 PM || Executing command: Powershell.exe -noprofile -noexit -executionpolicy bypass
+9/20/2017 12:59:57 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 12:59:57 PM ***** End Sub psPrompt *****
+9/20/2017 12:59:57 PM || 
+9/20/2017 12:59:57 PM || Ping statistics for 74.125.129.105:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 19ms, Average = 19ms
+
+9/20/2017 1:00:01 PM ***** Begin Sub notepadPP *****
+9/20/2017 1:00:01 PM || Executing command: .\tools\npp\notepadpp.exe
+9/20/2017 1:00:02 PM ***** End Sub notepadPP *****
+9/20/2017 1:00:05 PM ***** Begin Sub cmdPrompt *****
+9/20/2017 1:00:05 PM || Executing command: cmd /k
+9/20/2017 1:00:05 PM ***** End Sub cmdPrompt *****
+
+====================== Begin Logging at 9/20/2017 1:33:48 PM ======================
+9/20/2017 1:33:48 PM ***** Begin Sub listDrives *****
+9/20/2017 1:33:48 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 1:33:48 PM || Skipping check for Encryption Status
+9/20/2017 1:33:48 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 1:33:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 1:33:48 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 1:33:48 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 1:33:48 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 1:33:48 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 1:33:48 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 1:33:48 PM ***** End Sub listDrives *****
+9/20/2017 1:33:50 PM ***** Begin Sub pingTest *****
+9/20/2017 1:33:50 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 1:33:50 PM ***** End Sub pingTest *****
+9/20/2017 1:33:50 PM || 
+9/20/2017 1:33:50 PM || Pinging www.google.com [74.125.129.99] with 32 bytes of data:
+9/20/2017 1:33:50 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 1:33:51 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 1:33:52 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 1:33:53 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 1:33:53 PM || 
+9/20/2017 1:33:53 PM || Ping statistics for 74.125.129.99:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 19ms, Average = 19ms
+
+9/20/2017 1:34:22 PM ***** Begin Sub enumUsers *****
+9/20/2017 1:34:22 PM || strComputer = "."
+9/20/2017 1:34:22 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 1:34:22 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:34:22 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 1:34:22 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 1:34:22 PM || Error Number: -2147024894
+9/20/2017 1:34:22 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 1:34:22 PM || Could not load HKLM\TempSoftware
+9/20/2017 1:34:22 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:34:22 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 1:34:22 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 1:34:22 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 1:34:22 PM || userName = systemprofile
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 1:34:22 PM || userName = LocalService
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 1:34:22 PM || userName = NetworkService
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\grawem01
+9/20/2017 1:34:22 PM || userName = grawem01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\presidnt
+9/20/2017 1:34:22 PM || userName = presidnt
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\eadock01
+9/20/2017 1:34:22 PM || userName = eadock01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\sccmpush
+9/20/2017 1:34:22 PM || userName = sccmpush
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 1:34:22 PM || userName = t1rcm01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\jrelli05
+9/20/2017 1:34:22 PM || userName = jrelli05
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\crvish01
+9/20/2017 1:34:22 PM || userName = crvish01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 1:34:22 PM || userName = rcmcda01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\prestech
+9/20/2017 1:34:22 PM || userName = prestech
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\elmatr01
+9/20/2017 1:34:22 PM || userName = elmatr01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 1:34:22 PM || userName = mrhebe01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 1:34:22 PM || userName = sjkarl01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\b0doug01
+9/20/2017 1:34:22 PM || userName = b0doug01
+9/20/2017 1:34:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 1:34:22 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 1:34:22 PM || userName = DefaultAppPool
+9/20/2017 1:34:22 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 1:34:22 PM ***** End Sub enumUsers *****
+9/20/2017 1:34:23 PM ***** Begin Sub enumUsers *****
+9/20/2017 1:34:23 PM || strComputer = "."
+9/20/2017 1:34:23 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 1:34:23 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:34:23 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 1:34:23 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 1:34:23 PM || Error Number: -2147024894
+9/20/2017 1:34:23 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 1:34:23 PM || Could not load HKLM\TempSoftware
+9/20/2017 1:34:23 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:34:23 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 1:34:23 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 1:34:23 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 1:34:23 PM || userName = systemprofile
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 1:34:23 PM || userName = LocalService
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 1:34:23 PM || userName = NetworkService
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\grawem01
+9/20/2017 1:34:23 PM || userName = grawem01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\presidnt
+9/20/2017 1:34:23 PM || userName = presidnt
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\eadock01
+9/20/2017 1:34:23 PM || userName = eadock01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\sccmpush
+9/20/2017 1:34:23 PM || userName = sccmpush
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 1:34:23 PM || userName = t1rcm01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\jrelli05
+9/20/2017 1:34:23 PM || userName = jrelli05
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\crvish01
+9/20/2017 1:34:23 PM || userName = crvish01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 1:34:23 PM || userName = rcmcda01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\prestech
+9/20/2017 1:34:23 PM || userName = prestech
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\elmatr01
+9/20/2017 1:34:23 PM || userName = elmatr01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 1:34:23 PM || userName = mrhebe01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 1:34:23 PM || userName = sjkarl01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\b0doug01
+9/20/2017 1:34:23 PM || userName = b0doug01
+9/20/2017 1:34:23 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 1:34:23 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 1:34:23 PM || userName = DefaultAppPool
+9/20/2017 1:34:23 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 1:34:23 PM ***** End Sub enumUsers *****
+9/20/2017 1:34:25 PM ***** Begin Sub enumUsers *****
+9/20/2017 1:34:25 PM || strComputer = "."
+9/20/2017 1:34:25 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 1:34:25 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:34:25 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 1:34:25 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 1:34:25 PM || Error Number: -2147024894
+9/20/2017 1:34:25 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 1:34:25 PM || Could not load HKLM\TempSoftware
+9/20/2017 1:34:25 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:34:25 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 1:34:25 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 1:34:25 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 1:34:25 PM || userName = systemprofile
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 1:34:25 PM || userName = LocalService
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 1:34:25 PM || userName = NetworkService
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\grawem01
+9/20/2017 1:34:25 PM || userName = grawem01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\presidnt
+9/20/2017 1:34:25 PM || userName = presidnt
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\eadock01
+9/20/2017 1:34:25 PM || userName = eadock01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\sccmpush
+9/20/2017 1:34:25 PM || userName = sccmpush
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 1:34:25 PM || userName = t1rcm01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\jrelli05
+9/20/2017 1:34:25 PM || userName = jrelli05
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\crvish01
+9/20/2017 1:34:25 PM || userName = crvish01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 1:34:25 PM || userName = rcmcda01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\prestech
+9/20/2017 1:34:25 PM || userName = prestech
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\elmatr01
+9/20/2017 1:34:25 PM || userName = elmatr01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 1:34:25 PM || userName = mrhebe01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 1:34:25 PM || userName = sjkarl01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\b0doug01
+9/20/2017 1:34:25 PM || userName = b0doug01
+9/20/2017 1:34:25 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 1:34:25 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 1:34:25 PM || userName = DefaultAppPool
+9/20/2017 1:34:25 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 1:34:25 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/20/2017 1:37:18 PM ======================
+
+====================== Begin Logging at 9/20/2017 1:56:25 PM ======================
+9/20/2017 1:56:25 PM ***** Begin Sub listDrives *****
+9/20/2017 1:56:25 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 1:56:25 PM || Skipping check for Encryption Status
+9/20/2017 1:56:25 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 1:56:25 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 1:56:25 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 1:56:25 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 1:56:25 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 1:56:25 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 1:56:25 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 1:56:25 PM ***** End Sub listDrives *****
+9/20/2017 1:56:29 PM ***** Begin Sub enumUsers *****
+9/20/2017 1:56:29 PM || strComputer = "."
+9/20/2017 1:56:29 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 1:56:29 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:56:29 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 1:56:29 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 1:56:29 PM || Error Number: -2147024894
+9/20/2017 1:56:29 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 1:56:29 PM || Could not load HKLM\TempSoftware
+9/20/2017 1:56:29 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 1:56:29 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 1:56:29 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 1:56:29 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 1:56:29 PM || userName = systemprofile
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 1:56:29 PM || userName = LocalService
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 1:56:29 PM || userName = NetworkService
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\grawem01
+9/20/2017 1:56:29 PM || userName = grawem01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\presidnt
+9/20/2017 1:56:29 PM || userName = presidnt
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\eadock01
+9/20/2017 1:56:29 PM || userName = eadock01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\sccmpush
+9/20/2017 1:56:29 PM || userName = sccmpush
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 1:56:29 PM || userName = t1rcm01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\jrelli05
+9/20/2017 1:56:29 PM || userName = jrelli05
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\crvish01
+9/20/2017 1:56:29 PM || userName = crvish01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 1:56:29 PM || userName = rcmcda01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\prestech
+9/20/2017 1:56:29 PM || userName = prestech
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\elmatr01
+9/20/2017 1:56:29 PM || userName = elmatr01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 1:56:29 PM || userName = mrhebe01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 1:56:29 PM || userName = sjkarl01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\b0doug01
+9/20/2017 1:56:29 PM || userName = b0doug01
+9/20/2017 1:56:29 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 1:56:29 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 1:56:29 PM || userName = DefaultAppPool
+9/20/2017 1:56:29 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 1:56:29 PM ***** End Sub enumUsers *****
+9/20/2017 1:56:36 PM ***** Begin Sub usmtScanstate(buttonClicked) *****
+9/20/2017 1:56:36 PM || strCurrentDir = C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+9/20/2017 1:56:36 PM || usmtUsernameList.Options.Length = 13
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(0) = S-1-5-21-1757214225-243066502-1375922887-500, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(1) = S-1-5-21-839522115-261903793-682003330-121594, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(2) = S-1-5-21-839522115-261903793-682003330-158525, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(3) = S-1-5-21-839522115-261903793-682003330-173149, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(4) = S-1-5-21-839522115-261903793-682003330-21433, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(5) = S-1-5-21-839522115-261903793-682003330-219849, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(6) = S-1-5-21-839522115-261903793-682003330-23393, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(7) = S-1-5-21-839522115-261903793-682003330-284697, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(8) = S-1-5-21-839522115-261903793-682003330-335011, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(9) = S-1-5-21-839522115-261903793-682003330-55358, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(10) = S-1-5-21-839522115-261903793-682003330-74278, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(11) = S-1-5-21-839522115-261903793-682003330-95499, Selected = False
+9/20/2017 1:56:36 PM || usmtUsernameList.Options(12) = S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415, Selected = False
+9/20/2017 1:56:36 PM || userIncludeString = 
+9/20/2017 1:56:36 PM || usmtUsername.Value = 
+9/20/2017 1:56:36 PM || usmtDrive.Value = 
+9/20/2017 1:56:36 PM || Execute Scanstate if buttonClicked = true, getUser is not blank, and destDrive is not blank
+9/20/2017 1:56:36 PM || buttonClicked = true, getUser = , destDrive = 
+9/20/2017 1:56:36 PM || Executing command: WshShell.Run ("cmd /c C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta\USMT\scanstate.exe :\USMT\ /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L::\USMT\\scanstate.log /listfiles::\USMT\\filesCopied.log /V:5 /ue:* , 1, False)
+9/20/2017 1:56:36 PM ***** End Sub usmtScanstate(buttonClicked) *****
+9/20/2017 2:00:32 PM ***** Begin Sub pingTest *****
+9/20/2017 2:00:32 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 2:00:32 PM ***** End Sub pingTest *****
+9/20/2017 2:00:32 PM || 
+9/20/2017 2:00:32 PM || Pinging www.google.com [74.125.129.99] with 32 bytes of data:
+9/20/2017 2:00:32 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 2:00:33 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 2:00:34 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 2:00:35 PM || Reply from 74.125.129.99: bytes=32 time=19ms TTL=42
+9/20/2017 2:00:35 PM || 
+9/20/2017 2:00:35 PM || Ping statistics for 74.125.129.99:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 19ms, Average = 19ms
+
+
+====================== Begin Logging at 9/20/2017 2:01:13 PM ======================
+9/20/2017 2:01:13 PM ***** Begin Sub listDrives *****
+9/20/2017 2:01:13 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:01:13 PM || Skipping check for Encryption Status
+9/20/2017 2:01:13 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:01:13 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:01:13 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:01:13 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:01:13 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:01:13 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:01:13 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:01:13 PM ***** End Sub listDrives *****
+9/20/2017 2:01:15 PM ***** Begin Sub pingTest *****
+9/20/2017 2:01:15 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 2:01:15 PM ***** End Sub pingTest *****
+9/20/2017 2:01:15 PM || 
+9/20/2017 2:01:15 PM || Pinging www.google.com [74.125.129.105] with 32 bytes of data:
+9/20/2017 2:01:15 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:16 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:17 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:18 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:18 PM || 
+9/20/2017 2:01:18 PM || Ping statistics for 74.125.129.105:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 19ms, Average = 19ms
+
+9/20/2017 2:01:20 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:01:20 PM || strComputer = "."
+9/20/2017 2:01:20 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:01:20 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:01:20 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:01:20 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:01:20 PM || Error Number: -2147024894
+9/20/2017 2:01:20 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:01:20 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:01:20 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:01:20 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:01:20 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:01:20 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:01:20 PM || userName = systemprofile
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:01:20 PM || userName = LocalService
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:01:20 PM || userName = NetworkService
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:01:20 PM || userName = grawem01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:01:20 PM || userName = presidnt
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:01:20 PM || userName = eadock01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:01:20 PM || userName = sccmpush
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:01:20 PM || userName = t1rcm01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:01:20 PM || userName = jrelli05
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:01:20 PM || userName = crvish01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:01:20 PM || userName = rcmcda01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\prestech
+9/20/2017 2:01:20 PM || userName = prestech
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:01:20 PM || userName = elmatr01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:01:20 PM || userName = mrhebe01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:01:20 PM || userName = sjkarl01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:01:20 PM || userName = b0doug01
+9/20/2017 2:01:20 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:01:20 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:01:20 PM || userName = DefaultAppPool
+9/20/2017 2:01:20 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:01:20 PM ***** End Sub enumUsers *****
+9/20/2017 2:01:22 PM ***** Begin Sub pingTest *****
+9/20/2017 2:01:22 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 2:01:22 PM ***** End Sub pingTest *****
+9/20/2017 2:01:22 PM || 
+9/20/2017 2:01:22 PM || Pinging www.google.com [74.125.129.105] with 32 bytes of data:
+9/20/2017 2:01:22 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:23 PM || Reply from 74.125.129.105: bytes=32 time=20ms TTL=42
+9/20/2017 2:01:24 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:25 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:01:25 PM || 
+9/20/2017 2:01:25 PM || Ping statistics for 74.125.129.105:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 20ms, Average = 19ms
+
+
+====================== Begin Logging at 9/20/2017 2:04:02 PM ======================
+9/20/2017 2:04:02 PM ***** Begin Sub listDrives *****
+9/20/2017 2:04:02 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:04:02 PM || Skipping check for Encryption Status
+9/20/2017 2:04:02 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:04:02 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:04:02 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:04:02 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:04:02 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:04:02 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:04:02 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:04:02 PM ***** End Sub listDrives *****
+9/20/2017 2:04:06 PM ***** Begin Sub pingTest *****
+9/20/2017 2:04:06 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 2:04:06 PM ***** End Sub pingTest *****
+9/20/2017 2:04:06 PM || 
+9/20/2017 2:04:06 PM || Pinging www.google.com [74.125.129.105] with 32 bytes of data:
+9/20/2017 2:04:06 PM || Reply from 74.125.129.105: bytes=32 time=20ms TTL=42
+9/20/2017 2:04:07 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:04:08 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:04:09 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:04:09 PM || 
+9/20/2017 2:04:09 PM || Ping statistics for 74.125.129.105:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 20ms, Average = 19ms
+
+9/20/2017 2:04:14 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:04:14 PM || strComputer = "."
+9/20/2017 2:04:14 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:04:14 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:14 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:04:14 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:04:14 PM || Error Number: -2147024894
+9/20/2017 2:04:14 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:04:14 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:04:14 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:14 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:04:14 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:04:14 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:04:14 PM || userName = systemprofile
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:04:14 PM || userName = LocalService
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:04:14 PM || userName = NetworkService
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:04:14 PM || userName = grawem01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:04:14 PM || userName = presidnt
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:04:14 PM || userName = eadock01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:04:14 PM || userName = sccmpush
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:04:14 PM || userName = t1rcm01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:04:14 PM || userName = jrelli05
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:04:14 PM || userName = crvish01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:04:14 PM || userName = rcmcda01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\prestech
+9/20/2017 2:04:14 PM || userName = prestech
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:04:14 PM || userName = elmatr01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:04:14 PM || userName = mrhebe01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:04:14 PM || userName = sjkarl01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:04:14 PM || userName = b0doug01
+9/20/2017 2:04:14 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:04:14 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:04:14 PM || userName = DefaultAppPool
+9/20/2017 2:04:14 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:04:14 PM ***** End Sub enumUsers *****
+9/20/2017 2:04:19 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:04:19 PM || strComputer = "."
+9/20/2017 2:04:19 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:04:19 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:19 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:04:19 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:04:19 PM || Error Number: -2147024894
+9/20/2017 2:04:19 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:04:19 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:04:19 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:19 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:04:19 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:04:19 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:04:19 PM || userName = systemprofile
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:04:19 PM || userName = LocalService
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:04:19 PM || userName = NetworkService
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:04:19 PM || userName = grawem01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:04:19 PM || userName = presidnt
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:04:19 PM || userName = eadock01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:04:19 PM || userName = sccmpush
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:04:19 PM || userName = t1rcm01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:04:19 PM || userName = jrelli05
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:04:19 PM || userName = crvish01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:04:19 PM || userName = rcmcda01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\prestech
+9/20/2017 2:04:19 PM || userName = prestech
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:04:19 PM || userName = elmatr01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:04:19 PM || userName = mrhebe01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:04:19 PM || userName = sjkarl01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:04:19 PM || userName = b0doug01
+9/20/2017 2:04:19 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:04:19 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:04:19 PM || userName = DefaultAppPool
+9/20/2017 2:04:19 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:04:19 PM ***** End Sub enumUsers *****
+9/20/2017 2:04:33 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:04:33 PM || strComputer = "."
+9/20/2017 2:04:33 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:04:33 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:33 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:04:33 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:04:33 PM || Error Number: -2147024894
+9/20/2017 2:04:33 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:04:33 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:04:33 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:33 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:04:33 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:04:33 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:04:33 PM || userName = systemprofile
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:04:33 PM || userName = LocalService
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:04:33 PM || userName = NetworkService
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:04:33 PM || userName = grawem01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:04:33 PM || userName = presidnt
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:04:33 PM || userName = eadock01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:04:33 PM || userName = sccmpush
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:04:33 PM || userName = t1rcm01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:04:33 PM || userName = jrelli05
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:04:33 PM || userName = crvish01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:04:33 PM || userName = rcmcda01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\prestech
+9/20/2017 2:04:33 PM || userName = prestech
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:04:33 PM || userName = elmatr01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:04:33 PM || userName = mrhebe01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:04:33 PM || userName = sjkarl01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:04:33 PM || userName = b0doug01
+9/20/2017 2:04:33 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:04:33 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:04:33 PM || userName = DefaultAppPool
+9/20/2017 2:04:33 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:04:33 PM ***** End Sub enumUsers *****
+9/20/2017 2:04:34 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:04:34 PM || strComputer = "."
+9/20/2017 2:04:34 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:04:34 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:34 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:04:34 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:04:34 PM || Error Number: -2147024894
+9/20/2017 2:04:34 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:04:34 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:04:34 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:04:34 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:04:34 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:04:34 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:04:34 PM || userName = systemprofile
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:04:34 PM || userName = LocalService
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:04:34 PM || userName = NetworkService
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:04:34 PM || userName = grawem01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:04:34 PM || userName = presidnt
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:04:34 PM || userName = eadock01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:04:34 PM || userName = sccmpush
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:04:34 PM || userName = t1rcm01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:04:34 PM || userName = jrelli05
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:04:34 PM || userName = crvish01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:04:34 PM || userName = rcmcda01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\prestech
+9/20/2017 2:04:34 PM || userName = prestech
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:04:34 PM || userName = elmatr01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:04:34 PM || userName = mrhebe01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:04:34 PM || userName = sjkarl01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:04:34 PM || userName = b0doug01
+9/20/2017 2:04:34 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:04:34 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:04:34 PM || userName = DefaultAppPool
+9/20/2017 2:04:34 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:04:34 PM ***** End Sub enumUsers *****
+9/20/2017 2:05:40 PM ***** Begin Sub pingTest *****
+9/20/2017 2:05:40 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 2:05:40 PM ***** End Sub pingTest *****
+9/20/2017 2:05:40 PM || 
+9/20/2017 2:05:40 PM || Pinging www.google.com [74.125.129.105] with 32 bytes of data:
+9/20/2017 2:05:40 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:41 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:42 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:43 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:43 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:05:43 PM || strComputer = "."
+9/20/2017 2:05:43 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:05:43 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:05:43 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:05:43 PM || 
+9/20/2017 2:05:43 PM || Ping statistics for 74.125.129.105:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 19ms, Average = 19ms
+
+9/20/2017 2:05:43 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:05:43 PM || Error Number: -2147024894
+9/20/2017 2:05:43 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:05:43 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:05:43 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:05:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:05:43 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:05:43 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:05:43 PM || userName = systemprofile
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:05:43 PM || userName = LocalService
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:05:43 PM || userName = NetworkService
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:05:43 PM || userName = grawem01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:05:43 PM || userName = presidnt
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:05:43 PM || userName = eadock01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:05:43 PM || userName = sccmpush
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:05:43 PM || userName = t1rcm01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:05:43 PM || userName = jrelli05
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:05:43 PM || userName = crvish01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:05:43 PM || userName = rcmcda01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\prestech
+9/20/2017 2:05:43 PM || userName = prestech
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:05:43 PM || userName = elmatr01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:05:43 PM || userName = mrhebe01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:05:43 PM || userName = sjkarl01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:05:43 PM || userName = b0doug01
+9/20/2017 2:05:43 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:05:43 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:05:43 PM || userName = DefaultAppPool
+9/20/2017 2:05:43 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:05:43 PM ***** End Sub enumUsers *****
+9/20/2017 2:05:44 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:05:44 PM || strComputer = "."
+9/20/2017 2:05:44 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:05:44 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:05:44 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:05:44 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:05:44 PM || Error Number: -2147024894
+9/20/2017 2:05:44 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:05:44 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:05:44 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:05:44 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:05:44 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:05:44 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:05:44 PM || userName = systemprofile
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:05:44 PM || userName = LocalService
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:05:44 PM || userName = NetworkService
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:05:44 PM || userName = grawem01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:05:44 PM || userName = presidnt
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:05:44 PM || userName = eadock01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:05:44 PM || userName = sccmpush
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:05:44 PM || userName = t1rcm01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:05:44 PM || userName = jrelli05
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:05:44 PM || userName = crvish01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:05:44 PM || userName = rcmcda01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\prestech
+9/20/2017 2:05:44 PM || userName = prestech
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:05:44 PM || userName = elmatr01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:05:44 PM || userName = mrhebe01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:05:44 PM || userName = sjkarl01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:05:44 PM || userName = b0doug01
+9/20/2017 2:05:44 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:05:44 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:05:44 PM || userName = DefaultAppPool
+9/20/2017 2:05:44 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:05:44 PM ***** End Sub enumUsers *****
+9/20/2017 2:05:46 PM ***** Begin Sub pingTest *****
+9/20/2017 2:05:46 PM || Executing command: cmd /c ping.exe www.google.com
+9/20/2017 2:05:46 PM ***** End Sub pingTest *****
+9/20/2017 2:05:46 PM || 
+9/20/2017 2:05:46 PM || Pinging www.google.com [74.125.129.105] with 32 bytes of data:
+9/20/2017 2:05:46 PM || Reply from 74.125.129.105: bytes=32 time=21ms TTL=42
+9/20/2017 2:05:47 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:48 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:49 PM || Reply from 74.125.129.105: bytes=32 time=19ms TTL=42
+9/20/2017 2:05:49 PM || 
+9/20/2017 2:05:49 PM || Ping statistics for 74.125.129.105:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 19ms, Maximum = 21ms, Average = 19ms
+
+
+====================== Begin Logging at 9/20/2017 2:08:13 PM ======================
+9/20/2017 2:08:13 PM ***** Begin Sub listDrives *****
+9/20/2017 2:08:13 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:08:13 PM || Skipping check for Encryption Status
+9/20/2017 2:08:13 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:08:13 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:08:13 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:08:13 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:08:13 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:08:13 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:08:13 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:08:13 PM ***** End Sub listDrives *****
+9/20/2017 2:08:21 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:08:21 PM || strComputer = "."
+9/20/2017 2:08:21 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:08:21 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:08:21 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:08:21 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:08:21 PM || Error Number: -2147024894
+9/20/2017 2:08:21 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:08:21 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:08:21 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:08:21 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:08:21 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:08:21 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:08:21 PM || userName = systemprofile
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:08:21 PM || userName = LocalService
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:08:21 PM || userName = NetworkService
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:08:21 PM || userName = grawem01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:08:21 PM || userName = presidnt
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:08:21 PM || userName = eadock01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:08:21 PM || userName = sccmpush
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:08:21 PM || userName = t1rcm01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:08:21 PM || userName = jrelli05
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:08:21 PM || userName = crvish01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:08:21 PM || userName = rcmcda01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\prestech
+9/20/2017 2:08:21 PM || userName = prestech
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:08:21 PM || userName = elmatr01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:08:21 PM || userName = mrhebe01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:08:21 PM || userName = sjkarl01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:08:21 PM || userName = b0doug01
+9/20/2017 2:08:21 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:08:21 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:08:21 PM || userName = DefaultAppPool
+9/20/2017 2:08:21 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:08:21 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/20/2017 2:10:23 PM ======================
+9/20/2017 2:10:24 PM ***** Begin Sub listDrives *****
+9/20/2017 2:10:24 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:10:24 PM || Skipping check for Encryption Status
+9/20/2017 2:10:24 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:10:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:10:24 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:10:24 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:10:24 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:10:24 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:10:24 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:10:24 PM ***** End Sub listDrives *****
+9/20/2017 2:10:26 PM ***** Begin Sub enumUsers *****
+9/20/2017 2:10:26 PM || strComputer = "."
+9/20/2017 2:10:26 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/20/2017 2:10:26 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:10:26 PM || Executing command: "cmd /c reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/20/2017 2:10:26 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/20/2017 2:10:26 PM || Error Number: -2147024894
+9/20/2017 2:10:26 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/20/2017 2:10:26 PM || Could not load HKLM\TempSoftware
+9/20/2017 2:10:26 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/20/2017 2:10:26 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/20/2017 2:10:26 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/20/2017 2:10:26 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/20/2017 2:10:26 PM || userName = systemprofile
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/20/2017 2:10:26 PM || userName = LocalService
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/20/2017 2:10:26 PM || userName = NetworkService
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\grawem01
+9/20/2017 2:10:26 PM || userName = grawem01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\presidnt
+9/20/2017 2:10:26 PM || userName = presidnt
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\eadock01
+9/20/2017 2:10:26 PM || userName = eadock01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\sccmpush
+9/20/2017 2:10:26 PM || userName = sccmpush
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\t1rcm01
+9/20/2017 2:10:26 PM || userName = t1rcm01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\jrelli05
+9/20/2017 2:10:26 PM || userName = jrelli05
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\crvish01
+9/20/2017 2:10:26 PM || userName = crvish01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\rcmcda01
+9/20/2017 2:10:26 PM || userName = rcmcda01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\prestech
+9/20/2017 2:10:26 PM || userName = prestech
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\elmatr01
+9/20/2017 2:10:26 PM || userName = elmatr01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\mrhebe01
+9/20/2017 2:10:26 PM || userName = mrhebe01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\sjkarl01
+9/20/2017 2:10:26 PM || userName = sjkarl01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\b0doug01
+9/20/2017 2:10:26 PM || userName = b0doug01
+9/20/2017 2:10:26 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/20/2017 2:10:26 PM || profilePath = C:\Users\DefaultAppPool
+9/20/2017 2:10:26 PM || userName = DefaultAppPool
+9/20/2017 2:10:26 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/20/2017 2:10:26 PM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/20/2017 2:11:43 PM ======================
+9/20/2017 2:11:43 PM ***** Begin Sub listDrives *****
+9/20/2017 2:11:43 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:11:43 PM || Skipping check for Encryption Status
+9/20/2017 2:11:43 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:11:43 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:11:43 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:11:43 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:11:43 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:11:43 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:11:43 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:11:43 PM ***** End Sub listDrives *****
+9/20/2017 2:11:46 PM ***** Begin Sub BitlockerUnlock *****
+9/20/2017 2:11:46 PM || document.getElementById("input-windows-drive").Value = 
+9/20/2017 2:11:46 PM || document.getElementById("input-bitlocker-key").Value = 
+9/20/2017 2:11:46 PM || Executing command: cmdShell.Exec("Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File ./BitlockerUnlock.ps1 -blKey "" -drive "")
+9/20/2017 2:11:47 PM || The term 'Unlock-BitLocker' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+The module to process 'Microsoft.BitLocker.Structures', listed in field 'NestedModules' of module manifest 'C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta\Bitlocker\Bitlocker.psd1' was not processed because no valid module was found in any module directory.
+
+9/20/2017 2:11:47 PM ***** End Sub BitlockerUnlock *****
+9/20/2017 2:11:55 PM ***** Begin Sub BitlockerInfo *****
+9/20/2017 2:11:55 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/20/2017 2:11:57 PM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/20/2017 2:12:06 PM ======================
+9/20/2017 2:12:06 PM ***** Begin Sub listDrives *****
+9/20/2017 2:12:06 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:12:06 PM || Skipping check for Encryption Status
+9/20/2017 2:12:06 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:12:06 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:12:06 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:12:06 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:12:06 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:12:06 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:12:06 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:12:06 PM ***** End Sub listDrives *****
+9/20/2017 2:12:09 PM ***** Begin Sub BitlockerInfo *****
+9/20/2017 2:12:09 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/20/2017 2:12:12 PM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/20/2017 2:13:05 PM ======================
+9/20/2017 2:13:05 PM ***** Begin Sub listDrives *****
+9/20/2017 2:13:05 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:13:05 PM || Skipping check for Encryption Status
+9/20/2017 2:13:05 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:13:05 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:13:05 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:13:05 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:13:05 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:13:05 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:13:05 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:13:05 PM ***** End Sub listDrives *****
+9/20/2017 2:13:07 PM ***** Begin Sub BitlockerInfo *****
+9/20/2017 2:13:07 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/20/2017 2:13:09 PM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+9/20/2017 2:15:19 PM ***** Begin Sub BitlockerInfo *****
+9/20/2017 2:15:19 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/20/2017 2:15:22 PM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+9/20/2017 2:15:30 PM ***** Begin Sub BitlockerInfo *****
+9/20/2017 2:15:30 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/20/2017 2:15:33 PM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/20/2017 2:16:20 PM ======================
+9/20/2017 2:16:20 PM ***** Begin Sub listDrives *****
+9/20/2017 2:16:20 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:16:20 PM || Skipping check for Encryption Status
+9/20/2017 2:16:20 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:16:20 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:16:20 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:16:20 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:16:20 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:16:20 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:16:20 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:16:20 PM ***** End Sub listDrives *****
+9/20/2017 2:16:23 PM ***** Begin Sub BitlockerInfo *****
+9/20/2017 2:16:23 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/20/2017 2:16:26 PM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/20/2017 2:49:28 PM ======================
+9/20/2017 2:49:28 PM ***** Begin Sub listDrives *****
+9/20/2017 2:49:28 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:49:28 PM || Skipping check for Encryption Status
+9/20/2017 2:49:28 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:49:28 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:49:28 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:49:28 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:49:28 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:49:28 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:49:28 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:49:28 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:49:53 PM ======================
+9/20/2017 2:49:53 PM ***** Begin Sub listDrives *****
+9/20/2017 2:49:53 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:49:53 PM || Skipping check for Encryption Status
+9/20/2017 2:49:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:49:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:49:53 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:49:53 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:49:53 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:49:53 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:49:53 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:49:53 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:50:12 PM ======================
+9/20/2017 2:50:12 PM ***** Begin Sub listDrives *****
+9/20/2017 2:50:12 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:50:12 PM || Skipping check for Encryption Status
+9/20/2017 2:50:12 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:50:12 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:50:12 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:50:12 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:50:12 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:50:12 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:50:12 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:50:12 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:51:32 PM ======================
+9/20/2017 2:51:32 PM ***** Begin Sub listDrives *****
+9/20/2017 2:51:32 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:51:32 PM || Skipping check for Encryption Status
+9/20/2017 2:51:32 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:51:32 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:51:32 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:51:32 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:51:32 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:51:32 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:51:32 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:51:32 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:51:56 PM ======================
+9/20/2017 2:51:56 PM ***** Begin Sub listDrives *****
+9/20/2017 2:51:56 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:51:56 PM || Skipping check for Encryption Status
+9/20/2017 2:51:56 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:51:56 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:51:56 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:51:56 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:51:56 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:51:56 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:51:56 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:51:56 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:51:58 PM ======================
+9/20/2017 2:51:58 PM ***** Begin Sub listDrives *****
+9/20/2017 2:51:58 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:51:58 PM || Skipping check for Encryption Status
+9/20/2017 2:51:58 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:51:58 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:51:58 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:51:58 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:51:58 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:51:58 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:51:58 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:51:58 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:52:10 PM ======================
+9/20/2017 2:52:10 PM ***** Begin Sub listDrives *****
+9/20/2017 2:52:10 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:52:10 PM || Skipping check for Encryption Status
+9/20/2017 2:52:10 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:52:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:52:10 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:52:10 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:52:10 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:52:10 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:52:10 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:52:10 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:52:12 PM ======================
+9/20/2017 2:52:12 PM ***** Begin Sub listDrives *****
+9/20/2017 2:52:12 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:52:12 PM || Skipping check for Encryption Status
+9/20/2017 2:52:12 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:52:12 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:52:12 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:52:12 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:52:12 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:52:12 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:52:12 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:52:12 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:52:14 PM ======================
+9/20/2017 2:52:14 PM ***** Begin Sub listDrives *****
+9/20/2017 2:52:14 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:52:14 PM || Skipping check for Encryption Status
+9/20/2017 2:52:14 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:52:14 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:52:14 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:52:14 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:52:14 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:52:14 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:52:14 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:52:14 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:52:29 PM ======================
+9/20/2017 2:52:29 PM ***** Begin Sub listDrives *****
+9/20/2017 2:52:29 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:52:29 PM || Skipping check for Encryption Status
+9/20/2017 2:52:29 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:52:29 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:52:29 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:52:29 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:52:29 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:52:29 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:52:29 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:52:29 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 2:59:58 PM ======================
+9/20/2017 2:59:58 PM ***** Begin Sub listDrives *****
+9/20/2017 2:59:58 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 2:59:58 PM || Skipping check for Encryption Status
+9/20/2017 2:59:58 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 2:59:58 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 2:59:58 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 2:59:58 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 2:59:58 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 2:59:58 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 2:59:58 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 2:59:58 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 3:00:28 PM ======================
+9/20/2017 3:00:28 PM ***** Begin Sub listDrives *****
+9/20/2017 3:00:28 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 3:00:28 PM || Skipping check for Encryption Status
+9/20/2017 3:00:28 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 3:00:28 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 3:00:28 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 3:00:28 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 3:00:28 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 3:00:28 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 3:00:28 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 3:00:28 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 3:00:42 PM ======================
+9/20/2017 3:00:42 PM ***** Begin Sub listDrives *****
+9/20/2017 3:00:42 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 3:00:42 PM || Skipping check for Encryption Status
+9/20/2017 3:00:42 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 3:00:42 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 3:00:42 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 3:00:42 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 3:00:42 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 3:00:42 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 3:00:42 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 3:00:42 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 3:00:53 PM ======================
+9/20/2017 3:00:53 PM ***** Begin Sub listDrives *****
+9/20/2017 3:00:53 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 3:00:53 PM || Skipping check for Encryption Status
+9/20/2017 3:00:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 3:00:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 3:00:53 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 3:00:53 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 3:00:53 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 3:00:53 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 3:00:53 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 3:00:53 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 3:01:17 PM ======================
+9/20/2017 3:01:17 PM ***** Begin Sub listDrives *****
+9/20/2017 3:01:17 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 3:01:17 PM || Skipping check for Encryption Status
+9/20/2017 3:01:17 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 3:01:17 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 3:01:17 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 3:01:17 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 3:01:17 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 3:01:17 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 3:01:17 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 3:01:17 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 3:01:33 PM ======================
+9/20/2017 3:01:33 PM ***** Begin Sub listDrives *****
+9/20/2017 3:01:33 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 3:01:33 PM || Skipping check for Encryption Status
+9/20/2017 3:01:33 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 3:01:33 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 3:01:33 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 3:01:33 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 3:01:33 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 3:01:33 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 3:01:33 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 3:01:33 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/20/2017 3:02:03 PM ======================
+9/20/2017 3:02:03 PM ***** Begin Sub listDrives *****
+9/20/2017 3:02:03 PM || Error. Must run as Administrator to check encryption status
+9/20/2017 3:02:03 PM || Skipping check for Encryption Status
+9/20/2017 3:02:03 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/20/2017 3:02:03 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/20/2017 3:02:03 PM || "Drive Letter:  | Capacity: 350 MB
+9/20/2017 3:02:03 PM || "Drive Letter: C: | Capacity: 237.7 GB
+9/20/2017 3:02:03 PM || "Drive Letter:  | Capacity: 450 MB
+9/20/2017 3:02:03 PM || "Drive Letter: D: | Capacity:  Bytes
+9/20/2017 3:02:03 PM || "Drive Letter: H: | Capacity:  Bytes
+9/20/2017 3:02:03 PM ***** End Sub listDrives *****

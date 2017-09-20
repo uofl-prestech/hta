@@ -119,7 +119,7 @@
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
                         <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
-                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">Notepad ++</button>
+                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon.png" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
                 <div id="general-output">.general-output</div>
@@ -267,12 +267,15 @@
 
 </body>
 
+<!--************************************ JavaScript functions ************************************-->
+
 <script language="JavaScript">
     $(document).ready(function () {
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
+        $('#general-output').css('visibility', 'hidden');
 
         listDrives()
         $(".pages").mCustomScrollbar({
@@ -316,13 +319,22 @@
         $("#general-output").css('visibility', 'visible');
     });
 
+// Bitlocker loading spinner
     $('.button-bl-info').on('click', function () {
         var target = document.getElementById('general-output');
         var opts = {
             color: '#FFF'
         }
-        var spinner = new Spinner(opts).spin(target);             
+        var spinner = new Spinner(opts).spin(target);
+        bitlockerinfo();
+        spinner(opts).stop(target);
     });
+// #general-output visible
+
+    $('#button-pingtest').on('click', function () {
+        $("#general-output").css('visibility', 'visible');
+    });
+
 
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
