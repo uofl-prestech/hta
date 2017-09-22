@@ -336,6 +336,7 @@ Function dismCapture
 
     htaLog.WriteLine(Now & " ***** End Sub dismCapture *****")
     dismCapture = returnCode
+
 End Function
 
 '************************************ Execute DISM script ************************************
@@ -380,7 +381,7 @@ Sub enumUsers
     htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
     htaLog.WriteLine(Now & " || strKeyPath = ""TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList""")
     
-    htaLog.WriteLine(Now & " || Executing command: ""cmd /c reg.exe load HKLM\TempSoftware " & strHivePath & ", 0, true")
+    htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKLM\TempSoftware " & strHivePath & ", 0, true")
 
     On Error Resume Next
     Err.Clear
@@ -435,11 +436,12 @@ Sub enumUsers
         If NOT (strcomp(userName,"systemprofile",0) = 0 OR strcomp(userName,"LocalService",0) = 0 OR strcomp(userName,"NetworkService",0) = 0 _
             OR strcomp(userName,"defaultuser0",0) = 0 OR strcomp(userName,"sccmpush",0) = 0) Then
             htmlString = htmlString & "<option value=" & subkey & ">" & userName & "</option>"
+            env("env" & userName & "SID") = subkey
             selectLength = selectLength + 1
         End If
     Next
     userNameDiv.innerHTML = userNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
-    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""input-usmt-usernames"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
+    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""input-usmt-usernames"" class=""input-objects"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
     
     htaLog.WriteLine(Now & " || Executing command: objShell.Run(""cmd /c reg.exe unload HKLM\TempSoftware"", 0, true)")
     objshell.Run "%comspec% /c reg.exe unload HKLM\TempSoftware", 0, true
@@ -448,11 +450,66 @@ Sub enumUsers
 
 End Sub
 
+Sub copyWallpaper
+    htaLog.WriteLine(Now & " ***** Begin Sub copyWallpaper *****")
+
+    Dim strComputer, strHivePath, strKeyPath, userName, objshell, getUser, getUserSID, strWallpaperPath, strWallpaperRegPath,strSourceDrive, strDestDrive
+    set objshell = CreateObject("Wscript.shell")
+    getUser = document.getElementById("input-primary-username").Value
+	htaLog.WriteLine("getUser = " & getUser) 
+    getUserSID = env("env" & getUser & "SID")
+    htaLog.WriteLine("getUserSID = " & getUserSID)
+
+    strComputer = "."
+    strSourceDrive = document.getElementById("input-windows-drive").Value
+    strDestDrive = document.getElementById("input-external-drive").Value
+    strHivePath = strSourceDrive & ":\Users\"& getUser & "\NTUSER.DAT"
+    strWallpaperRegPath = "HKEY_USERS\TempUser\Control Panel\Desktop\WallPaper"
+
+    htaLog.WriteLine(Now & " || strComputer = "".""")
+    htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
+    htaLog.WriteLine(Now & " || strWallpaperPath = ""TempUser\Microsoft\Windows NT\CurrentVersion\ProfileList""")
+    
+    htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKEY_USERS\TempUser " & strHivePath & ", 0, true")
+
+    On Error Resume Next
+    Err.Clear
+
+    objshell.Run "reg.exe load HKEY_USERS\TempUser " & strHivePath, 0, true
+
+    If Err <> 0 Then
+        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
+        Err.Clear
+    End If
+    
+    htaLog.WriteLine(Now & " || Executing command: strWallpaperPath = objshell.regRead(strWallpaperRegPath)")
+
+    strWallpaperPath = objshell.regRead(strWallpaperRegPath)
+
+    If Err <> 0 Then
+        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
+        htaLog.WriteLine(Now & " || Could not load " & strWallpaperRegPath)
+        Err.Clear
+    Else
+        Dim fsoWallPaper, fsoExtension, strNewPath
+        Set fsoWallPaper = CreateObject("Scripting.FileSystemObject")
+        htaLog.WriteLine(Now & " || Executing Command: fsoWallPaper.CopyFile " & strWallpaperPath & ", "& strDestDrive & ":\USMT\" & getUser & "\")
+		fsoExtension = fsoWallPaper.GetExtensionName(strWallpaperPath)
+		strNewPath = strDestDrive & ":\USMT\" & getUser & "\" & getUser & "." & fsoExtension
+        fsoWallPaper.CopyFile strWallpaperPath, strNewPath
+		env("envWallpaperFile") = strNewPath
+    End If
+
+    htaLog.WriteLine(Now & " ***** End Sub copyWallpaper *****")
+End Sub
+
 '************************************ USMT Scanstate subroutine ************************************
 Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " ***** Begin Sub usmtScanstate(buttonClicked) *****")
 
-    Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString
+    Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString, windowsDrive
     userArray = Array()
     Set scanStateDiv = document.getElementById("general-output")
     Set WshShell = CreateObject("WScript.Shell")
@@ -474,21 +531,24 @@ Sub usmtScanstate(buttonClicked)
 
 	getUser = document.getElementById("input-primary-username").Value
 	destDrive = document.getElementById("input-external-drive").Value
+    strSourcePath = document.getElementById("input-windows-drive").Value
 
     htaLog.WriteLine(Now & " || usmtUsername.Value = " & getUser)
     htaLog.WriteLine(Now & " || usmtDrive.Value = " & destDrive)
 
-    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 <br> /ue:* " & userIncludeString & ", 1, False"
+    scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 <br> /ue:* " & userIncludeString & ", 1, True"
 
     htaLog.WriteLine(Now & " || Execute Scanstate if buttonClicked = true, getUser is not blank, and destDrive is not blank")
     htaLog.WriteLine(Now & " || buttonClicked = " & buttonClicked & ", getUser = " & getUser & ", destDrive = " & destDrive)
-    htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, False)")
+    htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, True)")
 
     If buttonClicked = "true" AND getUser <> "" AND destDrive <> "" Then
-        returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, False)
+        returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
 
         If returnCode = 0 Then
             htaLog.WriteLine(Now & " || Scanstate Complete!")
+            htaLog.WriteLine(Now & " || Copying WallPaper file from C:\Users\<getUser>\ to <windowsDrive>:\USMT\<getUser>\")
+            copyWallpaper
             scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
         Else
             htaLog.WriteLine(Now & " || Scanstate Failed!")
@@ -519,20 +579,98 @@ End Sub
 Sub usmtLoadstate
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate *****")
 
-    Dim ReturnCode, getUser, sourceDrive, strCurrentDir
+    Dim ReturnCode, getUser, usmtDrive, strCurrentDir
     Dim objShell : Set objShell = CreateObject("WScript.Shell")
     strCurrentDir = objShell.currentDirectory
     getUser = document.getElementById("input-primary-username").Value
-    sourceDrive = document.getElementById("input-external-drive").Value
+    usmtDrive = document.getElementById("input-external-drive").Value
 
     htaLog.WriteLine(Now & " || strCurrentDir = " & strCurrentDir)
     htaLog.WriteLine(Now & " || getUser = " & getuser)
-    htaLog.WriteLine(Now & " || sourceDrive = " & sourceDrive)
-    htaLog.WriteLine(Now & " || Executing command: objShell.Run (""cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&sourceDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&sourceDrive&":\USMT\"&getUser&"\loadstate.log"", 1, True)")
+    htaLog.WriteLine(Now & " || usmtDrive = " & usmtDrive)
+    htaLog.WriteLine(Now & " || Executing command: objShell.Run (""cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&usmtDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&usmtDrive&":\USMT\"&getUser&"\loadstate.log"", 1, True)")
 
-    ReturnCode = objShell.Run ("cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&sourceDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&sourceDrive&":\USMT\"&getUser&"\loadstate.log", 1, False)
+    ReturnCode = objShell.Run ("cmd /c " & strCurrentDir & "\USMT\loadstate.exe /c "&usmtDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&usmtDrive&":\USMT\"&getUser&"\loadstate.log", 1, True)
+
+    If Err <> 0 Then
+        htaLog.WriteLine(Now & " || Loadstate Error: " & ReturnCode)
+        Exit Sub
+    End If
+
+    'Load user settings into registry from NTUSER.DAT file originally located at C:\Users\<username>
+    'This file should be copied to <usmtDrive>:\USMT\<getUser>\NTUSER.DAT during scanstate and loaded to the registry from there.
+    'Registry Key: Computer\HKEY_USERS\<SID>\Control Panel\Desktop\WallPaper
+
+    Const HKLM = &H80000002
+    Dim objReg, strComputer, strKeyPath, strValueName, strUserSID, strWallpaperFile, profilePath, strSubKeyPath, userName, strHivePath
+    strKeyPath = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\"
+    strComputer = "."
+    strHivePath = "C:\Users\"& getUser & "\NTUSER.DAT"
+    htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
+    strWallpaperRegPath = "TempUser\Control Panel\Desktop"
+    strValueName = "WallPaper"
     
-    htaLog.WriteLine(Now & " || Return Code: " & ReturnCode)
+    'Try multiple extensions in case running Loadstate outside of the Flush and Fill Task Sequence (No env variable for wallpaper path would be set)
+    On Error Resume Next
+    Dim fsoWP, arrExtensions
+    Set fsoWP = CreateObject("Scripting.FileSystemObject")
+
+    strWallpaperFile = env("envWallpaperFile")
+    fsoWP.GetFile(env("envWallpaperFile"))
+    If Err = 0 Then
+        htaLog.WriteLine(Now & " || TS env check worked")
+        strWallpaperFile = null
+    Else
+        htaLog.WriteLine(Now & " || TS env check failed")
+        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+        htaLog.WriteLine(Now & " || Error Description: " & Err.Description & vbCrLf)
+        Err.Clear
+
+        strWpPath = usmtDrive & ":\USMT\" & getUser & "\" & getUser
+        arrExtensions = Array(".jpg", ".jpeg", ".png", ".gif", ".bmp")
+        For Each extension In arrExtensions
+            strFullPathTest = strWpPath & extension
+            fsoWP.GetFile(strFullPathTest)
+            If Err <> 0 Then
+                htaLog.WriteLine(Now & " || Error. " & strFullPathTest & " not found.")
+                htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+                htaLog.WriteLine(Now & " || Error Description: " & Err.Description & vbCrLf)
+                Err.Clear
+            Else
+                htaLog.WriteLine(Now & " || Yay! " & strFullPathTest & " found!")
+                strWallpaperFile = strFullPathTest
+                Exit For
+            End IF
+        Next
+    End If
+	
+    htaLog.WriteLine(Now & " || strWallpaperFile = " & strWallpaperFile)
+    
+    htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKLM\TempUser " & strHivePath & ", 0, true")
+    Err.Clear
+    objshell.Run "reg.exe load HKLM\TempUser " & strHivePath, 0, true
+
+    If Err <> 0 Then
+        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
+        Err.Clear
+    End If
+
+    htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv"")")
+    Set objReg = GetObject("winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv")
+
+    htaLog.WriteLine(Now & " || Executing command: objReg.SetStringValue HKLM, " & strWallpaperRegPath & ", " & strValueName & ", " & strWallpaperFile)
+    objReg.SetStringValue HKLM, strWallpaperRegPath, strValueName, strWallpaperFile
+
+    If Err = 0 Then
+        objReg.GetStringValue HKLM, strWallpaperRegPath, strValueName, strWallpaperFile
+        htaLog.WriteLine(Now & " ||  " & strWallpaperRegPath & "\" & strValueName & " contains: " & strWallpaperFile)
+    Else 
+        htaLog.WriteLine(Now & " ||  Error in creating key and REG_SZ value = " & Err.Number)
+    End If
+
+    htaLog.WriteLine(Now & " || Executing command: objShell.Run(""reg unload HKLM\TempUser"", 0, true)")
+    objshell.Run "reg unload HKLM\TempUser", 0, true
 
     htaLog.WriteLine(Now & " ***** End Sub usmtLoadstate *****")
 
@@ -610,4 +748,31 @@ Sub ButtonExitClick
     window.close
     
     htaLog.WriteLine(Now & " ***** End Sub ButtonExitClick *****")
+End Sub
+
+
+
+
+
+Sub runFlushFill2(vars)
+
+    'Remove beginning and trailing {} brackets
+    strVars = Mid(vars, 2, Len(vars)-2)
+    'Create dictionary object and remove al of the quotes from everything
+    Set dict = CreateObject("Scripting.Dictionary")
+    strVars = Replace(strVars, """", "")
+
+    'Split the string into name: value pairs
+    For Each pair In Split(strVars, ",")
+        arr = Split(pair, ":", 2)
+        If UBound(arr) = 1 Then dict(arr(0)) = arr(1)
+    Next
+
+    colKeys = dict.Keys
+    For Each strKey in colKeys
+    MsgBox strKey & " = " & dict.Item(strKey)
+    Next
+
+
+
 End Sub

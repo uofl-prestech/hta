@@ -56,8 +56,8 @@
                     </li>
                 </ul>
                 <div class="">
-                    <button id="button-home" class="button-exithome button-nav">Home</button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()">Exit</button>
+                    <button id="button-home" class="button-exithome button-nav"><img src="images/house fade.png" class="icon-tools">Home</button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><img src="images/house outline1.png" class="icon-tools">Exit</button>
                 </div>
             </div>
 
@@ -83,26 +83,26 @@
                 <!--OSD Page-->
                 <div id="page-osd" class="pages">
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="button-finish" onclick="vbscript:ButtonFinishClick()">Launch OSD</button>
+                    <button class="button" id="launch-osd" onclick="javascript:launchOSD()">Launch OSD</button>
                 </div>
 
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="fnf-capture" name="fnfCapture"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
+                    <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="dism-capture" name="capture"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
+                    <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                    <button class="button" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
+                    <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
+                    <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
@@ -113,11 +113,11 @@
                 <!--Troubleshooting Tools Page-->
                 <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
-                        <button class="button bl-info" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button button-bl-info show-output" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
-                        <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                        <button class="button show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
                         <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon.png" class="icon-tools">Notepad ++</button>
                     </div>
@@ -136,7 +136,8 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
-            <div id="div-format-drive" class="ui-widget-content"><input id="input-osd-checkbox" type="checkbox" name="OSD"> Format Drive and Deploy Image (OSD)? </div>
+            <div id="div-format-drive" class="ui-widget-content"><input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSD"> Format Drive and Deploy Image
+                (OSD)? </div>
         </li>
     </template>
 
@@ -146,7 +147,7 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
             </h3>
-            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" type="text" name="compName"> <br></div>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" class="input-objects" type="text" name="compName"> <br></div>
         </li>
     </template>
 
@@ -157,13 +158,17 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
             </h3>
             <div id="div-software-install" class="ui-widget-content">
-                <input type="checkbox" id="AdobeReaderDC" class="software-install" name="AdobeReaderDC">Adobe Reader DC<br>
-                <input type="checkbox" id="AdobeAcrobatProXI" class="software-install" name="AdobeAcrobatProXI">Adobe Acrobat
-                Pro XI<br>
-                <input type="checkbox" id="Chrome" class="software-install" name="Chrome">Chrome 58<br>
-                <input type="checkbox" id="FileMaker" class="software-install" name="FileMaker">FileMaker Pro 16<br>
-                <input type="checkbox" id="Office2016" class="software-install" name="Office2016">Office 2016 (32 Bit)<br>
-                <input type="checkbox" id="MBAM" class="software-install" name="MBAM">MBAM Client (Bitlocker) <br>
+                <input type="checkbox" id="AdobeReaderDC" class="software-install input-objects" name="AdobeReaderDC">Adobe
+                Reader DC<br>
+                <input type="checkbox" id="AdobeAcrobatProXI" class="software-install input-objects" name="AdobeAcrobatProXI">Adobe
+                Acrobat Pro XI<br>
+                <input type="checkbox" id="Chrome" class="software-install input-objects" name="Chrome">Chrome 58<br>
+                <input type="checkbox" id="FileMaker" class="software-install input-objects" name="FileMaker">FileMaker Pro
+                16<br>
+                <input type="checkbox" id="Office2016" class="software-install input-objects" name="Office2016">Office 2016
+                (32 Bit)<br>
+                <input type="checkbox" id="MBAM" class="software-install input-objects" name="MBAM">MBAM Client (Bitlocker)
+                <br>
             </div>
         </li>
     </template>
@@ -175,7 +180,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                <button id="bl-info" class="button button-bl-info show-output"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -188,7 +193,7 @@
                 Windows partition to be imaged
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input" name="windowsDrive"
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects" name="windowsDrive"
                     type="Text" maxlength="1" size="1">
             </div>
         </li>
@@ -202,8 +207,8 @@
                 Bitlocker
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
-                <input id="input-bitlocker-key" name="blKey" type="Text" maxlength="100" size="35" value="">
-                <button id="bl-unlock" class="button button-bl-unlock" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -217,7 +222,7 @@
             </h3>
             <div id="div-primary-username" class="ui-widget-content">
                 <span>Username: &nbsp&nbsp </span>
-                <input id="input-primary-username" name="primaryUsername" type="Text" size="15">
+                <input id="input-primary-username" class="input-objects" name="primaryUsername" type="Text" size="15">
             </div>
         </li>
     </template>
@@ -230,8 +235,8 @@
                 External USB drive where the image will be stored
             </h3>
             <div id="div-external-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input" name="externalDrive"
-                    type="Text" maxlength="1" size="1">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input input-objects"
+                    name="externalDrive" type="Text" maxlength="1" size="1">
             </div>
         </li>
     </template>
@@ -253,13 +258,16 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
             <div id="div-fnf-options" class="ui-widget-content">
-                <input id="input-dism-checkbox" type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)? <br>
-                <input id="input-scanstate-checkbox" type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)?
+                <input id="input-dism-checkbox" class="input-objects" type="checkbox" name="dismCheckBox"> Create Backup
+                Image (DISM)? <br>
+                <input id="input-scanstate-checkbox" class="input-objects" type="checkbox" name="scanStateCheckBox"> Save
+                User Data (USMT Scanstate)?
                 <br>
-                <input id="input-fnfosd-checkbox" type="checkbox" name="fnfOsdCheckBox"> Format Drive and Deploy Image (OSD)?
+                <input id="input-fnfosd-checkbox" class="input-objects" type="checkbox" name="fnfOsdCheckBox"> Format Drive
+                and Deploy Image (OSD)?
                 <br>
-                <input id="input-loadstate-checkbox" type="checkbox" name="loadStateCheckBox"> Restore User Data after OSD
-                (USMT Loadstate)?
+                <input id="input-loadstate-checkbox" class="input-objects" type="checkbox" name="loadStateCheckBox"> Restore
+                User Data after OSD (USMT Loadstate)?
                 <br>
             </div>
         </li>
@@ -300,6 +308,8 @@
         $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     }
 
+
+    // ******************** Navigation Buttons ********************
     $('#button-ShowAll').on('click', function () {
         $('.ui-widget-content').show('fast');
         $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
@@ -309,17 +319,18 @@
         $('.ui-widget-content').hide('fast');
         $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
-
+    // #general-output hidden/visible functions
     $('.button-nav').on('click', function () {
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
     });
-
-    $('.button-output').on('click', function () {
+    $('.show-output').on('click', function () {
         $("#general-output").css('visibility', 'visible');
     });
-
-// Bitlocker loading spinner
+    $('.button-nav').on('click', function () {
+        $("#general-output").css('visibility', 'hidden');
+    });
+    // Bitlocker loading spinner
     $('.button-bl-info').on('click', function () {
         var target = document.getElementById('general-output');
         var opts = {
@@ -327,14 +338,8 @@
         }
         var spinner = new Spinner(opts).spin(target);
         bitlockerinfo();
-        spinner(opts).stop(target);
+        // spinner(opts).stop(target);
     });
-// #general-output visible
-
-    $('#button-pingtest').on('click', function () {
-        $("#general-output").css('visibility', 'visible');
-    });
-
 
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
@@ -369,7 +374,7 @@
             $("#ul-fnf").append(template);
             initAccordion();
         }
-        if ($("#usmt-username-input").length == 0) {
+        if ($("#input-usmt-usernames").length == 0) {
             enumUsers()
         }
     });
@@ -406,7 +411,7 @@
             initAccordion();
         }
 
-        if ($("#usmt-username-input").length == 0) {
+        if ($("#input-usmt-usernames").length == 0) {
             enumUsers()
         }
     });
@@ -431,19 +436,121 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
+
+
+    // ******************** Misc Buttons ********************
+    function launchOSD() {
+        var capturedVars = {
+            OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
+            ComputerName: $("#input-comp-name").val(),
+            AdobeReaderDCCheckbox: $("#AdobeReaderDC").prop("checked"),
+            AdobeAcrobatProXICheckbox: $("#AdobeAcrobatProXI").prop("checked"),
+            ChromeCheckbox: $("#Chrome").prop("checked"),
+            Office2016Checkbox: $("#Office2016").prop("checked"),
+            FileMakerCheckbox: $("#FileMaker").prop("checked"),
+            MBAMCheckbox: $("#MBAM").prop("checked")
+        };
+
+        if (capturedVars.OSDCheckbox != true) {
+            alert("OSD checkbox not checked!");
+        }
+        else if (capturedVars.ComputerName == "") {
+            alert("Computer name not filled in!");
+        }
+        else {
+            ButtonFinishClick();
+        }
+    }
+
+    function launchFNF() {
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
+        var selectedUsers = {};
+        $('#input-usmt-usernames :selected').each(function () {
+            selectedUsers[$(this).text()] = $(this).val();
+        });
+
+        var capturedVars = {
+            OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
+            ComputerName: $("#input-comp-name").val(),
+            WindowsDrive: $("#input-windows-drive").val(),
+            ExternalDrive: $("#input-external-drive").val(),
+            PrimaryUsername: $("#input-primary-username").val(),
+            DISMCheckbox: $("#input-dism-checkbox").prop("checked"),
+            ScanstateCheckbox: $("#input-scanstate-checkbox").prop("checked"),
+            LoadstateCheckbox: $("#input-loadstate-checkbox").prop("checked"),
+            AdobeReaderDCCheckbox: $("#AdobeReaderDC").prop("checked"),
+            AdobeAcrobatProXICheckbox: $("#AdobeAcrobatProXI").prop("checked"),
+            ChromeCheckbox: $("#Chrome").prop("checked"),
+            Office2016Checkbox: $("#Office2016").prop("checked"),
+            FileMakerCheckbox: $("#FileMaker").prop("checked"),
+            MBAMCheckbox: $("#MBAM").prop("checked"),
+            BitlockerKey: $("#input-bitlocker-key").val()
+        };
+
+        for (user in selectedUsers) {
+            capturedVars[user] = selectedUsers[user];
+        }
+        var map = {};
+        $(".input-objects").each(function () {
+            map[$(this).attr("name")] = $(this).val();
+        });
+        var capturedVarsString = JSON.stringify(capturedVars);
+        //runFlushFill2(capturedVarsString);
+        runFlushFill();
+    }
+
+    function launchDISM() {
+        var capturedVars = {
+            WindowsDrive: $("#input-windows-drive").val(),
+            ExternalDrive: $("#input-external-drive").val(),
+            PrimaryUsername: $("#input-primary-username").val(),
+            BitlockerKey: $("#input-bitlocker-key").val()
+        };
+        var map = {};
+        $(".input-objects").each(function () {
+            map[$(this).attr("name")] = $(this).val();
+        });
+    }
+
+    function launchScanstate() {
+        var selectedUsers = {};
+        $('#input-usmt-usernames :selected').each(function () {
+            selectedUsers[$(this).text()] = $(this).val();
+        });
+
+        var capturedVars = {
+            WindowsDrive: $("#input-windows-drive").val(),
+            ExternalDrive: $("#input-external-drive").val(),
+            PrimaryUsername: $("#input-primary-username").val(),
+            BitlockerKey: $("#input-bitlocker-key").val()
+        };
+
+        for (user in selectedUsers) {
+            capturedVars[user] = selectedUsers[user];
+        }
+    }
+
+    function launchLoadstate() {
+        var capturedVars = {
+            ExternalDrive: $("#input-external-drive").val(),
+            PrimaryUsername: $("#input-primary-username").val()
+        };
+    }
+
     $('#dism-capture').on('click', function () {
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
 
-        dismCapture()
+        dismCapture();
 
         //Re-enable scroll bar replacement
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
             $("#general-output").mCustomScrollbar("update");
         }, 2000);
-
     });
 
     $('#button-ScanState').on('click', function () {
@@ -451,11 +558,13 @@
         $('#run-usmt').css('display', 'inline-block');
         $('#run-LoadState').css('display', 'none');
     });
+
     $('#button-LoadState').on('click', function () {
         $('.scanState').css('display', 'none');
         $('#run-LoadState').css('display', 'inline-block');
         $('#run-usmt').css('display', 'none');
     });
+
     $('#run-LoadState').on('click', function () {
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
@@ -467,6 +576,7 @@
             $("#general-output").mCustomScrollbar("update");
         }, 2000);
     });
+
     $('#run-usmt').on('click', function () {
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
@@ -478,11 +588,7 @@
             $("#general-output").mCustomScrollbar("update");
         }, 2000);
     });
-    $('#fnf-capture').on('click', function () {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
-        runFlushFill();
-    });
+
     $("#input-windows-drive, #input-primary-username").keyup(function () {
         usmtScanstate("false");
     });
