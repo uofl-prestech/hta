@@ -441,7 +441,7 @@ Sub enumUsers
         End If
     Next
     userNameDiv.innerHTML = userNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
-    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""input-usmt-usernames"" class=""input-objects"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
+    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""input-usmt-usernames"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
     
     htaLog.WriteLine(Now & " || Executing command: objShell.Run(""cmd /c reg.exe unload HKLM\TempSoftware"", 0, true)")
     objshell.Run "%comspec% /c reg.exe unload HKLM\TempSoftware", 0, true
