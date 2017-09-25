@@ -56,8 +56,8 @@
                     </li>
                 </ul>
                 <div class="">
-                    <button id="button-home" class="button-exithome button-nav">Home</button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()">Exit</button>
+                    <button id="button-home" class="button-exithome button-nav"><img src="images/house fade.png" class="icon-tools">Home</button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><img src="images/house outline1.png" class="icon-tools">Exit</button>
                 </div>
             </div>
 
@@ -89,20 +89,20 @@
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="fnf-capture" name="fnfCapture"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
+                    <button class="button show-output" id="fnf-capture" name="fnfCapture"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="dism-capture" name="capture"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
+                    <button class="button show-output" id="dism-capture" name="capture"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                    <button class="button" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
+                    <button class="button show-output" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
+                    <button class="button show-output" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
@@ -113,13 +113,13 @@
                 <!--Troubleshooting Tools Page-->
                 <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
-                        <button class="button bl-info" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button button-bl-info show-output" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
-                        <button class="button" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                        <button class="button show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
-                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon.png" class="icon-tools">Notepad ++</button>
+                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon1.png" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
                 <div id="general-output">.general-output</div>
@@ -175,7 +175,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                <button id="bl-info" class="button button-bl-info show-output"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -203,7 +203,7 @@
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
                 <input id="input-bitlocker-key" name="blKey" type="Text" maxlength="100" size="35" value="">
-                <button id="bl-unlock" class="button button-bl-unlock" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -309,33 +309,31 @@
         $('.ui-widget-content').hide('fast');
         $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
-
+    // #general-output hidden/visible functions
     $('.button-nav').on('click', function () {
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
+        $('.button-nav').removeClass('active');
+        $(this).addClass('active');
     });
-
-    $('.button-output').on('click', function () {
+    $('.show-output').on('click', function () {
         $("#general-output").css('visibility', 'visible');
     });
-
-// Bitlocker loading spinner
-    $('.button-bl-info').on('click', function () {
-        var target = document.getElementById('general-output');
-        var opts = {
-            color: '#FFF'
-        }
-        var spinner = new Spinner(opts).spin(target);
-        bitlockerinfo();
-        spinner(opts).stop(target);
+    $('.button-nav').on('click', function () {
+        $("#general-output").css('visibility', 'hidden');
     });
-// #general-output visible
-
-    $('#button-pingtest').on('click', function () {
-        $("#general-output").css('visibility', 'visible');
-    });
-
-
+    // Bitlocker loading spinner
+    function blInfoClick() {
+        $('.button-bl-info').on('click', function () {
+            var target = document.getElementById('general-output');
+            var opts = {
+                color: '#FFF'
+            }
+            var spinner = new Spinner(opts).spin(target);
+            bitlockerinfo();
+            // spinner(opts).stop(target);
+        });
+    }
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
@@ -387,6 +385,7 @@
             template += $("#temp-external-drive").html();
             $("#ul-dism").append(template);
             initAccordion();
+            blInfoClick();
         }
     });
 
