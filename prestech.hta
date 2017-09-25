@@ -113,7 +113,7 @@
                 <!--Troubleshooting Tools Page-->
                 <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
-                        <button class="button button-bl-info show-output" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
@@ -175,7 +175,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info show-output"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -326,15 +326,13 @@
     });
     // Bitlocker loading spinner
     function blInfoClick() {
-        $('.button-bl-info').on('click', function () {
             var target = document.getElementById('general-output');
             var opts = {
                 color: '#FFF'
             }
             var spinner = new Spinner(opts).spin(target);
-            bitlockerinfo();
-            // spinner(opts).stop(target);
-        });
+            BitlockerInfo();
+            spinner(opts).stop(target);
     }
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
@@ -387,7 +385,6 @@
             template += $("#temp-external-drive").html();
             $("#ul-dism").append(template);
             initAccordion();
-            blInfoClick();
         }
     });
 
