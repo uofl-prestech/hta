@@ -203,7 +203,7 @@
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
                 <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">
-                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -280,14 +280,12 @@
         listDrives()
         $(".pages").mCustomScrollbar({
             theme: "minimal",
-            autoHideScrollbar: true,
-            live: "once"
+            autoHideScrollbar: true
         });
-        $("#general-output").mCustomScrollbar({
-            theme: "minimal",
-            autoHideScrollbar: true,
-            live: "once"
-        });
+        // $("#general-output").mCustomScrollbar({
+        //     theme: "minimal",
+        //     autoHideScrollbar: true
+        // });
     });
 
     function initAccordion() {
@@ -317,22 +315,36 @@
         $('.header-text').css('display', 'none');
         $('.button-nav').removeClass('active');
         $(this).addClass('active');
-    });
-    $('.show-output').on('click', function () {
-        $("#general-output").css('visibility', 'visible');
-    });
-    $('.button-nav').on('click', function () {
         $("#general-output").css('visibility', 'hidden');
     });
+    $(document).on('click','.show-output', function () {
+        $("#general-output").css('visibility', 'visible');
+    });
+
     // Bitlocker loading spinner
     function blInfoClick() {
-            var target = document.getElementById('general-output');
-            var opts = {
-                color: '#FFF'
-            }
-            var spinner = new Spinner(opts).spin(target);
-            BitlockerInfo();
-            spinner(opts).stop(target);
+        $("#general-output").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerInfo();
+        spinner.stop(target);
+                                    $("#general-output").mCustomScrollbar({
+                                            theme: "minimal",
+                                            autoHideScrollbar: true
+                                        });
+    }
+    function blUnlockClick() {
+        $("#general-output").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerUnlock();
+        spinner.stop(target);
     }
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
@@ -368,7 +380,7 @@
             initAccordion();
         }
         if ($("#input-usmt-usernames").length == 0) {
-            enumUsers()
+            enumUsers();
         }
     });
 
@@ -405,7 +417,7 @@
         }
 
         if ($("#input-usmt-usernames").length == 0) {
-            enumUsers()
+            enumUsers();
         }
     });
 
@@ -458,6 +470,8 @@
         }
         else
         {
+            $(".pages").mCustomScrollbar("disable");
+            $("#general-output").mCustomScrollbar("disable");
             ButtonFinishClick();
         }
     }
@@ -497,7 +511,9 @@
             capturedVars[user] = selectedUsers[user];
         }
         var capturedVarsString = JSON.stringify(capturedVars);
+        
         //runFlushFill2(capturedVarsString);
+
         runFlushFill();
     }
 
@@ -512,6 +528,18 @@
         $(".input-objects").each(function () {
             capturedVars[$(this).attr("name")] = $(this).val();
         });
+
+        //Disable scroll bar replacement because it causes a slow script warning after dism finishes
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
+        dismCapture();
+
+        //Re-enable scroll bar replacement
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
     }
 
     function launchScanstate() {
@@ -530,10 +558,19 @@
         $(".input-objects").each(function () {
             capturedVars[$(this).attr("name")] = $(this).val();
         });
-
         for (user in selectedUsers) {
             capturedVars[user] = selectedUsers[user];
         }
+
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
+        usmtScanstate("true");
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
     }
 
     function launchLoadstate() {
@@ -545,21 +582,31 @@
         $(".input-objects").each(function () {
             capturedVars[$(this).attr("name")] = $(this).val();
         });
-    }
 
-    $('#dism-capture').on('click', function () {
-        //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
 
-        dismCapture();
+        usmtLoadstate();
 
-        //Re-enable scroll bar replacement
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
             $("#general-output").mCustomScrollbar("update");
         }, 2000);
-    });
+    }
+
+    // $('#dism-capture').on('click', function () {
+    //     //Disable scroll bar replacement because it causes a slow script warning after dism finishes
+    //     $(".pages").mCustomScrollbar("disable");
+    //     $("#general-output").mCustomScrollbar("disable");
+
+    //     dismCapture();
+
+    //     //Re-enable scroll bar replacement
+    //     setTimeout(function () {
+    //         $(".pages").mCustomScrollbar("update");
+    //         $("#general-output").mCustomScrollbar("update");
+    //     }, 2000);
+    // });
 
     $('#button-ScanState').on('click', function () {
         $('.scanState').css('display', 'list-item');
@@ -573,33 +620,33 @@
         $('#run-usmt').css('display', 'none');
     });
 
-    $('#run-LoadState').on('click', function () {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+    // $('#run-LoadState').on('click', function () {
+    //     $(".pages").mCustomScrollbar("disable");
+    //     $("#general-output").mCustomScrollbar("disable");
 
-        usmtLoadstate();
+    //     usmtLoadstate();
 
-        setTimeout(function () {
-            $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
-        }, 2000);
-    });
+    //     setTimeout(function () {
+    //         $(".pages").mCustomScrollbar("update");
+    //         $("#general-output").mCustomScrollbar("update");
+    //     }, 2000);
+    // });
 
-    $('#run-usmt').on('click', function () {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+    // $('#run-usmt').on('click', function () {
+    //     $(".pages").mCustomScrollbar("disable");
+    //     $("#general-output").mCustomScrollbar("disable");
 
-        usmtScanstate("true");
+    //     usmtScanstate("true");
 
-        setTimeout(function () {
-            $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
-        }, 2000);
-    });
+    //     setTimeout(function () {
+    //         $(".pages").mCustomScrollbar("update");
+    //         $("#general-output").mCustomScrollbar("update");
+    //     }, 2000);
+    // });
 
-    $("#input-windows-drive, #input-primary-username").keyup(function () {
-        usmtScanstate("false");
-    });
+    // $("#input-windows-drive, #input-primary-username").keyup(function () {
+    //     usmtScanstate("false");
+    // });
 
     $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
 

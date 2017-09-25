@@ -112,7 +112,7 @@ Sub BitlockerInfo
 End Sub
 
 '************************************ Unlock Bitlocker Drive subroutine ************************************
-Sub BitlockerUnlock()
+Sub BitlockerUnlock
 	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerUnlock *****")
 	Dim cmdShell, blOutput, drive, key
 	drive = document.getElementById("input-windows-drive").Value

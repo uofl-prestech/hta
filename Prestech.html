@@ -89,20 +89,20 @@
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
-                        <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/DISM final.png" class="icon-tools">Begin!</button>      
+                    <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                        <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
+                    <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
-                    <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>  
-                        <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                        <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
+                    <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
+                    <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
+                    <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
@@ -113,7 +113,7 @@
                 <!--Troubleshooting Tools Page-->
                 <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
-                        <button class="button button-bl-info show-output" id="button-bitlocker"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()"><img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
@@ -164,8 +164,7 @@
                 Acrobat Pro XI<br>
                 <input type="checkbox" id="Chrome" class="software-install input-objects" name="Chrome">Chrome 58<br>
                 <input type="checkbox" id="FileMaker" class="software-install input-objects" name="FileMaker">FileMaker Pro
-                16
-                <br>
+                16<br>
                 <input type="checkbox" id="Office2016" class="software-install input-objects" name="Office2016">Office 2016
                 (32 Bit)<br>
                 <input type="checkbox" id="MBAM" class="software-install input-objects" name="MBAM">MBAM Client (Bitlocker)
@@ -181,7 +180,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info show-output"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -208,8 +207,8 @@
                 Bitlocker
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
-                    <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">
-                    <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
@@ -286,16 +285,14 @@
         $('#header-landing').css('display', 'inline');
         $('#general-output').css('visibility', 'hidden');
 
-        listDrives()
+        //listDrives()
         $(".pages").mCustomScrollbar({
             theme: "minimal",
-            autoHideScrollbar: true,
-            live: "once"
+            autoHideScrollbar: true
         });
         $("#general-output").mCustomScrollbar({
             theme: "minimal",
-            autoHideScrollbar: true,
-            live: "once"
+            autoHideScrollbar: true
         });
     });
 
@@ -326,24 +323,33 @@
         $('.header-text').css('display', 'none');
         $('.button-nav').removeClass('active');
         $(this).addClass('active');
-    });
-    $('.show-output').on('click', function () {
-        $("#general-output").css('visibility', 'visible');
-    });
-    $('.button-nav').on('click', function () {
         $("#general-output").css('visibility', 'hidden');
     });
+    $(document).on('click', '.show-output', function () {
+        $("#general-output").css('visibility', 'visible');
+    });
+
     // Bitlocker loading spinner
-    $('.button-bl-info').on('click', function () {
+    function blInfoClick() {
+        $("#general-output").css('visibility', 'visible');
         var target = document.getElementById('general-output');
         var opts = {
             color: '#FFF'
         }
         var spinner = new Spinner(opts).spin(target);
-        bitlockerinfo();
-        // spinner(opts).stop(target);
-    });
-
+        //BitlockerInfo();
+        spinner.stop(target);
+    }
+    function blUnlockClick() {
+        $("#general-output").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerUnlock();
+        spinner.stop(target);
+    }
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
@@ -378,7 +384,7 @@
             initAccordion();
         }
         if ($("#input-usmt-usernames").length == 0) {
-            enumUsers()
+            enumUsers();
         }
     });
 
@@ -395,7 +401,6 @@
             template += $("#temp-external-drive").html();
             $("#ul-dism").append(template);
             initAccordion();
-            blInfoClick();
         }
     });
 
@@ -416,7 +421,7 @@
         }
 
         if ($("#input-usmt-usernames").length == 0) {
-            enumUsers()
+            enumUsers();
         }
     });
 
@@ -444,16 +449,20 @@
 
     // ******************** Misc Buttons ********************
     function launchOSD() {
-        var capturedVars = {
-            OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
-            ComputerName: $("#input-comp-name").val(),
-            AdobeReaderDCCheckbox: $("#AdobeReaderDC").prop("checked"),
-            AdobeAcrobatProXICheckbox: $("#AdobeAcrobatProXI").prop("checked"),
-            ChromeCheckbox: $("#Chrome").prop("checked"),
-            Office2016Checkbox: $("#Office2016").prop("checked"),
-            FileMakerCheckbox: $("#FileMaker").prop("checked"),
-            MBAMCheckbox: $("#MBAM").prop("checked")
-        };
+        // var capturedVars = {
+        //     OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
+        //     ComputerName: $("#input-comp-name").val(),
+        //     AdobeReaderDCCheckbox: $("#AdobeReaderDC").prop("checked"),
+        //     AdobeAcrobatProXICheckbox: $("#AdobeAcrobatProXI").prop("checked"),
+        //     ChromeCheckbox: $("#Chrome").prop("checked"),
+        //     Office2016Checkbox: $("#Office2016").prop("checked"),
+        //     FileMakerCheckbox: $("#FileMaker").prop("checked"),
+        //     MBAMCheckbox: $("#MBAM").prop("checked")
+        // };
+        var capturedVars = {};
+        $(".input-objects").each(function () {
+            capturedVars[$(this).attr("name")] = $(this).val();
+        });
 
         if (capturedVars.OSDCheckbox != true) {
             alert("OSD checkbox not checked!");
@@ -462,6 +471,8 @@
             alert("Computer name not filled in!");
         }
         else {
+            $(".pages").mCustomScrollbar("disable");
+            $("#general-output").mCustomScrollbar("disable");
             ButtonFinishClick();
         }
     }
@@ -475,75 +486,50 @@
             selectedUsers[$(this).text()] = $(this).val();
         });
 
-        var capturedVars = {
-            OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
-            ComputerName: $("#input-comp-name").val(),
-            WindowsDrive: $("#input-windows-drive").val(),
-            ExternalDrive: $("#input-external-drive").val(),
-            PrimaryUsername: $("#input-primary-username").val(),
-            DISMCheckbox: $("#input-dism-checkbox").prop("checked"),
-            ScanstateCheckbox: $("#input-scanstate-checkbox").prop("checked"),
-            LoadstateCheckbox: $("#input-loadstate-checkbox").prop("checked"),
-            AdobeReaderDCCheckbox: $("#AdobeReaderDC").prop("checked"),
-            AdobeAcrobatProXICheckbox: $("#AdobeAcrobatProXI").prop("checked"),
-            ChromeCheckbox: $("#Chrome").prop("checked"),
-            Office2016Checkbox: $("#Office2016").prop("checked"),
-            FileMakerCheckbox: $("#FileMaker").prop("checked"),
-            MBAMCheckbox: $("#MBAM").prop("checked"),
-            BitlockerKey: $("#input-bitlocker-key").val()
-        };
+        // var capturedVars = {
+        //     OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
+        //     ComputerName: $("#input-comp-name").val(),
+        //     WindowsDrive: $("#input-windows-drive").val(),
+        //     ExternalDrive: $("#input-external-drive").val(),
+        //     PrimaryUsername: $("#input-primary-username").val(),
+        //     DISMCheckbox: $("#input-dism-checkbox").prop("checked"),
+        //     ScanstateCheckbox: $("#input-scanstate-checkbox").prop("checked"),
+        //     LoadstateCheckbox: $("#input-loadstate-checkbox").prop("checked"),
+        //     AdobeReaderDCCheckbox: $("#AdobeReaderDC").prop("checked"),
+        //     AdobeAcrobatProXICheckbox: $("#AdobeAcrobatProXI").prop("checked"),
+        //     ChromeCheckbox: $("#Chrome").prop("checked"),
+        //     Office2016Checkbox: $("#Office2016").prop("checked"),
+        //     FileMakerCheckbox: $("#FileMaker").prop("checked"),
+        //     MBAMCheckbox: $("#MBAM").prop("checked"),
+        //     BitlockerKey: $("#input-bitlocker-key").val()
+        // };
+        var capturedVars = {};
+        $(".input-objects").each(function () {
+            capturedVars[$(this).attr("name")] = $(this).val();
+        });
 
         for (user in selectedUsers) {
             capturedVars[user] = selectedUsers[user];
         }
-        var map = {};
-        $(".input-objects").each(function () {
-            map[$(this).attr("name")] = $(this).val();
-        });
         var capturedVarsString = JSON.stringify(capturedVars);
+
         //runFlushFill2(capturedVarsString);
+
         runFlushFill();
     }
 
     function launchDISM() {
-        var capturedVars = {
-            WindowsDrive: $("#input-windows-drive").val(),
-            ExternalDrive: $("#input-external-drive").val(),
-            PrimaryUsername: $("#input-primary-username").val(),
-            BitlockerKey: $("#input-bitlocker-key").val()
-        };
-        var map = {};
+        // var capturedVars = {
+        //     WindowsDrive: $("#input-windows-drive").val(),
+        //     ExternalDrive: $("#input-external-drive").val(),
+        //     PrimaryUsername: $("#input-primary-username").val(),
+        //     BitlockerKey: $("#input-bitlocker-key").val()
+        // };
+        var capturedVars = {};
         $(".input-objects").each(function () {
-            map[$(this).attr("name")] = $(this).val();
-        });
-    }
-
-    function launchScanstate() {
-        var selectedUsers = {};
-        $('#input-usmt-usernames :selected').each(function () {
-            selectedUsers[$(this).text()] = $(this).val();
+            capturedVars[$(this).attr("name")] = $(this).val();
         });
 
-        var capturedVars = {
-            WindowsDrive: $("#input-windows-drive").val(),
-            ExternalDrive: $("#input-external-drive").val(),
-            PrimaryUsername: $("#input-primary-username").val(),
-            BitlockerKey: $("#input-bitlocker-key").val()
-        };
-
-        for (user in selectedUsers) {
-            capturedVars[user] = selectedUsers[user];
-        }
-    }
-
-    function launchLoadstate() {
-        var capturedVars = {
-            ExternalDrive: $("#input-external-drive").val(),
-            PrimaryUsername: $("#input-primary-username").val()
-        };
-    }
-
-    $('#dism-capture').on('click', function () {
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
@@ -555,7 +541,73 @@
             $(".pages").mCustomScrollbar("update");
             $("#general-output").mCustomScrollbar("update");
         }, 2000);
-    });
+    }
+
+    function launchScanstate() {
+        var selectedUsers = {};
+        $('#input-usmt-usernames :selected').each(function () {
+            selectedUsers[$(this).text()] = $(this).val();
+        });
+
+        // var capturedVars = {
+        //     WindowsDrive: $("#input-windows-drive").val(),
+        //     ExternalDrive: $("#input-external-drive").val(),
+        //     PrimaryUsername: $("#input-primary-username").val(),
+        //     BitlockerKey: $("#input-bitlocker-key").val()
+        // };
+        var capturedVars = {};
+        $(".input-objects").each(function () {
+            capturedVars[$(this).attr("name")] = $(this).val();
+        });
+        for (user in selectedUsers) {
+            capturedVars[user] = selectedUsers[user];
+        }
+
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
+        usmtScanstate("true");
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
+    }
+
+    function launchLoadstate() {
+        // var capturedVars = {
+        //     ExternalDrive: $("#input-external-drive").val(),
+        //     PrimaryUsername: $("#input-primary-username").val()
+        // };
+        var capturedVars = {};
+        $(".input-objects").each(function () {
+            capturedVars[$(this).attr("name")] = $(this).val();
+        });
+
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output").mCustomScrollbar("disable");
+
+        usmtLoadstate();
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output").mCustomScrollbar("update");
+        }, 2000);
+    }
+
+    // $('#dism-capture').on('click', function () {
+    //     //Disable scroll bar replacement because it causes a slow script warning after dism finishes
+    //     $(".pages").mCustomScrollbar("disable");
+    //     $("#general-output").mCustomScrollbar("disable");
+
+    //     dismCapture();
+
+    //     //Re-enable scroll bar replacement
+    //     setTimeout(function () {
+    //         $(".pages").mCustomScrollbar("update");
+    //         $("#general-output").mCustomScrollbar("update");
+    //     }, 2000);
+    // });
 
     $('#button-ScanState').on('click', function () {
         $('.scanState').css('display', 'list-item');
@@ -569,33 +621,33 @@
         $('#run-usmt').css('display', 'none');
     });
 
-    $('#run-LoadState').on('click', function () {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+    // $('#run-LoadState').on('click', function () {
+    //     $(".pages").mCustomScrollbar("disable");
+    //     $("#general-output").mCustomScrollbar("disable");
 
-        usmtLoadstate();
+    //     usmtLoadstate();
 
-        setTimeout(function () {
-            $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
-        }, 2000);
-    });
+    //     setTimeout(function () {
+    //         $(".pages").mCustomScrollbar("update");
+    //         $("#general-output").mCustomScrollbar("update");
+    //     }, 2000);
+    // });
 
-    $('#run-usmt').on('click', function () {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+    // $('#run-usmt').on('click', function () {
+    //     $(".pages").mCustomScrollbar("disable");
+    //     $("#general-output").mCustomScrollbar("disable");
 
-        usmtScanstate("true");
+    //     usmtScanstate("true");
 
-        setTimeout(function () {
-            $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
-        }, 2000);
-    });
+    //     setTimeout(function () {
+    //         $(".pages").mCustomScrollbar("update");
+    //         $("#general-output").mCustomScrollbar("update");
+    //     }, 2000);
+    // });
 
-    $("#input-windows-drive, #input-primary-username").keyup(function () {
-        usmtScanstate("false");
-    });
+    // $("#input-windows-drive, #input-primary-username").keyup(function () {
+    //     usmtScanstate("false");
+    // });
 
     $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
 
