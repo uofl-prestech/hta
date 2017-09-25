@@ -215,13 +215,12 @@ p {
     cursor: default;
 }
 .button-exithome {
-    padding: 15px 36px;
-    border: 1px solid rgba(85, 85, 85, 1);
+    padding: 12px 23px;
     cursor: default;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 7px 0px 7px;
 }
 .tools-button-bar {
     background-color: none!important;
