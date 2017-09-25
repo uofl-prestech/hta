@@ -89,26 +89,20 @@
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
-                    <<<<<<< HEAD <button class="button show-output" id="fnf-capture" name="fnfCapture"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
-                        =======
-                        <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/DISM final.png" class="icon-tools">Begin!</button>                        >>>>>>> e1e40ee0bf5efa0c9ac5f9e21a0959844bf89bcf
+                        <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/DISM final.png" class="icon-tools">Begin!</button>      
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                    <<<<<<< HEAD <button class="button show-output" id="dism-capture" name="capture"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
-                        =======
-                        <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>                        >>>>>>> e1e40ee0bf5efa0c9ac5f9e21a0959844bf89bcf
+                        <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()"><img src="images/DISM final.png" class="icon-tools">Capture Image</button>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
-                    <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <<<<<<< HEAD <button class="button show-output" id="run-usmt" name="runUSMT"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                        <button class="button show-output" id="run-LoadState" name="runLoadState"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>                        =======
+                    <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>  
                         <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                        <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>                        >>>>>>> e1e40ee0bf5efa0c9ac5f9e21a0959844bf89bcf
+                        <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
@@ -214,9 +208,7 @@
                 Bitlocker
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
-                <<<<<<< HEAD <input id="input-bitlocker-key" name="blKey" type="Text" maxlength="100" size="35" value="">
-                    =======
-                    <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">                    >>>>>>> e1e40ee0bf5efa0c9ac5f9e21a0959844bf89bcf
+                    <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">
                     <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="vbscript:BitlockerUnlock()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
@@ -340,21 +332,6 @@
     });
     $('.button-nav').on('click', function () {
         $("#general-output").css('visibility', 'hidden');
-<<<<<<< HEAD
-    });
-    // Bitlocker loading spinner
-    function blInfoClick() {
-        $('.button-bl-info').on('click', function () {
-            var target = document.getElementById('general-output');
-            var opts = {
-                color: '#FFF'
-            }
-            var spinner = new Spinner(opts).spin(target);
-            bitlockerinfo();
-            // spinner(opts).stop(target);
-        });
-    }
-=======
     });
     // Bitlocker loading spinner
     $('.button-bl-info').on('click', function () {
@@ -367,7 +344,6 @@
         // spinner(opts).stop(target);
     });
 
->>>>>>> e1e40ee0bf5efa0c9ac5f9e21a0959844bf89bcf
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
