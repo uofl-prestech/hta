@@ -121,7 +121,7 @@ p {
     opacity: 0;
 }
 #header {
-    height: 60px;
+    height: 50px;
     /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
     width: 1024px;
     /* border-bottom: 2px solid rgba(255, 0, 0, 0.50); */

@@ -3306,3 +3306,174 @@ The module to process 'Microsoft.BitLocker.Structures', listed in field 'NestedM
 9/25/2017 9:18:16 AM || Error - Cannot find user. Is the drive still encrypted?
 9/25/2017 9:18:16 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
 9/25/2017 9:18:16 AM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 9/25/2017 10:24:37 AM ======================
+9/25/2017 10:24:37 AM ***** Begin Sub listDrives *****
+9/25/2017 10:24:37 AM || Error. Must run as Administrator to check encryption status
+9/25/2017 10:24:37 AM || Skipping check for Encryption Status
+9/25/2017 10:24:37 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/25/2017 10:24:37 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/25/2017 10:24:37 AM || "Drive Letter:  | Capacity: 350 MB
+9/25/2017 10:24:37 AM || "Drive Letter: F: | Capacity: 14.7 GB
+9/25/2017 10:24:37 AM || "Drive Letter: C: | Capacity: 237.7 GB
+9/25/2017 10:24:37 AM || "Drive Letter:  | Capacity: 450 MB
+9/25/2017 10:24:37 AM || "Drive Letter: D: | Capacity:  Bytes
+9/25/2017 10:24:37 AM || "Drive Letter: H: | Capacity:  Bytes
+9/25/2017 10:24:37 AM ***** End Sub listDrives *****
+9/25/2017 10:24:46 AM ***** Begin Sub BitlockerInfo *****
+9/25/2017 10:24:46 AM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/25/2017 10:24:49 AM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/25/2017 10:49:33 AM ======================
+9/25/2017 10:49:33 AM ***** Begin Sub listDrives *****
+9/25/2017 10:49:33 AM || Error. Must run as Administrator to check encryption status
+9/25/2017 10:49:33 AM || Skipping check for Encryption Status
+9/25/2017 10:49:33 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/25/2017 10:49:33 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/25/2017 10:49:33 AM || "Drive Letter:  | Capacity: 350 MB
+9/25/2017 10:49:33 AM || "Drive Letter: F: | Capacity: 14.7 GB
+9/25/2017 10:49:33 AM || "Drive Letter: C: | Capacity: 237.7 GB
+9/25/2017 10:49:33 AM || "Drive Letter:  | Capacity: 450 MB
+9/25/2017 10:49:33 AM || "Drive Letter: D: | Capacity:  Bytes
+9/25/2017 10:49:33 AM || "Drive Letter: H: | Capacity:  Bytes
+9/25/2017 10:49:33 AM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/25/2017 10:50:12 AM ======================
+9/25/2017 10:50:12 AM ***** Begin Sub listDrives *****
+9/25/2017 10:50:12 AM || Error. Must run as Administrator to check encryption status
+9/25/2017 10:50:12 AM || Skipping check for Encryption Status
+9/25/2017 10:50:12 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/25/2017 10:50:12 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/25/2017 10:50:12 AM || "Drive Letter:  | Capacity: 350 MB
+9/25/2017 10:50:12 AM || "Drive Letter: F: | Capacity: 14.7 GB
+9/25/2017 10:50:12 AM || "Drive Letter: C: | Capacity: 237.7 GB
+9/25/2017 10:50:12 AM || "Drive Letter:  | Capacity: 450 MB
+9/25/2017 10:50:12 AM || "Drive Letter: D: | Capacity:  Bytes
+9/25/2017 10:50:12 AM || "Drive Letter: H: | Capacity:  Bytes
+9/25/2017 10:50:12 AM ***** End Sub listDrives *****
+9/25/2017 10:51:24 AM ***** Begin Sub enumUsers *****
+9/25/2017 10:51:24 AM || strComputer = "."
+9/25/2017 10:51:24 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/25/2017 10:51:24 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/25/2017 10:51:24 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/25/2017 10:51:24 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/25/2017 10:51:24 AM || Error Number: -2147024894
+9/25/2017 10:51:24 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/25/2017 10:51:24 AM || Could not load HKLM\TempSoftware
+9/25/2017 10:51:24 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/25/2017 10:51:24 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/25/2017 10:51:24 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/25/2017 10:51:24 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = %systemroot%\system32\config\systemprofile
+9/25/2017 10:51:24 AM || userName = systemprofile
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/25/2017 10:51:24 AM || userName = LocalService
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/25/2017 10:51:24 AM || userName = NetworkService
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\grawem01
+9/25/2017 10:51:24 AM || userName = grawem01
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\presidnt
+9/25/2017 10:51:24 AM || userName = presidnt
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\eadock01
+9/25/2017 10:51:24 AM || userName = eadock01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\sccmpush
+9/25/2017 10:51:24 AM || userName = sccmpush
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\t1rcm01
+9/25/2017 10:51:24 AM || userName = t1rcm01
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\jrelli05
+9/25/2017 10:51:24 AM || userName = jrelli05
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\crvish01
+9/25/2017 10:51:24 AM || userName = crvish01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\rcmcda01
+9/25/2017 10:51:24 AM || userName = rcmcda01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\prestech
+9/25/2017 10:51:24 AM || userName = prestech
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\elmatr01
+9/25/2017 10:51:24 AM || userName = elmatr01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\mrhebe01
+9/25/2017 10:51:24 AM || userName = mrhebe01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\sjkarl01
+9/25/2017 10:51:24 AM || userName = sjkarl01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\b0doug01
+9/25/2017 10:51:24 AM || userName = b0doug01
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+9/25/2017 10:51:24 AM || profilePath = C:\Users\DefaultAppPool
+9/25/2017 10:51:24 AM || userName = DefaultAppPool
+9/25/2017 10:51:24 AM || Error - Cannot find user. Is the drive still encrypted?
+9/25/2017 10:51:24 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/25/2017 10:51:24 AM ***** End Sub enumUsers *****
+9/25/2017 10:51:27 AM ***** Begin Sub BitlockerInfo *****
+9/25/2017 10:51:27 AM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/25/2017 10:51:29 AM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/25/2017 10:52:58 AM ======================
+9/25/2017 10:52:58 AM ***** Begin Sub listDrives *****
+9/25/2017 10:52:58 AM || Error. Must run as Administrator to check encryption status
+9/25/2017 10:52:58 AM || Skipping check for Encryption Status
+9/25/2017 10:52:58 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/25/2017 10:52:58 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/25/2017 10:52:58 AM || "Drive Letter:  | Capacity: 350 MB
+9/25/2017 10:52:58 AM || "Drive Letter: F: | Capacity: 14.7 GB
+9/25/2017 10:52:58 AM || "Drive Letter: C: | Capacity: 237.7 GB
+9/25/2017 10:52:58 AM || "Drive Letter:  | Capacity: 450 MB
+9/25/2017 10:52:58 AM || "Drive Letter: D: | Capacity:  Bytes
+9/25/2017 10:52:58 AM || "Drive Letter: H: | Capacity:  Bytes
+9/25/2017 10:52:58 AM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/25/2017 11:02:20 AM ======================
+9/25/2017 11:02:20 AM ***** Begin Sub listDrives *****
+9/25/2017 11:02:20 AM || Error. Must run as Administrator to check encryption status
+9/25/2017 11:02:20 AM || Skipping check for Encryption Status
+9/25/2017 11:02:20 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/25/2017 11:02:20 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/25/2017 11:02:20 AM || "Drive Letter:  | Capacity: 350 MB
+9/25/2017 11:02:20 AM || "Drive Letter: F: | Capacity: 14.7 GB
+9/25/2017 11:02:20 AM || "Drive Letter: C: | Capacity: 237.7 GB
+9/25/2017 11:02:20 AM || "Drive Letter:  | Capacity: 450 MB
+9/25/2017 11:02:20 AM || "Drive Letter: D: | Capacity:  Bytes
+9/25/2017 11:02:20 AM || "Drive Letter: H: | Capacity:  Bytes
+9/25/2017 11:02:20 AM ***** End Sub listDrives *****
+9/25/2017 11:02:23 AM ***** Begin Sub BitlockerInfo *****
+9/25/2017 11:02:23 AM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+9/25/2017 11:02:25 AM || Creating bitlockerinfo.txt file at C:\Users\elmatr01\Documents\Visual Studio 2017\Git\hta
+
+====================== Begin Logging at 9/25/2017 11:04:59 AM ======================
+9/25/2017 11:04:59 AM ***** Begin Sub listDrives *****
+9/25/2017 11:04:59 AM || Error. Must run as Administrator to check encryption status
+9/25/2017 11:04:59 AM || Skipping check for Encryption Status
+9/25/2017 11:04:59 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/25/2017 11:04:59 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/25/2017 11:04:59 AM || "Drive Letter:  | Capacity: 350 MB
+9/25/2017 11:04:59 AM || "Drive Letter: F: | Capacity: 14.7 GB
+9/25/2017 11:04:59 AM || "Drive Letter: C: | Capacity: 237.7 GB
+9/25/2017 11:04:59 AM || "Drive Letter:  | Capacity: 450 MB
+9/25/2017 11:04:59 AM || "Drive Letter: D: | Capacity:  Bytes
+9/25/2017 11:04:59 AM || "Drive Letter: H: | Capacity:  Bytes
+9/25/2017 11:04:59 AM ***** End Sub listDrives *****
