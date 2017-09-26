@@ -83,13 +83,13 @@
                 <!--OSD Page-->
                 <div id="page-osd" class="pages">
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button" id="launch-osd" onclick="javascript:launchOSD()">Launch OSD</button>
+                    <button class="button" id="launch-osd" onclick="javascript:launchOSD()"><img src="images/launch-icon.png" class="icon-tools">Launch OSD</button>
                 </div>
 
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/DISM final.png" class="icon-tools">Begin!</button>
+                    <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/launch-icon.png" class="icon-tools">Begin!</button>
                 </div>
 
                 <!--DISM Page-->
@@ -101,8 +101,8 @@
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Run USMT</button>
-                    <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">LoadState</button>
+                    <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()"><img src="images/launch-icon.png" class="icon-tools">Run USMT</button>
+                    <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()"><img src="images/launch-icon.png" class="icon-tools">LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
@@ -119,7 +119,7 @@
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
                         <button class="button show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
-                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon1.png" class="icon-tools">Notepad ++</button>
+                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/code-icon.svg" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
                 <div id="general-output">.general-output</div>
@@ -188,7 +188,7 @@
                 Windows partition to be imaged
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects" name="windowsDrive"
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects" name="windowsDrive" 
                     type="Text" maxlength="1" size="1">
             </div>
         </li>
