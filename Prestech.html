@@ -30,7 +30,7 @@
         <div id="main" class="on-load">
             <div class="navigation-bar">
                 <ul>
-                    <li id="button-osd" class="first button-nav">
+                    <li id="button-osd" class="first button-nav show-output">
                         <img src="images/osd final.png" class="icon">
                         <span>OSD</span>
                     </li>
@@ -122,7 +122,9 @@
                         <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/npp-icon1.png" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
-                <div id="general-output">.general-output</div>
+                <div id="general-output-scroll">
+                    <div id="general-output">.general-output</div>
+                </div>
                 <!--    End content    -->
             </div>
             <!--    End main    -->
@@ -136,8 +138,11 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
-            <div id="div-format-drive" class="ui-widget-content"><input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSD"> Format Drive and Deploy Image
-                (OSD)? </div>
+            <div id="div-format-drive" class="ui-widget-content">
+                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSD"> Format Drive and Deploy
+                Image (OSD)?
+                <input id="input-tpm-checkbox" class="input-objects" type="checkbox" name="TPMCheckBox">
+            </div>
         </li>
     </template>
 
@@ -285,14 +290,18 @@
         $('#header-landing').css('display', 'inline');
         $('#general-output').css('visibility', 'hidden');
 
-        //listDrives()
+        try {
+            listDrives()
+        }
+        catch (err) {
+            document.getElementById("general-output").innerHTML = err.message;
+        }
+
         $(".pages").mCustomScrollbar({
-            theme: "minimal",
-            autoHideScrollbar: true
+            theme: "minimal"
         });
-        $("#general-output").mCustomScrollbar({
-            theme: "minimal",
-            autoHideScrollbar: true
+        $("#general-output-scroll").mCustomScrollbar({
+            theme: "minimal"
         });
     });
 
@@ -337,8 +346,9 @@
             color: '#FFF'
         }
         var spinner = new Spinner(opts).spin(target);
-        //BitlockerInfo();
+        BitlockerInfo();
         spinner.stop(target);
+
     }
     function blUnlockClick() {
         $("#general-output").css('visibility', 'visible');
@@ -353,7 +363,13 @@
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
-        // TPMCheck();
+
+        try {
+                TPMCheck();
+            }
+        catch (err) {
+            document.getElementById("general-output").innerHTML = err.message;
+        }
 
         if ($("#ul-osd").children().length == 0) {
             $(".ul-elements").empty();
@@ -448,6 +464,21 @@
 
 
     // ******************** Misc Buttons ********************
+    function getInputValues(){
+        var inputValues = {};
+        $(".input-objects").each(function () {
+            //If this input is a checkbox, get the value of prop("checked") instead of val()
+            if ($(this).attr("type") == "checkbox") {
+                inputValues[$(this).prop("name")] = $(this).prop("checked");
+            }
+            //If this input is a text input field, get val()
+            else {
+                inputValues[$(this).attr("name")] = $(this).val();
+            }
+        });
+        return inputValues;
+    }
+
     function launchOSD() {
         // var capturedVars = {
         //     OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
@@ -459,10 +490,7 @@
         //     FileMakerCheckbox: $("#FileMaker").prop("checked"),
         //     MBAMCheckbox: $("#MBAM").prop("checked")
         // };
-        var capturedVars = {};
-        $(".input-objects").each(function () {
-            capturedVars[$(this).attr("name")] = $(this).val();
-        });
+        var capturedVars = getInputValues();
 
         if (capturedVars.OSDCheckbox != true) {
             alert("OSD checkbox not checked!");
@@ -488,6 +516,7 @@
 
         // var capturedVars = {
         //     OSDCheckbox: $("#input-osd-checkbox").prop("checked"),
+        //     TPMCheckbox: $("#input-tpm-checkbox").prop("checked")
         //     ComputerName: $("#input-comp-name").val(),
         //     WindowsDrive: $("#input-windows-drive").val(),
         //     ExternalDrive: $("#input-external-drive").val(),
@@ -503,10 +532,7 @@
         //     MBAMCheckbox: $("#MBAM").prop("checked"),
         //     BitlockerKey: $("#input-bitlocker-key").val()
         // };
-        var capturedVars = {};
-        $(".input-objects").each(function () {
-            capturedVars[$(this).attr("name")] = $(this).val();
-        });
+        var capturedVars = getInputValues();
 
         for (user in selectedUsers) {
             capturedVars[user] = selectedUsers[user];
@@ -525,10 +551,7 @@
         //     PrimaryUsername: $("#input-primary-username").val(),
         //     BitlockerKey: $("#input-bitlocker-key").val()
         // };
-        var capturedVars = {};
-        $(".input-objects").each(function () {
-            capturedVars[$(this).attr("name")] = $(this).val();
-        });
+        var capturedVars = getInputValues();
 
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
@@ -555,10 +578,7 @@
         //     PrimaryUsername: $("#input-primary-username").val(),
         //     BitlockerKey: $("#input-bitlocker-key").val()
         // };
-        var capturedVars = {};
-        $(".input-objects").each(function () {
-            capturedVars[$(this).attr("name")] = $(this).val();
-        });
+        var capturedVars = getInputValues();
         for (user in selectedUsers) {
             capturedVars[user] = selectedUsers[user];
         }
@@ -579,10 +599,7 @@
         //     ExternalDrive: $("#input-external-drive").val(),
         //     PrimaryUsername: $("#input-primary-username").val()
         // };
-        var capturedVars = {};
-        $(".input-objects").each(function () {
-            capturedVars[$(this).attr("name")] = $(this).val();
-        });
+        var capturedVars = getInputValues();
 
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");

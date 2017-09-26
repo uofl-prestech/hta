@@ -151,8 +151,10 @@ p {
 /* #osdInput {}
 /* #softwareDiv {} */
 /* #softwareInput {} */
-
-#general-output {
+#general-output{
+    min-height: 200px;
+}
+#general-output-scroll {
     background: rgba(0, 0, 0, 0.75);
     color: #CCC;
     border: 3px double rgba(70, 120, 110, 0.6);
@@ -164,7 +166,7 @@ p {
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
-    overflow: auto !important;
+    overflow: auto;
     position: relative;
 }
 #run-LoadState{

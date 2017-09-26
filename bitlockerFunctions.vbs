@@ -9,8 +9,22 @@ Sub TPMCheck
 	strTPMWarning = "<h2 class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>"
 	Dim outputDiv: set outputDiv = document.getElementById("general-output")
 	outputDiv.innerHTML = ""
+	TPMBox = document.getElementById("input-tpm-checkbox").Checked
+	TPMBox = false
 	On Error Resume Next
 
+    CreateObject("WScript.Shell").RegRead("HKEY_USERS\S-1-5-19\Environment\TEMP")
+    If Err.number = 0 Then 
+        admin = true
+        htaLog.WriteLine(Now & " || User is running script as admin")
+    Else
+		admin = false
+		strStatusMessage = "<h2 class=""tpmStatus"">Error. Must run as Administrator to check TPM status!</h2>"
+		htaLog.WriteLine(Now & " || Error. Must run as Administrator to check TPM status!")
+		outputDiv.innerHTML = strStatusMessage
+		Exit Sub
+    End If
+    Err.Clear
 	'---------------------------------------------------------------------------------------- 
 	'Connect to TPM WMI provider 
 	'---------------------------------------------------------------------------------------- 
@@ -29,13 +43,14 @@ Sub TPMCheck
 	If Err.Number <> 0 Then 
 		strStatusState = "Not Found"
 	End If 
-	Err.Clear
 
 	If strStatusState = "Not Found" Then
 		htaLog.WriteLine(Now & " || Error: " & Err.Number & ". " & Err.Description & ". TPM Not Found")
 		outputDiv.innerHTML = strStatusMessage
 		outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
-	else
+		Err.Clear
+	Else
+
 		'----------------------------------------------------------------------------------------- 
 		'Get TPM status data to determine if TPM is enabled, activated, and owned 
 		'----------------------------------------------------------------------------------------- 
@@ -68,9 +83,10 @@ Sub TPMCheck
 
 		If strStatusState = "ERROR" Then
 			outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
-		else
+		Else
 			htaLog.WriteLine(Now & " || TPM is enabled and activated")
 			outputDiv.innerHTML = outputDiv.innerHTML & "<h2>TPM Enabled and Activated</h2>"
+			TPMBox = true
 		End If
 	End If
 
