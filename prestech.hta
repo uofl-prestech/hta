@@ -483,9 +483,12 @@
     function launchOSD() {
         var capturedVars = getInputValues();
 
-        if (capturedVars.OSDCheckbox != true) {
-            alert("OSD checkbox not checked!");
+        if (capturedVars.TPMCheckbox != true) {
+            alert("TPM is not functioning or not present!");
         }
+        else if (capturedVars.OSDCheckbox != true) {
+            alert("OSD checkbox not checked!");
+        }        
         else if (capturedVars.ComputerName == "") {
             alert("Computer name not filled in!");
         }

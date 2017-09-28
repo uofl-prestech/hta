@@ -402,7 +402,7 @@ Sub enumUsers
         htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
         htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
         htaLog.WriteLine(Now & " || Could not load HKLM\TempSoftware")
-        userNameDiv.innerHTML = userNameDiv.innerHTML & "Could not load HKLM\TempSoftware<br><br>"
+        userNameDiv.innerHTML = userNameDiv.innerHTML & "Could not load offline registry<br><br>"
         strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
 
         htaLog.WriteLine(Now & " || strKeyPath = ""Software\Microsoft\Windows NT\CurrentVersion\ProfileList""")
