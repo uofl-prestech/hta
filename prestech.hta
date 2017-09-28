@@ -481,6 +481,9 @@
         return inputValues;
     }
 
+/*******************************
+************* OSD **************
+*******************************/
     function launchOSD() {
         var capturedVars = getInputValues();
 
@@ -500,6 +503,9 @@
         }
     }
 
+/*******************************
+************* FnF **************
+*******************************/
     function launchFNF() {
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
@@ -521,6 +527,9 @@
         runFlushFill();
     }
 
+/*******************************
+************* DISM *************
+*******************************/
     function launchDISM() {
         var capturedVars = getInputValues();
 
@@ -537,6 +546,9 @@
         }, 2000);
     }
 
+/*******************************
+************* USMT *************
+*******************************/
     function launchScanstate() {
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
@@ -573,20 +585,6 @@
         }, 2000);
     }
 
-    // $('#dism-capture').on('click', function () {
-    //     //Disable scroll bar replacement because it causes a slow script warning after dism finishes
-    //     $(".pages").mCustomScrollbar("disable");
-    //     $("#general-output").mCustomScrollbar("disable");
-
-    //     dismCapture();
-
-    //     //Re-enable scroll bar replacement
-    //     setTimeout(function () {
-    //         $(".pages").mCustomScrollbar("update");
-    //         $("#general-output").mCustomScrollbar("update");
-    //     }, 2000);
-    // });
-
     $('#button-ScanState').on('click', function () {
         $('.scanState').css('display', 'list-item');
         $('#run-usmt').css('display', 'inline-block');
@@ -599,29 +597,6 @@
         $('#run-usmt').css('display', 'none');
     });
 
-    // $('#run-LoadState').on('click', function () {
-    //     $(".pages").mCustomScrollbar("disable");
-    //     $("#general-output").mCustomScrollbar("disable");
-
-    //     usmtLoadstate();
-
-    //     setTimeout(function () {
-    //         $(".pages").mCustomScrollbar("update");
-    //         $("#general-output").mCustomScrollbar("update");
-    //     }, 2000);
-    // });
-
-    // $('#run-usmt').on('click', function () {
-    //     $(".pages").mCustomScrollbar("disable");
-    //     $("#general-output").mCustomScrollbar("disable");
-
-    //     usmtScanstate("true");
-
-    //     setTimeout(function () {
-    //         $(".pages").mCustomScrollbar("update");
-    //         $("#general-output").mCustomScrollbar("update");
-    //     }, 2000);
-    // });
 
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");

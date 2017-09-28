@@ -5,8 +5,8 @@ Sub TPMCheck
 	bIsEnabled = "False"
 	bIsActivated = "False"
 	bIsOwned = "False"
-	strStatusMessage = "<h3 class=""tpmStatus"">ERROR - TPM Not Found</h3>"
-	strTPMWarning = "<h3 id=""tpmWarning"" class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h3>"
+	strStatusMessage = "<h3 class=""tpm-error"">ERROR - TPM Not Found</h3>"
+	strTPMWarning = "<h3 class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h3>"
 	Dim outputDiv: set outputDiv = document.getElementById("page-landing")
 	outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
 	TPMBox = document.getElementById("input-tpm-checkbox").Checked
@@ -19,7 +19,7 @@ Sub TPMCheck
         htaLog.WriteLine(Now & " || User is running script as admin")
     Else
 		admin = false
-		strStatusMessage = "<h3 id=""tpmWarning"" class=""tpmStatus"">Error. Must run as Administrator to check TPM status!</h3>"
+		strStatusMessage = "<h3 class=""tpm-error"">Error. Must run as Administrator to check TPM status!</h3>"
 		htaLog.WriteLine(Now & " || Error. Must run as Administrator to check TPM status!")
 		outputDiv.innerHTML = outputDiv.innerHTML & strStatusMessage
 		Exit Sub

@@ -419,3 +419,118 @@
 9/28/2017 11:04:13 AM || "Drive Letter: A: | Capacity: 931.5 GB
 9/28/2017 11:04:13 AM || "Drive Letter: D: | Capacity:  Bytes
 9/28/2017 11:04:13 AM ***** End Sub listDrives *****
+9/28/2017 11:18:46 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:18:46 AM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 11:22:23 AM ======================
+9/28/2017 11:22:24 AM ***** Begin Sub listDrives *****
+9/28/2017 11:22:24 AM || Error. Must run as Administrator to check encryption status
+9/28/2017 11:22:24 AM || Skipping check for Encryption Status
+9/28/2017 11:22:24 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:22:24 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:22:24 AM || "Drive Letter: C: | Capacity: 231.1 GB
+9/28/2017 11:22:24 AM || "Drive Letter:  | Capacity: 300 MB
+9/28/2017 11:22:24 AM || "Drive Letter:  | Capacity: 870 MB
+9/28/2017 11:22:24 AM || "Drive Letter: A: | Capacity: 931.5 GB
+9/28/2017 11:22:24 AM || "Drive Letter: D: | Capacity:  Bytes
+9/28/2017 11:22:24 AM ***** End Sub listDrives *****
+9/28/2017 11:22:24 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:22:24 AM || Error. Must run as Administrator to check TPM status!
+9/28/2017 11:22:24 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:22:24 AM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 11:22:29 AM ======================
+9/28/2017 11:22:29 AM ***** Begin Sub listDrives *****
+9/28/2017 11:22:29 AM || Error. Must run as Administrator to check encryption status
+9/28/2017 11:22:29 AM || Skipping check for Encryption Status
+9/28/2017 11:22:29 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:22:29 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:22:29 AM || "Drive Letter: C: | Capacity: 231.1 GB
+9/28/2017 11:22:29 AM || "Drive Letter:  | Capacity: 300 MB
+9/28/2017 11:22:29 AM || "Drive Letter:  | Capacity: 870 MB
+9/28/2017 11:22:29 AM || "Drive Letter: A: | Capacity: 931.5 GB
+9/28/2017 11:22:29 AM || "Drive Letter: D: | Capacity:  Bytes
+9/28/2017 11:22:29 AM ***** End Sub listDrives *****
+9/28/2017 11:22:29 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:22:29 AM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 11:23:51 AM ======================
+9/28/2017 11:23:51 AM ***** Begin Sub listDrives *****
+9/28/2017 11:23:51 AM || Error. Must run as Administrator to check encryption status
+9/28/2017 11:23:51 AM || Skipping check for Encryption Status
+9/28/2017 11:23:51 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:23:51 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:23:51 AM || "Drive Letter: C: | Capacity: 231.1 GB
+9/28/2017 11:23:51 AM || "Drive Letter:  | Capacity: 300 MB
+9/28/2017 11:23:51 AM || "Drive Letter:  | Capacity: 870 MB
+9/28/2017 11:23:51 AM || "Drive Letter: A: | Capacity: 931.5 GB
+9/28/2017 11:23:51 AM || "Drive Letter: D: | Capacity:  Bytes
+9/28/2017 11:23:51 AM ***** End Sub listDrives *****
+9/28/2017 11:23:51 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:23:51 AM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 11:24:30 AM ======================
+9/28/2017 11:24:30 AM ***** Begin Sub listDrives *****
+9/28/2017 11:24:30 AM || User is running script as admin
+9/28/2017 11:24:30 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 11:24:30 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 11:24:30 AM || Win32_EncryptableVolume instance
+9/28/2017 11:24:30 AM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 11:24:30 AM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/28/2017 11:24:30 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:24:30 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:24:30 AM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/28/2017 11:24:30 AM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/28/2017 11:24:30 AM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/28/2017 11:24:30 AM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/28/2017 11:24:30 AM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/28/2017 11:24:30 AM ***** End Sub listDrives *****
+9/28/2017 11:24:30 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:24:30 AM || User is running script as admin
+9/28/2017 11:24:30 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 11:24:30 AM || Error: -2147217406. Not found . TPM Not Found
+9/28/2017 11:24:30 AM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 11:25:57 AM ======================
+9/28/2017 11:25:57 AM ***** Begin Sub listDrives *****
+9/28/2017 11:25:57 AM || User is running script as admin
+9/28/2017 11:25:57 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 11:25:57 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 11:25:57 AM || Win32_EncryptableVolume instance
+9/28/2017 11:25:57 AM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 11:25:57 AM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/28/2017 11:25:57 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:25:57 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:25:57 AM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/28/2017 11:25:57 AM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/28/2017 11:25:57 AM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/28/2017 11:25:57 AM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/28/2017 11:25:57 AM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/28/2017 11:25:57 AM ***** End Sub listDrives *****
+9/28/2017 11:25:57 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:25:57 AM || User is running script as admin
+9/28/2017 11:25:57 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 11:25:57 AM || Error: -2147217406. Not found . TPM Not Found
+9/28/2017 11:25:57 AM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 11:26:10 AM ======================
+9/28/2017 11:26:10 AM ***** Begin Sub listDrives *****
+9/28/2017 11:26:10 AM || User is running script as admin
+9/28/2017 11:26:10 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 11:26:10 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 11:26:10 AM || Win32_EncryptableVolume instance
+9/28/2017 11:26:10 AM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 11:26:10 AM || Drive Letter: C: || ProtectionStatus: 0 || Not Encrypted
+9/28/2017 11:26:10 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:26:10 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:26:10 AM || "Drive Letter: C: | Capacity: 231.1 GBEncryption Status: Not Encrypted
+9/28/2017 11:26:10 AM || "Drive Letter:  | Capacity: 300 MBEncryption Status: 
+9/28/2017 11:26:10 AM || "Drive Letter:  | Capacity: 870 MBEncryption Status: 
+9/28/2017 11:26:10 AM || "Drive Letter: A: | Capacity: 931.5 GBEncryption Status: 
+9/28/2017 11:26:10 AM || "Drive Letter: D: | Capacity:  BytesEncryption Status: 
+9/28/2017 11:26:10 AM ***** End Sub listDrives *****
+9/28/2017 11:26:10 AM ***** Begin Sub TPMCheck *****
+9/28/2017 11:26:10 AM || User is running script as admin
+9/28/2017 11:26:10 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 11:26:10 AM || Error: -2147217406. Not found . TPM Not Found
+9/28/2017 11:26:10 AM ***** End Sub TPMCheck *****
