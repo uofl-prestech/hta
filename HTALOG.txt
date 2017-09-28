@@ -352,3 +352,70 @@
 9/26/2017 11:47:28 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
 9/26/2017 11:47:28 AM || Error: -2147217406. Not found . TPM Not Found
 9/26/2017 11:47:28 AM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/26/2017 4:03:30 PM ======================
+9/26/2017 4:03:30 PM ***** Begin Sub listDrives *****
+9/26/2017 4:03:30 PM || Error. Must run as Administrator to check encryption status
+9/26/2017 4:03:30 PM || Skipping check for Encryption Status
+9/26/2017 4:03:30 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/26/2017 4:03:30 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/26/2017 4:03:30 PM || "Drive Letter: C: | Capacity: 231.1 GB
+9/26/2017 4:03:30 PM || "Drive Letter: E: | Capacity:  Bytes
+9/26/2017 4:03:30 PM || "Drive Letter: F: | Capacity: 32 GB
+9/26/2017 4:03:30 PM || "Drive Letter:  | Capacity: 300 MB
+9/26/2017 4:03:30 PM || "Drive Letter:  | Capacity: 870 MB
+9/26/2017 4:03:30 PM || "Drive Letter: A: | Capacity: 931.5 GB
+9/26/2017 4:03:30 PM || "Drive Letter: D: | Capacity:  Bytes
+9/26/2017 4:03:30 PM ***** End Sub listDrives *****
+9/26/2017 4:03:35 PM ***** Begin Sub enumUsers *****
+9/26/2017 4:03:35 PM || strComputer = "."
+9/26/2017 4:03:35 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/26/2017 4:03:35 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/26/2017 4:03:35 PM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/26/2017 4:03:35 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/26/2017 4:03:35 PM || Error Number: -2147024894
+9/26/2017 4:03:35 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/26/2017 4:03:35 PM || Could not load HKLM\TempSoftware
+9/26/2017 4:03:35 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/26/2017 4:03:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/26/2017 4:03:35 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/26/2017 4:03:35 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/26/2017 4:03:35 PM || userName = systemprofile
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/26/2017 4:03:35 PM || userName = LocalService
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/26/2017 4:03:35 PM || userName = NetworkService
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = C:\Users\defaultuser0
+9/26/2017 4:03:35 PM || userName = defaultuser0
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = C:\Users\sccmpush
+9/26/2017 4:03:35 PM || userName = sccmpush
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = C:\Users\t1rcm01
+9/26/2017 4:03:35 PM || userName = t1rcm01
+9/26/2017 4:03:35 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/26/2017 4:03:35 PM || profilePath = C:\Users\rcmcda01
+9/26/2017 4:03:35 PM || userName = rcmcda01
+9/26/2017 4:03:35 PM || Error - Cannot find user. Is the drive still encrypted?
+9/26/2017 4:03:35 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/26/2017 4:03:35 PM ***** End Sub enumUsers *****
+9/26/2017 4:06:38 PM ***** Begin Sub TPMCheck *****
+9/26/2017 4:06:38 PM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 11:04:13 AM ======================
+9/28/2017 11:04:13 AM ***** Begin Sub listDrives *****
+9/28/2017 11:04:13 AM || Error. Must run as Administrator to check encryption status
+9/28/2017 11:04:13 AM || Skipping check for Encryption Status
+9/28/2017 11:04:13 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 11:04:13 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 11:04:13 AM || "Drive Letter: C: | Capacity: 231.1 GB
+9/28/2017 11:04:13 AM || "Drive Letter:  | Capacity: 300 MB
+9/28/2017 11:04:13 AM || "Drive Letter:  | Capacity: 870 MB
+9/28/2017 11:04:13 AM || "Drive Letter: A: | Capacity: 931.5 GB
+9/28/2017 11:04:13 AM || "Drive Letter: D: | Capacity:  Bytes
+9/28/2017 11:04:13 AM ***** End Sub listDrives *****
