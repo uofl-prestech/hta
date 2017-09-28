@@ -161,16 +161,16 @@ p {
 /* #softwareInput {} */
 #general-output{
     min-height: 200px;
-}
-#general-output-scroll {
     background: rgba(0, 0, 0, 0.75);
     color: #CCC;
     border: 3px double rgba(70, 120, 110, 0.6);
+    font-size: 14px;
+}
+#general-output-scroll {
     width: 355px;
     height: 582px;
     margin: 7px 0px 0px 5px;
     padding: 10px;
-    font-size: 14px;
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
@@ -179,6 +179,12 @@ p {
 }
 #run-LoadState{
     display: none;
+}
+#tpmGood{
+    color: green;
+}
+#tpmWarning{
+    color: red;
 }
 
 /*CLASS STYLES*/

@@ -5,10 +5,10 @@ Sub TPMCheck
 	bIsEnabled = "False"
 	bIsActivated = "False"
 	bIsOwned = "False"
-	strStatusMessage = "<h2 class=""tpmStatus"">ERROR - TPM Not Found</h2>"
-	strTPMWarning = "<h2 class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h2>"
-	Dim outputDiv: set outputDiv = document.getElementById("general-output")
-	outputDiv.innerHTML = ""
+	strStatusMessage = "<h3 class=""tpmStatus"">ERROR - TPM Not Found</h3>"
+	strTPMWarning = "<h3 id=""tpmWarning"" class=""tpmStatus""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h3>"
+	Dim outputDiv: set outputDiv = document.getElementById("page-landing")
+	outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
 	TPMBox = document.getElementById("input-tpm-checkbox").Checked
 	TPMBox = false
 	On Error Resume Next
@@ -19,9 +19,9 @@ Sub TPMCheck
         htaLog.WriteLine(Now & " || User is running script as admin")
     Else
 		admin = false
-		strStatusMessage = "<h2 class=""tpmStatus"">Error. Must run as Administrator to check TPM status!</h2>"
+		strStatusMessage = "<h3 id=""tpmWarning"" class=""tpmStatus"">Error. Must run as Administrator to check TPM status!</h3>"
 		htaLog.WriteLine(Now & " || Error. Must run as Administrator to check TPM status!")
-		outputDiv.innerHTML = strStatusMessage
+		outputDiv.innerHTML = outputDiv.innerHTML & strStatusMessage
 		Exit Sub
     End If
     Err.Clear
@@ -46,7 +46,7 @@ Sub TPMCheck
 
 	If strStatusState = "Not Found" Then
 		htaLog.WriteLine(Now & " || Error: " & Err.Number & ". " & Err.Description & ". TPM Not Found")
-		outputDiv.innerHTML = strStatusMessage
+		outputDiv.innerHTML = outputDiv.innerHTML & strStatusMessage
 		outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
 		Err.Clear
 	Else
@@ -76,7 +76,7 @@ Sub TPMCheck
 			bIsOwned = "<span class=""tpmError"">False</span>"
 		End If
 
-		outputDiv.innerHTML = "TPM found in the following state: <br>"
+		outputDiv.innerHTML = outputDiv.innerHTML & "TPM found in the following state: <br>"
 		outputDiv.innerHTML = outputDiv.innerHTML & "Enabled - " & bIsEnabled & "<br>"
 		outputDiv.innerHTML = outputDiv.innerHTML & "Activated - " & bIsActivated & "<br>"
 		outputDiv.innerHTML = outputDiv.innerHTML & "Owned - " & bIsOwned & "<br>"
@@ -85,7 +85,7 @@ Sub TPMCheck
 			outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
 		Else
 			htaLog.WriteLine(Now & " || TPM is enabled and activated")
-			outputDiv.innerHTML = outputDiv.innerHTML & "<h2>TPM Enabled and Activated</h2>"
+			outputDiv.innerHTML = outputDiv.innerHTML & "<h3 id=""tpmGood"">TPM Enabled and Activated</h3>"
 			TPMBox = true
 		End If
 	End If

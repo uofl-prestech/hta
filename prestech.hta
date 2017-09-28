@@ -292,10 +292,11 @@
         $('#general-output').css('visibility', 'hidden');
 
         try {
-            listDrives()
+            listDrives();
+            TPMCheck();
         }
         catch (err) {
-            document.getElementById("general-output").innerHTML = err.message;
+            $('#page-landing').append(err.message);
         }
 
         $(".pages").mCustomScrollbar({
