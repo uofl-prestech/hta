@@ -19,8 +19,8 @@ Sub TPMCheck
         htaLog.WriteLine(Now & " || User is running script as admin")
     Else
 		admin = false
-		strStatusMessage = "<h3 class=""tpm-error"">Error. Must run as Administrator to check TPM status!</h3>"
-		htaLog.WriteLine(Now & " || Error. Must run as Administrator to check TPM status!")
+		strStatusMessage = "<h3 class=""tpm-error"">Error: Must run as Administrator to check TPM status!</h3>"
+		htaLog.WriteLine(Now & " || Error: Must run as Administrator to check TPM status!")
 		outputDiv.innerHTML = outputDiv.innerHTML & strStatusMessage
 		Exit Sub
     End If

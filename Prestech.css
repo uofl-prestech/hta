@@ -3,6 +3,15 @@
 input:focus {
     outline: none !important;
 }
+/* PLACEHOLDER text
+    Internet Explorer 10-11 */
+::-ms-input-placeholder {
+    color: #CCC !important;
+    font-weight: 100 !important;
+}
+.placeholder {
+    color: #CCC;
+}
 body {
     color: #333;
     height: 768px;
@@ -30,13 +39,17 @@ h1, h2, h3, h4 {
 h4 {
     font-size: 15px;
 }
-/* ******************************************************************************************************** */
-.input-objects {
+.input-text {
     background: none;
     border: none;
     border-bottom: 1px solid rgba(70, 120, 110, .6);
     caret-color: rgb(70, 120, 110);
-
+    margin: 3px;
+    padding: 3px;
+    color: #FFF;
+}
+.input-text:focus{
+    border-bottom: 1px solid rgba(98, 171, 146, 1);
 }
 .navigation-bar ul {
     font-weight: 400;
@@ -62,24 +75,15 @@ h4 {
     font-size: 12px;
     padding: 0px;
     margin: 0px;
-    /* vertical-align: middle; */
-    color: #CCCCCC;
-    /* background-color: rgba(0, 0, 0, 0.35); */
+    color: #CCC;
 }
-/* .pages li:hover{
-    background-color: rgba(85, 85, 85, 0.10);
-    color: #FFF;
-    cursor: default;
-} */
 .pages ul {
     font-weight: 400;
     list-style: none;
     margin: 0px;
     padding: 0;
 }
-
 p {
-    /* text-align: center; */
     font-size: 12px;
 }
 
@@ -103,7 +107,7 @@ p {
 .ui-widget-content {
     background: rgba(85, 85, 85, 0.10);
     border: 1px solid rgba(80, 80, 80, 0.5);
-    color: #CCCCCC;
+    color: #CCC;
 }
 #button-osd {
     margin-top: 0;
@@ -123,16 +127,14 @@ p {
 #main {
     height: 708px;
     width: 1024px;
-    color: white;
+    color: #CCC;
 }
 .on-load {
     opacity: 0;
 }
 #header {
     height: 50px;
-    /* height: 81px; ORIGINAL HEIGHT WITHOUT BORDER*/
     width: 1024px;
-    /* border-bottom: 2px solid rgba(255, 0, 0, 0.50); */
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -161,16 +163,16 @@ p {
 /* #softwareInput {} */
 #general-output{
     min-height: 200px;
-    background: rgba(0, 0, 0, 0.75);
     color: #CCC;
-    border: 3px double rgba(70, 120, 110, 0.6);
     font-size: 14px;
+    padding: 5px 10px;
 }
 #general-output-scroll {
     width: 355px;
     height: 582px;
-    margin: 7px 0px 0px 5px;
-    padding: 10px;
+    margin: 5px 0px 0px 5px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 3px double rgba(70, 120, 110, 0.6);
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
@@ -220,7 +222,7 @@ p {
 .button-nav, .button-exithome {
     background-color: rgba(85, 85, 85, 0.10);
     border: 1px solid rgba(70, 70, 70, 0.75);
-    color: #CCCCCC;
+    color: #CCC;
     outline: none;
 }
 .active, .button-nav:hover, .button-nav:focus, .button-exithome:hover {
@@ -255,7 +257,7 @@ p {
     font-weight: bold;
     text-align: center;
     padding: 10px 15px;
-    color: #CCCCCC;
+    color: #CCC;
     background-color: rgba(139,0,0,0.6);
 }
 .drive-input {
@@ -294,7 +296,7 @@ p {
 .navigation-bar, #content {
     margin-top: 15px;
 }
-.output-div {
+/* .output-div {
     width: 365px;
     height: 550px;
     margin-left: 5px;
@@ -302,7 +304,7 @@ p {
     padding: 0px;
     background: rgba(104, 110, 175, 0.65);
     overflow: auto;
-}
+} */
 .pages {
     position: relative;
     display:inline-block;
@@ -315,6 +317,6 @@ p {
     overflow: auto;
 }
 .tpm-error {
-    color: darkred;
+    color: #DBC12E;
     font-style: bold;
 }
