@@ -1784,3 +1784,83 @@ The module to process 'Microsoft.BitLocker.Structures', listed in field 'NestedM
 10/3/2017 1:25:14 PM ***** End Sub listDrives *****
 10/3/2017 1:25:14 PM ***** Begin Sub TPMCheck *****
 10/3/2017 1:25:14 PM || Error: Must run as Administrator to check TPM status!
+10/3/2017 1:25:21 PM ***** Begin Sub TPMCheck *****
+10/3/2017 1:25:21 PM || Error: Must run as Administrator to check TPM status!
+10/3/2017 1:25:22 PM ***** Begin Sub enumUsers *****
+10/3/2017 1:25:22 PM || strComputer = "."
+10/3/2017 1:25:22 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/3/2017 1:25:22 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/3/2017 1:25:22 PM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/3/2017 1:25:22 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/3/2017 1:25:22 PM || Error Number: -2147024894
+10/3/2017 1:25:22 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/3/2017 1:25:22 PM || Could not load HKLM\TempSoftware
+10/3/2017 1:25:22 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/3/2017 1:25:22 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/3/2017 1:25:22 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/3/2017 1:25:22 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = %systemroot%\system32\config\systemprofile
+10/3/2017 1:25:22 PM || userName = systemprofile
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/3/2017 1:25:22 PM || userName = LocalService
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/3/2017 1:25:22 PM || userName = NetworkService
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1757214225-243066502-1375922887-500\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\grawem01
+10/3/2017 1:25:22 PM || userName = grawem01
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-121594\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\presidnt
+10/3/2017 1:25:22 PM || userName = presidnt
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-158525\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\eadock01
+10/3/2017 1:25:22 PM || userName = eadock01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\sccmpush
+10/3/2017 1:25:22 PM || userName = sccmpush
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\t1rcm01
+10/3/2017 1:25:22 PM || userName = t1rcm01
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-21433\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\jrelli05
+10/3/2017 1:25:22 PM || userName = jrelli05
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-219849\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\crvish01
+10/3/2017 1:25:22 PM || userName = crvish01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\rcmcda01
+10/3/2017 1:25:22 PM || userName = rcmcda01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\prestech
+10/3/2017 1:25:22 PM || userName = prestech
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-335011\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\elmatr01
+10/3/2017 1:25:22 PM || userName = elmatr01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-55358\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\mrhebe01
+10/3/2017 1:25:22 PM || userName = mrhebe01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-74278\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\sjkarl01
+10/3/2017 1:25:22 PM || userName = sjkarl01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-95499\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\b0doug01
+10/3/2017 1:25:22 PM || userName = b0doug01
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\ProfileImagePath
+10/3/2017 1:25:22 PM || profilePath = C:\Users\DefaultAppPool
+10/3/2017 1:25:22 PM || userName = DefaultAppPool
+10/3/2017 1:25:22 PM || Error - Cannot find user. Is the drive still encrypted?
+10/3/2017 1:25:22 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/3/2017 1:25:22 PM ***** End Sub enumUsers *****
