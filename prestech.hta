@@ -330,7 +330,7 @@
         var input = $(this);
         if (input.val() == '' || input.val() == input.attr('placeholder')) {
             input.addClass('placeholder');
-           input.val(input.attr('placeholder'));
+            input.val(input.attr('placeholder'));
         }
     }).blur().parents('form').submit(function() {
         $(this).find('[placeholder]').each(function() {
@@ -383,6 +383,7 @@
         }
         var spinner = new Spinner(opts).spin(target);
         BitlockerUnlock();
+        BitlockerInfo();
         spinner.stop(target);
     }
     
@@ -540,7 +541,7 @@
         }
         else {
             $(".pages").mCustomScrollbar("disable");
-            $("#general-output").mCustomScrollbar("disable");
+            $("#general-output-scroll").mCustomScrollbar("disable");
             try {
                 ButtonFinishClick();
             }
@@ -554,8 +555,8 @@
 ************* FnF **************
 *******************************/
     function launchFNF() {
-        $(".pages").mCustomScrollbar("destroy");
-        $("#general-output").mCustomScrollbar("destroy");
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
@@ -582,14 +583,14 @@
 
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         var dismReturn = dismCapture();
 
         //Re-enable scroll bar replacement
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
 
         if(dismReturn != 0){
@@ -612,13 +613,13 @@
         }
 
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         usmtScanstate("true");
 
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
     }
 
@@ -626,13 +627,13 @@
         var capturedVars = getInputValues();
 
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         usmtLoadstate();
 
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
     }
 

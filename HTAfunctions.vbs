@@ -706,6 +706,7 @@ End Function
 Sub runFlushFill
     htaLog.WriteLine(Now & " ***** Begin Sub runFlushFill *****")
 
+    Dim dismError
     iWindowsDrive = document.getElementById("input-windows-drive").Value
     iExternalDrive = document.getElementById("input-external-drive").Value
     iPrimaryUsername = document.getElementById("input-primary-username").Value
@@ -724,7 +725,10 @@ Sub runFlushFill
 
     If iDismCheckBox Then
         htaLog.WriteLine(Now & " || dismCheckBox is checked. Run dismCapture routine")
-        dismCapture
+        dismError = dismCapture
+        If dismError Then
+            Exit Sub
+        End If
     End If
 
     htaLog.WriteLine(Now & " || scanStateCheckBox.Checked = " & iScanStateCheckBox)
