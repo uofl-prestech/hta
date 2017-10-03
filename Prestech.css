@@ -177,6 +177,9 @@ p {
     overflow: auto;
     position: relative;
 }
+#input-tpm-checkbox{
+    visibility: hidden;
+}
 #run-LoadState{
     display: none;
 }

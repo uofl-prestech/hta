@@ -534,3 +534,1312 @@
 9/28/2017 11:26:10 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
 9/28/2017 11:26:10 AM || Error: -2147217406. Not found . TPM Not Found
 9/28/2017 11:26:10 AM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:07:35 PM ======================
+9/28/2017 2:07:35 PM ***** Begin Sub listDrives *****
+9/28/2017 2:07:35 PM || Error. Must run as Administrator to check encryption status
+9/28/2017 2:07:35 PM || Skipping check for Encryption Status
+9/28/2017 2:07:35 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:07:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:07:35 PM || "Drive Letter: C: | Capacity: 475.7 GB
+9/28/2017 2:07:35 PM || "Drive Letter:  | Capacity: 830 MB
+9/28/2017 2:07:35 PM ***** End Sub listDrives *****
+9/28/2017 2:07:35 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:07:35 PM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 2:14:38 PM ======================
+9/28/2017 2:14:38 PM ***** Begin Sub listDrives *****
+9/28/2017 2:14:38 PM || Error. Must run as Administrator to check encryption status
+9/28/2017 2:14:38 PM || Skipping check for Encryption Status
+9/28/2017 2:14:38 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:14:38 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:14:38 PM || "Drive Letter: C: | Capacity: 475.7 GB
+9/28/2017 2:14:38 PM || "Drive Letter:  | Capacity: 830 MB
+9/28/2017 2:14:38 PM ***** End Sub listDrives *****
+9/28/2017 2:14:38 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:14:38 PM || Error. Must run as Administrator to check TPM status!
+9/28/2017 2:14:41 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:14:41 PM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 2:15:53 PM ======================
+9/28/2017 2:15:53 PM ***** Begin Sub listDrives *****
+9/28/2017 2:15:53 PM || User is running script as admin
+9/28/2017 2:15:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:15:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:15:53 PM || Win32_EncryptableVolume instance
+9/28/2017 2:15:53 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:15:53 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:15:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:15:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:15:53 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:15:53 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:15:53 PM ***** End Sub listDrives *****
+9/28/2017 2:15:53 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:15:53 PM || User is running script as admin
+9/28/2017 2:15:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:15:53 PM || TPM is enabled and activated
+9/28/2017 2:15:53 PM ***** End Sub TPMCheck *****
+9/28/2017 2:15:58 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:15:58 PM || User is running script as admin
+9/28/2017 2:15:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:15:58 PM || TPM is enabled and activated
+9/28/2017 2:15:58 PM ***** End Sub TPMCheck *****
+9/28/2017 2:16:03 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:16:03 PM || User is running script as admin
+9/28/2017 2:16:03 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:16:03 PM || TPM is enabled and activated
+9/28/2017 2:16:03 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:17:27 PM ======================
+9/28/2017 2:17:27 PM ***** Begin Sub listDrives *****
+9/28/2017 2:17:27 PM || User is running script as admin
+9/28/2017 2:17:27 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:17:27 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:17:27 PM || Win32_EncryptableVolume instance
+9/28/2017 2:17:27 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:17:27 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:17:27 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:17:27 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:17:27 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:17:27 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:17:27 PM ***** End Sub listDrives *****
+9/28/2017 2:17:27 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:17:27 PM || User is running script as admin
+9/28/2017 2:17:27 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:17:28 PM || TPM is enabled and activated
+9/28/2017 2:17:28 PM ***** End Sub TPMCheck *****
+9/28/2017 2:17:29 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:17:29 PM || User is running script as admin
+9/28/2017 2:17:29 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:17:29 PM || TPM is enabled and activated
+9/28/2017 2:17:29 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:17:58 PM ======================
+9/28/2017 2:17:58 PM ***** Begin Sub listDrives *****
+9/28/2017 2:17:58 PM || User is running script as admin
+9/28/2017 2:17:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:17:58 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:17:58 PM || Win32_EncryptableVolume instance
+9/28/2017 2:17:58 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:17:58 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:17:58 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:17:58 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:17:58 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:17:58 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:17:58 PM ***** End Sub listDrives *****
+9/28/2017 2:17:58 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:17:58 PM || User is running script as admin
+9/28/2017 2:17:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:17:58 PM || TPM is enabled and activated
+9/28/2017 2:17:58 PM ***** End Sub TPMCheck *****
+9/28/2017 2:17:59 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:17:59 PM || User is running script as admin
+9/28/2017 2:17:59 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:17:59 PM || TPM is enabled and activated
+9/28/2017 2:17:59 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:19:22 PM ======================
+9/28/2017 2:19:22 PM ***** Begin Sub listDrives *****
+9/28/2017 2:19:22 PM || User is running script as admin
+9/28/2017 2:19:22 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:19:22 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:19:22 PM || Win32_EncryptableVolume instance
+9/28/2017 2:19:22 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:19:22 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:19:22 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:19:22 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:19:22 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:19:22 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:19:22 PM ***** End Sub listDrives *****
+9/28/2017 2:19:22 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:19:22 PM || User is running script as admin
+9/28/2017 2:19:22 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:19:22 PM || TPM is enabled and activated
+9/28/2017 2:19:22 PM ***** End Sub TPMCheck *****
+9/28/2017 2:19:23 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:19:23 PM || User is running script as admin
+9/28/2017 2:19:23 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:19:23 PM || TPM is enabled and activated
+9/28/2017 2:19:23 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:20:07 PM ======================
+9/28/2017 2:20:07 PM ***** Begin Sub listDrives *****
+9/28/2017 2:20:07 PM || User is running script as admin
+9/28/2017 2:20:07 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:20:07 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:20:07 PM || Win32_EncryptableVolume instance
+9/28/2017 2:20:07 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:20:07 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:20:07 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:20:07 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:20:07 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:20:07 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:20:07 PM ***** End Sub listDrives *****
+9/28/2017 2:20:07 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:20:07 PM || User is running script as admin
+9/28/2017 2:20:07 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:20:07 PM || TPM is enabled and activated
+9/28/2017 2:20:07 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:21:10 PM ======================
+9/28/2017 2:21:10 PM ***** Begin Sub listDrives *****
+9/28/2017 2:21:10 PM || User is running script as admin
+9/28/2017 2:21:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:21:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:21:10 PM || Win32_EncryptableVolume instance
+9/28/2017 2:21:10 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:21:10 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:21:10 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:21:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:21:10 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:21:10 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:21:10 PM ***** End Sub listDrives *****
+9/28/2017 2:21:10 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:21:10 PM || User is running script as admin
+9/28/2017 2:21:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:21:10 PM || TPM is enabled and activated
+9/28/2017 2:21:10 PM ***** End Sub TPMCheck *****
+9/28/2017 2:21:12 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:21:12 PM || User is running script as admin
+9/28/2017 2:21:12 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:21:12 PM || TPM is enabled and activated
+9/28/2017 2:21:12 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:21:30 PM ======================
+9/28/2017 2:21:30 PM ***** Begin Sub listDrives *****
+9/28/2017 2:21:30 PM || User is running script as admin
+9/28/2017 2:21:30 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:21:30 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:21:30 PM || Win32_EncryptableVolume instance
+9/28/2017 2:21:30 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:21:30 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:21:30 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:21:30 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:21:30 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:21:30 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:21:30 PM ***** End Sub listDrives *****
+9/28/2017 2:21:30 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:21:30 PM || User is running script as admin
+9/28/2017 2:21:30 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:21:30 PM || TPM is enabled and activated
+9/28/2017 2:21:30 PM ***** End Sub TPMCheck *****
+9/28/2017 2:21:31 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:21:31 PM || User is running script as admin
+9/28/2017 2:21:31 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:21:31 PM || TPM is enabled and activated
+9/28/2017 2:21:31 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:26:29 PM ======================
+9/28/2017 2:26:29 PM ***** Begin Sub listDrives *****
+9/28/2017 2:26:29 PM || User is running script as admin
+9/28/2017 2:26:29 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:26:29 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:26:29 PM || Win32_EncryptableVolume instance
+9/28/2017 2:26:29 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:26:29 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:26:29 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:26:29 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:26:29 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:26:29 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:26:29 PM ***** End Sub listDrives *****
+9/28/2017 2:26:29 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:26:29 PM || User is running script as admin
+9/28/2017 2:26:29 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:26:29 PM || TPM is enabled and activated
+9/28/2017 2:26:29 PM ***** End Sub TPMCheck *****
+9/28/2017 2:26:31 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:26:31 PM || User is running script as admin
+9/28/2017 2:26:31 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:26:31 PM || TPM is enabled and activated
+9/28/2017 2:26:31 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:26:35 PM ======================
+9/28/2017 2:26:35 PM ***** Begin Sub listDrives *****
+9/28/2017 2:26:35 PM || User is running script as admin
+9/28/2017 2:26:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:26:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:26:35 PM || Win32_EncryptableVolume instance
+9/28/2017 2:26:35 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:26:35 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:26:35 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:26:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:26:35 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:26:35 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:26:35 PM ***** End Sub listDrives *****
+9/28/2017 2:26:35 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:26:35 PM || User is running script as admin
+9/28/2017 2:26:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:26:35 PM || TPM is enabled and activated
+9/28/2017 2:26:35 PM ***** End Sub TPMCheck *****
+9/28/2017 2:26:36 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:26:36 PM || User is running script as admin
+9/28/2017 2:26:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:26:36 PM || TPM is enabled and activated
+9/28/2017 2:26:36 PM ***** End Sub TPMCheck *****
+9/28/2017 2:26:45 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:26:45 PM || User is running script as admin
+9/28/2017 2:26:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:26:45 PM || TPM is enabled and activated
+9/28/2017 2:26:45 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:35:57 PM ======================
+9/28/2017 2:35:57 PM ***** Begin Sub listDrives *****
+9/28/2017 2:35:57 PM || User is running script as admin
+9/28/2017 2:35:57 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:35:57 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:35:57 PM || Win32_EncryptableVolume instance
+9/28/2017 2:35:57 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:35:57 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:35:57 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:35:57 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:35:57 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:35:57 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:35:57 PM ***** End Sub listDrives *****
+9/28/2017 2:35:57 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:35:57 PM || User is running script as admin
+9/28/2017 2:35:57 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:35:57 PM || TPM is enabled and activated
+9/28/2017 2:35:57 PM ***** End Sub TPMCheck *****
+9/28/2017 2:35:58 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:35:58 PM || User is running script as admin
+9/28/2017 2:35:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:35:59 PM || TPM is enabled and activated
+9/28/2017 2:35:59 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:36:13 PM ======================
+9/28/2017 2:36:13 PM ***** Begin Sub listDrives *****
+9/28/2017 2:36:13 PM || User is running script as admin
+9/28/2017 2:36:13 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:36:13 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:36:13 PM || Win32_EncryptableVolume instance
+9/28/2017 2:36:13 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:36:13 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:36:13 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:36:13 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:36:13 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:36:13 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:36:13 PM ***** End Sub listDrives *****
+9/28/2017 2:36:13 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:36:13 PM || User is running script as admin
+9/28/2017 2:36:13 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:36:13 PM || TPM is enabled and activated
+9/28/2017 2:36:13 PM ***** End Sub TPMCheck *****
+9/28/2017 2:36:14 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:36:14 PM || User is running script as admin
+9/28/2017 2:36:14 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:36:14 PM || TPM is enabled and activated
+9/28/2017 2:36:14 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:39:08 PM ======================
+9/28/2017 2:39:08 PM ***** Begin Sub listDrives *****
+9/28/2017 2:39:08 PM || User is running script as admin
+9/28/2017 2:39:08 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:39:08 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:39:08 PM || Win32_EncryptableVolume instance
+9/28/2017 2:39:08 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:39:08 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:39:08 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:39:08 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:39:08 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:39:08 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:39:08 PM ***** End Sub listDrives *****
+9/28/2017 2:39:08 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:39:08 PM || User is running script as admin
+9/28/2017 2:39:08 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:39:08 PM || TPM is enabled and activated
+9/28/2017 2:39:08 PM ***** End Sub TPMCheck *****
+9/28/2017 2:39:09 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:39:09 PM || User is running script as admin
+9/28/2017 2:39:09 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:39:09 PM || TPM is enabled and activated
+9/28/2017 2:39:09 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 2:59:53 PM ======================
+9/28/2017 2:59:53 PM ***** Begin Sub listDrives *****
+9/28/2017 2:59:53 PM || User is running script as admin
+9/28/2017 2:59:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 2:59:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 2:59:53 PM || Win32_EncryptableVolume instance
+9/28/2017 2:59:53 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 2:59:53 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 2:59:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 2:59:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 2:59:53 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 2:59:53 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 2:59:53 PM ***** End Sub listDrives *****
+9/28/2017 2:59:53 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:59:53 PM || User is running script as admin
+9/28/2017 2:59:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:59:53 PM || TPM is enabled and activated
+9/28/2017 2:59:53 PM ***** End Sub TPMCheck *****
+9/28/2017 2:59:54 PM ***** Begin Sub TPMCheck *****
+9/28/2017 2:59:54 PM || User is running script as admin
+9/28/2017 2:59:54 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 2:59:54 PM || TPM is enabled and activated
+9/28/2017 2:59:54 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:00:20 PM ======================
+9/28/2017 3:00:20 PM ***** Begin Sub listDrives *****
+9/28/2017 3:00:20 PM || User is running script as admin
+9/28/2017 3:00:20 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:00:20 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:00:20 PM || Win32_EncryptableVolume instance
+9/28/2017 3:00:20 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:00:20 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:00:20 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:00:20 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:00:20 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:00:20 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:00:20 PM ***** End Sub listDrives *****
+9/28/2017 3:00:20 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:00:20 PM || User is running script as admin
+9/28/2017 3:00:20 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:00:20 PM || TPM is enabled and activated
+9/28/2017 3:00:20 PM ***** End Sub TPMCheck *****
+9/28/2017 3:00:21 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:00:21 PM || User is running script as admin
+9/28/2017 3:00:21 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:00:21 PM || TPM is enabled and activated
+9/28/2017 3:00:21 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:01:00 PM ======================
+9/28/2017 3:01:00 PM ***** Begin Sub listDrives *****
+9/28/2017 3:01:00 PM || User is running script as admin
+9/28/2017 3:01:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:01:00 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:01:00 PM || Win32_EncryptableVolume instance
+9/28/2017 3:01:00 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:01:00 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:01:00 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:01:00 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:01:00 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:01:00 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:01:00 PM ***** End Sub listDrives *****
+9/28/2017 3:01:00 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:01:00 PM || User is running script as admin
+9/28/2017 3:01:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:01:00 PM || TPM is enabled and activated
+9/28/2017 3:01:00 PM ***** End Sub TPMCheck *****
+9/28/2017 3:01:02 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:01:02 PM || User is running script as admin
+9/28/2017 3:01:02 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:01:02 PM || TPM is enabled and activated
+9/28/2017 3:01:02 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:01:29 PM ======================
+9/28/2017 3:01:29 PM ***** Begin Sub listDrives *****
+9/28/2017 3:01:29 PM || User is running script as admin
+9/28/2017 3:01:29 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:01:29 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:01:29 PM || Win32_EncryptableVolume instance
+9/28/2017 3:01:29 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:01:29 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:01:29 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:01:29 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:01:29 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:01:29 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:01:29 PM ***** End Sub listDrives *****
+9/28/2017 3:01:29 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:01:31 PM || User is running script as admin
+9/28/2017 3:01:31 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:01:31 PM || TPM is enabled and activated
+9/28/2017 3:01:31 PM ***** End Sub TPMCheck *****
+9/28/2017 3:01:32 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:01:33 PM || User is running script as admin
+9/28/2017 3:01:33 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:01:33 PM || TPM is enabled and activated
+9/28/2017 3:01:33 PM ***** End Sub TPMCheck *****
+9/28/2017 3:01:45 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:01:46 PM || User is running script as admin
+9/28/2017 3:01:46 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:01:46 PM || TPM is enabled and activated
+9/28/2017 3:01:46 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:01:48 PM ======================
+9/28/2017 3:01:48 PM ***** Begin Sub listDrives *****
+9/28/2017 3:01:48 PM || User is running script as admin
+9/28/2017 3:01:48 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:01:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:01:48 PM || Win32_EncryptableVolume instance
+9/28/2017 3:01:48 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:01:48 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:01:48 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:01:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:01:48 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:01:48 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:01:48 PM ***** End Sub listDrives *****
+9/28/2017 3:01:48 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:01:49 PM || User is running script as admin
+9/28/2017 3:01:49 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:01:49 PM || TPM is enabled and activated
+9/28/2017 3:01:49 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:02:04 PM ======================
+9/28/2017 3:02:04 PM ***** Begin Sub listDrives *****
+9/28/2017 3:02:04 PM || User is running script as admin
+9/28/2017 3:02:04 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:02:04 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:02:04 PM || Win32_EncryptableVolume instance
+9/28/2017 3:02:04 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:02:04 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:02:04 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:02:04 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:02:04 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:02:04 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:02:04 PM ***** End Sub listDrives *****
+9/28/2017 3:02:04 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:02:05 PM || User is running script as admin
+9/28/2017 3:02:05 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:02:05 PM || TPM is enabled and activated
+9/28/2017 3:02:05 PM ***** End Sub TPMCheck *****
+9/28/2017 3:02:06 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:02:07 PM || User is running script as admin
+9/28/2017 3:02:07 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:02:07 PM || TPM is enabled and activated
+9/28/2017 3:02:07 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:07:05 PM ======================
+9/28/2017 3:07:05 PM ***** Begin Sub listDrives *****
+9/28/2017 3:07:05 PM || User is running script as admin
+9/28/2017 3:07:05 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:07:05 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:07:05 PM || Win32_EncryptableVolume instance
+9/28/2017 3:07:05 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:07:05 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:07:05 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:07:05 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:07:05 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:07:05 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:07:05 PM ***** End Sub listDrives *****
+9/28/2017 3:07:05 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:07:05 PM || User is running script as admin
+9/28/2017 3:07:05 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:07:05 PM || TPM is enabled and activated
+9/28/2017 3:07:05 PM ***** End Sub TPMCheck *****
+9/28/2017 3:07:06 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:07:06 PM || User is running script as admin
+9/28/2017 3:07:06 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:07:06 PM || TPM is enabled and activated
+9/28/2017 3:07:06 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:07:48 PM ======================
+9/28/2017 3:07:48 PM ***** Begin Sub listDrives *****
+9/28/2017 3:07:48 PM || User is running script as admin
+9/28/2017 3:07:48 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:07:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:07:48 PM || Win32_EncryptableVolume instance
+9/28/2017 3:07:48 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:07:48 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:07:48 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:07:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:07:48 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:07:48 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:07:48 PM ***** End Sub listDrives *****
+9/28/2017 3:07:48 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:07:48 PM || User is running script as admin
+9/28/2017 3:07:48 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:07:48 PM || TPM is enabled and activated
+9/28/2017 3:07:48 PM ***** End Sub TPMCheck *****
+9/28/2017 3:07:50 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:07:50 PM || User is running script as admin
+9/28/2017 3:07:50 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:07:50 PM || TPM is enabled and activated
+9/28/2017 3:07:50 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:08:19 PM ======================
+9/28/2017 3:08:19 PM ***** Begin Sub listDrives *****
+9/28/2017 3:08:19 PM || User is running script as admin
+9/28/2017 3:08:19 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:08:19 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:08:19 PM || Win32_EncryptableVolume instance
+9/28/2017 3:08:19 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:08:19 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:08:19 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:08:19 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:08:19 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:08:19 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:08:19 PM ***** End Sub listDrives *****
+9/28/2017 3:08:19 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:08:19 PM || User is running script as admin
+9/28/2017 3:08:19 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:08:19 PM || TPM is enabled and activated
+9/28/2017 3:08:19 PM ***** End Sub TPMCheck *****
+9/28/2017 3:08:20 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:08:20 PM || User is running script as admin
+9/28/2017 3:08:20 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:08:20 PM || TPM is enabled and activated
+9/28/2017 3:08:20 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:50:53 PM ======================
+9/28/2017 3:50:53 PM ***** Begin Sub listDrives *****
+9/28/2017 3:50:53 PM || User is running script as admin
+9/28/2017 3:50:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:50:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:50:53 PM || Win32_EncryptableVolume instance
+9/28/2017 3:50:53 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:50:53 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:50:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:50:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:50:53 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:50:53 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:50:53 PM ***** End Sub listDrives *****
+9/28/2017 3:50:54 PM ***** Begin Sub TPMCheck *****
+9/28/2017 3:50:54 PM || User is running script as admin
+9/28/2017 3:50:54 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 3:50:54 PM || TPM is enabled and activated
+9/28/2017 3:50:54 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:54:42 PM ======================
+9/28/2017 3:54:42 PM ***** Begin Sub listDrives *****
+9/28/2017 3:54:42 PM || User is running script as admin
+9/28/2017 3:54:42 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:54:42 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:54:42 PM || Win32_EncryptableVolume instance
+9/28/2017 3:54:42 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:54:42 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:54:42 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:54:42 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:54:42 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:54:42 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:54:42 PM ***** End Sub listDrives *****
+9/28/2017 3:54:43 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 3:55:16 PM ======================
+9/28/2017 3:55:16 PM ***** Begin Sub listDrives *****
+9/28/2017 3:55:16 PM || User is running script as admin
+9/28/2017 3:55:16 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 3:55:16 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 3:55:16 PM || Win32_EncryptableVolume instance
+9/28/2017 3:55:16 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 3:55:16 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 3:55:16 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 3:55:16 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 3:55:16 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 3:55:16 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 3:55:16 PM ***** End Sub listDrives *****
+9/28/2017 3:55:18 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:03:24 PM ======================
+9/28/2017 4:03:24 PM ***** Begin Sub listDrives *****
+9/28/2017 4:03:24 PM || User is running script as admin
+9/28/2017 4:03:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:03:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:03:24 PM || Win32_EncryptableVolume instance
+9/28/2017 4:03:24 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:03:24 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:03:24 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:03:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:03:24 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:03:24 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:03:24 PM ***** End Sub listDrives *****
+
+====================== Begin Logging at 9/28/2017 4:04:37 PM ======================
+9/28/2017 4:04:38 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:05:01 PM ======================
+9/28/2017 4:05:02 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:05:02 PM || Error. Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 9/28/2017 4:05:24 PM ======================
+9/28/2017 4:05:25 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:06:09 PM ======================
+9/28/2017 4:06:10 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:07:19 PM ======================
+9/28/2017 4:07:21 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:08:12 PM ======================
+9/28/2017 4:08:13 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:08:33 PM ======================
+9/28/2017 4:08:34 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:08:34 PM || User is running script as admin
+9/28/2017 4:08:34 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:08:34 PM || TPM is enabled and activated
+9/28/2017 4:08:34 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:09:01 PM ======================
+9/28/2017 4:09:02 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:09:02 PM || User is running script as admin
+9/28/2017 4:09:02 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:09:02 PM || TPM is enabled and activated
+9/28/2017 4:09:02 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:09:17 PM ======================
+9/28/2017 4:09:18 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:09:18 PM || User is running script as admin
+9/28/2017 4:09:18 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:09:18 PM || TPM is enabled and activated
+9/28/2017 4:09:18 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:10:26 PM ======================
+9/28/2017 4:10:27 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:10:27 PM || User is running script as admin
+9/28/2017 4:10:27 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:10:27 PM || TPM is enabled and activated
+9/28/2017 4:10:27 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:10:48 PM ======================
+9/28/2017 4:10:48 PM ***** Begin Sub listDrives *****
+9/28/2017 4:10:48 PM || User is running script as admin
+9/28/2017 4:10:48 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:10:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:10:48 PM || Win32_EncryptableVolume instance
+9/28/2017 4:10:48 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:10:48 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:10:48 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:10:48 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:10:48 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:10:48 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:10:48 PM ***** End Sub listDrives *****
+9/28/2017 4:10:48 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:10:48 PM || User is running script as admin
+9/28/2017 4:10:48 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:10:48 PM || TPM is enabled and activated
+9/28/2017 4:10:48 PM ***** End Sub TPMCheck *****
+9/28/2017 4:10:51 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:10:51 PM || User is running script as admin
+9/28/2017 4:10:51 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:10:51 PM || TPM is enabled and activated
+9/28/2017 4:10:51 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:11:26 PM ======================
+9/28/2017 4:11:26 PM ***** Begin Sub listDrives *****
+9/28/2017 4:11:26 PM || User is running script as admin
+9/28/2017 4:11:26 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:11:26 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:11:26 PM || Win32_EncryptableVolume instance
+9/28/2017 4:11:26 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:11:26 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:11:26 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:11:26 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:11:26 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:11:26 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:11:26 PM ***** End Sub listDrives *****
+9/28/2017 4:11:26 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:11:26 PM || User is running script as admin
+9/28/2017 4:11:26 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:11:26 PM || TPM is enabled and activated
+9/28/2017 4:11:26 PM ***** End Sub TPMCheck *****
+9/28/2017 4:11:27 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:11:27 PM || User is running script as admin
+9/28/2017 4:11:27 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:11:27 PM || TPM is enabled and activated
+9/28/2017 4:11:27 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:11:36 PM ======================
+9/28/2017 4:11:36 PM ***** Begin Sub listDrives *****
+9/28/2017 4:11:36 PM || User is running script as admin
+9/28/2017 4:11:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:11:36 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:11:36 PM || Win32_EncryptableVolume instance
+9/28/2017 4:11:36 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:11:36 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:11:36 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:11:36 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:11:36 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:11:36 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:11:36 PM ***** End Sub listDrives *****
+9/28/2017 4:11:36 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:11:36 PM || User is running script as admin
+9/28/2017 4:11:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:11:36 PM || TPM is enabled and activated
+9/28/2017 4:11:36 PM ***** End Sub TPMCheck *****
+9/28/2017 4:11:37 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:11:37 PM || User is running script as admin
+9/28/2017 4:11:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:11:37 PM || TPM is enabled and activated
+9/28/2017 4:11:37 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:11:53 PM ======================
+9/28/2017 4:11:53 PM ***** Begin Sub listDrives *****
+9/28/2017 4:11:53 PM || User is running script as admin
+9/28/2017 4:11:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:11:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:11:53 PM || Win32_EncryptableVolume instance
+9/28/2017 4:11:53 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:11:53 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:11:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:11:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:11:53 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:11:53 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:11:53 PM ***** End Sub listDrives *****
+9/28/2017 4:11:53 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:11:54 PM ***** Begin Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:12:35 PM ======================
+9/28/2017 4:12:35 PM ***** Begin Sub listDrives *****
+9/28/2017 4:12:35 PM || User is running script as admin
+9/28/2017 4:12:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:12:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:12:35 PM || Win32_EncryptableVolume instance
+9/28/2017 4:12:35 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:12:35 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:12:35 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:12:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:12:35 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:12:35 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:12:35 PM ***** End Sub listDrives *****
+9/28/2017 4:12:35 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:12:35 PM || User is running script as admin
+9/28/2017 4:12:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:12:35 PM || TPM is enabled and activated
+9/28/2017 4:12:35 PM ***** End Sub TPMCheck *****
+9/28/2017 4:12:36 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:12:36 PM || User is running script as admin
+9/28/2017 4:12:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:12:36 PM || TPM is enabled and activated
+9/28/2017 4:12:36 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:13:14 PM ======================
+9/28/2017 4:13:14 PM ***** Begin Sub listDrives *****
+9/28/2017 4:13:14 PM || User is running script as admin
+9/28/2017 4:13:14 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:13:14 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:13:14 PM || Win32_EncryptableVolume instance
+9/28/2017 4:13:14 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:13:14 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:13:14 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:13:14 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:13:14 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:13:14 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:13:14 PM ***** End Sub listDrives *****
+9/28/2017 4:13:14 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:13:14 PM || User is running script as admin
+9/28/2017 4:13:14 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:13:14 PM || TPM is enabled and activated
+9/28/2017 4:13:14 PM ***** End Sub TPMCheck *****
+9/28/2017 4:13:16 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:13:16 PM || User is running script as admin
+9/28/2017 4:13:16 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:13:16 PM || TPM is enabled and activated
+9/28/2017 4:13:16 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:15:24 PM ======================
+9/28/2017 4:15:24 PM ***** Begin Sub listDrives *****
+9/28/2017 4:15:24 PM || User is running script as admin
+9/28/2017 4:15:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:15:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:15:24 PM || Win32_EncryptableVolume instance
+9/28/2017 4:15:24 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:15:24 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:15:24 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:15:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:15:24 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:15:24 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:15:24 PM ***** End Sub listDrives *****
+9/28/2017 4:15:24 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:15:24 PM || User is running script as admin
+9/28/2017 4:15:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:15:24 PM || TPM is enabled and activated
+9/28/2017 4:15:24 PM ***** End Sub TPMCheck *****
+9/28/2017 4:15:25 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:15:25 PM || User is running script as admin
+9/28/2017 4:15:25 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:15:25 PM || TPM is enabled and activated
+9/28/2017 4:15:25 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:17:45 PM ======================
+9/28/2017 4:17:45 PM ***** Begin Sub listDrives *****
+9/28/2017 4:17:45 PM || User is running script as admin
+9/28/2017 4:17:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:17:45 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:17:45 PM || Win32_EncryptableVolume instance
+9/28/2017 4:17:45 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:17:45 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:17:45 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:17:45 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:17:45 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:17:45 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:17:45 PM ***** End Sub listDrives *****
+9/28/2017 4:17:45 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:17:45 PM || User is running script as admin
+9/28/2017 4:17:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:17:45 PM || TPM is enabled and activated
+9/28/2017 4:17:45 PM ***** End Sub TPMCheck *****
+9/28/2017 4:17:46 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:17:46 PM || User is running script as admin
+9/28/2017 4:17:46 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:17:46 PM || TPM is enabled and activated
+9/28/2017 4:17:46 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:17:58 PM ======================
+9/28/2017 4:17:58 PM ***** Begin Sub listDrives *****
+9/28/2017 4:17:58 PM || User is running script as admin
+9/28/2017 4:17:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:17:58 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:17:58 PM || Win32_EncryptableVolume instance
+9/28/2017 4:17:58 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:17:58 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:17:58 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:17:58 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:17:58 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:17:58 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:17:58 PM ***** End Sub listDrives *****
+9/28/2017 4:17:58 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:17:58 PM || User is running script as admin
+9/28/2017 4:17:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:17:58 PM || TPM is enabled and activated
+9/28/2017 4:17:58 PM ***** End Sub TPMCheck *****
+9/28/2017 4:17:58 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:17:58 PM || User is running script as admin
+9/28/2017 4:17:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:17:58 PM || TPM is enabled and activated
+9/28/2017 4:17:58 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:22:37 PM ======================
+9/28/2017 4:22:37 PM ***** Begin Sub listDrives *****
+9/28/2017 4:22:37 PM || User is running script as admin
+9/28/2017 4:22:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:22:37 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:22:37 PM || Win32_EncryptableVolume instance
+9/28/2017 4:22:37 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:22:37 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:22:37 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:22:37 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:22:37 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:22:37 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:22:37 PM ***** End Sub listDrives *****
+9/28/2017 4:22:37 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:22:37 PM || User is running script as admin
+9/28/2017 4:22:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:22:37 PM || TPM is enabled and activated
+9/28/2017 4:22:37 PM ***** End Sub TPMCheck *****
+9/28/2017 4:22:38 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:22:38 PM || User is running script as admin
+9/28/2017 4:22:38 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:22:38 PM || TPM is enabled and activated
+9/28/2017 4:22:38 PM ***** End Sub TPMCheck *****
+9/28/2017 4:22:40 PM ***** Begin Sub ButtonFinishClick *****
+9/28/2017 4:22:40 PM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+9/28/2017 4:22:40 PM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+9/28/2017 4:22:40 PM || Chrome checked? || Chrome.Checked = False
+9/28/2017 4:22:40 PM || FileMaker checked? || FileMaker.Checked = False
+9/28/2017 4:22:40 PM || Office2016 checked? || Office2016.Checked = False
+9/28/2017 4:22:40 PM || OSD checked? || OSD.Checked = True
+9/28/2017 4:22:40 PM || MBAM checked? || MBAM.Checked = true
+9/28/2017 4:22:40 PM || Environment Variables:
+
+====================== Begin Logging at 9/28/2017 4:23:24 PM ======================
+9/28/2017 4:23:24 PM ***** Begin Sub listDrives *****
+9/28/2017 4:23:24 PM || User is running script as admin
+9/28/2017 4:23:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:23:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:23:24 PM || Win32_EncryptableVolume instance
+9/28/2017 4:23:24 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:23:24 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:23:24 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:23:24 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:23:24 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:23:24 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:23:24 PM ***** End Sub listDrives *****
+9/28/2017 4:23:24 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:23:24 PM || User is running script as admin
+9/28/2017 4:23:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:23:24 PM || TPM is enabled and activated
+9/28/2017 4:23:24 PM ***** End Sub TPMCheck *****
+9/28/2017 4:23:25 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:23:25 PM || User is running script as admin
+9/28/2017 4:23:25 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:23:25 PM || TPM is enabled and activated
+9/28/2017 4:23:25 PM ***** End Sub TPMCheck *****
+9/28/2017 4:23:31 PM ***** Begin Sub ButtonFinishClick *****
+9/28/2017 4:23:31 PM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+9/28/2017 4:23:31 PM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+9/28/2017 4:23:31 PM || Chrome checked? || Chrome.Checked = False
+9/28/2017 4:23:31 PM || FileMaker checked? || FileMaker.Checked = False
+9/28/2017 4:23:31 PM || Office2016 checked? || Office2016.Checked = False
+9/28/2017 4:23:31 PM || OSD checked? || OSD.Checked = True
+9/28/2017 4:23:31 PM || MBAM checked? || MBAM.Checked = true
+9/28/2017 4:23:31 PM || Environment Variables:
+
+====================== Begin Logging at 9/28/2017 4:27:35 PM ======================
+9/28/2017 4:27:35 PM ***** Begin Sub listDrives *****
+9/28/2017 4:27:35 PM || User is running script as admin
+9/28/2017 4:27:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:27:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:27:35 PM || Win32_EncryptableVolume instance
+9/28/2017 4:27:35 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:27:35 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:27:35 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:27:35 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:27:35 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:27:35 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:27:35 PM ***** End Sub listDrives *****
+9/28/2017 4:27:35 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:27:35 PM || User is running script as admin
+9/28/2017 4:27:35 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:27:35 PM || TPM is enabled and activated
+9/28/2017 4:27:35 PM ***** End Sub TPMCheck *****
+9/28/2017 4:27:37 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:27:37 PM || User is running script as admin
+9/28/2017 4:27:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:27:37 PM || TPM is enabled and activated
+9/28/2017 4:27:37 PM ***** End Sub TPMCheck *****
+9/28/2017 4:27:42 PM ***** Begin Sub ButtonFinishClick *****
+9/28/2017 4:27:42 PM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+9/28/2017 4:27:42 PM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+9/28/2017 4:27:42 PM || Chrome checked? || Chrome.Checked = False
+9/28/2017 4:27:42 PM || FileMaker checked? || FileMaker.Checked = False
+9/28/2017 4:27:42 PM || Office2016 checked? || Office2016.Checked = False
+9/28/2017 4:27:42 PM || OSD checked? || OSD.Checked = True
+9/28/2017 4:27:42 PM || MBAM checked? || MBAM.Checked = true
+9/28/2017 4:27:42 PM || Environment Variables:
+
+====================== Begin Logging at 9/28/2017 4:29:53 PM ======================
+9/28/2017 4:29:53 PM ***** Begin Sub listDrives *****
+9/28/2017 4:29:53 PM || User is running script as admin
+9/28/2017 4:29:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:29:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:29:53 PM || Win32_EncryptableVolume instance
+9/28/2017 4:29:53 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:29:53 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:29:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:29:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:29:53 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:29:53 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:29:53 PM ***** End Sub listDrives *****
+9/28/2017 4:29:53 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:29:53 PM || User is running script as admin
+9/28/2017 4:29:53 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:29:53 PM || TPM is enabled and activated
+9/28/2017 4:29:53 PM ***** End Sub TPMCheck *****
+9/28/2017 4:29:55 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:29:55 PM || User is running script as admin
+9/28/2017 4:29:55 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:29:55 PM || TPM is enabled and activated
+9/28/2017 4:29:55 PM ***** End Sub TPMCheck *****
+9/28/2017 4:29:59 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:29:59 PM || User is running script as admin
+9/28/2017 4:29:59 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:30:00 PM || TPM is enabled and activated
+9/28/2017 4:30:00 PM ***** End Sub TPMCheck *****
+9/28/2017 4:30:00 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:30:00 PM || User is running script as admin
+9/28/2017 4:30:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:30:00 PM || TPM is enabled and activated
+9/28/2017 4:30:00 PM ***** End Sub TPMCheck *****
+9/28/2017 4:30:03 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:30:03 PM || User is running script as admin
+9/28/2017 4:30:03 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:30:03 PM || TPM is enabled and activated
+9/28/2017 4:30:03 PM ***** End Sub TPMCheck *****
+9/28/2017 4:30:05 PM ***** Begin Sub enumUsers *****
+9/28/2017 4:30:05 PM || strComputer = "."
+9/28/2017 4:30:05 PM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+9/28/2017 4:30:05 PM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/28/2017 4:30:05 PM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+9/28/2017 4:30:05 PM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+9/28/2017 4:30:05 PM || Error Number: -2147024894
+9/28/2017 4:30:05 PM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+9/28/2017 4:30:05 PM || Could not load HKLM\TempSoftware
+9/28/2017 4:30:05 PM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+9/28/2017 4:30:05 PM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+9/28/2017 4:30:05 PM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+9/28/2017 4:30:05 PM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = %systemroot%\system32\config\systemprofile
+9/28/2017 4:30:05 PM || userName = systemprofile
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+9/28/2017 4:30:05 PM || userName = LocalService
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+9/28/2017 4:30:05 PM || userName = NetworkService
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-4112094474-1950573326-1937133983-1004\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\Users\RDV GRAPHICS SERVICE
+9/28/2017 4:30:05 PM || userName = RDV GRAPHICS SERVICE
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-4112094474-1950573326-1937133983-500\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\Users\grawem01
+9/28/2017 4:30:05 PM || userName = grawem01
+9/28/2017 4:30:05 PM || Error - Cannot find user. Is the drive still encrypted?
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\Users\sccmpush
+9/28/2017 4:30:05 PM || userName = sccmpush
+9/28/2017 4:30:05 PM || Error - Cannot find user. Is the drive still encrypted?
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\Users\t1rcm01
+9/28/2017 4:30:05 PM || userName = t1rcm01
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\Users\rcmcda01
+9/28/2017 4:30:05 PM || userName = rcmcda01
+9/28/2017 4:30:05 PM || Error - Cannot find user. Is the drive still encrypted?
+9/28/2017 4:30:05 PM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-284697\ProfileImagePath
+9/28/2017 4:30:05 PM || profilePath = C:\Users\prestech
+9/28/2017 4:30:05 PM || userName = prestech
+9/28/2017 4:30:05 PM || Error - Cannot find user. Is the drive still encrypted?
+9/28/2017 4:30:05 PM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+9/28/2017 4:30:05 PM ***** End Sub enumUsers *****
+9/28/2017 4:30:06 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:30:06 PM || User is running script as admin
+9/28/2017 4:30:06 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:30:06 PM || TPM is enabled and activated
+9/28/2017 4:30:06 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:31:00 PM ======================
+9/28/2017 4:31:00 PM ***** Begin Sub listDrives *****
+9/28/2017 4:31:00 PM || User is running script as admin
+9/28/2017 4:31:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:31:00 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:31:00 PM || Win32_EncryptableVolume instance
+9/28/2017 4:31:00 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:31:00 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:31:00 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:31:00 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:31:00 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:31:00 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:31:00 PM ***** End Sub listDrives *****
+9/28/2017 4:31:00 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:31:00 PM || User is running script as admin
+9/28/2017 4:31:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:31:00 PM || TPM is enabled and activated
+9/28/2017 4:31:00 PM ***** End Sub TPMCheck *****
+9/28/2017 4:31:01 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:31:01 PM || User is running script as admin
+9/28/2017 4:31:01 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:31:01 PM || TPM is enabled and activated
+9/28/2017 4:31:01 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:35:45 PM ======================
+9/28/2017 4:35:45 PM ***** Begin Sub listDrives *****
+9/28/2017 4:35:45 PM || User is running script as admin
+9/28/2017 4:35:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:35:45 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:35:45 PM || Win32_EncryptableVolume instance
+9/28/2017 4:35:45 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:35:45 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:35:45 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:35:45 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:35:45 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:35:45 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:35:45 PM ***** End Sub listDrives *****
+9/28/2017 4:35:45 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:35:45 PM || User is running script as admin
+9/28/2017 4:35:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:35:45 PM || TPM is enabled and activated
+9/28/2017 4:35:45 PM ***** End Sub TPMCheck *****
+9/28/2017 4:35:46 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:35:46 PM || User is running script as admin
+9/28/2017 4:35:46 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:35:46 PM || TPM is enabled and activated
+9/28/2017 4:35:46 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:36:50 PM ======================
+9/28/2017 4:36:50 PM ***** Begin Sub listDrives *****
+9/28/2017 4:36:50 PM || User is running script as admin
+9/28/2017 4:36:50 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:36:50 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:36:50 PM || Win32_EncryptableVolume instance
+9/28/2017 4:36:50 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:36:50 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:36:50 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:36:50 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:36:50 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:36:50 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:36:50 PM ***** End Sub listDrives *****
+9/28/2017 4:36:50 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:36:50 PM || User is running script as admin
+9/28/2017 4:36:50 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:36:50 PM || TPM is enabled and activated
+9/28/2017 4:36:50 PM ***** End Sub TPMCheck *****
+9/28/2017 4:36:52 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:36:52 PM || User is running script as admin
+9/28/2017 4:36:52 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:36:52 PM || TPM is enabled and activated
+9/28/2017 4:36:52 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:37:43 PM ======================
+9/28/2017 4:37:43 PM ***** Begin Sub listDrives *****
+9/28/2017 4:37:43 PM || User is running script as admin
+9/28/2017 4:37:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:37:43 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:37:43 PM || Win32_EncryptableVolume instance
+9/28/2017 4:37:43 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:37:43 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:37:43 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:37:43 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:37:43 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:37:43 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:37:43 PM ***** End Sub listDrives *****
+9/28/2017 4:37:43 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:37:43 PM || User is running script as admin
+9/28/2017 4:37:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:37:43 PM || TPM is enabled and activated
+9/28/2017 4:37:43 PM ***** End Sub TPMCheck *****
+9/28/2017 4:37:44 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:37:44 PM || User is running script as admin
+9/28/2017 4:37:44 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:37:44 PM || TPM is enabled and activated
+9/28/2017 4:37:44 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:38:10 PM ======================
+9/28/2017 4:38:10 PM ***** Begin Sub listDrives *****
+9/28/2017 4:38:10 PM || User is running script as admin
+9/28/2017 4:38:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:38:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:38:10 PM || Win32_EncryptableVolume instance
+9/28/2017 4:38:10 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:38:10 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:38:10 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:38:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:38:10 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:38:10 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:38:10 PM ***** End Sub listDrives *****
+9/28/2017 4:38:10 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:38:10 PM || User is running script as admin
+9/28/2017 4:38:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:38:11 PM || TPM is enabled and activated
+9/28/2017 4:38:11 PM ***** End Sub TPMCheck *****
+9/28/2017 4:38:11 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:38:11 PM || User is running script as admin
+9/28/2017 4:38:11 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:38:11 PM || TPM is enabled and activated
+9/28/2017 4:38:11 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:40:10 PM ======================
+9/28/2017 4:40:10 PM ***** Begin Sub listDrives *****
+9/28/2017 4:40:10 PM || User is running script as admin
+9/28/2017 4:40:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:40:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:40:10 PM || Win32_EncryptableVolume instance
+9/28/2017 4:40:10 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:40:10 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:40:10 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:40:10 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:40:10 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:40:10 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:40:10 PM ***** End Sub listDrives *****
+9/28/2017 4:40:10 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:40:10 PM || User is running script as admin
+9/28/2017 4:40:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:40:10 PM || TPM is enabled and activated
+9/28/2017 4:40:10 PM ***** End Sub TPMCheck *****
+9/28/2017 4:40:10 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:40:10 PM || User is running script as admin
+9/28/2017 4:40:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:40:10 PM || TPM is enabled and activated
+9/28/2017 4:40:10 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:41:19 PM ======================
+9/28/2017 4:41:19 PM ***** Begin Sub listDrives *****
+9/28/2017 4:41:19 PM || User is running script as admin
+9/28/2017 4:41:19 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:41:19 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:41:19 PM || Win32_EncryptableVolume instance
+9/28/2017 4:41:19 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:41:19 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:41:19 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:41:19 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:41:19 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:41:19 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:41:19 PM ***** End Sub listDrives *****
+9/28/2017 4:41:19 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:41:19 PM || User is running script as admin
+9/28/2017 4:41:19 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:41:19 PM || TPM is enabled and activated
+9/28/2017 4:41:19 PM ***** End Sub TPMCheck *****
+9/28/2017 4:41:20 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:41:20 PM || User is running script as admin
+9/28/2017 4:41:20 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:41:20 PM || TPM is enabled and activated
+9/28/2017 4:41:20 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:42:33 PM ======================
+9/28/2017 4:42:33 PM ***** Begin Sub listDrives *****
+9/28/2017 4:42:33 PM || User is running script as admin
+9/28/2017 4:42:33 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:42:33 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:42:33 PM || Win32_EncryptableVolume instance
+9/28/2017 4:42:33 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:42:33 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:42:33 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:42:33 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:42:33 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:42:33 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:42:33 PM ***** End Sub listDrives *****
+9/28/2017 4:42:33 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:42:33 PM || User is running script as admin
+9/28/2017 4:42:33 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:42:33 PM || TPM is enabled and activated
+9/28/2017 4:42:33 PM ***** End Sub TPMCheck *****
+9/28/2017 4:42:34 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:42:34 PM || User is running script as admin
+9/28/2017 4:42:34 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:42:34 PM || TPM is enabled and activated
+9/28/2017 4:42:34 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:42:43 PM ======================
+9/28/2017 4:42:43 PM ***** Begin Sub listDrives *****
+9/28/2017 4:42:43 PM || User is running script as admin
+9/28/2017 4:42:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:42:43 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:42:43 PM || Win32_EncryptableVolume instance
+9/28/2017 4:42:43 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:42:43 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:42:43 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:42:43 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:42:43 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:42:43 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:42:43 PM ***** End Sub listDrives *****
+9/28/2017 4:42:43 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:42:43 PM || User is running script as admin
+9/28/2017 4:42:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:42:43 PM || TPM is enabled and activated
+9/28/2017 4:42:43 PM ***** End Sub TPMCheck *****
+9/28/2017 4:42:44 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:42:44 PM || User is running script as admin
+9/28/2017 4:42:44 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:42:44 PM || TPM is enabled and activated
+9/28/2017 4:42:44 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:44:36 PM ======================
+9/28/2017 4:44:36 PM ***** Begin Sub listDrives *****
+9/28/2017 4:44:36 PM || User is running script as admin
+9/28/2017 4:44:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:44:36 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:44:36 PM || Win32_EncryptableVolume instance
+9/28/2017 4:44:36 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:44:36 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:44:36 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:44:36 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:44:36 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:44:36 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:44:36 PM ***** End Sub listDrives *****
+9/28/2017 4:44:36 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:44:36 PM || User is running script as admin
+9/28/2017 4:44:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:44:36 PM || TPM is enabled and activated
+9/28/2017 4:44:36 PM ***** End Sub TPMCheck *****
+9/28/2017 4:44:37 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:44:37 PM || User is running script as admin
+9/28/2017 4:44:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:44:37 PM || TPM is enabled and activated
+9/28/2017 4:44:37 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 9/28/2017 4:53:17 PM ======================
+9/28/2017 4:53:17 PM ***** Begin Sub listDrives *****
+9/28/2017 4:53:17 PM || User is running script as admin
+9/28/2017 4:53:17 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\CIMV2\Security\MicrosoftVolumeEncryption")
+9/28/2017 4:53:17 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_EncryptableVolume",,48")
+9/28/2017 4:53:17 PM || Win32_EncryptableVolume instance
+9/28/2017 4:53:17 PM || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown
+9/28/2017 4:53:17 PM || Drive Letter: C: || ProtectionStatus: 1 || Encrypted
+9/28/2017 4:53:17 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+9/28/2017 4:53:17 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+9/28/2017 4:53:17 PM || "Drive Letter: C: | Capacity: 475.7 GBEncryption Status: Encrypted
+9/28/2017 4:53:17 PM || "Drive Letter:  | Capacity: 830 MBEncryption Status: 
+9/28/2017 4:53:17 PM ***** End Sub listDrives *****
+9/28/2017 4:53:17 PM ***** Begin Sub TPMCheck *****
+9/28/2017 4:53:17 PM || User is running script as admin
+9/28/2017 4:53:17 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+9/28/2017 4:53:17 PM || TPM is enabled and activated
+9/28/2017 4:53:17 PM ***** End Sub TPMCheck *****
+9/28/2017 4:53:21 PM ***** Begin Sub dismCapture *****
+9/28/2017 4:53:21 PM || strSourcePath = 
+9/28/2017 4:53:21 PM || strDestPath = 
+9/28/2017 4:53:21 PM || strName = 
+9/28/2017 4:53:21 PM || returnCode = dismShell.run ("cmd.exe /c X:\windows\system32\DISM.exe /Capture-Image /ImageFile::\.wim /CaptureDir::\ /Name:"" /ScratchDir::\ /LogPath:X:\dism.log", 1, True)
+9/28/2017 4:53:21 PM || Capture finished!
+9/28/2017 4:53:21 PM || Return Code: 1
+9/28/2017 4:53:21 PM ***** End Sub dismCapture *****

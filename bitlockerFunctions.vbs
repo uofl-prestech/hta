@@ -1,7 +1,7 @@
 Sub TPMCheck
 	htaLog.WriteLine(Now & " ***** Begin Sub TPMCheck *****")
-
-	Dim bIsEnabled, bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning
+	
+	Dim bIsEnabled, bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning, TPMBox, CompBox
 	bIsEnabled = "False"
 	bIsActivated = "False"
 	bIsOwned = "False"
@@ -9,8 +9,8 @@ Sub TPMCheck
 	strTPMWarning = "<h3 class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h3>"
 	Dim outputDiv: set outputDiv = document.getElementById("page-landing")
 	outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
-	TPMBox = document.getElementById("input-tpm-checkbox").Checked
-	TPMBox = false
+	document.getElementById("input-tpm-checkbox").Checked = false
+
 	On Error Resume Next
 
     CreateObject("WScript.Shell").RegRead("HKEY_USERS\S-1-5-19\Environment\TEMP")
@@ -86,7 +86,7 @@ Sub TPMCheck
 		Else
 			htaLog.WriteLine(Now & " || TPM is enabled and activated")
 			outputDiv.innerHTML = outputDiv.innerHTML & "<h3 id=""tpmGood"">TPM Enabled and Activated</h3>"
-			TPMBox = true
+			document.getElementById("input-tpm-checkbox").Checked = true
 		End If
 	End If
 

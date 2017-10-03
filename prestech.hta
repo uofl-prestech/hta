@@ -139,7 +139,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
             <div id="div-format-drive" class="ui-widget-content">
-                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSD"> Format Drive and Deploy
+                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox"> Format Drive and Deploy
                 Image (OSD)?
                 <input id="input-tpm-checkbox" class="input-objects" type="checkbox" name="TPMCheckBox">
             </div>
@@ -362,16 +362,10 @@
         BitlockerUnlock();
         spinner.stop(target);
     }
+    
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
-
-        try {
-            TPMCheck();
-        }
-        catch (err) {
-            document.getElementById("general-output").innerHTML = err.message;
-        }
 
         if ($("#ul-osd").children().length == 0) {
             $(".ul-elements").empty();
@@ -381,6 +375,21 @@
             $("#ul-osd").append(template);
             initAccordion();
         }
+
+        try {
+            TPMCheck();
+        }
+        catch (err) {
+            document.getElementById("general-output").innerHTML = err.message;
+        }
+        $('#input-osd-checkbox').change(function(){
+            if(this.checked == true){
+                $('#MBAM').prop("checked",true);
+            }
+            else{
+                $('#MBAM').prop("checked",false);
+            }
+        });
     });
 
     $('#button-flushfill').on('click', function () {
@@ -468,10 +477,10 @@
     // ******************** Misc Buttons ********************
     function getInputValues() {
         var inputValues = {};
-        $(".input-objects").each(function () {
+        $("ul .input-objects").each(function () {
             //If this input is a checkbox, get the value of prop("checked") instead of val()
             if ($(this).attr("type") == "checkbox") {
-                inputValues[$(this).prop("name")] = $(this).prop("checked");
+                inputValues[$(this).attr("name")] = $(this).prop("checked");
             }
             //If this input is a text input field, get val()
             else {
@@ -487,19 +496,24 @@
     function launchOSD() {
         var capturedVars = getInputValues();
 
-        if (capturedVars.TPMCheckbox != true) {
+        if (capturedVars.TPMCheckBox != true) {
             alert("TPM is not functioning or not present!");
         }
-        else if (capturedVars.OSDCheckbox != true) {
+        else if (capturedVars.OSDCheckBox != true) {
             alert("OSD checkbox not checked!");
-        }        
-        else if (capturedVars.ComputerName == "") {
+        }
+        else if (capturedVars.compName == "") {
             alert("Computer name not filled in!");
         }
         else {
             $(".pages").mCustomScrollbar("disable");
             $("#general-output").mCustomScrollbar("disable");
-            ButtonFinishClick();
+            try {
+                ButtonFinishClick();
+            }
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
         }
     }
 
@@ -537,13 +551,17 @@
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
 
-        dismCapture();
+        var dismReturn = dismCapture();
 
         //Re-enable scroll bar replacement
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
             $("#general-output").mCustomScrollbar("update");
         }, 2000);
+
+        if(dismReturn != 0){
+            alert(dismReturn);
+        }
     }
 
 /*******************************
@@ -597,6 +615,9 @@
         $('#run-usmt').css('display', 'none');
     });
 
+    function checkMBAM() {
+        
+    }
 
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");

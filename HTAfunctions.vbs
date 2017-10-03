@@ -312,13 +312,21 @@ End Sub
 Function dismCapture
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
 
-	Dim dismShell, strName, destPath, sourcePath, returnCode
+	Dim dismShell, strName, destPath, sourcePath, returnCode, wimPath
 	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
     strSourcePath = document.getElementById("input-windows-drive").Value
     strDestPath = document.getElementById("input-external-drive").Value
     strName = document.getElementById("input-primary-username").Value
     Set dismShell = CreateObject("WScript.Shell")
-    
+    wimPath = strDestPath & ":\" & strName & ".wim"
+    returnCode = -1
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    If (fso.FileExists(wimPath)) Then
+        MsgBox = wimPath & " already exists. Try changing the username or deleting the existing wim file."
+        Exit Function
+    End If
+
     htaLog.WriteLine(Now & " || strSourcePath = " & strSourcePath)
     htaLog.WriteLine(Now & " || strDestPath = " & strDestPath)
     htaLog.WriteLine(Now & " || strName = " & strName)
