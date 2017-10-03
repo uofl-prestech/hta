@@ -199,7 +199,11 @@
                 Windows partition to be imaged
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
+<<<<<<< HEAD
                 <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects" name="windowsDrive" 
+=======
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects" name="windowsDrive"
+>>>>>>> 5961109336809375c6da03fb66a1de84a9f1d7a6
                     type="Text" maxlength="1" size="1">
             </div>
         </li>
@@ -289,7 +293,7 @@
         $('.header-text').css('display', 'none');
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
-        $('#general-output').css('visibility', 'hidden');
+        $('#general-output-scroll').css('visibility', 'hidden');
 
         try {
             listDrives();
@@ -328,21 +332,21 @@
         $('.ui-widget-content').hide('fast');
         $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
-    // #general-output hidden/visible functions
+    // #general-output-scroll hidden/visible functions
     $('.button-nav').on('click', function () {
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
         $('.button-nav').removeClass('active');
         $(this).addClass('active');
-        $("#general-output").css('visibility', 'hidden');
+        $("#general-output-scroll").css('visibility', 'hidden');
     });
     $(document).on('click', '.show-output', function () {
-        $("#general-output").css('visibility', 'visible');
+        $("#general-output-scroll").css('visibility', 'visible');
     });
 
     // Bitlocker loading spinner
     function blInfoClick() {
-        $("#general-output").css('visibility', 'visible');
+        $("#general-output-scroll").css('visibility', 'visible');
         var target = document.getElementById('general-output');
         var opts = {
             color: '#FFF'
@@ -353,7 +357,7 @@
 
     }
     function blUnlockClick() {
-        $("#general-output").css('visibility', 'visible');
+        $("#general-output-scroll").css('visibility', 'visible');
         var target = document.getElementById('general-output');
         var opts = {
             color: '#FFF'
@@ -482,6 +486,7 @@
         return inputValues;
     }
 
+<<<<<<< HEAD
 /*******************************
 ************* OSD **************
 *******************************/
@@ -490,6 +495,19 @@
 
         if (capturedVars.TPMCheckBox != true) {
             alert("TPM is not functioning or not present!");
+=======
+    /*******************************
+    ************* OSD **************
+    *******************************/
+    function launchOSD() {
+        var capturedVars = getInputValues();
+
+        if (capturedVars.TPMCheckbox != true) {
+            alert("TPM is not functioning or not present!");
+        }
+        else if (capturedVars.OSDCheckbox != true) {
+            alert("OSD checkbox not checked!");
+>>>>>>> 5961109336809375c6da03fb66a1de84a9f1d7a6
         }
         else if (capturedVars.OSDCheckbox != true) {
             alert("OSD checkbox not checked!");
@@ -504,9 +522,15 @@
         }
     }
 
+<<<<<<< HEAD
 /*******************************
 ************* FnF **************
 *******************************/
+=======
+    /*******************************
+    ************* FnF **************
+    *******************************/
+>>>>>>> 5961109336809375c6da03fb66a1de84a9f1d7a6
     function launchFNF() {
         $(".pages").mCustomScrollbar("disable");
         $("#general-output").mCustomScrollbar("disable");
@@ -528,9 +552,15 @@
         runFlushFill();
     }
 
+<<<<<<< HEAD
 /*******************************
 ************* DISM *************
 *******************************/
+=======
+    /*******************************
+    ************* DISM *************
+    *******************************/
+>>>>>>> 5961109336809375c6da03fb66a1de84a9f1d7a6
     function launchDISM() {
         var capturedVars = getInputValues();
 
@@ -547,9 +577,15 @@
         }, 2000);
     }
 
+<<<<<<< HEAD
 /*******************************
 ************* USMT *************
 *******************************/
+=======
+    /*******************************
+    ************* USMT *************
+    *******************************/
+>>>>>>> 5961109336809375c6da03fb66a1de84a9f1d7a6
     function launchScanstate() {
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
@@ -598,6 +634,7 @@
         $('#run-usmt').css('display', 'none');
     });
 
+<<<<<<< HEAD
 
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");
@@ -1207,6 +1244,8 @@
         $('#run-usmt').css('display', 'none');
     });
 
+=======
+>>>>>>> 5961109336809375c6da03fb66a1de84a9f1d7a6
 
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");
