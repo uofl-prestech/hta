@@ -55,9 +55,9 @@
                         <span>Tools</span>
                     </li>
                 </ul>
-                <div class="">
-                    <button id="button-home" class="button-exithome button-nav"><img src="images/homeicon.svg" class="icon-tools">Home</button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><img src="images/house outline1.png" class="icon-tools">Exit</button>
+                <div>
+                    <button id="button-home" class="button-exithome button-nav"><div class="button-background"><img src="images/homeicon.svg" class="icon-tools"></div></button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/portal.png" class="icon-tools"></div></button>
                 </div>
             </div>
 
@@ -301,10 +301,12 @@
         }
 
         $(".pages").mCustomScrollbar({
-            theme: "minimal"
+            theme: "minimal",
+            live: "once"
         });
         $("#general-output-scroll").mCustomScrollbar({
-            theme: "minimal"
+            theme: "minimal",
+            live: "once"
         });
     });
 
@@ -492,8 +494,18 @@
     $('#button-home').on('click', function () {
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
-    });
-
+    }); 
+    $('.button-exithome').hover(
+            function () {
+                $(this).css("background-color", "rgba(139,0,0,0.6)");
+                $(this).children().css("background-color", "rgba(255, 116, 116, 0.8)");
+                $(this).children().css("box-shadow", "0px 3px 6px rgba(0, 0, 0, 0.40), 0px 0px 2px rgba(0, 0, 0, 0.7)");
+            }, function () {
+                $(this).css("background-color", "");
+                $(this).children().css("background-color", "");
+                $(this).children().css("box-shadow", "0px 3px 6px rgba(0, 0, 0, 0.40), 0px 0px 2px rgba(0, 0, 0, 0.7)");
+            }
+        );
 
     // ******************** Misc Buttons ********************
     function getInputValues() {
@@ -542,8 +554,8 @@
 ************* FnF **************
 *******************************/
     function launchFNF() {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $(".pages").mCustomScrollbar("destroy");
+        $("#general-output").mCustomScrollbar("destroy");
 
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
