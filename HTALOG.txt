@@ -534,3 +534,150 @@
 9/28/2017 11:26:10 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
 9/28/2017 11:26:10 AM || Error: -2147217406. Not found . TPM Not Found
 9/28/2017 11:26:10 AM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 10/3/2017 1:07:53 PM ======================
+10/3/2017 1:07:53 PM ***** Begin Sub listDrives *****
+10/3/2017 1:07:53 PM || Error. Must run as Administrator to check encryption status
+10/3/2017 1:07:53 PM || Skipping check for Encryption Status
+10/3/2017 1:07:53 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/3/2017 1:07:53 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/3/2017 1:07:53 PM || "Drive Letter: C: | Capacity: 231.1 GB
+10/3/2017 1:07:53 PM || "Drive Letter: F: | Capacity: 32 GB
+10/3/2017 1:07:53 PM || "Drive Letter:  | Capacity: 300 MB
+10/3/2017 1:07:53 PM || "Drive Letter:  | Capacity: 870 MB
+10/3/2017 1:07:53 PM || "Drive Letter: A: | Capacity: 931.5 GB
+10/3/2017 1:07:53 PM || "Drive Letter: D: | Capacity:  Bytes
+10/3/2017 1:07:53 PM ***** End Sub listDrives *****
+10/3/2017 1:07:53 PM ***** Begin Sub TPMCheck *****
+10/3/2017 1:07:53 PM || Error: Must run as Administrator to check TPM status!
+10/3/2017 1:07:58 PM ***** Begin Sub pingTest *****
+10/3/2017 1:07:58 PM || Executing command: cmd /c ping.exe www.google.com
+10/3/2017 1:07:58 PM ***** End Sub pingTest *****
+10/3/2017 1:07:58 PM || 
+10/3/2017 1:07:58 PM || Pinging www.google.com [172.217.12.100] with 32 bytes of data:
+10/3/2017 1:07:58 PM || Reply from 172.217.12.100: bytes=32 time=33ms TTL=46
+10/3/2017 1:07:59 PM || Reply from 172.217.12.100: bytes=32 time=33ms TTL=46
+10/3/2017 1:08:00 PM || Reply from 172.217.12.100: bytes=32 time=33ms TTL=46
+10/3/2017 1:08:01 PM || Reply from 172.217.12.100: bytes=32 time=34ms TTL=46
+10/3/2017 1:08:01 PM || 
+10/3/2017 1:08:01 PM || Ping statistics for 172.217.12.100:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 33ms, Maximum = 34ms, Average = 33ms
+
+10/3/2017 1:08:05 PM ***** Begin Sub BitlockerInfo *****
+10/3/2017 1:08:05 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+10/3/2017 1:08:08 PM || Creating bitlockerinfo.txt file at A:\prestechHTA\prestech
+10/3/2017 1:08:08 PM || Bitlocker info:
+<table>
+<tr><td>Name:</td><td>\\?\Volume{30a902a8-78d5-4659-97ab-bef981d8e504}\</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>0.34</td></tr>
+<tr><td>CapacityinGB:</td><td>0.85</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>\\?\Volume{fbf85173-1af7-4780-a70b-938376cd1c43}\</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>0.27</td></tr>
+<tr><td>CapacityinGB:</td><td>0.29</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>A:</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>632.87</td></tr>
+<tr><td>CapacityinGB:</td><td>931.51</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>C:</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>EncryptionState:</td><td>FullyDecrypted</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>130.93</td></tr>
+<tr><td>CapacityinGB:</td><td>231.13</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>D:</td></tr>
+<tr><td>DriveType:</td><td>Compact Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>0</td></tr>
+<tr><td>CapacityinGB:</td><td>0</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>F:</td></tr>
+<tr><td>DriveType:</td><td>Removable Disk</td></tr>
+<tr><td>EncryptionState:</td><td>FullyDecrypted</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>21.32</td></tr>
+<tr><td>CapacityinGB:</td><td>31.97</td></tr>
+</table>
+<br>
+
+10/3/2017 1:08:08 PM ***** End Sub BitlockerInfo *****
+10/3/2017 1:08:32 PM ***** Begin Sub BitlockerInfo *****
+10/3/2017 1:08:32 PM || Executing command: cmdShell.Run "powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -file ./BitlockerInfo.ps1", 1, true
+10/3/2017 1:08:34 PM || Creating bitlockerinfo.txt file at A:\prestechHTA\prestech
+10/3/2017 1:08:34 PM || Bitlocker info:
+<table>
+<tr><td>Name:</td><td>\\?\Volume{30a902a8-78d5-4659-97ab-bef981d8e504}\</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>0.34</td></tr>
+<tr><td>CapacityinGB:</td><td>0.85</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>\\?\Volume{fbf85173-1af7-4780-a70b-938376cd1c43}\</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>0.27</td></tr>
+<tr><td>CapacityinGB:</td><td>0.29</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>A:</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>632.87</td></tr>
+<tr><td>CapacityinGB:</td><td>931.51</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>C:</td></tr>
+<tr><td>DriveType:</td><td>Local Disk</td></tr>
+<tr><td>EncryptionState:</td><td>FullyDecrypted</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>130.93</td></tr>
+<tr><td>CapacityinGB:</td><td>231.13</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>D:</td></tr>
+<tr><td>DriveType:</td><td>Compact Disk</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>0</td></tr>
+<tr><td>CapacityinGB:</td><td>0</td></tr>
+</table>
+<br>
+<table>
+<tr><td>Name:</td><td>F:</td></tr>
+<tr><td>DriveType:</td><td>Removable Disk</td></tr>
+<tr><td>EncryptionState:</td><td>FullyDecrypted</td></tr>
+<tr><td>FreeSpaceinGB:</td><td>21.32</td></tr>
+<tr><td>CapacityinGB:</td><td>31.97</td></tr>
+</table>
+<br>
+
+10/3/2017 1:08:34 PM ***** End Sub BitlockerInfo *****
+
+====================== Begin Logging at 10/3/2017 1:09:49 PM ======================
+10/3/2017 1:09:49 PM ***** Begin Sub listDrives *****
+10/3/2017 1:09:49 PM || Error. Must run as Administrator to check encryption status
+10/3/2017 1:09:49 PM || Skipping check for Encryption Status
+10/3/2017 1:09:49 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/3/2017 1:09:49 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/3/2017 1:09:49 PM || "Drive Letter: C: | Capacity: 231.1 GB
+10/3/2017 1:09:49 PM || "Drive Letter: F: | Capacity: 32 GB
+10/3/2017 1:09:49 PM || "Drive Letter:  | Capacity: 300 MB
+10/3/2017 1:09:49 PM || "Drive Letter:  | Capacity: 870 MB
+10/3/2017 1:09:49 PM || "Drive Letter: A: | Capacity: 931.5 GB
+10/3/2017 1:09:49 PM || "Drive Letter: D: | Capacity:  Bytes
+10/3/2017 1:09:49 PM ***** End Sub listDrives *****
+10/3/2017 1:09:49 PM ***** Begin Sub TPMCheck *****
+10/3/2017 1:09:49 PM || Error: Must run as Administrator to check TPM status!
