@@ -2735,3 +2735,810 @@
 10/4/2017 9:39:21 AM || Error: Must run as Administrator to check TPM status!
 10/4/2017 9:39:22 AM ***** Begin Sub TPMCheck *****
 10/4/2017 9:39:22 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 9:55:58 AM ======================
+10/4/2017 9:55:58 AM ***** Begin Sub listDrives *****
+10/4/2017 9:55:58 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 9:55:58 AM || Skipping check for Encryption Status
+10/4/2017 9:55:58 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 9:55:58 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 9:55:58 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 9:55:58 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 9:55:58 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 9:55:58 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 9:55:58 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 9:55:58 AM ***** End Sub listDrives *****
+10/4/2017 9:55:58 AM ***** Begin Sub TPMCheck *****
+10/4/2017 9:55:58 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 9:55:59 AM ***** Begin Sub TPMCheck *****
+10/4/2017 9:55:59 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 9:57:06 AM ======================
+10/4/2017 9:57:06 AM ***** Begin Sub listDrives *****
+10/4/2017 9:57:06 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 9:57:06 AM || Skipping check for Encryption Status
+10/4/2017 9:57:06 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 9:57:06 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 9:57:06 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 9:57:06 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 9:57:06 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 9:57:06 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 9:57:06 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 9:57:06 AM ***** End Sub listDrives *****
+10/4/2017 9:57:06 AM ***** Begin Sub TPMCheck *****
+10/4/2017 9:57:06 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 9:57:07 AM ***** Begin Sub TPMCheck *****
+10/4/2017 9:57:07 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:00:32 AM ======================
+10/4/2017 10:00:32 AM ***** Begin Sub listDrives *****
+10/4/2017 10:00:32 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:00:32 AM || Skipping check for Encryption Status
+10/4/2017 10:00:32 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:00:32 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:00:32 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:00:32 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:00:32 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:00:32 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:00:32 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:00:32 AM ***** End Sub listDrives *****
+10/4/2017 10:00:32 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:00:32 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:00:33 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:00:33 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:01:07 AM ======================
+10/4/2017 10:01:07 AM ***** Begin Sub listDrives *****
+10/4/2017 10:01:07 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:01:07 AM || Skipping check for Encryption Status
+10/4/2017 10:01:07 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:01:07 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:01:07 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:01:07 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:01:07 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:01:07 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:01:07 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:01:07 AM ***** End Sub listDrives *****
+10/4/2017 10:01:07 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:01:07 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:01:08 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:01:08 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:24:18 AM ======================
+10/4/2017 10:24:18 AM ***** Begin Sub listDrives *****
+10/4/2017 10:24:18 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:24:18 AM || Skipping check for Encryption Status
+10/4/2017 10:24:18 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:24:18 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:24:18 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:24:18 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:24:18 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:24:18 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:24:18 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:24:18 AM ***** End Sub listDrives *****
+10/4/2017 10:24:18 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:24:18 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:24:20 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:24:20 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:25:39 AM ======================
+10/4/2017 10:25:39 AM ***** Begin Sub listDrives *****
+10/4/2017 10:25:39 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:25:39 AM || Skipping check for Encryption Status
+10/4/2017 10:25:39 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:25:39 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:25:39 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:25:39 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:25:39 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:25:39 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:25:39 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:25:39 AM ***** End Sub listDrives *****
+10/4/2017 10:25:39 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:25:39 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:25:40 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:25:40 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:35:30 AM ======================
+10/4/2017 10:35:30 AM ***** Begin Sub listDrives *****
+10/4/2017 10:35:30 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:35:30 AM || Skipping check for Encryption Status
+10/4/2017 10:35:30 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:35:30 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:35:30 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:35:30 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:35:30 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:35:30 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:35:30 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:35:30 AM ***** End Sub listDrives *****
+10/4/2017 10:35:30 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:35:30 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:35:31 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:35:31 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:35:34 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 10:35:34 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 10:35:34 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 10:35:34 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 10:35:34 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 10:35:34 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 10:35:34 AM || OSD checked? || OSD.Checked = False
+10/4/2017 10:35:34 AM || MBAM checked? || MBAM.Checked = False
+10/4/2017 10:35:34 AM || Environment Variables:
+10/4/2017 10:35:39 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 10:35:39 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 10:35:39 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 10:35:39 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 10:35:39 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 10:35:39 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 10:35:39 AM || OSD checked? || OSD.Checked = False
+10/4/2017 10:35:39 AM || MBAM checked? || MBAM.Checked = False
+10/4/2017 10:35:39 AM || Environment Variables:
+
+====================== Begin Logging at 10/4/2017 10:38:06 AM ======================
+10/4/2017 10:38:06 AM ***** Begin Sub listDrives *****
+10/4/2017 10:38:06 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:38:06 AM || Skipping check for Encryption Status
+10/4/2017 10:38:06 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:38:06 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:38:06 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:38:06 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:38:06 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:38:06 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:38:06 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:38:06 AM ***** End Sub listDrives *****
+10/4/2017 10:38:06 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:38:06 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:38:07 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:38:07 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:38:11 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 10:38:11 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 10:38:11 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 10:38:11 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 10:38:11 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 10:38:11 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 10:38:11 AM || OSD checked? || OSD.Checked = False
+10/4/2017 10:38:11 AM || MBAM checked? || MBAM.Checked = False
+10/4/2017 10:38:11 AM || Environment Variables:
+
+====================== Begin Logging at 10/4/2017 10:44:41 AM ======================
+10/4/2017 10:44:41 AM ***** Begin Sub listDrives *****
+10/4/2017 10:44:41 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:44:41 AM || Skipping check for Encryption Status
+10/4/2017 10:44:41 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:44:41 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:44:41 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:44:41 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:44:41 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:44:41 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:44:41 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:44:41 AM ***** End Sub listDrives *****
+10/4/2017 10:44:41 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:44:41 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:44:42 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:44:42 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:44:47 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 10:44:47 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 10:44:47 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 10:44:47 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 10:44:47 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 10:44:47 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 10:44:47 AM || OSD checked? || OSD.Checked = False
+10/4/2017 10:44:47 AM || MBAM checked? || MBAM.Checked = False
+10/4/2017 10:44:47 AM || Environment Variables:
+
+====================== Begin Logging at 10/4/2017 10:45:18 AM ======================
+10/4/2017 10:45:18 AM ***** Begin Sub listDrives *****
+10/4/2017 10:45:18 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:45:18 AM || Skipping check for Encryption Status
+10/4/2017 10:45:18 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:45:18 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:45:18 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:45:18 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:45:18 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:45:18 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:45:18 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:45:18 AM ***** End Sub listDrives *****
+10/4/2017 10:45:18 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:45:18 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:45:19 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:45:19 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:45:25 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 10:45:25 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 10:45:25 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 10:45:25 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 10:45:25 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 10:45:25 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 10:45:25 AM || OSD checked? || OSD.Checked = False
+10/4/2017 10:45:25 AM || MBAM checked? || MBAM.Checked = False
+10/4/2017 10:45:25 AM || Environment Variables:
+
+====================== Begin Logging at 10/4/2017 10:45:41 AM ======================
+10/4/2017 10:45:41 AM ***** Begin Sub listDrives *****
+10/4/2017 10:45:41 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:45:41 AM || Skipping check for Encryption Status
+10/4/2017 10:45:41 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:45:41 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:45:41 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:45:41 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:45:41 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:45:41 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:45:41 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:45:41 AM ***** End Sub listDrives *****
+10/4/2017 10:45:41 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:45:41 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:45:42 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:45:42 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:45:51 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 10:45:51 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 10:45:51 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 10:45:51 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 10:45:51 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 10:45:51 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 10:45:51 AM || OSD checked? || OSD.Checked = True
+10/4/2017 10:45:51 AM || MBAM checked? || MBAM.Checked = true
+10/4/2017 10:45:51 AM || Environment Variables:
+
+====================== Begin Logging at 10/4/2017 10:48:00 AM ======================
+10/4/2017 10:48:00 AM ***** Begin Sub listDrives *****
+10/4/2017 10:48:00 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:48:00 AM || Skipping check for Encryption Status
+10/4/2017 10:48:00 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:48:00 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:48:01 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:48:01 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:48:01 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:48:01 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:48:01 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:48:01 AM ***** End Sub listDrives *****
+10/4/2017 10:48:01 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:48:01 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:48:01 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:48:01 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:58:57 AM ======================
+10/4/2017 10:58:57 AM ***** Begin Sub listDrives *****
+10/4/2017 10:58:57 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:58:57 AM || Skipping check for Encryption Status
+10/4/2017 10:58:57 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:58:57 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:58:57 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:58:57 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:58:57 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:58:57 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:58:57 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:58:57 AM ***** End Sub listDrives *****
+10/4/2017 10:58:57 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:58:57 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:58:59 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:58:59 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:59:39 AM ======================
+10/4/2017 10:59:39 AM ***** Begin Sub listDrives *****
+10/4/2017 10:59:39 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:59:39 AM || Skipping check for Encryption Status
+10/4/2017 10:59:39 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:59:39 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:59:39 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:59:39 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:59:39 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:59:39 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:59:39 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:59:39 AM ***** End Sub listDrives *****
+10/4/2017 10:59:39 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:59:39 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:59:40 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:59:40 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 10:59:53 AM ======================
+10/4/2017 10:59:53 AM ***** Begin Sub listDrives *****
+10/4/2017 10:59:53 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 10:59:53 AM || Skipping check for Encryption Status
+10/4/2017 10:59:53 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 10:59:53 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 10:59:53 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 10:59:53 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 10:59:53 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 10:59:53 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 10:59:53 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 10:59:53 AM ***** End Sub listDrives *****
+10/4/2017 10:59:53 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:59:53 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 10:59:54 AM ***** Begin Sub TPMCheck *****
+10/4/2017 10:59:54 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:00:07 AM ======================
+10/4/2017 11:00:07 AM ***** Begin Sub listDrives *****
+10/4/2017 11:00:07 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:00:07 AM || Skipping check for Encryption Status
+10/4/2017 11:00:07 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:00:07 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:00:07 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:00:07 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:00:07 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:00:07 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:00:07 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:00:07 AM ***** End Sub listDrives *****
+10/4/2017 11:00:07 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:00:07 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:00:08 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:00:08 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:00:56 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:00:56 AM || strComputer = "."
+10/4/2017 11:00:56 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:00:56 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:00:56 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:00:57 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:00:57 AM || Error Number: -2147024894
+10/4/2017 11:00:57 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:00:57 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:00:57 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:00:57 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:00:57 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:00:57 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:00:57 AM || userName = systemprofile
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:00:57 AM || userName = LocalService
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:00:57 AM || userName = NetworkService
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:00:57 AM || userName = defaultuser0
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:00:57 AM || userName = sccmpush
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:00:57 AM || userName = t1rcm01
+10/4/2017 11:00:57 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:00:57 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:00:57 AM || userName = rcmcda01
+10/4/2017 11:00:57 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:00:57 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:00:57 AM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 10/4/2017 11:01:05 AM ======================
+10/4/2017 11:01:05 AM ***** Begin Sub listDrives *****
+10/4/2017 11:01:05 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:01:05 AM || Skipping check for Encryption Status
+10/4/2017 11:01:05 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:01:05 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:01:05 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:01:05 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:01:05 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:01:05 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:01:05 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:01:05 AM ***** End Sub listDrives *****
+10/4/2017 11:01:05 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:01:05 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:01:06 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:01:06 AM || strComputer = "."
+10/4/2017 11:01:06 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:01:06 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:01:06 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:01:06 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:01:06 AM || Error Number: -2147024894
+10/4/2017 11:01:06 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:01:06 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:01:06 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:01:06 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:01:06 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:01:06 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:01:06 AM || userName = systemprofile
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:01:06 AM || userName = LocalService
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:01:06 AM || userName = NetworkService
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:01:06 AM || userName = defaultuser0
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:01:06 AM || userName = sccmpush
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:01:06 AM || userName = t1rcm01
+10/4/2017 11:01:06 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:01:06 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:01:06 AM || userName = rcmcda01
+10/4/2017 11:01:06 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:01:06 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:01:06 AM ***** End Sub enumUsers *****
+10/4/2017 11:01:08 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:01:08 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:01:11 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:01:11 AM || strComputer = "."
+10/4/2017 11:01:11 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:01:11 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:01:11 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:01:11 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:01:11 AM || Error Number: -2147024894
+10/4/2017 11:01:11 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:01:11 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:01:11 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:01:11 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:01:11 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:01:11 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:01:11 AM || userName = systemprofile
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:01:11 AM || userName = LocalService
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:01:11 AM || userName = NetworkService
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:01:11 AM || userName = defaultuser0
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:01:11 AM || userName = sccmpush
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:01:11 AM || userName = t1rcm01
+10/4/2017 11:01:11 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:01:11 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:01:11 AM || userName = rcmcda01
+10/4/2017 11:01:11 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:01:11 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:01:11 AM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 10/4/2017 11:10:10 AM ======================
+10/4/2017 11:10:10 AM ***** Begin Sub listDrives *****
+10/4/2017 11:10:10 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:10:10 AM || Skipping check for Encryption Status
+10/4/2017 11:10:10 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:10:10 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:10:10 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:10:10 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:10:10 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:10:10 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:10:10 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:10:10 AM ***** End Sub listDrives *****
+10/4/2017 11:10:10 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:10 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:10:11 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:11 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:10:21 AM ======================
+10/4/2017 11:10:21 AM ***** Begin Sub listDrives *****
+10/4/2017 11:10:21 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:10:21 AM || Skipping check for Encryption Status
+10/4/2017 11:10:21 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:10:21 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:10:21 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:10:21 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:10:21 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:10:21 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:10:21 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:10:21 AM ***** End Sub listDrives *****
+10/4/2017 11:10:21 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:21 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:10:22 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:22 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:10:30 AM ======================
+10/4/2017 11:10:30 AM ***** Begin Sub listDrives *****
+10/4/2017 11:10:30 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:10:30 AM || Skipping check for Encryption Status
+10/4/2017 11:10:30 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:10:30 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:10:30 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:10:30 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:10:30 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:10:30 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:10:30 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:10:30 AM ***** End Sub listDrives *****
+10/4/2017 11:10:30 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:30 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:10:31 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:31 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:10:37 AM ======================
+10/4/2017 11:10:37 AM ***** Begin Sub listDrives *****
+10/4/2017 11:10:37 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:10:37 AM || Skipping check for Encryption Status
+10/4/2017 11:10:37 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:10:37 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:10:37 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:10:37 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:10:37 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:10:37 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:10:37 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:10:37 AM ***** End Sub listDrives *****
+10/4/2017 11:10:37 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:37 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:10:37 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:10:37 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:14:30 AM ======================
+10/4/2017 11:14:30 AM ***** Begin Sub listDrives *****
+10/4/2017 11:14:30 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:14:30 AM || Skipping check for Encryption Status
+10/4/2017 11:14:30 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:14:30 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:14:30 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:14:30 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:14:30 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:14:30 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:14:30 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:14:30 AM ***** End Sub listDrives *****
+10/4/2017 11:14:30 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:14:30 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:14:31 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:14:31 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:14:35 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:14:35 AM || strComputer = "."
+10/4/2017 11:14:35 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:14:35 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:14:35 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:14:35 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:14:35 AM || Error Number: -2147024894
+10/4/2017 11:14:35 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:14:35 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:14:35 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:14:35 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:14:35 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:14:35 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:14:35 AM || userName = systemprofile
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:14:35 AM || userName = LocalService
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:14:35 AM || userName = NetworkService
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:14:35 AM || userName = defaultuser0
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:14:35 AM || userName = sccmpush
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:14:35 AM || userName = t1rcm01
+10/4/2017 11:14:35 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:14:35 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:14:35 AM || userName = rcmcda01
+10/4/2017 11:14:35 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:14:35 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:14:35 AM ***** End Sub enumUsers *****
+10/4/2017 11:14:36 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:14:36 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:14:38 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:14:38 AM || strComputer = "."
+10/4/2017 11:14:38 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:14:38 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:14:38 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:14:38 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:14:38 AM || Error Number: -2147024894
+10/4/2017 11:14:38 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:14:38 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:14:38 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:14:38 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:14:38 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:14:38 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:14:38 AM || userName = systemprofile
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:14:38 AM || userName = LocalService
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:14:38 AM || userName = NetworkService
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:14:38 AM || userName = defaultuser0
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:14:38 AM || userName = sccmpush
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:14:38 AM || userName = t1rcm01
+10/4/2017 11:14:38 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:14:38 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:14:38 AM || userName = rcmcda01
+10/4/2017 11:14:38 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:14:38 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:14:38 AM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 10/4/2017 11:30:10 AM ======================
+10/4/2017 11:30:10 AM ***** Begin Sub listDrives *****
+10/4/2017 11:30:10 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:30:10 AM || Skipping check for Encryption Status
+10/4/2017 11:30:10 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:30:10 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:30:10 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:30:10 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:30:10 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:30:10 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:30:10 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:30:10 AM ***** End Sub listDrives *****
+10/4/2017 11:30:10 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:30:10 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:30:12 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:30:12 AM || strComputer = "."
+10/4/2017 11:30:12 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:30:12 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:30:12 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:30:12 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:30:12 AM || Error Number: -2147024894
+10/4/2017 11:30:12 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:30:12 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:30:12 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:30:12 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:30:12 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:30:12 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:30:12 AM || userName = systemprofile
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:30:12 AM || userName = LocalService
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:30:12 AM || userName = NetworkService
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:30:12 AM || userName = defaultuser0
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:30:12 AM || userName = sccmpush
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:30:12 AM || userName = t1rcm01
+10/4/2017 11:30:12 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:30:12 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:30:12 AM || userName = rcmcda01
+10/4/2017 11:30:12 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:30:12 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:30:12 AM ***** End Sub enumUsers *****
+
+====================== Begin Logging at 10/4/2017 11:41:15 AM ======================
+10/4/2017 11:41:15 AM ***** Begin Sub listDrives *****
+10/4/2017 11:41:15 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:41:15 AM || Skipping check for Encryption Status
+10/4/2017 11:41:15 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:41:15 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:41:15 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:41:15 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:41:15 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:41:15 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:41:15 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:41:15 AM ***** End Sub listDrives *****
+10/4/2017 11:41:15 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:41:15 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:41:16 AM ***** Begin Sub enumUsers *****
+10/4/2017 11:41:16 AM || strComputer = "."
+10/4/2017 11:41:16 AM || strHivePath = C:\Windows\System32\Config\SOFTWARE
+10/4/2017 11:41:16 AM || strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:41:16 AM || Executing command: "reg.exe load HKLM\TempSoftware C:\Windows\System32\Config\SOFTWARE, 0, true
+10/4/2017 11:41:16 AM || Executing command: objshell.regRead("HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\)
+10/4/2017 11:41:16 AM || Error Number: -2147024894
+10/4/2017 11:41:16 AM || Error Description: Invalid root in registry key "HKLM\TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\".
+10/4/2017 11:41:16 AM || Could not load HKLM\TempSoftware
+10/4/2017 11:41:16 AM || strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+10/4/2017 11:41:16 AM || Executing command: GetObject("winmgmts:{impersonationLevel=Impersonate}!\\.\root\default:StdRegProv")
+10/4/2017 11:41:16 AM || Executing command: objReg.EnumKey HKLM, Software\Microsoft\Windows NT\CurrentVersion\ProfileList, arrSubKeys
+10/4/2017 11:41:16 AM || Looping through registry subkeys to extract usernames that exist in this Windows installation
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = %systemroot%\system32\config\systemprofile
+10/4/2017 11:41:16 AM || userName = systemprofile
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-19\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = C:\WINDOWS\ServiceProfiles\LocalService
+10/4/2017 11:41:16 AM || userName = LocalService
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-20\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = C:\WINDOWS\ServiceProfiles\NetworkService
+10/4/2017 11:41:16 AM || userName = NetworkService
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-1587382770-1706017805-1128259254-1000\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = C:\Users\defaultuser0
+10/4/2017 11:41:16 AM || userName = defaultuser0
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-165692\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = C:\Users\sccmpush
+10/4/2017 11:41:16 AM || userName = sccmpush
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-173149\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = C:\Users\t1rcm01
+10/4/2017 11:41:16 AM || userName = t1rcm01
+10/4/2017 11:41:16 AM || strSubKeyPath = HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-839522115-261903793-682003330-23393\ProfileImagePath
+10/4/2017 11:41:16 AM || profilePath = C:\Users\rcmcda01
+10/4/2017 11:41:16 AM || userName = rcmcda01
+10/4/2017 11:41:16 AM || Error - Cannot find user. Is the drive still encrypted?
+10/4/2017 11:41:16 AM || Executing command: objShell.Run("cmd /c reg.exe unload HKLM\TempSoftware", 0, true)
+10/4/2017 11:41:16 AM ***** End Sub enumUsers *****
+10/4/2017 11:41:24 AM ***** Begin Sub runFlushFill *****
+10/4/2017 11:41:24 AM || windowsDrive.Value = 
+10/4/2017 11:41:24 AM || externalDrive.Value = 
+10/4/2017 11:41:24 AM || primaryUsername.Value = 
+10/4/2017 11:41:24 AM || compName.Value = 
+10/4/2017 11:41:24 AM || dismCheckBox.Checked = False
+10/4/2017 11:41:24 AM || scanStateCheckBox.Checked = False
+10/4/2017 11:41:24 AM || loadStateCheckBox.Checked = False
+10/4/2017 11:41:24 AM || scanStateCheckBox.Checked = False
+10/4/2017 11:41:24 AM || loadStateCheckBox.Checked = False
+10/4/2017 11:41:24 AM || Run ButtonFinishClick routine
+10/4/2017 11:41:24 AM ***** Begin Sub ButtonFinishClick *****
+10/4/2017 11:41:24 AM || Adobe Reader DC checked? || AdobeReaderDC.Checked = False
+10/4/2017 11:41:24 AM || Adobe Acrobat Pro XI checked? || AdobeAcrobatProXI.Checked = False
+10/4/2017 11:41:24 AM || Chrome checked? || Chrome.Checked = False
+10/4/2017 11:41:24 AM || FileMaker checked? || FileMaker.Checked = False
+10/4/2017 11:41:24 AM || Office2016 checked? || Office2016.Checked = False
+10/4/2017 11:41:24 AM || OSD checked? || OSD.Checked = False
+10/4/2017 11:41:24 AM || MBAM checked? || MBAM.Checked = False
+10/4/2017 11:41:24 AM || Environment Variables:
+
+====================== Begin Logging at 10/4/2017 11:42:18 AM ======================
+10/4/2017 11:42:18 AM ***** Begin Sub listDrives *****
+10/4/2017 11:42:18 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:42:18 AM || Skipping check for Encryption Status
+10/4/2017 11:42:18 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:42:18 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:42:18 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:42:18 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:42:18 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:42:18 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:42:18 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:42:18 AM ***** End Sub listDrives *****
+10/4/2017 11:42:18 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:42:18 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:42:19 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:42:19 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:42:53 AM ======================
+10/4/2017 11:42:53 AM ***** Begin Sub listDrives *****
+10/4/2017 11:42:53 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:42:53 AM || Skipping check for Encryption Status
+10/4/2017 11:42:53 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:42:53 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:42:53 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:42:53 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:42:53 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:42:53 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:42:53 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:42:53 AM ***** End Sub listDrives *****
+10/4/2017 11:42:53 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:42:53 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:42:54 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:42:54 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:45:27 AM ======================
+10/4/2017 11:45:27 AM ***** Begin Sub listDrives *****
+10/4/2017 11:45:27 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:45:27 AM || Skipping check for Encryption Status
+10/4/2017 11:45:27 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:45:27 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:45:27 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:45:27 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:45:27 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:45:27 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:45:27 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:45:27 AM ***** End Sub listDrives *****
+10/4/2017 11:45:27 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:45:27 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:45:27 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:45:27 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/4/2017 11:46:06 AM ======================
+10/4/2017 11:46:06 AM ***** Begin Sub listDrives *****
+10/4/2017 11:46:06 AM || Error. Must run as Administrator to check encryption status
+10/4/2017 11:46:06 AM || Skipping check for Encryption Status
+10/4/2017 11:46:06 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/4/2017 11:46:06 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/4/2017 11:46:06 AM || "Drive Letter: C: | Capacity: 231.1 GB
+10/4/2017 11:46:06 AM || "Drive Letter:  | Capacity: 300 MB
+10/4/2017 11:46:06 AM || "Drive Letter:  | Capacity: 870 MB
+10/4/2017 11:46:06 AM || "Drive Letter: A: | Capacity: 931.5 GB
+10/4/2017 11:46:06 AM || "Drive Letter: D: | Capacity:  Bytes
+10/4/2017 11:46:06 AM ***** End Sub listDrives *****
+10/4/2017 11:46:06 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:46:06 AM || Error: Must run as Administrator to check TPM status!
+10/4/2017 11:46:07 AM ***** Begin Sub TPMCheck *****
+10/4/2017 11:46:07 AM || Error: Must run as Administrator to check TPM status!

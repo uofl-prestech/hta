@@ -132,6 +132,9 @@
         <!--    End container    -->
     </div>
 
+    <!-- Dialog Box -->
+    <div id="dialog" title="Warning">I'm a dialog</div>
+
     <!--    OSD Options    -->
     <template id="temp-osd-options">
         <li id="li-osd-options" class="li-steps">
@@ -308,6 +311,9 @@
             theme: "minimal",
             live: "once"
         });
+        $("#dialog").dialog({
+            autoOpen: false
+        });
     });
 
     function initAccordion() {
@@ -316,8 +322,8 @@
             $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
             return false;
         }).next().hide();
-        $('.ui-widget-content').show('fast');
-        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+        $('ul .ui-widget-content').show('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     }
     // ******************* Placeholder Text ***********************
     $('[placeholder]').focus(function() {
@@ -343,13 +349,13 @@
 
     // ******************** Navigation Buttons ********************
     $('#button-ShowAll').on('click', function () {
-        $('.ui-widget-content').show('fast');
-        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+        $('ul .ui-widget-content').show('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     });
 
     $('#button-HideAll').on('click', function () {
-        $('.ui-widget-content').hide('fast');
-        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
+        $('ul .ui-widget-content').hide('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
     // ******#general-output-scroll hidden/visible functions*******
     $('.button-nav').on('click', function () {
@@ -435,7 +441,12 @@
             initAccordion();
         }
         if ($("#input-usmt-usernames").length == 0) {
-            enumUsers();
+            try {
+                enumUsers();
+            }
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
         }
     });
 
@@ -504,7 +515,7 @@
             }
         );
 
-    // ******************** Misc Buttons ********************
+// ******************** Misc functions ********************
     function getInputValues() {
         var inputValues = {};
         $("ul .input-objects").each(function () {
@@ -520,22 +531,79 @@
         return inputValues;
     }
 
+
+// ******************** Verification/Error Checking Functions ********************
+    function warnUser(objDeferred, message, continueButton) {
+        $("#dialog").dialog({
+            resizable: false,
+            dialogClass: "no-close",
+            autoOpen: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            hide: { effect: "explode", duration: 200 }
+        });
+        if(continueButton == true){
+            $("#dialog").dialog({    
+                buttons: {
+                    "Continue anyway": function () {
+                        $(this).dialog("close");
+                        objDeferred.resolve(true);
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        objDeferred.resolve(false);
+                    }
+                }
+            });
+        }
+        else{
+            $("#dialog").dialog({
+                buttons: {
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        objDeferred.resolve(false);
+                    }
+                }
+            });
+        }
+        $("#dialog").text(message);
+        $("#dialog").dialog("open");
+    }
+
+
 /*******************************
 ************* OSD **************
 *******************************/
     function launchOSD() {
         var capturedVars = getInputValues();
+        var tpmDeferred = $.Deferred();
+        var osdDeferred = $.Deferred();
+        var cnDeferred = $.Deferred();
 
-        if (capturedVars.TPMCheckBox != true) {
-            alert("TPM is not functioning or not present!");
-        }
-        else if (capturedVars.OSDCheckBox != true) {
-            alert("OSD checkbox not checked!");
-        }
-        else if (capturedVars.compName == "") {
-            alert("Computer name not filled in!");
-        }
-        else {
+        //Check if TPM is enabled (TPM checkbox checked)
+        //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
+        var message = "TPM is not functioning or not present!";
+        capturedVars.TPMCheckBox != true ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
+
+        //Check if OSD checkbox is checked
+        //If OSDCheckBox is false, show warning popup, else resolve the deferred object immediately
+        tpmDeferred.done(function (tpmResult) {
+            if (tpmResult == false) { return };
+            message = "OSD Checkbox is not checked!";
+            capturedVars.OSDCheckBox != true ? warnUser(osdDeferred, message, false) : osdDeferred.resolve(true);
+        });
+
+        //Check if computer name is filled in
+        //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
+        osdDeferred.done(function (osdResult) {
+            if (osdResult == false) { return };
+            message = "Computer name is not filled in!";
+            capturedVars.compName == "" ? warnUser(cnDeferred, message, false) : cnDeferred.resolve(true);
+        });
+
+        cnDeferred.done(function (cnResult) {
+            if (cnResult == false) { return };
             $(".pages").mCustomScrollbar("disable");
             $("#general-output-scroll").mCustomScrollbar("disable");
             try {
@@ -544,31 +612,61 @@
             catch (err) {
                 document.getElementById("general-output").innerHTML = err.message;
             }
-        }
+        });
     }
 
 /*******************************
 ************* FnF **************
 *******************************/
     function launchFNF() {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output-scroll").mCustomScrollbar("disable");
-
+        var capturedVars = getInputValues();
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
             selectedUsers[$(this).text()] = $(this).val();
         });
-
-        var capturedVars = getInputValues();
 
         for (user in selectedUsers) {
             capturedVars[user] = selectedUsers[user];
         }
         var capturedVarsString = JSON.stringify(capturedVars);
 
-        //runFlushFill2(capturedVarsString);
+        var tpmDeferred = $.Deferred();
+        var osdDeferred = $.Deferred();
+        var cnDeferred = $.Deferred();
 
-        runFlushFill();
+        //Check if TPM is enabled (TPM checkbox checked)
+        //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
+        var message = "TPM is not functioning or not present!";
+        capturedVars.TPMCheckBox != true ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
+
+        //Check if OSD checkbox is checked
+        //If OSDCheckBox is false, show warning popup, else resolve the deferred object immediately
+        tpmDeferred.done(function (tpmResult) {
+            if (tpmResult == false) { return };
+            message = "OSD Checkbox is not checked!";
+            capturedVars.OSDCheckBox != true ? warnUser(osdDeferred, message, false) : osdDeferred.resolve(true);
+        });
+
+        //Check if computer name is filled in
+        //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
+        osdDeferred.done(function (osdResult) {
+            if (osdResult == false) { return };
+            message = "Computer name is not filled in!";
+            capturedVars.compName == "" ? warnUser(cnDeferred, message, false) : cnDeferred.resolve(true);
+        });
+
+        cnDeferred.done(function (cnResult) {
+            if (cnResult == false) { return };
+            $(".pages").mCustomScrollbar("disable");
+            $("#general-output-scroll").mCustomScrollbar("disable");
+            try {
+                runFlushFill();
+                //runFlushFill2(capturedVarsString);
+            }
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
+        });
     }
 
 /*******************************
