@@ -59,6 +59,7 @@ Sub listDrives
     strComputer = "."
     
     On Error Resume Next
+    'Quick check to see if we are running as admin
     CreateObject("WScript.Shell").RegRead("HKEY_USERS\S-1-5-19\Environment\TEMP")
     If Err.number = 0 Then 
         admin = true
@@ -69,6 +70,7 @@ Sub listDrives
     End If
     Err.Clear
 
+    'Check drives for encryption if running as admin
     If admin = true Then
         htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption"")")
         Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption")
