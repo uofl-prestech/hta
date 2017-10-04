@@ -106,7 +106,7 @@ Sub listDrives
 	
 	For Each objItem In colItems
 	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Caption: " & objItem.Caption & "<br>"
-        landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
+        landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter:" & objItem.DriveLetter & " | "
         htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
         landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity)
         htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))

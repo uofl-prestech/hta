@@ -5,8 +5,8 @@ Sub TPMCheck
 	bIsEnabled = "False"
 	bIsActivated = "False"
 	bIsOwned = "False"
-	strStatusMessage = "<h3 class=""tpm-error"">ERROR - TPM Not Found</h3>"
-	strTPMWarning = "<h3 class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h3>"
+	strStatusMessage = "<p class=""tpm-error"">ERROR - TPM Not Found</p>"
+	strTPMWarning = "<p class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></p>"
 	Dim outputDiv: set outputDiv = document.getElementById("tpm-check-output")
 	' outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
 	document.getElementById("input-tpm-checkbox").Checked = false
@@ -19,7 +19,7 @@ Sub TPMCheck
         htaLog.WriteLine(Now & " || User is running script as admin")
     Else
 		admin = false
-		strStatusMessage = "<h3 class=""tpm-error"">Error: Must run as Administrator to check TPM status!</h3>"
+		strStatusMessage = "<p class=""tpm-error"">Error: Must run as Administrator to check TPM status!</p>"
 		htaLog.WriteLine(Now & " || Error: Must run as Administrator to check TPM status!")
 		outputDiv.innerHTML = outputDiv.innerHTML & strStatusMessage
 		Exit Sub
@@ -85,7 +85,7 @@ Sub TPMCheck
 			outputDiv.innerHTML = outputDiv.innerHTML & strTPMWarning
 		Else
 			htaLog.WriteLine(Now & " || TPM is enabled and activated")
-			outputDiv.innerHTML = outputDiv.innerHTML & "<h3 id=""tpmGood"">TPM Enabled and Activated</h3>"
+			outputDiv.innerHTML = outputDiv.innerHTML & "<p id=""tpmGood"">TPM Enabled and Activated</p>"
 			document.getElementById("input-tpm-checkbox").Checked = true
 		End If
 	End If
