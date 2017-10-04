@@ -180,7 +180,7 @@ p {
     position: relative;
 }
 #input-tpm-checkbox{
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 #run-LoadState{
     display: none;
@@ -333,4 +333,10 @@ p {
 .tpm-error {
     color: #DBC12E;
     font-style: bold;
+}
+.ui-dialog{
+    background: rgba(0, 0, 0, 0.90);
+}
+.no-close .ui-dialog-titlebar-close {
+  display: none;
 }

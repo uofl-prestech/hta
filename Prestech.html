@@ -55,9 +55,9 @@
                         <span>Tools</span>
                     </li>
                 </ul>
-                <div class="">
-                    <button id="button-home" class="button-exithome button-nav"><img src="images/house fade.png" class="icon-tools">Home</button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><img src="images/house outline1.png" class="icon-tools">Exit</button>
+                <div>
+                    <button id="button-home" class="button-exithome button-nav"><div class="button-background"><img src="images/homeicon.svg" class="icon-tools"></div></button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/portal.png" class="icon-tools"></div></button>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()"><img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()"><img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
                         <button class="button show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()"><img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
-                        <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/ping-icon.png" class="icon-tools">Powershell</button>
+                        <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()"><img src="images/powershell icon.svg" class="icon-tools">Powershell</button>
                         <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()"><img src="images/code-icon.svg" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
@@ -132,6 +132,9 @@
         <!--    End container    -->
     </div>
 
+    <!-- Dialog Box -->
+    <div id="dialog" title="Warning">I'm a dialog</div>
+
     <!--    OSD Options    -->
     <template id="temp-osd-options">
         <li id="li-osd-options" class="li-steps">
@@ -139,9 +142,10 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
             <div id="div-format-drive" class="ui-widget-content">
-                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox"> Format Drive and Deploy
-                Image (OSD)?
+                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox"> Format Drive and
+                Deploy Image (OSD)?
                 <input id="input-tpm-checkbox" class="input-objects" type="checkbox" name="TPMCheckBox">
+                <!-- two checkboxes??? -->
             </div>
         </li>
     </template>
@@ -152,7 +156,8 @@
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
             </h3>
-            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" class="input-objects" type="text" name="compName"> <br></div>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" class="input-objects input-text placeholder" type="text"
+                    name="compName" placeholder="Computer Name"> <br></div>
         </li>
     </template>
 
@@ -199,8 +204,8 @@
                 Windows partition to be imaged
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects" name="windowsDrive"
-                    type="Text" maxlength="1" size="1">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects input-text"
+                    name="windowsDrive" type="Text" maxlength="1" size="1">
             </div>
         </li>
     </template>
@@ -213,7 +218,7 @@
                 Bitlocker
             </h3>
             <div id="div-bitlocker-unlock" class="ui-widget-content">
-                <input id="input-bitlocker-key" class="input-objects" name="blKey" type="Text" maxlength="100" size="35" value="">
+                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
                 <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
@@ -228,7 +233,7 @@
             </h3>
             <div id="div-primary-username" class="ui-widget-content">
                 <span>Username: &nbsp&nbsp </span>
-                <input id="input-primary-username" class="input-objects" name="primaryUsername" type="Text" size="15">
+                <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
             </div>
         </li>
     </template>
@@ -241,7 +246,7 @@
                 External USB drive where the image will be stored
             </h3>
             <div id="div-external-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input input-objects"
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input input-objects input-text"
                     name="externalDrive" type="Text" maxlength="1" size="1">
             </div>
         </li>
@@ -299,12 +304,17 @@
             $('#page-landing').append(err.message);
         }
 
-        // $(".pages").mCustomScrollbar({
-        //     theme: "minimal"
-        // });
-        // $("#general-output-scroll").mCustomScrollbar({
-        //     theme: "minimal"
-        // });
+        $(".pages").mCustomScrollbar({
+            theme: "minimal",
+            live: "once"
+        });
+        $("#general-output-scroll").mCustomScrollbar({
+            theme: "minimal",
+            live: "once"
+        });
+        $("#dialog").dialog({
+            autoOpen: false
+        });
     });
 
     function initAccordion() {
@@ -313,10 +323,30 @@
             $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
             return false;
         }).next().hide();
-        $('.ui-widget-content').show('fast');
-        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+        $('ul .ui-widget-content').show('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     }
-
+    // ******************* Placeholder Text ***********************
+    $('[placeholder]').focus(function () {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder')) {
+            input.val('');
+            input.removeClass('placeholder');
+        }
+    }).blur(function () {
+        var input = $(this);
+        if (input.val() == '' || input.val() == input.attr('placeholder')) {
+            input.addClass('placeholder');
+            input.val(input.attr('placeholder'));
+        }
+    }).blur().parents('form').submit(function () {
+        $(this).find('[placeholder]').each(function () {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+                input.val('');
+            }
+        })
+    });
 
     // ******************** Navigation Buttons ********************
     $('#button-ShowAll').on('click', function () {
@@ -328,7 +358,7 @@
         $('.ui-widget-content').hide('fast');
         $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
-    // #general-output-scroll hidden/visible functions
+    // ******#general-output-scroll hidden/visible functions*******
     $('.button-nav').on('click', function () {
         $('.pages').css('display', 'none');
         $('.header-text').css('display', 'none');
@@ -340,7 +370,7 @@
         $("#general-output-scroll").css('visibility', 'visible');
     });
 
-    // Bitlocker loading spinner
+    //*******************Bitlocker loading spinner*****************
     function blInfoClick() {
         $("#general-output-scroll").css('visibility', 'visible');
         var target = document.getElementById('general-output');
@@ -360,9 +390,10 @@
         }
         var spinner = new Spinner(opts).spin(target);
         BitlockerUnlock();
+        BitlockerInfo();
         spinner.stop(target);
     }
-    
+
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
@@ -382,6 +413,14 @@
         catch (err) {
             document.getElementById("general-output").innerHTML = err.message;
         }
+        $('#input-osd-checkbox').change(function () {
+            if (this.checked == true) {
+                $('#MBAM').prop("checked", true);
+            }
+            else {
+                $('#MBAM').prop("checked", false);
+            }
+        });
     });
 
     $('#button-flushfill').on('click', function () {
@@ -403,7 +442,12 @@
             initAccordion();
         }
         if ($("#input-usmt-usernames").length == 0) {
-            enumUsers();
+            try {
+                enumUsers();
+            }
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
         }
     });
 
@@ -464,9 +508,15 @@
         $('#page-landing').css('display', 'inline-block');
         $('#header-landing').css('display', 'inline');
     });
+    $('.button-exithome').hover(
+        function () {
+            $(this).children().addClass("button-background-hover");
+        }, function () {
+            $(this).children().removeClass("button-background-hover");
+        }
+    );
 
-
-    // ******************** Misc Buttons ********************
+    // ******************** Misc functions ********************
     function getInputValues() {
         var inputValues = {};
         $("ul .input-objects").each(function () {
@@ -482,29 +532,125 @@
         return inputValues;
     }
 
+
+    // ******************** Verification/Error Checking Functions ********************
+    //Check if TPM is enabled (TPM checkbox checked)
+    function checkTPMCheckbox(capturedVars, tpmDeferred) {
+        if (capturedVars.TPMCheckBox != true) {
+            $("#dialog").dialog({
+                resizable: false,
+                dialogClass: "no-close",
+                autoOpen: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                hide: { effect: "explode", duration: 200 },
+                buttons: {
+                    "Continue anyway": function () {
+                        $(this).dialog("close");
+                        tpmDeferred.resolve(true);
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        tpmDeferred.resolve(false);
+                    }
+                }
+            });
+            $("#dialog").text("TPM is not functioning or not present!");
+            $("#dialog").dialog("open");
+        }
+        else {
+            tpmDeferred.resolve(true);
+        }
+    }
+
+    //Check if OSD checkbox is checked
+    function checkOSDCheckbox(capturedVars, osdDeferred) {
+        if (capturedVars.OSDCheckBox != true) {
+            $("#dialog").dialog({
+                resizable: false,
+                dialogClass: "no-close",
+                autoOpen: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                hide: { effect: "explode", duration: 200 },
+                buttons: {
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        osdDeferred.resolve(false);
+                    }
+                }
+            });
+            $("#dialog").text("OSD Checkbox is not checked!");
+            $("#dialog").dialog("open");
+        }
+        else {
+            osdDeferred.resolve(true);
+        }
+    }
+
+    //Check if computer name is filled in
+    function checkCompName(capturedVars, cnDeferred) {
+        if (capturedVars.compName == "") {
+            $("#dialog").dialog({
+                resizable: false,
+                dialogClass: "no-close",
+                autoOpen: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                hide: { effect: "explode", duration: 200 },
+                buttons: {
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        cnDeferred.resolve(false);
+                    }
+                }
+            });
+            $("#dialog").text("Computer name is not filled in!");
+            $("#dialog").dialog("open");
+        }
+        else {
+            cnDeferred.resolve(true);
+        }
+    }
+
     /*******************************
     ************* OSD **************
     *******************************/
     function launchOSD() {
         var capturedVars = getInputValues();
+        var tpmDeferred = $.Deferred();
+        var osdDeferred = $.Deferred();
+        var cnDeferred = $.Deferred();
 
-        if (capturedVars.TPMCheckbox != true) {
-            alert("TPM is not functioning or not present!");
-        }
-        else if (capturedVars.OSDCheckbox != true) {
-            alert("OSD checkbox not checked!");
-        }
-        else if (capturedVars.OSDCheckbox != true) {
-            alert("OSD checkbox not checked!");
-        }        
-        else if (capturedVars.ComputerName == "") {
-            alert("Computer name not filled in!");
-        }
-        else {
+        //Check if TPM is enabled (TPM checkbox checked)
+        checkTPMCheckbox(capturedVars, tpmDeferred);
+
+        //Check if OSD checkbox is checked
+        tpmDeferred.done(function (tpmResult) {
+            if (tpmResult == false) { return };
+            checkOSDCheckbox(capturedVars, osdDeferred);
+        });
+
+        //Check if computer name is filled in
+        osdDeferred.done(function (osdResult) {
+            if (osdResult == false) { return };
+            checkCompName(capturedVars, cnDeferred);
+        });
+
+        cnDeferred.done(function (cnResult) {
+            if (cnResult == false) { return };
             $(".pages").mCustomScrollbar("disable");
-            $("#general-output").mCustomScrollbar("disable");
-            ButtonFinishClick();
-        }
+            $("#general-output-scroll").mCustomScrollbar("disable");
+            try {
+                ButtonFinishClick();
+            }
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
+        });
     }
 
     /*******************************
@@ -512,7 +658,7 @@
     *******************************/
     function launchFNF() {
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
@@ -539,15 +685,19 @@
 
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
-        dismCapture();
+        var dismReturn = dismCapture();
 
         //Re-enable scroll bar replacement
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
+
+        if (dismReturn != 0) {
+            alert(dismReturn);
+        }
     }
 
     /*******************************
@@ -565,13 +715,13 @@
         }
 
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         usmtScanstate("true");
 
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
     }
 
@@ -579,13 +729,13 @@
         var capturedVars = getInputValues();
 
         $(".pages").mCustomScrollbar("disable");
-        $("#general-output").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
 
         usmtLoadstate();
 
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
-            $("#general-output").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
     }
 
@@ -601,6 +751,9 @@
         $('#run-usmt').css('display', 'none');
     });
 
+    function checkMBAM() {
+
+    }
 
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");
