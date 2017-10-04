@@ -7,8 +7,8 @@ Sub TPMCheck
 	bIsOwned = "False"
 	strStatusMessage = "<h3 class=""tpm-error"">ERROR - TPM Not Found</h3>"
 	strTPMWarning = "<h3 class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></h3>"
-	Dim outputDiv: set outputDiv = document.getElementById("page-landing")
-	outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
+	Dim outputDiv: set outputDiv = document.getElementById("tpm-check-output")
+	' outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
 	document.getElementById("input-tpm-checkbox").Checked = false
 
 	On Error Resume Next
