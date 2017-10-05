@@ -51,12 +51,13 @@ Sub writePing
 End Sub
 
 '************************************ List local drives ************************************
-Sub listDrives
+Function listDrives
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
-    Dim strComputer, objWMIService, colItems, drivesHashTable, admin
+    Dim strComputer, objWMIService, colItems, drivesHashTable, admin, drivesObj
 	Dim landingPageDiv: Set landingPageDiv = document.getElementById("drive-list-output")
 	' landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
     strComputer = "."
+    Set drivesObj = CreateJsObj()
 
     On Error Resume Next
     'Quick check to see if we are running as admin
@@ -111,25 +112,31 @@ Sub listDrives
                 document.getElementById("windows-drive-letter").Value = windowsDL
             End If
 
-            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
+            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
+            drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
-            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Label: " & objItem.Label & " | "
+            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Label: " & objItem.Label & " | "
+            drivesObj.setProp objItem.DriveLetter, "Label", objItem.Label
             htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
-            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity)
+            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity)
+            capacity = ConvertSize(objItem.Capacity)
+            drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
             htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
             If admin = true Then
-                landingPageDiv.innerHTML = landingPageDiv.innerHTML & " | " & drivesHashTable(objItem.DriveLetter) & "<br>"
+                'landingPageDiv.innerHTML = landingPageDiv.innerHTML & " | " & drivesHashTable(objItem.DriveLetter) & "<br>"
+                    drivesObj.setProp objItem.DriveLetter, "Encryption", drivesHashTable(objItem.DriveLetter)
+                    'MsgBox "TEst"
                 htaLog.WriteLine("Encryption Status: " & drivesHashTable(objItem.DriveLetter))
             Else
-                landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<br>"
+                'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<br>"
                 htaLog.WriteLine("")
             End If
         End If
 	Next
 
     htaLog.WriteLine(Now & " ***** End Sub listDrives *****")
-
-End Sub
+    Set listDrives = drivesObj
+End Function
 
 '************************************ Enumerate users ************************************
 Sub enumUsers
@@ -416,7 +423,6 @@ Function dismCapture
     returnCode = -1
 
     'Check if file with this name already exists
-    Set fso = CreateObject("Scripting.FileSystemObject")
     If (fso.FileExists(wimPath)) Then
         MsgBox = wimPath & " already exists. Try changing the username or deleting the existing wim file."
         Exit Function
