@@ -54,8 +54,8 @@ End Sub
 Sub listDrives
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
     Dim strComputer, objWMIService, colItems, drivesHashTable, admin
-	Dim landingPageDiv: Set landingPageDiv = document.getElementById("page-landing")
-	landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
+	Dim landingPageDiv: Set landingPageDiv = document.getElementById("drive-list-output")
+	' landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
     strComputer = "."
 
     On Error Resume Next
