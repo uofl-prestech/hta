@@ -24,6 +24,7 @@
 
 <body>
     <div id="container">
+        <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
         <div id="header" class="on-load">
             <h1>PRESTECH HTA</h1>
         </div>
@@ -57,7 +58,7 @@
                 </ul>
                 <div>
                     <button id="button-home" class="button-exithome button-nav"><div class="button-background"><img src="images/homeicon.svg" class="icon-tools"></div></button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/portal.png" class="icon-tools"></div></button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/exit1.svg" class="icon-tools"></div></button>
                 </div>
             </div>
 
@@ -145,7 +146,6 @@
                 <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox"> Format Drive and Deploy
                 Image (OSD)?
                 <input id="input-tpm-checkbox" class="input-objects" type="checkbox" name="TPMCheckBox"> 
-                <!-- two checkboxes??? -->
             </div>
         </li>
     </template>
@@ -258,7 +258,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will
                 be copied
             </h3>
-            <div id="div-select-users" class="ui-widget-content usmt-users"></div>
+            <div id="div-select-users" class="ui-widget-content usmt-users"><button id="enum-users" class="button" onclick="javascript:showUsersClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Show Users</button></div>
         </li>
     </template>
 
@@ -368,31 +368,7 @@
     $(document).on('click', '.show-output', function () {
         $("#general-output-scroll").css('visibility', 'visible');
     });
-
-    //*******************Bitlocker loading spinner*****************
-    function blInfoClick() {
-        $("#general-output-scroll").css('visibility', 'visible');
-        var target = document.getElementById('general-output');
-        var opts = {
-            color: '#FFF'
-        }
-        var spinner = new Spinner(opts).spin(target);
-        BitlockerInfo();
-        spinner.stop(target);
-
-    }
-    function blUnlockClick() {
-        $("#general-output-scroll").css('visibility', 'visible');
-        var target = document.getElementById('general-output');
-        var opts = {
-            color: '#FFF'
-        }
-        var spinner = new Spinner(opts).spin(target);
-        BitlockerUnlock();
-        BitlockerInfo();
-        spinner.stop(target);
-    }
-    
+  
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
         $('#header-osd').css('display', 'inline');
@@ -440,14 +416,14 @@
             $("#ul-fnf").append(template);
             initAccordion();
         }
-        if ($("#input-usmt-usernames").length == 0) {
-            try {
-                enumUsers();
-            }
-            catch (err) {
-                document.getElementById("general-output").innerHTML = err.message;
-            }
-        }
+        // if ($("#input-usmt-usernames").length == 0) {
+        //     try {
+        //         enumUsers();
+        //     }
+        //     catch (err) {
+        //         document.getElementById("general-output").innerHTML = err.message;
+        //     }
+        // }
     });
 
     $('#button-dism').on('click', function () {
@@ -482,9 +458,9 @@
             initAccordion();
         }
 
-        if ($("#input-usmt-usernames").length == 0) {
-            enumUsers();
-        }
+        //if ($("#input-usmt-usernames").length == 0) {
+            //enumUsers();
+        //}
     });
 
     $('#button-software').on('click', function () {
@@ -687,9 +663,10 @@
             $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
 
-        if(dismReturn != 0){
-            alert(dismReturn);
-        }
+        //Check if DISM was successful
+        var dismDeferred = $.Deferred();
+        var message = "DISM operation failed!";
+        dismReturn != 0 ? warnUser(dismDeferred, message, false) : dismDeferred.resolve(true);
     }
 
 /*******************************
@@ -743,10 +720,39 @@
         $('#run-usmt').css('display', 'none');
     });
 
-    function checkMBAM() {
-        
+    //*******************Bitlocker loading spinner*****************
+    function blInfoClick() {
+        $("#general-output-scroll").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerInfo();
+        spinner.stop(target);
+
+    }
+    function blUnlockClick() {
+        $("#general-output-scroll").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerUnlock();
+        BitlockerInfo();
+        spinner.stop(target);
     }
 
+    function showUsersClick() {
+        var cnDeferred = $.Deferred();
+
+         //Check if computer name is filled in
+        //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
+        message = "Computer name is not filled in!";
+        $("#input-windows-drive").val() == "" ? warnUser(cnDeferred, message, false) : enumUsers();
+
+    }
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");
     // });

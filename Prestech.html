@@ -57,7 +57,7 @@
                 </ul>
                 <div>
                     <button id="button-home" class="button-exithome button-nav"><div class="button-background"><img src="images/homeicon.svg" class="icon-tools"></div></button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/portal.png" class="icon-tools"></div></button>
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/exit1.svg" class="icon-tools"></div></button>
                 </div>
             </div>
 
@@ -259,7 +259,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will
                 be copied
             </h3>
-            <div id="div-select-users" class="ui-widget-content usmt-users"></div>
+            <div id="div-select-users" class="ui-widget-content usmt-users"><button id="enum-users" class="button" onclick="javascript:showUsersClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Show Users</button></div>
         </li>
     </template>
 
@@ -350,13 +350,13 @@
 
     // ******************** Navigation Buttons ********************
     $('#button-ShowAll').on('click', function () {
-        $('.ui-widget-content').show('fast');
-        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+        $('ul .ui-widget-content').show('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     });
 
     $('#button-HideAll').on('click', function () {
-        $('.ui-widget-content').hide('fast');
-        $('.ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
+        $('ul .ui-widget-content').hide('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
     });
     // ******#general-output-scroll hidden/visible functions*******
     $('.button-nav').on('click', function () {
@@ -369,30 +369,6 @@
     $(document).on('click', '.show-output', function () {
         $("#general-output-scroll").css('visibility', 'visible');
     });
-
-    //*******************Bitlocker loading spinner*****************
-    function blInfoClick() {
-        $("#general-output-scroll").css('visibility', 'visible');
-        var target = document.getElementById('general-output');
-        var opts = {
-            color: '#FFF'
-        }
-        var spinner = new Spinner(opts).spin(target);
-        BitlockerInfo();
-        spinner.stop(target);
-
-    }
-    function blUnlockClick() {
-        $("#general-output-scroll").css('visibility', 'visible');
-        var target = document.getElementById('general-output');
-        var opts = {
-            color: '#FFF'
-        }
-        var spinner = new Spinner(opts).spin(target);
-        BitlockerUnlock();
-        BitlockerInfo();
-        spinner.stop(target);
-    }
 
     $('#button-osd').on('click', function () {
         $('#page-osd').css('display', 'inline-block');
@@ -441,14 +417,14 @@
             $("#ul-fnf").append(template);
             initAccordion();
         }
-        if ($("#input-usmt-usernames").length == 0) {
-            try {
-                enumUsers();
-            }
-            catch (err) {
-                document.getElementById("general-output").innerHTML = err.message;
-            }
-        }
+        // if ($("#input-usmt-usernames").length == 0) {
+        //     try {
+        //         enumUsers();
+        //     }
+        //     catch (err) {
+        //         document.getElementById("general-output").innerHTML = err.message;
+        //     }
+        // }
     });
 
     $('#button-dism').on('click', function () {
@@ -483,9 +459,9 @@
             initAccordion();
         }
 
-        if ($("#input-usmt-usernames").length == 0) {
-            enumUsers();
-        }
+        //if ($("#input-usmt-usernames").length == 0) {
+        //enumUsers();
+        //}
     });
 
     $('#button-software').on('click', function () {
@@ -534,87 +510,44 @@
 
 
     // ******************** Verification/Error Checking Functions ********************
-    //Check if TPM is enabled (TPM checkbox checked)
-    function checkTPMCheckbox(capturedVars, tpmDeferred) {
-        if (capturedVars.TPMCheckBox != true) {
+    function warnUser(objDeferred, message, continueButton) {
+        $("#dialog").dialog({
+            resizable: false,
+            dialogClass: "no-close",
+            autoOpen: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            hide: { effect: "explode", duration: 200 }
+        });
+        if (continueButton == true) {
             $("#dialog").dialog({
-                resizable: false,
-                dialogClass: "no-close",
-                autoOpen: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                hide: { effect: "explode", duration: 200 },
                 buttons: {
                     "Continue anyway": function () {
                         $(this).dialog("close");
-                        tpmDeferred.resolve(true);
+                        objDeferred.resolve(true);
                     },
                     Cancel: function () {
                         $(this).dialog("close");
-                        tpmDeferred.resolve(false);
+                        objDeferred.resolve(false);
                     }
                 }
             });
-            $("#dialog").text("TPM is not functioning or not present!");
-            $("#dialog").dialog("open");
         }
         else {
-            tpmDeferred.resolve(true);
-        }
-    }
-
-    //Check if OSD checkbox is checked
-    function checkOSDCheckbox(capturedVars, osdDeferred) {
-        if (capturedVars.OSDCheckBox != true) {
             $("#dialog").dialog({
-                resizable: false,
-                dialogClass: "no-close",
-                autoOpen: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                hide: { effect: "explode", duration: 200 },
                 buttons: {
                     Cancel: function () {
                         $(this).dialog("close");
-                        osdDeferred.resolve(false);
+                        objDeferred.resolve(false);
                     }
                 }
             });
-            $("#dialog").text("OSD Checkbox is not checked!");
-            $("#dialog").dialog("open");
         }
-        else {
-            osdDeferred.resolve(true);
-        }
+        $("#dialog").text(message);
+        $("#dialog").dialog("open");
     }
 
-    //Check if computer name is filled in
-    function checkCompName(capturedVars, cnDeferred) {
-        if (capturedVars.compName == "") {
-            $("#dialog").dialog({
-                resizable: false,
-                dialogClass: "no-close",
-                autoOpen: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                hide: { effect: "explode", duration: 200 },
-                buttons: {
-                    Cancel: function () {
-                        $(this).dialog("close");
-                        cnDeferred.resolve(false);
-                    }
-                }
-            });
-            $("#dialog").text("Computer name is not filled in!");
-            $("#dialog").dialog("open");
-        }
-        else {
-            cnDeferred.resolve(true);
-        }
-    }
 
     /*******************************
     ************* OSD **************
@@ -626,18 +559,24 @@
         var cnDeferred = $.Deferred();
 
         //Check if TPM is enabled (TPM checkbox checked)
-        checkTPMCheckbox(capturedVars, tpmDeferred);
+        //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
+        var message = "TPM is not functioning or not present!";
+        capturedVars.TPMCheckBox != true ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
 
         //Check if OSD checkbox is checked
+        //If OSDCheckBox is false, show warning popup, else resolve the deferred object immediately
         tpmDeferred.done(function (tpmResult) {
             if (tpmResult == false) { return };
-            checkOSDCheckbox(capturedVars, osdDeferred);
+            message = "OSD Checkbox is not checked!";
+            capturedVars.OSDCheckBox != true ? warnUser(osdDeferred, message, false) : osdDeferred.resolve(true);
         });
 
         //Check if computer name is filled in
+        //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
         osdDeferred.done(function (osdResult) {
             if (osdResult == false) { return };
-            checkCompName(capturedVars, cnDeferred);
+            message = "Computer name is not filled in!";
+            capturedVars.compName == "" ? warnUser(cnDeferred, message, false) : cnDeferred.resolve(true);
         });
 
         cnDeferred.done(function (cnResult) {
@@ -657,24 +596,54 @@
     ************* FnF **************
     *******************************/
     function launchFNF() {
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output-scroll").mCustomScrollbar("disable");
-
+        var capturedVars = getInputValues();
         var selectedUsers = {};
         $('#input-usmt-usernames :selected').each(function () {
             selectedUsers[$(this).text()] = $(this).val();
         });
-
-        var capturedVars = getInputValues();
 
         for (user in selectedUsers) {
             capturedVars[user] = selectedUsers[user];
         }
         var capturedVarsString = JSON.stringify(capturedVars);
 
-        //runFlushFill2(capturedVarsString);
+        var tpmDeferred = $.Deferred();
+        var osdDeferred = $.Deferred();
+        var cnDeferred = $.Deferred();
 
-        runFlushFill();
+        //Check if TPM is enabled (TPM checkbox checked)
+        //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
+        var message = "TPM is not functioning or not present!";
+        capturedVars.TPMCheckBox != true ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
+
+        //Check if OSD checkbox is checked
+        //If OSDCheckBox is false, show warning popup, else resolve the deferred object immediately
+        tpmDeferred.done(function (tpmResult) {
+            if (tpmResult == false) { return };
+            message = "OSD Checkbox is not checked!";
+            capturedVars.OSDCheckBox != true ? warnUser(osdDeferred, message, false) : osdDeferred.resolve(true);
+        });
+
+        //Check if computer name is filled in
+        //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
+        osdDeferred.done(function (osdResult) {
+            if (osdResult == false) { return };
+            message = "Computer name is not filled in!";
+            capturedVars.compName == "" ? warnUser(cnDeferred, message, false) : cnDeferred.resolve(true);
+        });
+
+        cnDeferred.done(function (cnResult) {
+            if (cnResult == false) { return };
+            $(".pages").mCustomScrollbar("disable");
+            $("#general-output-scroll").mCustomScrollbar("disable");
+            try {
+                runFlushFill();
+                //runFlushFill2(capturedVarsString);
+            }
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
+        });
     }
 
     /*******************************
@@ -695,9 +664,10 @@
             $("#general-output-scroll").mCustomScrollbar("update");
         }, 2000);
 
-        if (dismReturn != 0) {
-            alert(dismReturn);
-        }
+        //Check if DISM was successful
+        var dismDeferred = $.Deferred();
+        var message = "DISM operation failed!";
+        dismReturn != 0 ? warnUser(dismDeferred, message, false) : dismDeferred.resolve(true);
     }
 
     /*******************************
@@ -751,10 +721,39 @@
         $('#run-usmt').css('display', 'none');
     });
 
-    function checkMBAM() {
+    //*******************Bitlocker loading spinner*****************
+    function blInfoClick() {
+        $("#general-output-scroll").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerInfo();
+        spinner.stop(target);
 
     }
+    function blUnlockClick() {
+        $("#general-output-scroll").css('visibility', 'visible');
+        var target = document.getElementById('general-output');
+        var opts = {
+            color: '#FFF'
+        }
+        var spinner = new Spinner(opts).spin(target);
+        BitlockerUnlock();
+        BitlockerInfo();
+        spinner.stop(target);
+    }
 
+    function showUsersClick() {
+        var cnDeferred = $.Deferred();
+
+        //Check if computer name is filled in
+        //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
+        message = "Computer name is not filled in!";
+        $("#input-windows-drive").val() == "" ? warnUser(cnDeferred, message, false) : enumUsers();
+
+    }
     // $("#input-windows-drive, #input-primary-username").keyup(function () {
     //     usmtScanstate("false");
     // });

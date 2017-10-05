@@ -57,7 +57,7 @@ Sub listDrives
 	Dim landingPageDiv: Set landingPageDiv = document.getElementById("page-landing")
 	landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
     strComputer = "."
-    
+
     On Error Resume Next
     'Quick check to see if we are running as admin
     CreateObject("WScript.Shell").RegRead("HKEY_USERS\S-1-5-19\Environment\TEMP")
@@ -69,7 +69,7 @@ Sub listDrives
         htaLog.WriteLine(Now & " || Error. Must run as Administrator to check encryption status")
     End If
     Err.Clear
-
+    
     'Check drives for encryption if running as admin
     If admin = true Then
         htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption"")")
@@ -105,24 +105,116 @@ Sub listDrives
 	Set colItems = objWMIService.ExecQuery("Select * from Win32_Volume")
 	
 	For Each objItem In colItems
-	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Caption: " & objItem.Caption & "<br>"
-        landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
-        htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
-        landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity)
-        htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
-        If admin = true Then
-            landingPageDiv.innerHTML = landingPageDiv.innerHTML & " | " & drivesHashTable(objItem.DriveLetter) & "<br>"
-            htaLog.WriteLine("Encryption Status: " & drivesHashTable(objItem.DriveLetter))
-        Else
-            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<br>"
-            htaLog.WriteLine("")
+        If objItem.DriveLetter Then
+            If objItem.Label = "Windows" Then
+                windowsDL = Replace(objItem.DriveLetter, ":", "")
+                document.getElementById("windows-drive-letter").Value = windowsDL
+            End If
+
+            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
+            htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
+            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Label: " & objItem.Label & " | "
+            htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
+            landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity)
+            htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
+            If admin = true Then
+                landingPageDiv.innerHTML = landingPageDiv.innerHTML & " | " & drivesHashTable(objItem.DriveLetter) & "<br>"
+                htaLog.WriteLine("Encryption Status: " & drivesHashTable(objItem.DriveLetter))
+            Else
+                landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<br>"
+                htaLog.WriteLine("")
+            End If
         End If
-	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Type: " & objItem.DriveType & "<br>"
-	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "File System: " & objItem.FileSystem & " | "
-	    'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Label: " & objItem.Label & "<br><br>"
 	Next
 
     htaLog.WriteLine(Now & " ***** End Sub listDrives *****")
+
+End Sub
+
+'************************************ Enumerate users ************************************
+Sub enumUsers
+    htaLog.WriteLine(Now & " ***** Begin Sub enumUsers *****")
+
+    Const HKLM = &H80000002
+    Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength, strSourceDrive
+    Dim userNameDiv: Set userNameDiv = document.getElementById("div-select-users")
+    userNameDiv.innerHTML = ""
+    set objshell = CreateObject("Wscript.shell")
+    strComputer = "."
+    strSourceDrive = document.getElementById("input-windows-drive").Value
+    strHivePath = strSourceDrive & ":\Windows\System32\Config\SOFTWARE"
+    strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\"
+
+    htaLog.WriteLine(Now & " || strComputer = "".""")
+    htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
+    htaLog.WriteLine(Now & " || strKeyPath = ""TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList""")
+    
+    htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKLM\TempSoftware " & strHivePath & ", 0, true")
+
+    On Error Resume Next
+    Err.Clear
+
+    objshell.Run "reg.exe load HKLM\TempSoftware " & strHivePath, 0, true
+
+    If Err <> 0 Then
+        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
+        Err.Clear
+    End If
+    
+    htaLog.WriteLine(Now & " || Executing command: objshell.regRead(""HKLM\" & strKeyPath & ")")
+
+    objshell.regRead("HKLM\" & strKeyPath)
+
+    If Err <> 0 Then
+        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
+        htaLog.WriteLine(Now & " || Could not load HKLM\TempSoftware")
+        userNameDiv.innerHTML = userNameDiv.innerHTML & "Could not load offline registry<br><br>"
+        strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
+
+        htaLog.WriteLine(Now & " || strKeyPath = ""Software\Microsoft\Windows NT\CurrentVersion\ProfileList""")
+
+        Err.Clear
+    End If
+
+    htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv"")")
+    Set objReg = GetObject("winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv")
+
+    htaLog.WriteLine(Now & " || Executing command: objReg.EnumKey HKLM, "& strKeyPath & ", arrSubKeys")
+    objReg.EnumKey HKLM, strKeyPath, arrSubKeys
+
+    selectLength = 0
+    htaLog.WriteLine(Now & " || Looping through registry subkeys to extract usernames that exist in this Windows installation")
+    On Error Resume Next
+    For Each subkey In arrSubKeys
+        strSubKeyPath = "HKEY_LOCAL_MACHINE\" & strKeyPath & "\" & subkey & "\ProfileImagePath"
+        htaLog.WriteLine(Now & " || strSubKeyPath = " & strSubKeyPath)
+        profilePath = objshell.regRead(strSubKeyPath)
+        htaLog.WriteLine(Now & " || profilePath = " & profilePath)
+        profilePath = Split(profilePath, "\")
+        userName = profilePath(Ubound(profilePath))
+        htaLog.WriteLine(Now & " || userName = " & userName)
+
+        If Err <> 0 Then
+            htaLog.WriteLine(Now & " || Error - Cannot find user. Is the drive still encrypted?")
+            Err.Clear
+        End If
+
+        If NOT (strcomp(userName,"systemprofile",0) = 0 OR strcomp(userName,"LocalService",0) = 0 OR strcomp(userName,"NetworkService",0) = 0 _
+            OR strcomp(userName,"defaultuser0",0) = 0 OR strcomp(userName,"sccmpush",0) = 0) Then
+            htmlString = htmlString & "<option value=" & subkey & ">" & userName & "</option>"
+            env("env" & userName & "SID") = subkey
+            selectLength = selectLength + 1
+        End If
+    Next
+    userNameDiv.innerHTML = userNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
+    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""input-usmt-usernames"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
+    
+    htaLog.WriteLine(Now & " || Executing command: objShell.Run(""cmd /c reg.exe unload HKLM\TempSoftware"", 0, true)")
+    objshell.Run "%comspec% /c reg.exe unload HKLM\TempSoftware", 0, true
+
+    htaLog.WriteLine(Now & " ***** End Sub enumUsers *****")
 
 End Sub
 
@@ -323,6 +415,7 @@ Function dismCapture
     wimPath = strDestPath & ":\" & strName & ".wim"
     returnCode = -1
 
+    'Check if file with this name already exists
     Set fso = CreateObject("Scripting.FileSystemObject")
     If (fso.FileExists(wimPath)) Then
         MsgBox = wimPath & " already exists. Try changing the username or deleting the existing wim file."
@@ -373,93 +466,7 @@ Sub runDISM_TS
 
 End Sub
 
-'************************************ Enumerate users ************************************
-Sub enumUsers
-    htaLog.WriteLine(Now & " ***** Begin Sub enumUsers *****")
-
-    Const HKLM = &H80000002
-    Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength, strSourcePath
-    Dim userNameDiv: Set userNameDiv = document.getElementById("div-select-users")
-    userNameDiv.innerHTML = ""
-    set objshell = CreateObject("Wscript.shell")
-    strComputer = "."
-    'strSourcePath = windowsDrive.value
-    strHivePath = "C:\Windows\System32\Config\SOFTWARE"
-    strKeyPath = "TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList\"
-
-    htaLog.WriteLine(Now & " || strComputer = "".""")
-    htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
-    htaLog.WriteLine(Now & " || strKeyPath = ""TempSoftware\Microsoft\Windows NT\CurrentVersion\ProfileList""")
-    
-    htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKLM\TempSoftware " & strHivePath & ", 0, true")
-
-    On Error Resume Next
-    Err.Clear
-
-    objshell.Run "reg.exe load HKLM\TempSoftware " & strHivePath, 0, true
-
-    If Err <> 0 Then
-        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
-        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
-        Err.Clear
-    End If
-    
-    htaLog.WriteLine(Now & " || Executing command: objshell.regRead(""HKLM\" & strKeyPath & ")")
-
-    objshell.regRead("HKLM\" & strKeyPath)
-
-    If Err <> 0 Then
-        htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
-        htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
-        htaLog.WriteLine(Now & " || Could not load HKLM\TempSoftware")
-        userNameDiv.innerHTML = userNameDiv.innerHTML & "Could not load offline registry<br><br>"
-        strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
-
-        htaLog.WriteLine(Now & " || strKeyPath = ""Software\Microsoft\Windows NT\CurrentVersion\ProfileList""")
-
-        Err.Clear
-    End If
-
-    htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv"")")
-    Set objReg = GetObject("winmgmts:{impersonationLevel=Impersonate}!\\" & strComputer & "\root\default:StdRegProv")
-
-    htaLog.WriteLine(Now & " || Executing command: objReg.EnumKey HKLM, "& strKeyPath & ", arrSubKeys")
-    objReg.EnumKey HKLM, strKeyPath, arrSubKeys
-
-    selectLength = 0
-    htaLog.WriteLine(Now & " || Looping through registry subkeys to extract usernames that exist in this Windows installation")
-    On Error Resume Next
-    For Each subkey In arrSubKeys
-        strSubKeyPath = "HKEY_LOCAL_MACHINE\" & strKeyPath & "\" & subkey & "\ProfileImagePath"
-        htaLog.WriteLine(Now & " || strSubKeyPath = " & strSubKeyPath)
-        profilePath = objshell.regRead(strSubKeyPath)
-        htaLog.WriteLine(Now & " || profilePath = " & profilePath)
-        profilePath = Split(profilePath, "\")
-        userName = profilePath(Ubound(profilePath))
-        htaLog.WriteLine(Now & " || userName = " & userName)
-
-        If Err <> 0 Then
-            htaLog.WriteLine(Now & " || Error - Cannot find user. Is the drive still encrypted?")
-            Err.Clear
-        End If
-
-        If NOT (strcomp(userName,"systemprofile",0) = 0 OR strcomp(userName,"LocalService",0) = 0 OR strcomp(userName,"NetworkService",0) = 0 _
-            OR strcomp(userName,"defaultuser0",0) = 0 OR strcomp(userName,"sccmpush",0) = 0) Then
-            htmlString = htmlString & "<option value=" & subkey & ">" & userName & "</option>"
-            env("env" & userName & "SID") = subkey
-            selectLength = selectLength + 1
-        End If
-    Next
-    userNameDiv.innerHTML = userNameDiv.innerHTML & "<span>Users: &nbsp&nbsp </span><br>"
-    userNameDiv.innerHTML = userNameDiv.innerHTML & "<select id=""input-usmt-usernames"" name=""usmtUsernameList"" size="& selectLength &" multiple>" & htmlString & "</select>"
-    
-    htaLog.WriteLine(Now & " || Executing command: objShell.Run(""cmd /c reg.exe unload HKLM\TempSoftware"", 0, true)")
-    objshell.Run "%comspec% /c reg.exe unload HKLM\TempSoftware", 0, true
-
-    htaLog.WriteLine(Now & " ***** End Sub enumUsers *****")
-
-End Sub
-
+'************************************ Copy Wallpaper ************************************
 Sub copyWallpaper
     htaLog.WriteLine(Now & " ***** Begin Sub copyWallpaper *****")
 
@@ -729,6 +736,7 @@ Sub runFlushFill
         htaLog.WriteLine(Now & " || dismCheckBox is checked. Run dismCapture routine")
         dismError = dismCapture
         If dismError Then
+            MsgBox "DISM error " & dismError
             Exit Sub
         End If
     End If
