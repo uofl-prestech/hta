@@ -294,7 +294,7 @@ End Sub
 Function ConvertSize(Size)
     'htaLog.WriteLine(Now & " ***** Begin Sub ConvertSize *****")
 
-	suffix = " Bytes" 
+	suffix = "0 Bytes" 
 	If Size >= 1024 Then suffix = " KB" 
 	If Size >= 1048576 Then suffix = " MB" 
 	If Size >= 1073741824 Then suffix = " GB" 
