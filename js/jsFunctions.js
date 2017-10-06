@@ -1,4 +1,4 @@
-<!--************************************ JavaScript functions ************************************-->
+/************************************ JavaScript functions ************************************/
 $(document).ready(function () {
     $('.pages').css('display', 'none');
     $('.header-text').css('display', 'none');
