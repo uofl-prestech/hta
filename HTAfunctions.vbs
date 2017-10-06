@@ -107,11 +107,11 @@ Function listDrives
 	
 	For Each objItem In colItems
         If objItem.DriveLetter Then
+            objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
             If objItem.Label = "Windows" Then
-                windowsDL = Replace(objItem.DriveLetter, ":", "")
-                document.getElementById("windows-drive-letter").Value = windowsDL
+                document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
             End If
-
+            
             'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
             drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
