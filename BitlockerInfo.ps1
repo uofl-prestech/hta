@@ -106,7 +106,7 @@ else
 
 #*****************Drive Info*****************
 #Hard Drive information
-	[System.Collections.ArrayList]$driveResults = Get-WmiObject win32_Volume | select  Name, DriveType, Freespace, Capacity
+	[System.Collections.ArrayList]$driveResults = Get-WmiObject win32_Volume | select  Name, DriveType, Freespace, Capacity, DriveLetter
 
 #Create an ArrayList named $driveList to hold drive and encryption information for each drive
 	[System.Collections.ArrayList]$driveList = @()
@@ -114,7 +114,8 @@ else
 
 	foreach ($drive in $driveResults)
 	{
-	
+		#Skip volumes with no drive letter
+		If($drive.DriveLetter -eq $null) {continue}
 #Modify Drive Type
 		If($drive.DriveType -like "3") {$drive.DriveType = "Local Disk"}
 		If($drive.DriveType -like "5") {$drive.DriveType = "Compact Disk"}
@@ -136,7 +137,7 @@ else
 #If the drive exists in both arrays, add the encryption info to the current $driveResults object
 			If($drive.Name -eq $volume.DriveLetter)
 			{
-				$volume.psobject.properties | % {$drive | Add-Member -MemberType $_.MemberType -Name $_.Name -Value $_.Value}
+				$volume.psobject.properties | % {$drive | Add-Member -MemberType $_.MemberType -Name $_.Name -Value $_.Value -force}
 			}
 		}
 		[void]$driveList.Add($drive)

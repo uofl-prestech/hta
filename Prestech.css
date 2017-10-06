@@ -277,6 +277,9 @@ p {
 .drive-input {
     text-align: center;
 }
+.driveLetterSpan{
+    color: yellow;
+}
 .icon {
     display: inline-block;
     height: 75px;

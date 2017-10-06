@@ -14,12 +14,10 @@
     <script src="./js/spin.js"></script>
     <script type="text/javascript">
         function jsObj() {
-            var key = {};
             this.setProp = function (drive, k, v) {
                 if (!(this.hasOwnProperty(drive))) {
                     this[drive] = {};
                 }
-
                 this[drive][k] = v;
             }
         }
@@ -315,48 +313,68 @@
 <!--************************************ JavaScript functions ************************************-->
 
 <script language="JavaScript">
-        $(document).ready(function () {
-            $('.pages').css('display', 'none');
-            $('.header-text').css('display', 'none');
-            $('#page-landing').css('display', 'inline-block');
-            $('#header-landing').css('display', 'inline');
-            $('#general-output-scroll').css('visibility', 'hidden');
-            var drives = {};
-            try {
-                drives = listDrives();
-                alert(Object.getOwnPropertyNames(drives));
-                for (var item in drives) {
-                    alert(drives[item]["Drive Letter"]);
-
-                }
-                TPMCheck();
-            }
-            catch (err) {
-                $('#page-landing').append(err.message);
-            }
-
-            $(".pages").mCustomScrollbar({
-                theme: "minimal",
-                live: "once"
-            });
-            $("#general-output-scroll").mCustomScrollbar({
-                theme: "minimal",
-                live: "once"
-            });
-            $("#dialog").dialog({
-                autoOpen: false
-            });
-        });
-
-        function initAccordion() {
-            $('.accordion h3').click(function () {
-                $(this).next().toggle('fast');
-                $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
-                return false;
-            }).next().hide();
-            $('ul .ui-widget-content').show('fast');
-            $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+    $(document).ready(function () {
+        $('.pages').css('display', 'none');
+        $('.header-text').css('display', 'none');
+        $('#page-landing').css('display', 'inline-block');
+        $('#header-landing').css('display', 'inline');
+        $('#general-output-scroll').css('visibility', 'hidden');
+        try {
+            jsListDrives();
+            TPMCheck();
         }
+        catch (err) {
+            $('#page-landing').append(err.message);
+        }
+
+        $(".pages").mCustomScrollbar({
+            theme: "minimal",
+            live: "once"
+        });
+        $("#general-output-scroll").mCustomScrollbar({
+            theme: "minimal",
+            live: "once"
+        });
+        $("#dialog").dialog({
+            autoOpen: false
+        });
+    });
+
+    function initAccordion() {
+        $('.accordion h3').click(function () {
+            $(this).next().toggle('fast');
+            $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
+            return false;
+        }).next().hide();
+        $('ul .ui-widget-content').show('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+    }
+
+    //Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
+    function jsListDrives(){
+        var drives = {};
+        drives = listDrives();
+        delete drives["setProp"];   //Remove the setProp function from the object before looping through the drive letters
+        var keys = [], k, len;
+
+        for(k in drives){
+            if(drives.hasOwnProperty(k)){
+                keys.push(k);
+            }
+        }
+        keys.sort();
+        len = keys.length;
+
+        var landingPageDiv = $("#drive-list-output");
+        for (var i =0; i < len; i++) {
+            k = keys[i];
+            landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + drives[k]["Drive Letter"]);
+            drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
+            drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
+            drives[k]["Encryption"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption"]) : "";
+            landingPageDiv.append("<br><br>");
+        }
+    }
         // ******************* Placeholder Text ***********************
         $('[placeholder]').focus(function () {
             var input = $(this);
@@ -785,42 +803,53 @@
 
         function showUsersClick() {
             var dlDeferred = $.Deferred();
-            var inputWindowsDrive = $("#input-windows-drive").val();          //Windows drive letter input by user
-            var determinedWindowsDrive = $("#windows-drive-letter").val();     //Windows drive letter determined by listDrives vbscript function
-
+            var inputWindowsDrive = $("#input-windows-drive").val().toUpperCase();          //Windows drive letter input by user
+            var determinedWindowsDrive = $("#windows-drive-letter").val().toUpperCase();    //Windows drive letter determined by listDrives vbscript function
+            var winDirFound = ReportFolderStatus(inputWindowsDrive + ":\\Windows");
 
             //This seems flimsy. Maybe try checking for C:\Windows or inputWindowsDrive\Windows instead?
-            if (inputWindowsDrive == "") {
+            if(inputWindowsDrive == ""){
                 //Check if windows drive letter is filled in
                 message = "Windows drive letter is not filled in!";
                 warnUser(dlDeferred, message, false);
             }
-            else if (determinedWindowsDrive == "") {
+            else if(determinedWindowsDrive == ""){
                 //Check if windows drive encryption is unlocked
                 message = "Windows drive not found! It may still be encrypted.";
                 warnUser(dlDeferred, message, true);
             }
-            else if (inputWindowsDrive != determinedWindowsDrive) {
+            else if(inputWindowsDrive != determinedWindowsDrive){
                 //Check if windows drive letter entered by user matches what was found in listDrives function
                 message = "Windows drive letter does not match volume labeled 'Windows' on this machine. Are you sure?";
                 warnUser(dlDeferred, message, true);
             }
+            dlDeferred.done(function(continueFunction){
+                if(continueFunction == false){return};
+                if(winDirFound == false){
+                    //Check if windows directory exists
+                    message = "Windows directory not found at " + inputWindowsDrive + ":\\Windows";
+                    warnUser(dlDeferred, message, false);
+                    return;
+                }
+            });
 
-            /*
-            function ReportFolderStatus(fldr)
-            {
-               var fso, s = fldr;
-               fso = new ActiveXObject("Scripting.FileSystemObject");
-               if (fso.FolderExists(fldr))
-                  s += " exists.";
-               else
-                  s += " doesn't exist.";
-               return(s);
+            //If we made it past all of the error checks, try to enumerate users for the given Windows drive
+            try{
+                enumUsers();
             }
-            */
+            catch (err) {
+                document.getElementById("general-output").innerHTML = err.message;
+            }
+        }
 
-
-
+        function ReportFolderStatus(fldr)
+        {
+            var fso;
+            fso = new ActiveXObject("Scripting.FileSystemObject");
+            if (fso.FolderExists(fldr))
+                return true;
+            else
+                return false;
         }
         // $("#input-windows-drive, #input-primary-username").keyup(function () {
         //     usmtScanstate("false");
