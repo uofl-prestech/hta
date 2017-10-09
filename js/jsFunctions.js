@@ -95,13 +95,19 @@ $('#button-HideAll').on('click', function () {
 });
 // ******#general-output-scroll hidden/visible functions*******
 $('.button-nav').on('click', function () {
+    var windowsFound = verifyWindows();
+    if(windowsFound == false){return}
+
     $('.pages').css('display', 'none');
     $('.header-text').css('display', 'none');
     $('.button-nav').removeClass('active');
     $(this).addClass('active');
     $("#general-output-scroll").css('visibility', 'hidden');
 });
+
 $(document).on('click', '.show-output', function () {
+    var windowsFound = verifyWindows();
+    if (windowsFound == false) { return }
     $("#general-output-scroll").css('visibility', 'visible');
 });
 
@@ -135,6 +141,8 @@ $('#button-osd').on('click', function () {
 });
 
 $('#button-flushfill').on('click', function () {
+    var windowsFound = verifyWindows();
+    if (windowsFound == false) { return }
     $('#page-flushfill').css('display', 'inline-block');
     $('#header-flushfill').css('display', 'inline');
 
@@ -163,6 +171,8 @@ $('#button-flushfill').on('click', function () {
 });
 
 $('#button-dism').on('click', function () {
+    var windowsFound = verifyWindows();
+    if (windowsFound == false) { return }
     $('#page-dism').css('display', 'inline-block');
     $('#header-dism').css('display', 'inline');
 
@@ -179,6 +189,8 @@ $('#button-dism').on('click', function () {
 });
 
 $('#button-usmt').on('click', function () {
+    var windowsFound = verifyWindows();
+    if (windowsFound == false) { return }
     $('#page-usmt').css('display', 'inline-block');
     $('#header-usmt').css('display', 'inline');
 
@@ -200,6 +212,8 @@ $('#button-usmt').on('click', function () {
 });
 
 $('#button-software').on('click', function () {
+    var windowsFound = verifyWindows();
+    if (windowsFound == false) { return }
     $('#page-software-install').css('display', 'inline-block');
     $('#header-software').css('display', 'inline');
 
@@ -530,11 +544,36 @@ function showUsersClick() {
 
 function ReportFolderStatus(fldr) {
     var fso;
+    var navButtons = $(".require-win-dir");
     fso = new ActiveXObject("Scripting.FileSystemObject");
+
+    //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
     if (fso.FolderExists(fldr))
+    {
+        navButtons.removeClass("win-not-found");
         return true;
+    }
     else
+    {
+        navButtons.addClass("win-not-found");
         return false;
+    }
+        
+}
+
+function verifyWindows(){
+    var determinedWindowsDrive = $("#windows-drive-letter").val();
+    var winDirFound = ReportFolderStatus(determinedWindowsDrive + ":\\Windows");
+    var winDeferred = $.Deferred();
+    if(winDirFound == false) {
+        //If windows directory doesn't exist, then return
+        message = "Windows drive not found! It may still be encrypted.";
+        warnUser(winDeferred, message, false);
+        return false;
+    }
+    else{
+        return false;
+    }
 }
 // $("#input-windows-drive, #input-primary-username").keyup(function () {
 //     usmtScanstate("false");

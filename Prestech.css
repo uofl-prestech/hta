@@ -345,5 +345,11 @@ p {
     background: rgba(0, 0, 0, 0.90);
 }
 .no-close .ui-dialog-titlebar-close {
-  display: none;
+    display: none;
+}
+.win-not-found{
+    background-color: rgba(139,0,0,0.6);
+}
+.win-not-found:hover{
+    background-color: rgba(139,0,0,0.8) !important;
 }
