@@ -1638,3 +1638,16 @@ Approximate round trip times in milli-seconds:
 10/5/2017 6:03:52 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
 10/5/2017 6:03:52 PM || Error: -2147217406. Not found . TPM Not Found
 10/5/2017 6:03:52 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 10/9/2017 2:09:32 PM ======================
+10/9/2017 2:09:32 PM ***** Begin Sub listDrives *****
+10/9/2017 2:09:32 PM || Error. Must run as Administrator to check encryption status
+10/9/2017 2:09:32 PM || Skipping check for Encryption Status
+10/9/2017 2:09:32 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/9/2017 2:09:32 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/9/2017 2:09:32 PM || "Drive Letter: C | 10/9/2017 2:09:32 PM || "Label: Windows | Capacity: 231.1 GB
+10/9/2017 2:09:32 PM || "Drive Letter: A | 10/9/2017 2:09:32 PM || "Label: Data | Capacity: 931.5 GB
+10/9/2017 2:09:32 PM || "Drive Letter: D | 10/9/2017 2:09:32 PM || "Label:  | Capacity: 0 Bytes
+10/9/2017 2:09:32 PM ***** End Sub listDrives *****
+10/9/2017 2:09:32 PM ***** Begin Sub TPMCheck *****
+10/9/2017 2:09:32 PM || Error: Must run as Administrator to check TPM status!
