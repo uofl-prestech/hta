@@ -5,14 +5,18 @@ $(document).ready(function () {
     $('#page-landing').css('display', 'inline-block');
     $('#header-landing').css('display', 'inline');
     $('#general-output-scroll').css('visibility', 'hidden');
+
+    //Find and list drives attached to this machine
+    jsListDrives();
     try {
-        jsListDrives();
+        //Check for a TPM chip
         TPMCheck();
     }
     catch (err) {
         $('#page-landing').append(err.message);
     }
 
+    //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
         theme: "minimal",
         live: "once"
@@ -21,46 +25,13 @@ $(document).ready(function () {
         theme: "minimal",
         live: "once"
     });
+
+    //Initialize dialog box for warning and error messages
     $("#dialog").dialog({
         autoOpen: false
     });
 });
 
-function initAccordion() {
-    $('.accordion h3').click(function () {
-        $(this).next().toggle('fast');
-        $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
-        return false;
-    }).next().hide();
-    $('ul .ui-widget-content').show('fast');
-    $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
-}
-
-//Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
-function jsListDrives() {
-    var drives = {};
-    drives = listDrives();
-    delete drives["setProp"];   //Remove the setProp function from the object before looping through the drive letters
-    var keys = [], k, len;
-
-    for (k in drives) {
-        if (drives.hasOwnProperty(k)) {
-            keys.push(k);
-        }
-    }
-    keys.sort();
-    len = keys.length;
-
-    var landingPageDiv = $("#drive-list-output");
-    for (var i = 0; i < len; i++) {
-        k = keys[i];
-        landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + drives[k]["Drive Letter"]);
-        drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
-        drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
-        drives[k]["Encryption"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption"]) : "";
-        landingPageDiv.append("<br><br>");
-    }
-}
 // ******************* Placeholder Text ***********************
 $('[placeholder]').focus(function () {
     var input = $(this);
@@ -93,152 +64,73 @@ $('#button-HideAll').on('click', function () {
     $('ul .ui-widget-content').hide('fast');
     $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
 });
-// ******#general-output-scroll hidden/visible functions*******
-$('.button-nav').on('click', function () {
-    var windowsFound = verifyWindows();
-    if(windowsFound == false){return}
 
+$('.button-nav').on('click', function () {
+    var targetID = $(this).attr("id");      //Get the id of the button that was clicked
+    var targetOperation = targetID.replace("button-", "");  //Strip away button-, leaving us with osd, flushfill, dism, usmt, software, or tools
+
+    //Check for a Windows directory. If none found, then return so we do not navigate to any pages that require a Windows directory to function
+    var windowsFound = verifyWindows();
+    if(windowsFound == false && !(targetID == "button-osd" || targetID == "button-tools")){return}
+
+    //Prevent recreating the page if we are already on it. i.e. clicking dism button when we are already on dism page.
+    var isSamePage = $("#ul-" + targetOperation).children().length; 
+    if (isSamePage == 0) {
+        //If navigating to a new page, clear out the list elements so we can reuse list items on the new page.
+        $(".ul-elements").empty();
+    }
+    else return;
+
+    //Grab the appropriate templates for the page we are navigating to and join them together in a variable named "template"
+    var templates = $("." + targetOperation);
+    var template = "";
+
+    templates.each(function () {
+        template += $(this).html();
+    });
+    switch (targetID){
+        case "button-osd":
+            //code block
+            break;
+        case "button-flushfill":
+            //code block
+            break;
+        case "button-dism":
+            //code block
+            break;
+        case "button-usmt":
+            //code block
+            break;
+        case "button-software":
+            //code block
+            break;
+        case "button-tools":
+            //code block
+            break;
+        default:
+            //code block
+    }
+
+    //Insert the joined templates into the page we are nevigating to
+    $("#ul-" + targetOperation).append(template);
+
+    initAccordion();
     $('.pages').css('display', 'none');
     $('.header-text').css('display', 'none');
     $('.button-nav').removeClass('active');
     $(this).addClass('active');
+    $('#page-' + targetOperation).css('display', 'inline-block');
+    $('#header-' + targetOperation).css('display', 'inline');
     $("#general-output-scroll").css('visibility', 'hidden');
 });
 
 $(document).on('click', '.show-output', function () {
-    var windowsFound = verifyWindows();
-    if (windowsFound == false) { return }
     $("#general-output-scroll").css('visibility', 'visible');
-});
-
-$('#button-osd').on('click', function () {
-    $('#page-osd').css('display', 'inline-block');
-    $('#header-osd').css('display', 'inline');
-
-    if ($("#ul-osd").children().length == 0) {
-        $(".ul-elements").empty();
-        var template = $("#temp-osd-options").html();
-        template += $("#temp-computer-name").html();
-        template += $("#temp-software-install").html();
-        $("#ul-osd").append(template);
-        initAccordion();
-    }
-
-    try {
-        TPMCheck();
-    }
-    catch (err) {
-        document.getElementById("general-output").innerHTML = err.message;
-    }
-    $('#input-osd-checkbox').change(function () {
-        if (this.checked == true) {
-            $('#MBAM').prop("checked", true);
-        }
-        else {
-            $('#MBAM').prop("checked", false);
-        }
-    });
-});
-
-$('#button-flushfill').on('click', function () {
-    var windowsFound = verifyWindows();
-    if (windowsFound == false) { return }
-    $('#page-flushfill').css('display', 'inline-block');
-    $('#header-flushfill').css('display', 'inline');
-
-    if ($("#ul-fnf").children().length == 0) {
-        $(".ul-elements").empty();
-        var template = $("#temp-fnf-options").html();
-        template += $("#temp-bitlocker-info").html();
-        template += $("#temp-windows-drive").html();
-        template += $("#temp-bitlocker-unlock").html();
-        template += $("#temp-select-users").html();
-        template += $("#temp-primary-username").html();
-        template += $("#temp-external-drive").html();
-        template += $("#temp-computer-name").html();
-        template += $("#temp-software-install").html();
-        $("#ul-fnf").append(template);
-        initAccordion();
-    }
-    // if ($("#input-usmt-usernames").length == 0) {
-    //     try {
-    //         enumUsers();
-    //     }
-    //     catch (err) {
-    //         document.getElementById("general-output").innerHTML = err.message;
-    //     }
-    // }
-});
-
-$('#button-dism').on('click', function () {
-    var windowsFound = verifyWindows();
-    if (windowsFound == false) { return }
-    $('#page-dism').css('display', 'inline-block');
-    $('#header-dism').css('display', 'inline');
-
-    if ($("#ul-dism").children().length == 0) {
-        $(".ul-elements").empty();
-        var template = $("#temp-bitlocker-info").html();
-        template += $("#temp-windows-drive").html();
-        template += $("#temp-bitlocker-unlock").html();
-        template += $("#temp-primary-username").html();
-        template += $("#temp-external-drive").html();
-        $("#ul-dism").append(template);
-        initAccordion();
-    }
-});
-
-$('#button-usmt').on('click', function () {
-    var windowsFound = verifyWindows();
-    if (windowsFound == false) { return }
-    $('#page-usmt').css('display', 'inline-block');
-    $('#header-usmt').css('display', 'inline');
-
-    if ($("#ul-usmt").children().length == 0) {
-        $(".ul-elements").empty();
-        var template = $("#temp-bitlocker-info").html();
-        template += $("#temp-windows-drive").html();
-        template += $("#temp-bitlocker-unlock").html();
-        template += $("#temp-select-users").html();
-        template += $("#temp-primary-username").html();
-        template += $("#temp-external-drive").html();
-        $("#ul-usmt").append(template);
-        initAccordion();
-    }
-
-    //if ($("#input-usmt-usernames").length == 0) {
-    //enumUsers();
-    //}
-});
-
-$('#button-software').on('click', function () {
-    var windowsFound = verifyWindows();
-    if (windowsFound == false) { return }
-    $('#page-software-install').css('display', 'inline-block');
-    $('#header-software').css('display', 'inline');
-
-    if ($("#ul-software-install").children().length == 0) {
-        $(".ul-elements").empty();
-        var template = $("#temp-software-install").html();
-        $("#ul-software-install").append(template);
-        initAccordion();
-    }
-});
-
-$('#button-tools').on('click', function () {
-    $('#page-tools').css('display', 'inline-block');
-    $('#header-tools').css('display', 'inline');
 });
 
 $('#button-home').on('click', function () {
     $('#page-landing').css('display', 'inline-block');
     $('#header-landing').css('display', 'inline');
-
-    // if ($("#ul-landing").children().length ==0) {
-    //     $(".ul-elements").empty();
-    //     var template = $("#temp-landing").html();
-    //     $("#ul-landing").append(template);
-    //     initAccordion();
 });
 $('.button-exithome').hover(
     function () {
@@ -264,6 +156,58 @@ function getInputValues() {
     return inputValues;
 }
 
+function osdCheckboxChange(e) {
+    if (e.checked == true) {
+        $('#MBAM').prop("checked", true);
+    }
+    else {
+        $('#MBAM').prop("checked", false);
+    }
+}
+
+function initAccordion() {
+    //Initialize accordion for displaying list itmes
+    $('.accordion h3').click(function () {
+        $(this).next().toggle('fast');
+        $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
+        return false;
+    }).next().hide();
+    $('ul .ui-widget-content').show('fast');
+    $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+}
+
+function jsListDrives() {
+    //Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
+    var drives = {};
+    try {
+        drives = listDrives();
+        delete drives["setProp"];   //Remove the setProp function from the object before looping through the drive letters
+        var keys = [], k, len;
+
+        for (k in drives) {
+            if (drives.hasOwnProperty(k)) {
+                keys.push(k);
+            }
+        }
+        keys.sort();
+        len = keys.length;
+
+        var landingPageDiv = $("#drive-list-output");
+        for (var i = 0; i < len; i++) {
+            k = keys[i];
+            landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + drives[k]["Drive Letter"]);
+            drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
+            drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
+            drives[k]["Encryption"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption"]) : "";
+            landingPageDiv.append("<br><br>");
+        }
+    }
+    catch (err) {
+        document.getElementById("general-output").innerHTML = err.message;
+    }
+
+    verifyWindows();
+}
 
 // ******************** Verification/Error Checking Functions ********************
 function warnUser(objDeferred, message, continueButton) {
@@ -537,7 +481,7 @@ function showUsersClick() {
     try {
         enumUsers();
     }
-    catch (err) {
+    catch(err) {
         document.getElementById("general-output").innerHTML = err.message;
     }
 }
@@ -545,18 +489,22 @@ function showUsersClick() {
 function ReportFolderStatus(fldr) {
     var fso;
     var navButtons = $(".require-win-dir");
-    fso = new ActiveXObject("Scripting.FileSystemObject");
-
-    //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
-    if (fso.FolderExists(fldr))
-    {
-        navButtons.removeClass("win-not-found");
-        return true;
+    try{
+        fso = new ActiveXObject("Scripting.FileSystemObject");
+fldr = "blah";
+        //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
+        if (fso.FolderExists(fldr)) {
+            navButtons.removeClass("win-not-found");
+            return true;
+        }
+        else {
+            navButtons.addClass("win-not-found");
+            return false;
+        }
     }
-    else
-    {
+    catch(err){
         navButtons.addClass("win-not-found");
-        return false;
+        document.getElementById("general-output").innerHTML = err.message;
     }
         
 }
@@ -566,13 +514,10 @@ function verifyWindows(){
     var winDirFound = ReportFolderStatus(determinedWindowsDrive + ":\\Windows");
     var winDeferred = $.Deferred();
     if(winDirFound == false) {
-        //If windows directory doesn't exist, then return
-        message = "Windows drive not found! It may still be encrypted.";
-        warnUser(winDeferred, message, false);
         return false;
     }
     else{
-        return false;
+        return true;
     }
 }
 // $("#input-windows-drive, #input-primary-username").keyup(function () {

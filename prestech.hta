@@ -46,23 +46,23 @@
         <div id="main" class="on-load">
             <div class="navigation-bar">
                 <ul>
-                    <li id="button-osd" class="first button-nav show-output">
+                    <li id="button-osd" class="button-nav show-output">
                         <img src="images/osd final.png" class="icon">
                         <span>OSD</span>
                     </li>
-                    <li id="button-flushfill" class="button-nav require-win-dir win-not-found">
+                    <li id="button-flushfill" class="button-nav require-win-dir">
                         <img src="images/flush and fill final.png" class="icon">
                         <span>Flush and Fill</span>
                     </li>
-                    <li id="button-dism" class="button-nav require-win-dir win-not-found">
+                    <li id="button-dism" class="button-nav require-win-dir">
                         <img src="images/DISM final.png" class="icon">
                         <span>DISM</span>
                     </li>
-                    <li id="button-usmt" class="button-nav require-win-dir win-not-found">
+                    <li id="button-usmt" class="button-nav require-win-dir">
                         <img src="images/usmt final.png" class="icon">
                         <span>USMT</span>
                     </li>
-                    <li id="button-software" class="button-nav require-win-dir win-not-found">
+                    <li id="button-software" class="button-nav require-win-dir">
                         <img src="images/software install.png" class="icon">
                         <span>Software Install</span>
                     </li>
@@ -114,7 +114,7 @@
 
                 <!-- Flush and Fill Page -->
                 <div id="page-flushfill" class="pages">
-                    <ul id="ul-fnf" class="accordion ui-accordion ul-elements"></ul>
+                    <ul id="ul-flushfill" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()"><img src="images/launch-icon.png" class="icon-tools">Begin!</button>
                 </div>
 
@@ -132,8 +132,8 @@
                 </div>
 
                 <!--Software Install Page-->
-                <div id="page-software-install" class="pages">
-                    <ul id="ul-software-install" class="accordion ui-accordion ul-elements"></ul>
+                <div id="page-software" class="pages">
+                    <ul id="ul-software" class="accordion ui-accordion ul-elements"></ul>
                 </div>
 
                 <!--Troubleshooting Tools Page-->
@@ -162,32 +162,131 @@
     <div id="dialog" title="Warning">I'm a dialog</div>
 
     <!--    OSD Options    -->
-    <template id="temp-osd-options">
+    <template id="temp-osd-options" class="osd">
         <li id="li-osd-options" class="li-steps">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
             </h3>
             <div id="div-format-drive" class="ui-widget-content">
-                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox"> Format Drive and
+                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox" onchange="javascript:osdCheckboxChange(this)"> Format Drive and
                 Deploy Image (OSD)?
                 <input id="input-tpm-checkbox" class="input-objects" type="checkbox" name="TPMCheckBox">
             </div>
         </li>
     </template>
 
+    <!--    FnF Options    -->
+    <template id="temp-fnf-options" class="flushfill">
+        <li id="li-fnf-options" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
+            <div id="div-fnf-options" class="ui-widget-content">
+                <input id="input-dism-checkbox" class="input-objects" type="checkbox" name="dismCheckBox"> Create Backup
+                Image (DISM)? <br>
+                <input id="input-scanstate-checkbox" class="input-objects" type="checkbox" name="scanStateCheckBox"> Save
+                User Data (USMT Scanstate)?
+                <br>
+                <input id="input-fnfosd-checkbox" class="input-objects" type="checkbox" name="fnfOsdCheckBox"> Format Drive
+                and Deploy Image (OSD)?
+                <br>
+                <input id="input-loadstate-checkbox" class="input-objects" type="checkbox" name="loadStateCheckBox"> Restore
+                User Data after OSD (USMT Loadstate)?
+                <br>
+            </div>
+        </li>
+    </template>
+
     <!--    Computer Name    -->
-    <template id="temp-computer-name">
+    <template id="temp-computer-name" class="osd flushfill">
         <li id="li-computer-name" class="li-steps">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
             </h3>
-            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" class="input-objects input-text placeholder" type="text"
-                    name="compName" placeholder="Computer Name"> <br></div>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp; <input id="input-comp-name" class="input-objects input-text placeholder" type="text" name="compName" placeholder="Computer Name"> <br></div>
+        </li>
+    </template>
+
+    <!--    Bitlocker Info    -->
+    <template id="temp-bitlocker-info" class="flushfill dism usmt">
+        <li id="li-bitlocker-info" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
+            </h3>
+            <div id="div-bitlocker-info" class="ui-widget-content">
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+            </div>
+        </li>
+    </template>
+
+    <!--    Windows Drive    -->
+    <template id="temp-windows-drive" class="flushfill dism usmt">
+        <li id="li-windows-drive" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the
+                Windows partition to be imaged
+            </h3>
+            <div id="div-windows-drive" class="ui-widget-content">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects input-text"
+                    name="windowsDrive" type="Text" maxlength="1" size="1">
+            </div>
+        </li>
+    </template>
+
+    <!--    Bitlocker Unlock    -->
+    <template id="temp-bitlocker-unlock" class="flushfill dism usmt">
+        <li id="li-bitlocker-unlock" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock
+                Bitlocker
+            </h3>
+            <div id="div-bitlocker-unlock" class="ui-widget-content">
+                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+            </div>
+        </li>
+    </template>
+
+    <!--    Primary Username    -->
+    <template id="temp-primary-username" class="flushfill dism usmt">
+        <li id="li-primary-username" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user
+                we are copying data for
+            </h3>
+            <div id="div-primary-username" class="ui-widget-content">
+                <span>Username: &nbsp&nbsp </span>
+                <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
+            </div>
+        </li>
+    </template>
+
+    <!--    External Drive    -->
+    <template id="temp-external-drive" class="flushfill dism usmt">
+        <li id="li-external-drive" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the
+                External USB drive where the image will be stored
+            </h3>
+            <div id="div-external-drive" class="ui-widget-content">
+                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input input-objects input-text"
+                    name="externalDrive" type="Text" maxlength="1" size="1">
+            </div>
+        </li>
+    </template>
+
+    <!--    Select Users    -->
+    <template id="temp-select-users" class="flushfill usmt">
+        <li id="li-select-users" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will
+                be copied
+            </h3>
+            <div id="div-select-users" class="ui-widget-content usmt-users"><button id="enum-users" class="button" onclick="javascript:showUsersClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Show Users</button></div>
         </li>
     </template>
 
     <!--    Software Install    -->
-    <template id="temp-software-install">
+    <template id="temp-software-install" class="osd flushfill software">
         <li id="li-software-install" class="li-steps">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
@@ -204,106 +303,6 @@
                 <input type="checkbox" id="Office2016" class="software-install input-objects" name="Office2016">Office 2016
                 (32 Bit)<br>
                 <input type="checkbox" id="MBAM" class="software-install input-objects" name="MBAM">MBAM Client (Bitlocker)
-                <br>
-            </div>
-        </li>
-    </template>
-
-    <!--    Bitlocker Info    -->
-    <template id="temp-bitlocker-info">
-        <li id="li-bitlocker-info" class="li-steps scanState">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
-            </h3>
-            <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
-            </div>
-        </li>
-    </template>
-
-    <!--    Windows Drive    -->
-    <template id="temp-windows-drive">
-        <li id="li-windows-drive" class="li-steps scanState">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the
-                Windows partition to be imaged
-            </h3>
-            <div id="div-windows-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-windows-drive" class="drive-input input-objects input-text"
-                    name="windowsDrive" type="Text" maxlength="1" size="1">
-            </div>
-        </li>
-    </template>
-
-    <!--    Bitlocker Unlock    -->
-    <template id="temp-bitlocker-unlock">
-        <li id="li-bitlocker-unlock" class="li-steps scanState">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock
-                Bitlocker
-            </h3>
-            <div id="div-bitlocker-unlock" class="ui-widget-content">
-                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
-                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
-            </div>
-        </li>
-    </template>
-
-    <!--    Primary Username    -->
-    <template id="temp-primary-username">
-        <li id="li-primary-username" class="li-steps">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user
-                we are copying data for
-            </h3>
-            <div id="div-primary-username" class="ui-widget-content">
-                <span>Username: &nbsp&nbsp </span>
-                <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
-            </div>
-        </li>
-    </template>
-
-    <!--    External Drive    -->
-    <template id="temp-external-drive">
-        <li id="li-external-drive" class="li-steps">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the
-                External USB drive where the image will be stored
-            </h3>
-            <div id="div-external-drive" class="ui-widget-content">
-                <span>Drive Letter: &nbsp&nbsp </span><input id="input-external-drive" class="drive-input input-objects input-text"
-                    name="externalDrive" type="Text" maxlength="1" size="1">
-            </div>
-        </li>
-    </template>
-
-    <!--    Select Users    -->
-    <template id="temp-select-users">
-        <li id="li-select-users" class="li-steps scanState">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will
-                be copied
-            </h3>
-            <div id="div-select-users" class="ui-widget-content usmt-users"><button id="enum-users" class="button" onclick="javascript:showUsersClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Show Users</button></div>
-        </li>
-    </template>
-
-    <!--    FnF Options    -->
-    <template id="temp-fnf-options">
-        <li id="li-fnf-options" class="li-steps">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
-            <div id="div-fnf-options" class="ui-widget-content">
-                <input id="input-dism-checkbox" class="input-objects" type="checkbox" name="dismCheckBox"> Create Backup
-                Image (DISM)? <br>
-                <input id="input-scanstate-checkbox" class="input-objects" type="checkbox" name="scanStateCheckBox"> Save
-                User Data (USMT Scanstate)?
-                <br>
-                <input id="input-fnfosd-checkbox" class="input-objects" type="checkbox" name="fnfOsdCheckBox"> Format Drive
-                and Deploy Image (OSD)?
-                <br>
-                <input id="input-loadstate-checkbox" class="input-objects" type="checkbox" name="loadStateCheckBox"> Restore
-                User Data after OSD (USMT Loadstate)?
                 <br>
             </div>
         </li>

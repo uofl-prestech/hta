@@ -247,7 +247,7 @@ p {
     cursor: default;
 }
 .button-exithome {
-    padding: 0px;
+    padding: 10px;
     cursor: default;
     text-decoration: none;
     display: inline-block;

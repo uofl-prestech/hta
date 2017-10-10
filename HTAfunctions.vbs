@@ -483,6 +483,8 @@ Sub copyWallpaper
     getUserSID = env("env" & getUser & "SID")
     htaLog.WriteLine("getUserSID = " & getUserSID)
 
+    On Error Resume Next
+    Err.Clear
     strComputer = "."
     strSourceDrive = document.getElementById("input-windows-drive").Value
     strDestDrive = document.getElementById("input-external-drive").Value
@@ -492,18 +494,15 @@ Sub copyWallpaper
     htaLog.WriteLine(Now & " || strComputer = "".""")
     htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
     htaLog.WriteLine(Now & " || strWallpaperPath = ""TempUser\Microsoft\Windows NT\CurrentVersion\ProfileList""")
-    
     htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKEY_USERS\TempUser " & strHivePath & ", 0, true")
-
-    On Error Resume Next
-    Err.Clear
 
     objshell.Run "reg.exe load HKEY_USERS\TempUser " & strHivePath, 0, true
 
     If Err <> 0 Then
+        'Couldn't load NTUSER.DAT file
         htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
         htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
-        Err.Clear
+        Exit Sub
     End If
     
     htaLog.WriteLine(Now & " || Executing command: strWallpaperPath = objshell.regRead(strWallpaperRegPath)")
@@ -511,10 +510,11 @@ Sub copyWallpaper
     strWallpaperPath = objshell.regRead(strWallpaperRegPath)
 
     If Err <> 0 Then
+        'Couldn't find Wallpaper registry key at the specified location
         htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
         htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
         htaLog.WriteLine(Now & " || Could not load " & strWallpaperRegPath)
-        Err.Clear
+        Exit Sub
     Else
         Dim fsoWallPaper, fsoExtension, strNewPath
         Set fsoWallPaper = CreateObject("Scripting.FileSystemObject")
@@ -642,7 +642,7 @@ Sub usmtLoadstate
     fsoWP.GetFile(env("envWallpaperFile"))
     If Err = 0 Then
         htaLog.WriteLine(Now & " || TS env check worked")
-        strWallpaperFile = null
+        'strWallpaperFile = null
     Else
         htaLog.WriteLine(Now & " || TS env check failed")
         htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
