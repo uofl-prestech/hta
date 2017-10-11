@@ -34,7 +34,7 @@
     </script>
     <link rel="stylesheet" href="Prestech.css">
     <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
-        windowstate="normal"></hta:application>
+        windowstate="maximize"></hta:application>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
                 </ul>
                 <div>
                     <button id="button-home" class="button-exithome button-nav"><div class="button-background"><img src="images/homeicon45.svg" class="icon-only"></div></button>
-                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/exit1.svg" class="icon-only"></div></button>
+                    <button id="button-exit" class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()"><div class="button-background"><img src="images/exit1.svg" class="icon-only"></div></button>
                 </div>
             </div>
 
@@ -95,15 +95,16 @@
                 </div>
                 <!--Landing Page-->
                 <div id="page-landing" class="pages">
-                    <ul id="ul-landing" class="accordion ui-accordion ul-elements"></ul>
-                    <li id="li-drive-list" class="li-steps"></li>
-                    <h3 class="accordion ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                        <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>List Drives</h3>
-                    <div id="drive-list-output" class="ui-widget-content"></div>
-                    <li id="li-tpm-check" class="li-steps"></li>
-                    <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                        <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
-                    <div id="tpm-check-output" class="ui-widget-content"></div>
+                    <ul id="ul-landing" class="accordion ui-accordion ul-elements">
+                        <li id="li-drive-list" class="li-steps"></li>
+                        <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>List Drives</h3>
+                        <div id="drive-list-output" class="ui-widget-content"></div>
+                        <li id="li-tpm-check" class="li-steps"></li>
+                        <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
+                        <div id="tpm-check-output" class="ui-widget-content"></div>
+                    </ul>
                 </div>
 
                 <!--OSD Page-->
@@ -161,6 +162,37 @@
     <!-- Dialog Box -->
     <div id="dialog" title="Warning">I'm a dialog</div>
 
+    <!--    Bitlocker Info    -->
+    <template id="temp-bitlocker-info" class="flushfill dism usmt">
+        <li id="li-bitlocker-info" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
+            </h3>
+            <div id="div-bitlocker-info" class="ui-widget-content">
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()">
+                    <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+            </div>
+        </li>
+    </template>
+    
+    <!--    Bitlocker Unlock    -->
+    <template id="temp-bitlocker-unlock" class="flushfill dism usmt">
+        <li id="li-bitlocker-unlock" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Drive Letter and Recovery Key to unlock Bitlocker
+            </h3>
+            <div id="div-bitlocker-unlock" class="ui-widget-content">
+                <span>Drive Letter: &nbsp&nbsp </span>
+                <input id="input-bitlocker-drive" class="input-objects input-text" name="blDrive" type="Text" maxlength="1" size="1" value="">
+                <br>
+                <span>Key: &nbsp&nbsp </span>
+                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="243507-141900-247478-554840-227997-119537-018920-671396">
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()">
+                    <img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+            </div>
+        </li>
+    </template>
+
     <!--    OSD Options    -->
     <template id="temp-osd-options" class="osd">
         <li id="li-osd-options" class="li-steps">
@@ -177,7 +209,7 @@
 
     <!--    FnF Options    -->
     <template id="temp-fnf-options" class="flushfill">
-        <li id="li-fnf-options" class="li-steps">
+        <li id="li-fnf-options" class="li-steps li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
             <div id="div-fnf-options" class="ui-widget-content">
@@ -206,21 +238,9 @@
         </li>
     </template>
 
-    <!--    Bitlocker Info    -->
-    <template id="temp-bitlocker-info" class="flushfill dism usmt">
-        <li id="li-bitlocker-info" class="li-steps scanState">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
-            </h3>
-            <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()"><img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
-            </div>
-        </li>
-    </template>
-
     <!--    Windows Drive    -->
     <template id="temp-windows-drive" class="flushfill dism usmt">
-        <li id="li-windows-drive" class="li-steps scanState">
+        <li id="li-windows-drive" class="li-steps scanState li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the
                 Windows partition to be imaged
@@ -232,23 +252,9 @@
         </li>
     </template>
 
-    <!--    Bitlocker Unlock    -->
-    <template id="temp-bitlocker-unlock" class="flushfill dism usmt">
-        <li id="li-bitlocker-unlock" class="li-steps scanState">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Recovery Key to unlock
-                Bitlocker
-            </h3>
-            <div id="div-bitlocker-unlock" class="ui-widget-content">
-                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
-                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()"><img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
-            </div>
-        </li>
-    </template>
-
     <!--    Primary Username    -->
     <template id="temp-primary-username" class="flushfill dism usmt">
-        <li id="li-primary-username" class="li-steps">
+        <li id="li-primary-username" class="li-steps li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user
                 we are copying data for
@@ -262,7 +268,7 @@
 
     <!--    External Drive    -->
     <template id="temp-external-drive" class="flushfill dism usmt">
-        <li id="li-external-drive" class="li-steps">
+        <li id="li-external-drive" class="li-steps li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the
                 External USB drive where the image will be stored
@@ -276,7 +282,7 @@
 
     <!--    Select Users    -->
     <template id="temp-select-users" class="flushfill usmt">
-        <li id="li-select-users" class="li-steps scanState">
+        <li id="li-select-users" class="li-steps li-win-required scanState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will
                 be copied
@@ -287,7 +293,7 @@
 
     <!--    Software Install    -->
     <template id="temp-software-install" class="osd flushfill software">
-        <li id="li-software-install" class="li-steps">
+        <li id="li-software-install" class="li-steps li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
             </h3>

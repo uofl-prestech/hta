@@ -131,10 +131,10 @@ End Sub
 Sub BitlockerUnlock
 	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerUnlock *****")
 	Dim cmdShell, blOutput, drive, key
-	drive = document.getElementById("input-windows-drive").Value
+	drive = document.getElementById("input-bitlocker-drive").Value
 	key = document.getElementById("input-bitlocker-key").Value
 
-	htaLog.WriteLine(Now & " || document.getElementById(""input-windows-drive"").Value = " & drive)
+	htaLog.WriteLine(Now & " || document.getElementById(""input-bitlocker-drive"").Value = " & drive)
 	htaLog.WriteLine(Now & " || document.getElementById(""input-bitlocker-key"").Value = " & key)
 
 	Dim driveDiv:set driveDiv = document.getElementById("general-output")

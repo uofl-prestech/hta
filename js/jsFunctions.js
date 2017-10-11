@@ -68,10 +68,8 @@ $('#button-HideAll').on('click', function () {
 $('.button-nav').on('click', function () {
     var targetID = $(this).attr("id");      //Get the id of the button that was clicked
     var targetOperation = targetID.replace("button-", "");  //Strip away button-, leaving us with osd, flushfill, dism, usmt, software, or tools
-
-    //Check for a Windows directory. If none found, then return so we do not navigate to any pages that require a Windows directory to function
-    var windowsFound = verifyWindows();
-    if(windowsFound == false && !(targetID == "button-osd" || targetID == "button-tools")){return}
+    
+    //if (windowsFound == false && !(targetID == "button-osd" || targetID == "button-tools" || targetID == "button-home" || targetID == "button-exit")){return}
 
     //Prevent recreating the page if we are already on it. i.e. clicking dism button when we are already on dism page.
     var isSamePage = $("#ul-" + targetOperation).children().length; 
@@ -88,31 +86,11 @@ $('.button-nav').on('click', function () {
     templates.each(function () {
         template += $(this).html();
     });
-    switch (targetID){
-        case "button-osd":
-            //code block
-            break;
-        case "button-flushfill":
-            //code block
-            break;
-        case "button-dism":
-            //code block
-            break;
-        case "button-usmt":
-            //code block
-            break;
-        case "button-software":
-            //code block
-            break;
-        case "button-tools":
-            //code block
-            break;
-        default:
-            //code block
-    }
 
     //Insert the joined templates into the page we are nevigating to
     $("#ul-" + targetOperation).append(template);
+    //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
+    var winFoundAndEncrypted = isWindowsFoundIsEncrypted();
 
     initAccordion();
     $('.pages').css('display', 'none');
@@ -129,6 +107,7 @@ $(document).on('click', '.show-output', function () {
 });
 
 $('#button-home').on('click', function () {
+    jsListDrives();
     $('#page-landing').css('display', 'inline-block');
     $('#header-landing').css('display', 'inline');
 });
@@ -172,13 +151,13 @@ function initAccordion() {
         $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
         return false;
     }).next().hide();
-    $('ul .ui-widget-content').show('fast');
-    $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+    $('ul .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).show('fast');
+    $('ul .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 }
 
 function jsListDrives() {
     //Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
-    var drives = {};
+    var drives = {}, drivesSorted = {};
     try {
         drives = listDrives();
         delete drives["setProp"];   //Remove the setProp function from the object before looping through the drive letters
@@ -193,6 +172,7 @@ function jsListDrives() {
         len = keys.length;
 
         var landingPageDiv = $("#drive-list-output");
+        landingPageDiv.empty();
         for (var i = 0; i < len; i++) {
             k = keys[i];
             landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + drives[k]["Drive Letter"]);
@@ -200,13 +180,15 @@ function jsListDrives() {
             drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
             drives[k]["Encryption"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption"]) : "";
             landingPageDiv.append("<br><br>");
+            drivesSorted[k] = drives[k];
         }
     }
     catch (err) {
         document.getElementById("general-output").innerHTML = err.message;
     }
 
-    verifyWindows();
+    isWindowsFound();
+    return drivesSorted;
 }
 
 // ******************** Verification/Error Checking Functions ********************
@@ -442,6 +424,7 @@ function blUnlockClick() {
     var spinner = new Spinner(opts).spin(target);
     BitlockerUnlock();
     BitlockerInfo();
+    isWindowsFoundIsEncrypted();
     spinner.stop(target);
 }
 
@@ -491,7 +474,7 @@ function ReportFolderStatus(fldr) {
     var navButtons = $(".require-win-dir");
     try{
         fso = new ActiveXObject("Scripting.FileSystemObject");
-fldr = "blah";
+//fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
             navButtons.removeClass("win-not-found");
@@ -509,7 +492,7 @@ fldr = "blah";
         
 }
 
-function verifyWindows(){
+function isWindowsFound(){
     var determinedWindowsDrive = $("#windows-drive-letter").val();
     var winDirFound = ReportFolderStatus(determinedWindowsDrive + ":\\Windows");
     var winDeferred = $.Deferred();
@@ -519,6 +502,45 @@ function verifyWindows(){
     else{
         return true;
     }
+}
+
+function isEncrypted(){
+    var driveList = {}, k, encryptedDrives = [];
+    driveList = jsListDrives();
+    for (k in driveList) {
+        if (driveList[k]["Encryption"] == "Encrypted") {
+            encryptedDrives.push(k);
+        }
+    }
+
+    if(encryptedDrives.length > 0){
+        return true;
+    }
+    else return false;
+}
+
+function isWindowsFoundIsEncrypted(){
+    //Check for a Windows directory. Returns true or false
+    var windowsFound = isWindowsFound();
+    //Check for any encrypted drives. Returns true if any are found, false otherwise
+    var encryptedDriveFound = isEncrypted();
+    var results = [];
+
+    results.WinFound = windowsFound;
+    results.Encrypted = encryptedDriveFound;
+    alert(results["WinFound"] + " " + results["Encrypted"]);
+    if (results["WinFound"] == false && results["Encrypted"] == true) {
+        $(".li-win-required").addClass("li-win-not-found");
+        $(".li-win-required .ui-widget-content").addClass("content-win-not-found");
+        $(".li-win-required .ui-accordion-header").addClass("h3-win-not-found");
+    }
+    else{
+        $(".li-win-required").removeClass("li-win-not-found");
+        $(".li-win-required .ui-widget-content").removeClass("content-win-not-found");
+        $(".li-win-required .ui-accordion-header").removeClass("h3-win-not-found");
+    }
+    return results;
+
 }
 // $("#input-windows-drive, #input-primary-username").keyup(function () {
 //     usmtScanstate("false");

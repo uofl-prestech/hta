@@ -73,6 +73,16 @@ Function listDrives
     
     'Check drives for encryption if running as admin
     If admin = true Then
+
+        Dim arEncryptionMethod
+        arEncryptionMethod = Array("None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256")
+        Dim arProtectionStatus
+        arProtectionStatus = Array("Protection Off", "Protection On", "Protection Unknown")
+        Dim arConversionStatus
+        arConversionStatus = Array("Fully Decrypted", "Fully Encrypted", "Encryption In Progress", "Decryption In Progress", "Encryption Paused", "Decryption Paused")
+        Dim arLockStatus
+        arLockStatus = Array("Unlocked", "Locked")
+
         htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption"")")
         Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption")
 
@@ -81,17 +91,27 @@ Function listDrives
         Set drivesHashTable = CreateObject("scripting.dictionary")
 
         htaLog.WriteLine(Now & " || Win32_EncryptableVolume instance")
-        htaLog.WriteLine(Now & " || 0=Protection OFF, 1= Protection ON, 2=Protection Unknown")
+        htaLog.WriteLine(Now & " || 0=Protection OFF, 1= Protection ON, unlocked, 2=Protection ON, locked")
         For Each objItem in colItems 
+            Dim EncryptionMethod, ProtectionStatus, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID, LockStatus, driveInfo
+            objItem.GetEncryptionMethod EncryptionMethod
+            objItem.GetProtectionStatus ProtectionStatus
+            objItem.GetConversionStatus ConversionStatus, EncryptionPercentage
+            objItem.GetKeyProtectors 0, VolumeKeyProtectorID
+            objItem.GetLockStatus LockStatus
+            driveInfo = Array(ProtectionStatus, LockStatus, EncryptionMethod, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID)
+            
+            objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
             htaLog.Write(Now & " || Drive Letter: " & objItem.DriveLetter)
             htaLog.Write(" || ProtectionStatus: " & objItem.ProtectionStatus)
-            If(objItem.ProtectionStatus = 1) OR (objItem.ProtectionStatus = 2) Then
-                htaLog.Write(" || Encrypted" & vbCrLf)
-                drivesHashTable.Add objItem.DriveLetter, "Encrypted"
-            Else
-                htaLog.Write(" || Not Encrypted" & vbCrLf)
-                drivesHashTable.Add objItem.DriveLetter, "Not Encrypted"
-            End If
+            drivesHashTable.Add objItem.DriveLetter, driveInfo
+            ' If(objItem.ProtectionStatus = 1) OR (objItem.ProtectionStatus = 2) Then
+            '     htaLog.Write(" || Encrypted" & vbCrLf)
+            '     drivesHashTable.Add objItem.DriveLetter, lockStatus
+            ' Else
+            '     htaLog.Write(" || Not Encrypted" & vbCrLf)
+            '     drivesHashTable.Add objItem.DriveLetter, lockStatus
+            ' End If
         Next
     Else
         htaLog.WriteLine(Now & " || Skipping check for Encryption Status")
@@ -112,23 +132,17 @@ Function listDrives
                 document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
             End If
             
-            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Drive Letter: " & objItem.DriveLetter & " | "
             drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
-            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Label: " & objItem.Label & " | "
             drivesObj.setProp objItem.DriveLetter, "Label", objItem.Label
             htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
-            'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "Capacity: " & ConvertSize(objItem.Capacity)
             capacity = ConvertSize(objItem.Capacity)
             drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
             htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
             If admin = true Then
-                'landingPageDiv.innerHTML = landingPageDiv.innerHTML & " | " & drivesHashTable(objItem.DriveLetter) & "<br>"
-                    drivesObj.setProp objItem.DriveLetter, "Encryption", drivesHashTable(objItem.DriveLetter)
-                    'MsgBox "TEst"
-                htaLog.WriteLine("Encryption Status: " & drivesHashTable(objItem.DriveLetter))
+                drivesObj.setProp objItem.DriveLetter, "Encryption", drivesHashTable.Item(objItem.DriveLetter)
+                htaLog.WriteLine(" Encryption Status: " & drivesHashTable.Item(objItem.DriveLetter))
             Else
-                'landingPageDiv.innerHTML = landingPageDiv.innerHTML & "<br>"
                 htaLog.WriteLine("")
             End If
         End If
