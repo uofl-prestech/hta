@@ -1789,3 +1789,343 @@ Approximate round trip times in milli-seconds:
 10/9/2017 2:41:08 PM || Error: Must run as Administrator to check TPM status!
 10/9/2017 2:41:14 PM ***** Begin Sub TPMCheck *****
 10/9/2017 2:41:14 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 10:34:01 AM ======================
+10/11/2017 10:34:01 AM ***** Begin Sub listDrives *****
+10/11/2017 10:34:01 AM || Error. Must run as Administrator to check encryption status
+10/11/2017 10:34:01 AM || Skipping check for Encryption Status
+10/11/2017 10:34:01 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 10:34:01 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 10:34:01 AM || "Drive Letter: C | 10/11/2017 10:34:01 AM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 10:34:01 AM || "Drive Letter: D | 10/11/2017 10:34:01 AM || "Label:  | Capacity: 0 Bytes
+10/11/2017 10:34:01 AM || "Drive Letter: H | 10/11/2017 10:34:01 AM || "Label:  | Capacity: 0 Bytes
+10/11/2017 10:34:01 AM ***** End Sub listDrives *****
+10/11/2017 10:34:01 AM ***** Begin Sub TPMCheck *****
+10/11/2017 10:34:01 AM || Error: Must run as Administrator to check TPM status!
+10/11/2017 10:36:23 AM ***** Begin Sub ButtonExitClick *****
+10/11/2017 10:36:23 AM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 10/11/2017 10:36:33 AM ======================
+10/11/2017 10:36:33 AM ***** Begin Sub listDrives *****
+10/11/2017 10:36:33 AM || Error. Must run as Administrator to check encryption status
+10/11/2017 10:36:33 AM || Skipping check for Encryption Status
+10/11/2017 10:36:33 AM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 10:36:33 AM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 10:36:33 AM || "Drive Letter: C | 10/11/2017 10:36:33 AM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 10:36:33 AM || "Drive Letter: D | 10/11/2017 10:36:33 AM || "Label:  | Capacity: 0 Bytes
+10/11/2017 10:36:33 AM || "Drive Letter: H | 10/11/2017 10:36:33 AM || "Label:  | Capacity: 0 Bytes
+10/11/2017 10:36:33 AM ***** End Sub listDrives *****
+10/11/2017 10:36:33 AM ***** Begin Sub TPMCheck *****
+10/11/2017 10:36:33 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 12:41:41 PM ======================
+10/11/2017 12:41:41 PM ***** Begin Sub listDrives *****
+10/11/2017 12:41:41 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 12:41:41 PM || Skipping check for Encryption Status
+10/11/2017 12:41:41 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 12:41:41 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 12:41:41 PM || "Drive Letter: C | 10/11/2017 12:41:41 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 12:41:41 PM || "Drive Letter: D | 10/11/2017 12:41:41 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 12:41:41 PM || "Drive Letter: H | 10/11/2017 12:41:41 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 12:41:41 PM ***** End Sub listDrives *****
+10/11/2017 12:41:41 PM ***** Begin Sub TPMCheck *****
+10/11/2017 12:41:41 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:03:11 PM ======================
+10/11/2017 1:03:11 PM ***** Begin Sub listDrives *****
+10/11/2017 1:03:11 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:03:11 PM || Skipping check for Encryption Status
+10/11/2017 1:03:11 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:03:11 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:03:11 PM || "Drive Letter: C | 10/11/2017 1:03:11 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:03:11 PM || "Drive Letter: D | 10/11/2017 1:03:11 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:03:11 PM || "Drive Letter: H | 10/11/2017 1:03:11 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:03:11 PM ***** End Sub listDrives *****
+10/11/2017 1:03:11 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:03:11 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:06:27 PM ======================
+10/11/2017 1:06:27 PM ***** Begin Sub listDrives *****
+10/11/2017 1:06:27 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:06:27 PM || Skipping check for Encryption Status
+10/11/2017 1:06:27 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:06:27 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:06:27 PM || "Drive Letter: C | 10/11/2017 1:06:27 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:06:27 PM || "Drive Letter: D | 10/11/2017 1:06:27 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:06:27 PM || "Drive Letter: H | 10/11/2017 1:06:27 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:06:27 PM ***** End Sub listDrives *****
+10/11/2017 1:06:27 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:06:27 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:07:36 PM ======================
+10/11/2017 1:07:36 PM ***** Begin Sub listDrives *****
+10/11/2017 1:07:36 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:07:36 PM || Skipping check for Encryption Status
+10/11/2017 1:07:36 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:07:36 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:07:36 PM || "Drive Letter: C | 10/11/2017 1:07:36 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:07:36 PM || "Drive Letter: D | 10/11/2017 1:07:36 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:07:36 PM || "Drive Letter: H | 10/11/2017 1:07:36 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:07:36 PM ***** End Sub listDrives *****
+10/11/2017 1:07:36 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:07:36 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:09:20 PM ======================
+10/11/2017 1:09:20 PM ***** Begin Sub listDrives *****
+10/11/2017 1:09:20 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:09:20 PM || Skipping check for Encryption Status
+10/11/2017 1:09:20 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:09:20 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:09:20 PM || "Drive Letter: C | 10/11/2017 1:09:20 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:09:20 PM || "Drive Letter: D | 10/11/2017 1:09:20 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:20 PM || "Drive Letter: H | 10/11/2017 1:09:20 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:20 PM ***** End Sub listDrives *****
+10/11/2017 1:09:20 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:09:20 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:09:28 PM ======================
+10/11/2017 1:09:28 PM ***** Begin Sub listDrives *****
+10/11/2017 1:09:28 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:09:28 PM || Skipping check for Encryption Status
+10/11/2017 1:09:28 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:09:28 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:09:28 PM || "Drive Letter: C | 10/11/2017 1:09:28 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:09:28 PM || "Drive Letter: D | 10/11/2017 1:09:28 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:28 PM || "Drive Letter: H | 10/11/2017 1:09:28 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:28 PM ***** End Sub listDrives *****
+10/11/2017 1:09:28 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:09:28 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:09:41 PM ======================
+10/11/2017 1:09:41 PM ***** Begin Sub listDrives *****
+10/11/2017 1:09:41 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:09:41 PM || Skipping check for Encryption Status
+10/11/2017 1:09:41 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:09:41 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:09:41 PM || "Drive Letter: C | 10/11/2017 1:09:41 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:09:41 PM || "Drive Letter: D | 10/11/2017 1:09:41 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:41 PM || "Drive Letter: H | 10/11/2017 1:09:41 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:41 PM ***** End Sub listDrives *****
+10/11/2017 1:09:41 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:09:41 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:09:55 PM ======================
+10/11/2017 1:09:55 PM ***** Begin Sub listDrives *****
+10/11/2017 1:09:55 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:09:55 PM || Skipping check for Encryption Status
+10/11/2017 1:09:55 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:09:55 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:09:55 PM || "Drive Letter: C | 10/11/2017 1:09:55 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:09:55 PM || "Drive Letter: D | 10/11/2017 1:09:55 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:55 PM || "Drive Letter: H | 10/11/2017 1:09:55 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:09:55 PM ***** End Sub listDrives *****
+10/11/2017 1:09:55 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:09:55 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:10:51 PM ======================
+10/11/2017 1:10:51 PM ***** Begin Sub listDrives *****
+10/11/2017 1:10:51 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:10:51 PM || Skipping check for Encryption Status
+10/11/2017 1:10:51 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:10:51 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:10:51 PM || "Drive Letter: C | 10/11/2017 1:10:51 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:10:51 PM || "Drive Letter: D | 10/11/2017 1:10:51 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:10:51 PM || "Drive Letter: H | 10/11/2017 1:10:51 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:10:51 PM ***** End Sub listDrives *****
+10/11/2017 1:10:51 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:10:51 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:11:09 PM ======================
+10/11/2017 1:11:09 PM ***** Begin Sub listDrives *****
+10/11/2017 1:11:09 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:11:09 PM || Skipping check for Encryption Status
+10/11/2017 1:11:09 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:11:09 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:11:09 PM || "Drive Letter: C | 10/11/2017 1:11:09 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:11:09 PM || "Drive Letter: D | 10/11/2017 1:11:09 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:11:09 PM || "Drive Letter: H | 10/11/2017 1:11:09 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:11:09 PM ***** End Sub listDrives *****
+10/11/2017 1:11:09 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:11:09 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:11:28 PM ======================
+10/11/2017 1:11:28 PM ***** Begin Sub listDrives *****
+10/11/2017 1:11:28 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:11:28 PM || Skipping check for Encryption Status
+10/11/2017 1:11:28 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:11:28 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:11:28 PM || "Drive Letter: C | 10/11/2017 1:11:28 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:11:28 PM || "Drive Letter: D | 10/11/2017 1:11:28 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:11:28 PM || "Drive Letter: H | 10/11/2017 1:11:28 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:11:28 PM ***** End Sub listDrives *****
+10/11/2017 1:11:28 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:11:28 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:11:41 PM ======================
+10/11/2017 1:11:41 PM ***** Begin Sub listDrives *****
+10/11/2017 1:11:41 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:11:41 PM || Skipping check for Encryption Status
+10/11/2017 1:11:41 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:11:41 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:11:41 PM || "Drive Letter: C | 10/11/2017 1:11:41 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:11:41 PM || "Drive Letter: D | 10/11/2017 1:11:41 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:11:41 PM || "Drive Letter: H | 10/11/2017 1:11:41 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:11:41 PM ***** End Sub listDrives *****
+10/11/2017 1:11:41 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:11:41 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:12:06 PM ======================
+10/11/2017 1:12:06 PM ***** Begin Sub listDrives *****
+10/11/2017 1:12:06 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:12:06 PM || Skipping check for Encryption Status
+10/11/2017 1:12:06 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:12:06 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:12:06 PM || "Drive Letter: C | 10/11/2017 1:12:06 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:12:06 PM || "Drive Letter: D | 10/11/2017 1:12:06 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:12:06 PM || "Drive Letter: H | 10/11/2017 1:12:06 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:12:06 PM ***** End Sub listDrives *****
+10/11/2017 1:12:06 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:12:06 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:14:05 PM ======================
+10/11/2017 1:14:05 PM ***** Begin Sub listDrives *****
+10/11/2017 1:14:05 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:14:05 PM || Skipping check for Encryption Status
+10/11/2017 1:14:05 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:14:05 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:14:05 PM || "Drive Letter: C | 10/11/2017 1:14:05 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:14:05 PM || "Drive Letter: D | 10/11/2017 1:14:05 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:14:05 PM || "Drive Letter: H | 10/11/2017 1:14:05 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:14:05 PM ***** End Sub listDrives *****
+10/11/2017 1:14:05 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:14:05 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:14:28 PM ======================
+10/11/2017 1:14:28 PM ***** Begin Sub listDrives *****
+10/11/2017 1:14:28 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:14:28 PM || Skipping check for Encryption Status
+10/11/2017 1:14:28 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:14:28 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:14:28 PM || "Drive Letter: C | 10/11/2017 1:14:28 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:14:28 PM || "Drive Letter: D | 10/11/2017 1:14:28 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:14:28 PM || "Drive Letter: H | 10/11/2017 1:14:28 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:14:28 PM ***** End Sub listDrives *****
+10/11/2017 1:14:28 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:14:28 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:14:44 PM ======================
+10/11/2017 1:14:44 PM ***** Begin Sub listDrives *****
+10/11/2017 1:14:44 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:14:44 PM || Skipping check for Encryption Status
+10/11/2017 1:14:44 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:14:44 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:14:44 PM || "Drive Letter: C | 10/11/2017 1:14:44 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:14:44 PM || "Drive Letter: D | 10/11/2017 1:14:44 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:14:44 PM || "Drive Letter: H | 10/11/2017 1:14:44 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:14:44 PM ***** End Sub listDrives *****
+10/11/2017 1:14:44 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:14:44 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:15:05 PM ======================
+10/11/2017 1:15:05 PM ***** Begin Sub listDrives *****
+10/11/2017 1:15:05 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:15:05 PM || Skipping check for Encryption Status
+10/11/2017 1:15:05 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:15:05 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:15:05 PM || "Drive Letter: C | 10/11/2017 1:15:05 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:15:05 PM || "Drive Letter: D | 10/11/2017 1:15:05 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:15:05 PM || "Drive Letter: H | 10/11/2017 1:15:05 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:15:05 PM ***** End Sub listDrives *****
+10/11/2017 1:15:05 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:15:05 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:15:37 PM ======================
+10/11/2017 1:15:37 PM ***** Begin Sub listDrives *****
+10/11/2017 1:15:37 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:15:37 PM || Skipping check for Encryption Status
+10/11/2017 1:15:37 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:15:37 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:15:37 PM || "Drive Letter: C | 10/11/2017 1:15:37 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:15:37 PM || "Drive Letter: D | 10/11/2017 1:15:37 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:15:37 PM || "Drive Letter: H | 10/11/2017 1:15:37 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:15:37 PM ***** End Sub listDrives *****
+10/11/2017 1:15:37 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:15:37 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:19:34 PM ======================
+10/11/2017 1:19:34 PM ***** Begin Sub listDrives *****
+10/11/2017 1:19:34 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:19:34 PM || Skipping check for Encryption Status
+10/11/2017 1:19:34 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:19:34 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:19:34 PM || "Drive Letter: C | 10/11/2017 1:19:34 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:19:34 PM || "Drive Letter: D | 10/11/2017 1:19:34 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:19:34 PM || "Drive Letter: H | 10/11/2017 1:19:34 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:19:34 PM ***** End Sub listDrives *****
+10/11/2017 1:19:34 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:19:34 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:21:56 PM ======================
+10/11/2017 1:21:56 PM ***** Begin Sub listDrives *****
+10/11/2017 1:21:56 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:21:56 PM || Skipping check for Encryption Status
+10/11/2017 1:21:56 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:21:56 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:21:56 PM || "Drive Letter: C | 10/11/2017 1:21:56 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:21:56 PM || "Drive Letter: D | 10/11/2017 1:21:56 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:21:56 PM || "Drive Letter: H | 10/11/2017 1:21:56 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:21:56 PM ***** End Sub listDrives *****
+10/11/2017 1:21:56 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:21:56 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 1:23:27 PM ======================
+10/11/2017 1:23:27 PM ***** Begin Sub listDrives *****
+10/11/2017 1:23:27 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 1:23:27 PM || Skipping check for Encryption Status
+10/11/2017 1:23:27 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 1:23:27 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 1:23:27 PM || "Drive Letter: C | 10/11/2017 1:23:27 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 1:23:27 PM || "Drive Letter: D | 10/11/2017 1:23:27 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:23:27 PM || "Drive Letter: H | 10/11/2017 1:23:27 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 1:23:27 PM ***** End Sub listDrives *****
+10/11/2017 1:23:27 PM ***** Begin Sub TPMCheck *****
+10/11/2017 1:23:27 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 2:20:21 PM ======================
+10/11/2017 2:20:21 PM ***** Begin Sub listDrives *****
+10/11/2017 2:20:21 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 2:20:21 PM || Skipping check for Encryption Status
+10/11/2017 2:20:21 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 2:20:21 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 2:20:21 PM || "Drive Letter: C | 10/11/2017 2:20:21 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 2:20:21 PM || "Drive Letter: D | 10/11/2017 2:20:21 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 2:20:21 PM || "Drive Letter: H | 10/11/2017 2:20:21 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 2:20:21 PM ***** End Sub listDrives *****
+10/11/2017 2:20:21 PM ***** Begin Sub TPMCheck *****
+10/11/2017 2:20:21 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 2:21:04 PM ======================
+10/11/2017 2:21:04 PM ***** Begin Sub listDrives *****
+10/11/2017 2:21:04 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 2:21:04 PM || Skipping check for Encryption Status
+10/11/2017 2:21:04 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 2:21:04 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 2:21:04 PM || "Drive Letter: C | 10/11/2017 2:21:04 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 2:21:04 PM || "Drive Letter: D | 10/11/2017 2:21:04 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 2:21:04 PM || "Drive Letter: H | 10/11/2017 2:21:04 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 2:21:04 PM ***** End Sub listDrives *****
+10/11/2017 2:21:04 PM ***** Begin Sub TPMCheck *****
+10/11/2017 2:21:04 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/11/2017 2:21:14 PM ======================
+10/11/2017 2:21:14 PM ***** Begin Sub listDrives *****
+10/11/2017 2:21:14 PM || Error. Must run as Administrator to check encryption status
+10/11/2017 2:21:14 PM || Skipping check for Encryption Status
+10/11/2017 2:21:14 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/11/2017 2:21:14 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/11/2017 2:21:14 PM || "Drive Letter: C | 10/11/2017 2:21:14 PM || "Label: Windows | Capacity: 237.7 GB
+10/11/2017 2:21:14 PM || "Drive Letter: D | 10/11/2017 2:21:14 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 2:21:14 PM || "Drive Letter: H | 10/11/2017 2:21:14 PM || "Label:  | Capacity: 0 Bytes
+10/11/2017 2:21:14 PM ***** End Sub listDrives *****
+10/11/2017 2:21:14 PM ***** Begin Sub TPMCheck *****
+10/11/2017 2:21:14 PM || Error: Must run as Administrator to check TPM status!
