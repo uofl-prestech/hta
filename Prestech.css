@@ -283,7 +283,7 @@ p {
     text-align: center;
 }
 .driveLetterSpan{
-    color: yellow;
+    color: rgba(98, 171, 146, 1);
 }
 .h3-win-not-found{
     background-color: rgba(75, 58, 58, 0.6);
@@ -295,12 +295,15 @@ p {
     width: 75px;
     vertical-align: middle;
 }
-.icon-only, .icon-tools {
+.icon-only, .icon-tools, .icon-home-exit {
     display: inline-block;
-    /* border-radius: 25px; */
     vertical-align: middle;
 }
 .icon-only {
+    height: 25px;
+    width: 25px;
+}
+.icon-home-exit {
     height: 45px;
     width: 45px;
 }
@@ -347,7 +350,7 @@ p {
     overflow: auto;
 }
 .tpm-error {
-    color: #DBC12E;
+    color: rgb(219, 193, 46);
     font-style: bold;
 }
 .ui-dialog{
@@ -357,8 +360,10 @@ p {
     display: none;
 }
 .win-not-found{
-    background-color: rgba(139,0,0,0.6);
+    background-color: rgba(100, 100, 100, 0.75);
+    color: #6E6E6E;
 }
 .win-not-found:hover{
-    background-color: rgba(139,0,0,0.8) !important;
+    background-color: rgba(100, 100, 100, 0.90)!important;
+    color: #808080;
 }
