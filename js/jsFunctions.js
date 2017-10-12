@@ -478,7 +478,7 @@ function ReportFolderStatus(fldr) {
     var navButtons = $(".require-win-dir");
     try{
         fso = new ActiveXObject("Scripting.FileSystemObject");
-//fldr = "blah";
+fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
             navButtons.removeClass("win-not-found");
