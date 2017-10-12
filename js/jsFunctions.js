@@ -521,7 +521,7 @@ function ReportFolderStatus(fldr) {
     var fso;
     try{
         fso = new ActiveXObject("Scripting.FileSystemObject");
-//fldr = "blah";
+fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
             return true;
