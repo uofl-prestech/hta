@@ -157,10 +157,12 @@ function initAccordion() {
 
 function jsListDrives() {
     //Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
+    //drives should contain: Drive Letter, Protection Status, Encryption Method, Lock Status, Key Type, Key ID, Label, Capacity 
     var drives = {}, drivesSorted = {};
     try {
         drives = listDrives();
         delete drives["setProp"];   //Remove the setProp function from the object before looping through the drive letters
+        
         var keys = [], k, len;
 
         for (k in drives) {
@@ -170,15 +172,17 @@ function jsListDrives() {
         }
         keys.sort();
         len = keys.length;
-
+        //alert(JSON.stringify(drives));
         var landingPageDiv = $("#drive-list-output");
         landingPageDiv.empty();
         for (var i = 0; i < len; i++) {
             k = keys[i];
-            landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + drives[k]["Drive Letter"]);
+            landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + k);
+            drives[k]["Lock Status"] == "Locked" ? landingPageDiv.append(" <span class=\"driveLocked\">(" + drives[k]["Lock Status"] + ")</span> ") : "";
             drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
             drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
-            drives[k]["Encryption"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption"]) : "";
+            drives[k]["Encryption Method"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption Method"]) : "";
+            drives[k]["Key ID"] ? landingPageDiv.append("<br>Key ID: " + drives[k]["Key ID"]) : "";
             landingPageDiv.append("<br><br>");
             drivesSorted[k] = drives[k];
         }
@@ -528,7 +532,7 @@ function isWindowsFoundIsEncrypted(){
 
     results.WinFound = windowsFound;
     results.Encrypted = encryptedDriveFound;
-    alert(results["WinFound"] + " " + results["Encrypted"]);
+
     if (results["WinFound"] == false && results["Encrypted"] == true) {
         $(".li-win-required").addClass("li-win-not-found");
         $(".li-win-required .ui-widget-content").addClass("content-win-not-found");

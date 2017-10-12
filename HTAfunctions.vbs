@@ -82,6 +82,9 @@ Function listDrives
         arConversionStatus = Array("Fully Decrypted", "Fully Encrypted", "Encryption In Progress", "Decryption In Progress", "Encryption Paused", "Decryption Paused")
         Dim arLockStatus
         arLockStatus = Array("Unlocked", "Locked")
+        Dim arKeyType
+        arKeyType = Array("Unknown or other protector type", "Trusted Platform Module (TPM)", "External key", "Numerical password", "TPM And PIN", "TPM And Startup Key",_
+         "TPM And PIN And Startup Key", "Public Key", "Passphrase", "TPM Certificate", "CryptoAPI Next Generation (CNG) Protector")
 
         htaLog.WriteLine(Now & " || Executing command: GetObject(""winmgmts:{impersonationLevel=impersonate}!\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption"")")
         Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\CIMV2\Security\MicrosoftVolumeEncryption")
@@ -93,25 +96,45 @@ Function listDrives
         htaLog.WriteLine(Now & " || Win32_EncryptableVolume instance")
         htaLog.WriteLine(Now & " || 0=Protection OFF, 1= Protection ON, unlocked, 2=Protection ON, locked")
         For Each objItem in colItems 
-            Dim EncryptionMethod, ProtectionStatus, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID, LockStatus, driveInfo
-            objItem.GetEncryptionMethod EncryptionMethod
-            objItem.GetProtectionStatus ProtectionStatus
-            objItem.GetConversionStatus ConversionStatus, EncryptionPercentage
-            objItem.GetKeyProtectors 0, VolumeKeyProtectorID
-            objItem.GetLockStatus LockStatus
-            driveInfo = Array(ProtectionStatus, LockStatus, EncryptionMethod, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID)
-            
-            objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
-            htaLog.Write(Now & " || Drive Letter: " & objItem.DriveLetter)
-            htaLog.Write(" || ProtectionStatus: " & objItem.ProtectionStatus)
-            drivesHashTable.Add objItem.DriveLetter, driveInfo
-            ' If(objItem.ProtectionStatus = 1) OR (objItem.ProtectionStatus = 2) Then
-            '     htaLog.Write(" || Encrypted" & vbCrLf)
-            '     drivesHashTable.Add objItem.DriveLetter, lockStatus
-            ' Else
-            '     htaLog.Write(" || Not Encrypted" & vbCrLf)
-            '     drivesHashTable.Add objItem.DriveLetter, lockStatus
-            ' End If
+            If objItem.DriveLetter Then
+            On Error Resume Next
+                Dim EncryptionMethod, ProtectionStatus, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID, LockStatus, KeyType, driveInfo
+                objItem.GetEncryptionMethod EncryptionMethod
+                objItem.GetProtectionStatus ProtectionStatus
+                objItem.GetConversionStatus ConversionStatus, EncryptionPercentage
+                objItem.GetKeyProtectors 0, VolumeKeyProtectorID
+
+                objItem.GetLockStatus LockStatus
+                driveInfo = Array(ProtectionStatus, LockStatus, EncryptionMethod, ConversionStatus, EncryptionPercentage)
+                'driveInfo = Array("ProtectionStatus", "LockStatus", "EncryptionMethod")
+                objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
+                htaLog.Write(Now & " || Drive Letter: " & objItem.DriveLetter)
+                htaLog.WriteLine(" || ProtectionStatus: " & objItem.ProtectionStatus)
+                drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
+                drivesHashTable.Add objItem.DriveLetter, driveInfo
+
+                'msgbox Join(drivesHashTable.Item(objItem.DriveLetter), ",")
+                drivesObj.setProp objItem.DriveLetter, "Protection Status", arProtectionStatus(ProtectionStatus)
+                drivesObj.setProp objItem.DriveLetter, "Encryption Method", arEncryptionMethod(EncryptionMethod)
+                drivesObj.setProp objItem.DriveLetter, "Lock Status", arLockStatus(LockStatus)
+
+                'Find Key Protector and Key ID
+                For Each objId in VolumeKeyProtectorID
+                    Dim VolumeKeyProtectorType
+                    objItem.GetKeyProtectorType objId, VolumeKeyProtectorType
+                    If VolumeKeyProtectorType <> "" Then
+                        drivesObj.setProp objItem.DriveLetter, "Key Type", arKeyType(KeyType)
+                        drivesObj.setProp objItem.DriveLetter, "Key ID", objId
+                    End If
+                Next
+                ' If(objItem.ProtectionStatus = 1) OR (objItem.ProtectionStatus = 2) Then
+                '     htaLog.Write(" || Encrypted" & vbCrLf)
+                '     drivesHashTable.Add objItem.DriveLetter, lockStatus
+                ' Else
+                '     htaLog.Write(" || Not Encrypted" & vbCrLf)
+                '     drivesHashTable.Add objItem.DriveLetter, lockStatus
+                ' End If
+            End If
         Next
     Else
         htaLog.WriteLine(Now & " || Skipping check for Encryption Status")
@@ -128,11 +151,19 @@ Function listDrives
 	For Each objItem In colItems
         If objItem.DriveLetter Then
             objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
-            If objItem.Label = "Windows" Then
+            Dim fso, checkForWindows
+            checkForWindows = objItem.DriveLetter & ":\Windows"
+            Set fso = CreateObject("Scripting.FileSystemObject")
+            If(fso.FolderExists(checkForWindows)) Then
+                htaLog.WriteLine(Now & " || Windows Drive found at: " & checkForWindows)
                 document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
+                objItem.Label = "Windows Drive!"
             End If
+            ' If objItem.Label = "Windows" Then
+            '     document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
+            ' End If
             
-            drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
+            'drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
             drivesObj.setProp objItem.DriveLetter, "Label", objItem.Label
             htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
@@ -140,8 +171,10 @@ Function listDrives
             drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
             htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
             If admin = true Then
-                drivesObj.setProp objItem.DriveLetter, "Encryption", drivesHashTable.Item(objItem.DriveLetter)
+            'MsgBox Join(drivesHashTable.Item(objItem.DriveLetter), ",")
                 htaLog.WriteLine(" Encryption Status: " & drivesHashTable.Item(objItem.DriveLetter))
+                drivesObj.setProp objItem.DriveLetter, "Encryption", drivesHashTable.Item(objItem.DriveLetter)
+                
             Else
                 htaLog.WriteLine("")
             End If
