@@ -193,6 +193,12 @@ p {
 }
 
 /*CLASS STYLES*/
+.active-page{
+    display: inline-block !important;
+}
+.active-header{
+    display: inline !important;
+}
 .small-button {
     padding: 4px 6px;
     margin: 5px;
@@ -292,6 +298,9 @@ p {
     background-color: rgba(75, 58, 58, 0.6);
     color: grey;
 }
+.header-text{
+    display: none;
+}
 .icon {
     display: inline-block;
     height: 75px;
@@ -343,7 +352,7 @@ p {
 } */
 .pages {
     position: relative;
-    display:inline-block;
+    display: none;
     vertical-align: top;
     margin-top: 5px;
     margin-right: 5px;

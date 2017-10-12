@@ -34,7 +34,7 @@
     </script>
     <link rel="stylesheet" href="Prestech.css">
     <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="yes" scroll="no"
-        windowstate="normal"></hta:application>
+        windowstate="maximize"></hta:application>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
         <div id="main" class="on-load">
             <div class="navigation-bar">
                 <ul>
-                    <li id="button-osd" class="button-nav show-output">
+                    <li id="button-osd" class="button-nav">
                         <img src="images/osd final.png" class="icon">
                         <span>OSD</span>
                     </li>
@@ -72,14 +72,14 @@
                     </li>
                 </ul>
                 <div>
-                    <button id="button-home" class="button-exithome button-nav">
+                    <button id="button-landing" class="button-exithome button-nav">
                         <div class="button-background">
-                            <img src="images/homeicon45.svg" class="icon-only">
+                            <img src="images/homeicon45.svg" class="icon-home-exit">
                         </div>
                     </button>
-                    <button id="button-exit" class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()">
+                    <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()">
                         <div class="button-background">
-                            <img src="images/exit1.svg" class="icon-only">
+                            <img src="images/exit1.svg" class="icon-home-exit">
                         </div>
                     </button>
                 </div>
@@ -93,7 +93,7 @@
                     <button class="small-button" id="button-HideAll">
                         <img src="images/collapse.png" class="icon-only">
                     </button>
-                    <h4 id="header-landing" class="header-text">OOP Task Sequence Selections</h4>
+                    <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
                     <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
                     <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
                     <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
@@ -105,16 +105,8 @@
                     <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
                 </div>
                 <!--Landing Page-->
-                <div id="page-landing" class="pages">
+                <div id="page-landing" class="pages active-page">
                     <ul id="ul-landing" class="accordion ui-accordion ul-elements"></ul>
-                    <li id="li-drive-list" class="li-steps"></li>
-                    <h3 class="accordion ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                        <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>List Drives</h3>
-                    <div id="drive-list-output" class="ui-widget-content"></div>
-                    <li id="li-tpm-check" class="li-steps"></li>
-                    <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                        <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
-                    <div id="tpm-check-output" class="ui-widget-content"></div>
                 </div>
 
                 <!--OSD Page-->
@@ -172,7 +164,7 @@
                     </div>
                 </div>
                 <div id="general-output-scroll">
-                    <div id="general-output">.general-output</div>
+                    <div id="general-output"></div>
                 </div>
                 <!--    End content    -->
             </div>
@@ -183,6 +175,20 @@
 
     <!-- Dialog Box -->
     <div id="dialog" title="Warning">I'm a dialog</div>
+
+    <!--    Landing Page    -->
+    <template id="temp-landing-page" class="landing">
+        <li id="li-drive-list" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>List Drives</h3>
+            <div id="drive-list-output" class="ui-widget-content"></div>
+        </li>
+        <li id="li-tpm-check" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
+            <div id="tpm-check-output" class="ui-widget-content"></div>
+        </li>
+    </template>
 
     <!--    Bitlocker Info    -->
     <template id="temp-bitlocker-info" class="flushfill dism usmt">
@@ -208,7 +214,7 @@
                 <input id="input-bitlocker-drive" class="input-objects input-text" name="blDrive" type="Text" maxlength="1" size="1" value="">
                 <br>
                 <span>Key: &nbsp&nbsp </span>
-                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
+                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="243507-141900-247478-554840-227997-119537-018920-671396">
                 <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()">
                     <img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
             </div>

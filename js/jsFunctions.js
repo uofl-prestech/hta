@@ -1,20 +1,10 @@
+/* Globals */
+var winFoundAndEncrypted = [];
+
 /************************************ JavaScript functions ************************************/
 $(document).ready(function () {
-    $('.pages').css('display', 'none');
-    $('.header-text').css('display', 'none');
-    $('#page-landing').css('display', 'inline-block');
-    $('#header-landing').css('display', 'inline');
+    loadPage("landing");
     $('#general-output-scroll').css('visibility', 'hidden');
-
-    //Find and list drives attached to this machine
-    jsListDrives();
-    try {
-        //Check for a TPM chip
-        TPMCheck();
-    }
-    catch (err) {
-        $('#page-landing').append(err.message);
-    }
 
     //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
@@ -65,14 +55,41 @@ $('#button-HideAll').on('click', function () {
     $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
 });
 
-$('.button-nav').on('click', function () {
+$('.button-nav').on('click', function (event) {
     var targetID = $(this).attr("id");      //Get the id of the button that was clicked
     var targetOperation = targetID.replace("button-", "");  //Strip away button-, leaving us with osd, flushfill, dism, usmt, software, or tools
-    
-    //if (windowsFound == false && !(targetID == "button-osd" || targetID == "button-tools" || targetID == "button-home" || targetID == "button-exit")){return}
+    loadPage(targetOperation, event);
+});
+
+$(document).on('click', '.show-output', function () {
+    $("#general-output-scroll").css('visibility', 'visible');
+});
+
+$('.button-exithome').hover(
+    function () {
+        $(this).children().addClass("button-background-hover");
+    }, function () {
+        $(this).children().removeClass("button-background-hover");
+    }
+);
+
+function loadPage(targetOperation, event){
+    //Rerun listDrives function if returning to landing page
+    if (targetOperation == "landing") {
+        //Find and list drives attached to this machine
+        //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
+        isWindowsFoundIsEncrypted();
+        try {
+            //Check for a TPM chip
+            TPMCheck();
+        }
+        catch (err) {
+            $('#page-landing').append(err.message);
+        }
+    }
 
     //Prevent recreating the page if we are already on it. i.e. clicking dism button when we are already on dism page.
-    var isSamePage = $("#ul-" + targetOperation).children().length; 
+    var isSamePage = $("#ul-" + targetOperation).children().length;
     if (isSamePage == 0) {
         //If navigating to a new page, clear out the list elements so we can reuse list items on the new page.
         $(".ul-elements").empty();
@@ -81,43 +98,29 @@ $('.button-nav').on('click', function () {
 
     //Grab the appropriate templates for the page we are navigating to and join them together in a variable named "template"
     var templates = $("." + targetOperation);
-    var template = "";
+    if (templates.length > 0) {
+        var template = "";
 
-    templates.each(function () {
-        template += $(this).html();
-    });
+        templates.each(function () {
+            template += $(this).html();
+        });
 
-    //Insert the joined templates into the page we are nevigating to
-    $("#ul-" + targetOperation).append(template);
-    //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
-    var winFoundAndEncrypted = isWindowsFoundIsEncrypted();
+        //Insert the joined templates into the page we are nevigating to
+        $("#ul-" + targetOperation).append(template);
+    }
 
     initAccordion();
-    $('.pages').css('display', 'none');
-    $('.header-text').css('display', 'none');
-    $('.button-nav').removeClass('active');
-    $(this).addClass('active');
-    $('#page-' + targetOperation).css('display', 'inline-block');
-    $('#header-' + targetOperation).css('display', 'inline');
+    $('.pages').removeClass("active-page");
+    $('.header-text').removeClass("active-header");
+    $('.button-nav').removeClass("active");
+    try{$(event.currentTarget).addClass("active");}
+    catch(e){}
+    $('#page-' + targetOperation).addClass("active-page");
+    $('#header-' + targetOperation).addClass("active-header");
     $("#general-output-scroll").css('visibility', 'hidden');
-});
 
-$(document).on('click', '.show-output', function () {
-    $("#general-output-scroll").css('visibility', 'visible');
-});
-
-$('#button-home').on('click', function () {
-    jsListDrives();
-    $('#page-landing').css('display', 'inline-block');
-    $('#header-landing').css('display', 'inline');
-});
-$('.button-exithome').hover(
-    function () {
-        $(this).children().addClass("button-background-hover");
-    }, function () {
-        $(this).children().removeClass("button-background-hover");
-    }
-);
+    dimElements();
+}
 
 // ******************** Misc functions ********************
 function getInputValues() {
@@ -172,9 +175,10 @@ function jsListDrives() {
         }
         keys.sort();
         len = keys.length;
-        //alert(JSON.stringify(drives));
+
         var landingPageDiv = $("#drive-list-output");
         landingPageDiv.empty();
+        var arKeyType = ["Unknown or other protector type", "Trusted Platform Module (TPM)", "External key", "Numerical password", "TPM And PIN", "TPM And Startup Key", "TPM And PIN And Startup Key", "Public Key", "Passphrase", "TPM Certificate", "CryptoAPI Next Generation (CNG) Protector"];
         for (var i = 0; i < len; i++) {
             k = keys[i];
             landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + k);
@@ -182,16 +186,18 @@ function jsListDrives() {
             drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
             drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
             drives[k]["Encryption Method"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption Method"]) : "";
-            drives[k]["Key ID"] ? landingPageDiv.append("<br>Key ID: " + drives[k]["Key ID"]) : "";
+            arKeyType.forEach(function(element){
+                drives[k][element] && element == "Numerical password" ? landingPageDiv.append("<br>Recovery Key ID: " + drives[k][element]) : "";
+            });
+
             landingPageDiv.append("<br><br>");
             drivesSorted[k] = drives[k];
         }
     }
     catch (err) {
-        document.getElementById("general-output").innerHTML = err.message;
+        $('#page-landing').append(err.message);
     }
 
-    isWindowsFound();
     return drivesSorted;
 }
 
@@ -293,9 +299,13 @@ function launchFNF() {
     }
     var capturedVarsString = JSON.stringify(capturedVars);
 
-    var tpmDeferred = $.Deferred();
-    var osdDeferred = $.Deferred();
-    var cnDeferred = $.Deferred();
+    var tpmDeferred = $.Deferred();     //TPM checkbox
+    var osdDeferred = $.Deferred();     //OSD checkbox
+    var cnDeferred = $.Deferred();      //Computer Name field
+    var wdDeferred = $.Deferred();      //Windows Drive field
+    var puDeferred = $.Deferred();      //Primary Username field
+    var edDeferred = $.Deferred();      //External Drive field
+    var usmtDeferred = $.Deferred();      //USMT usernames select
 
     //Check if TPM is enabled (TPM checkbox checked)
     //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
@@ -307,10 +317,10 @@ function launchFNF() {
     tpmDeferred.done(function (tpmResult) {
         if (tpmResult == false) { return };
         message = "OSD Checkbox is not checked!";
-        capturedVars.OSDCheckBox != true ? warnUser(osdDeferred, message, false) : osdDeferred.resolve(true);
+        capturedVars.fnfOsdCheckBox != true ? warnUser(osdDeferred, message, false) : osdDeferred.resolve(true);
     });
 
-    //Check if computer name is filled in
+    //Check if Computer Name is filled in
     //If computer name is not filled in, show warning popup, else resolve the deferred object immediately
     osdDeferred.done(function (osdResult) {
         if (osdResult == false) { return };
@@ -318,8 +328,42 @@ function launchFNF() {
         capturedVars.compName == "" ? warnUser(cnDeferred, message, false) : cnDeferred.resolve(true);
     });
 
-    cnDeferred.done(function (cnResult) {
-        if (cnResult == false) { return };
+    //Check if Windows Drive is filled in
+    //If Windows Drive is not filled in, show warning popup, else resolve the deferred object immediately
+    cnDeferred.done(function (cnResult){
+        if(cnResult == false){ return };
+        message = "Windows Drive Letter is not filled in!";
+        capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
+    });
+
+    //Check if Primary Username is filled in
+    //If Primary Username is not filled in, show warning popup, else resolve the deferred object immediately
+    wdDeferred.done(function (wdResult){
+        if(wdResult == false){ return };
+        message = "Primary Username is not filled in!";
+        capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
+    });
+
+    //Check if External Drive is filled in
+    //If External Drive is not filled in, show warning popup, else resolve the deferred object immediately
+    puDeferred.done(function (puResult){
+        if(puResult == false){ return };
+        message = "External Drive Letter is not filled in!";
+        capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
+    });
+
+    //Check if USMT Usernames are selected
+    //If USMT Usernames are not selected, show warning popup, else resolve the deferred object immediately
+    edDeferred.done(function (edResult){
+        if(edResult == false){ return };
+        message = "No USMT Usernames are selected!";
+        Object.keys(selectedUsers).length > 0 ? usmtDeferred.resolve(true) : warnUser(usmtDeferred, message, false);
+    });
+
+    //If we make it past all warning checks, run flushfill function
+    usmtDeferred.done(function (usmtResult){
+        if(capturedVars.scanStateCheckBox == false){return};
+        if(usmtResult == false){ return };
         $(".pages").mCustomScrollbar("disable");
         $("#general-output-scroll").mCustomScrollbar("disable");
         try {
@@ -475,22 +519,18 @@ function showUsersClick() {
 
 function ReportFolderStatus(fldr) {
     var fso;
-    var navButtons = $(".require-win-dir");
     try{
         fso = new ActiveXObject("Scripting.FileSystemObject");
 //fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
-            navButtons.removeClass("win-not-found");
             return true;
         }
         else {
-            navButtons.addClass("win-not-found");
             return false;
         }
     }
     catch(err){
-        navButtons.addClass("win-not-found");
         document.getElementById("general-output").innerHTML = err.message;
     }
         
@@ -500,6 +540,7 @@ function isWindowsFound(){
     var determinedWindowsDrive = $("#windows-drive-letter").val();
     var winDirFound = ReportFolderStatus(determinedWindowsDrive + ":\\Windows");
     var winDeferred = $.Deferred();
+    
     if(winDirFound == false) {
         return false;
     }
@@ -508,11 +549,10 @@ function isWindowsFound(){
     }
 }
 
-function isEncrypted(){
-    var driveList = {}, k, encryptedDrives = [];
-    driveList = jsListDrives();
+function isEncrypted(driveList){
+    var k, encryptedDrives = [];
     for (k in driveList) {
-        if (driveList[k]["Encryption"] == "Encrypted") {
+        if (driveList[k]["Lock Status"] == "Locked") {
             encryptedDrives.push(k);
         }
     }
@@ -524,27 +564,40 @@ function isEncrypted(){
 }
 
 function isWindowsFoundIsEncrypted(){
+    var driveList = {};
+    driveList = jsListDrives();
     //Check for a Windows directory. Returns true or false
     var windowsFound = isWindowsFound();
     //Check for any encrypted drives. Returns true if any are found, false otherwise
-    var encryptedDriveFound = isEncrypted();
+    var encryptedDriveFound = isEncrypted(driveList);
     var results = [];
 
-    results.WinFound = windowsFound;
-    results.Encrypted = encryptedDriveFound;
+    winFoundAndEncrypted["WinFound"] = windowsFound;
+    winFoundAndEncrypted["Encrypted"] = encryptedDriveFound;
 
-    if (results["WinFound"] == false && results["Encrypted"] == true) {
+    dimElements();
+
+    return results;
+}
+
+function dimElements(){
+    if (winFoundAndEncrypted["WinFound"] == false && winFoundAndEncrypted["Encrypted"] == true) {
+        //No Windows drive found and an encrypted drive WAS found
+        //Dim elements that require a Windows directory as a warning
         $(".li-win-required").addClass("li-win-not-found");
         $(".li-win-required .ui-widget-content").addClass("content-win-not-found");
         $(".li-win-required .ui-accordion-header").addClass("h3-win-not-found");
+        $(".require-win-dir").addClass("win-not-found");
     }
-    else{
+    else {
+        //Windows drive found. Remove dimming effect and show all list items
         $(".li-win-required").removeClass("li-win-not-found");
         $(".li-win-required .ui-widget-content").removeClass("content-win-not-found");
         $(".li-win-required .ui-accordion-header").removeClass("h3-win-not-found");
+        $(".require-win-dir").removeClass("win-not-found");
+        $('ul .ui-widget-content').show('fast');
+        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     }
-    return results;
-
 }
 // $("#input-windows-drive, #input-primary-username").keyup(function () {
 //     usmtScanstate("false");
