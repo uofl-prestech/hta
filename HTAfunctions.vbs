@@ -53,9 +53,8 @@ End Sub
 '************************************ List local drives ************************************
 Function listDrives
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
-    Dim strComputer, objWMIService, colItems, drivesHashTable, admin, drivesObj
+    Dim strComputer, objWMIService, colItems, admin, drivesObj
 	Dim landingPageDiv: Set landingPageDiv = document.getElementById("drive-list-output")
-	' landingPageDiv.innerHTML = "<h2 class='cmdHeading'>Drive List: </h2>"
     strComputer = "."
     Set drivesObj = CreateJsObj()
 
@@ -73,7 +72,6 @@ Function listDrives
     
     'Check drives for encryption if running as admin
     If admin = true Then
-
         Dim arEncryptionMethod
         arEncryptionMethod = Array("None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256")
         Dim arProtectionStatus
@@ -91,7 +89,6 @@ Function listDrives
 
         htaLog.WriteLine(Now & " || Executing command: objWMIService.ExecQuery(""Select * from Win32_EncryptableVolume"",,48"")")
         Set colItems = objWMIService.ExecQuery("SELECT * FROM Win32_EncryptableVolume",,48)
-        Set drivesHashTable = CreateObject("scripting.dictionary")
 
         htaLog.WriteLine(Now & " || Win32_EncryptableVolume instance")
         htaLog.WriteLine(Now & " || 0=Protection OFF, 1= Protection ON, unlocked, 2=Protection ON, locked")
@@ -106,14 +103,12 @@ Function listDrives
 
                 objItem.GetLockStatus LockStatus
                 driveInfo = Array(ProtectionStatus, LockStatus, EncryptionMethod, ConversionStatus, EncryptionPercentage)
-                'driveInfo = Array("ProtectionStatus", "LockStatus", "EncryptionMethod")
+
                 objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
                 htaLog.Write(Now & " || Drive Letter: " & objItem.DriveLetter)
                 htaLog.WriteLine(" || ProtectionStatus: " & objItem.ProtectionStatus)
                 drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
-                drivesHashTable.Add objItem.DriveLetter, driveInfo
 
-                'msgbox Join(drivesHashTable.Item(objItem.DriveLetter), ",")
                 drivesObj.setProp objItem.DriveLetter, "Protection Status", arProtectionStatus(ProtectionStatus)
                 drivesObj.setProp objItem.DriveLetter, "Encryption Method", arEncryptionMethod(EncryptionMethod)
                 drivesObj.setProp objItem.DriveLetter, "Lock Status", arLockStatus(LockStatus)
@@ -123,17 +118,9 @@ Function listDrives
                     Dim VolumeKeyProtectorType
                     objItem.GetKeyProtectorType objId, VolumeKeyProtectorType
                     If VolumeKeyProtectorType <> "" Then
-                        drivesObj.setProp objItem.DriveLetter, "Key Type", arKeyType(KeyType)
-                        drivesObj.setProp objItem.DriveLetter, "Key ID", objId
+                        drivesObj.setProp objItem.DriveLetter, arKeyType(VolumeKeyProtectorType), objId
                     End If
                 Next
-                ' If(objItem.ProtectionStatus = 1) OR (objItem.ProtectionStatus = 2) Then
-                '     htaLog.Write(" || Encrypted" & vbCrLf)
-                '     drivesHashTable.Add objItem.DriveLetter, lockStatus
-                ' Else
-                '     htaLog.Write(" || Not Encrypted" & vbCrLf)
-                '     drivesHashTable.Add objItem.DriveLetter, lockStatus
-                ' End If
             End If
         Next
     Else
@@ -154,30 +141,18 @@ Function listDrives
             Dim fso, checkForWindows
             checkForWindows = objItem.DriveLetter & ":\Windows"
             Set fso = CreateObject("Scripting.FileSystemObject")
-            If(fso.FolderExists(checkForWindows)) Then
+            If(fso.FolderExists(checkForWindows) AND objItem.DriveLetter <> "X") Then
                 htaLog.WriteLine(Now & " || Windows Drive found at: " & checkForWindows)
                 document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
                 objItem.Label = "Windows Drive!"
             End If
-            ' If objItem.Label = "Windows" Then
-            '     document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
-            ' End If
             
-            'drivesObj.setProp objItem.DriveLetter, "Drive Letter", objItem.DriveLetter
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
             drivesObj.setProp objItem.DriveLetter, "Label", objItem.Label
             htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
             capacity = ConvertSize(objItem.Capacity)
             drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
             htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
-            If admin = true Then
-            'MsgBox Join(drivesHashTable.Item(objItem.DriveLetter), ",")
-                htaLog.WriteLine(" Encryption Status: " & drivesHashTable.Item(objItem.DriveLetter))
-                drivesObj.setProp objItem.DriveLetter, "Encryption", drivesHashTable.Item(objItem.DriveLetter)
-                
-            Else
-                htaLog.WriteLine("")
-            End If
         End If
 	Next
 
@@ -460,18 +435,19 @@ End Sub
 Function dismCapture
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
 
-	Dim dismShell, strName, destPath, sourcePath, returnCode, wimPath
+	Dim dismShell, strName, destPath, sourcePath, returnCode, wimPath, fso
 	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
     strSourcePath = document.getElementById("input-windows-drive").Value
     strDestPath = document.getElementById("input-external-drive").Value
     strName = document.getElementById("input-primary-username").Value
     Set dismShell = CreateObject("WScript.Shell")
+    Set fso = CreateObject("Scripting.FileSystemObject")
     wimPath = strDestPath & ":\" & strName & ".wim"
     returnCode = -1
 
     'Check if file with this name already exists
     If (fso.FileExists(wimPath)) Then
-        MsgBox = wimPath & " already exists. Try changing the username or deleting the existing wim file."
+        MsgBox wimPath & " already exists. Try changing the username or deleting the existing wim file."
         Exit Function
     End If
 

@@ -1789,6 +1789,7 @@ Approximate round trip times in milli-seconds:
 10/9/2017 2:41:08 PM || Error: Must run as Administrator to check TPM status!
 10/9/2017 2:41:14 PM ***** Begin Sub TPMCheck *****
 10/9/2017 2:41:14 PM || Error: Must run as Administrator to check TPM status!
+<<<<<<< HEAD
 
 ====================== Begin Logging at 10/12/2017 9:46:52 AM ======================
 10/12/2017 9:46:52 AM ***** Begin Sub listDrives *****
@@ -2246,3 +2247,5 @@ Approximate round trip times in milli-seconds:
 10/13/2017 11:19:13 AM ***** Begin Sub TPMCheck *****
 10/13/2017 11:19:13 AM || Error: Must run as Administrator to check TPM status!
 10/13/2017 11:19:19 AM ***** Begin Sub listDrives *****
+=======
+>>>>>>> 6ef28c5f23e6541cfb39daf1f872601b122d8b30

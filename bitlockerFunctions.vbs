@@ -8,8 +8,8 @@ Sub TPMCheck
 	strStatusMessage = "<p class=""tpm-error"">ERROR - TPM Not Found</p>"
 	strTPMWarning = "<p class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></p>"
 	Dim outputDiv: set outputDiv = document.getElementById("tpm-check-output")
-	' outputDiv.innerHTML = outputDiv.innerHTML & "<br><h2 class=""cmdHeading"">TPM Status: </h2>"
-	document.getElementById("input-tpm-checkbox").Checked = false
+	outputDiv.innerHTML = ""
+	document.getElementById("input-tpm-checkbox").Value = false
 
 	On Error Resume Next
 
@@ -86,7 +86,7 @@ Sub TPMCheck
 		Else
 			htaLog.WriteLine(Now & " || TPM is enabled and activated")
 			outputDiv.innerHTML = outputDiv.innerHTML & "<p id=""tpmGood"">TPM Enabled and Activated</p>"
-			document.getElementById("input-tpm-checkbox").Checked = true
+			document.getElementById("input-tpm-checkbox").Value = true
 		End If
 	End If
 
@@ -147,7 +147,7 @@ Sub BitlockerUnlock
 
 	blOutput = outData.StdOut.ReadAll
 	htaLog.WriteLine(Now & " || " & blOutput)
-	driveDiv.innerHTML = "<div>" & blOutput & "</div><br>"
+	'driveDiv.innerHTML = "<div>" & blOutput & "</div><br>"
 
 	htaLog.WriteLine(Now & " ***** End Sub BitlockerUnlock *****")
 
