@@ -447,7 +447,7 @@ Function dismCapture
 
     'Check if file with this name already exists
     If (fso.FileExists(wimPath)) Then
-        MsgBox = wimPath & " already exists. Try changing the username or deleting the existing wim file."
+        MsgBox wimPath & " already exists. Try changing the username or deleting the existing wim file."
         Exit Function
     End If
 

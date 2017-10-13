@@ -9,7 +9,7 @@ Sub TPMCheck
 	strTPMWarning = "<p class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></p>"
 	Dim outputDiv: set outputDiv = document.getElementById("tpm-check-output")
 	outputDiv.innerHTML = ""
-	document.getElementById("input-tpm-checkbox").Checked = false
+	document.getElementById("input-tpm-checkbox").Value = false
 
 	On Error Resume Next
 
@@ -86,7 +86,7 @@ Sub TPMCheck
 		Else
 			htaLog.WriteLine(Now & " || TPM is enabled and activated")
 			outputDiv.innerHTML = outputDiv.innerHTML & "<p id=""tpmGood"">TPM Enabled and Activated</p>"
-			document.getElementById("input-tpm-checkbox").Checked = true
+			document.getElementById("input-tpm-checkbox").Value = true
 		End If
 	End If
 

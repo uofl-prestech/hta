@@ -73,7 +73,7 @@ $('.button-exithome').hover(
     }
 );
 
-function loadPage(targetOperation, event){
+function loadPage(targetOperation, event) {
     //Rerun listDrives function if returning to landing page
     if (targetOperation == "landing") {
         //Find and list drives attached to this machine
@@ -113,8 +113,8 @@ function loadPage(targetOperation, event){
     $('.pages').removeClass("active-page");
     $('.header-text').removeClass("active-header");
     $('.button-nav').removeClass("active");
-    try{$(event.currentTarget).addClass("active");}
-    catch(e){}
+    try { $(event.currentTarget).addClass("active"); }
+    catch (e) { }
     $('#page-' + targetOperation).addClass("active-page");
     $('#header-' + targetOperation).addClass("active-header");
     $("#general-output-scroll").css('visibility', 'hidden');
@@ -165,7 +165,7 @@ function jsListDrives() {
     try {
         drives = listDrives();
         delete drives["setProp"];   //Remove the setProp function from the object before looping through the drive letters
-        
+
         var keys = [], k, len;
 
         for (k in drives) {
@@ -186,7 +186,7 @@ function jsListDrives() {
             drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
             drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
             drives[k]["Encryption Method"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption Method"]) : "";
-            arKeyType.forEach(function(element){
+            arKeyType.forEach(function (element) {
                 drives[k][element] && element == "Numerical password" ? landingPageDiv.append("<br>Recovery Key ID: " + drives[k][element]) : "";
             });
 
@@ -253,7 +253,7 @@ function launchOSD() {
     //Check if TPM is enabled (TPM checkbox checked)
     //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
     var message = "TPM is not functioning or not present!";
-    capturedVars.TPMCheckBox != true ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
+    capturedVars.TPMCheckBox != "true" ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
 
     //Check if OSD checkbox is checked
     //If OSDCheckBox is false, show warning popup, else resolve the deferred object immediately
@@ -310,7 +310,7 @@ function launchFNF() {
     //Check if TPM is enabled (TPM checkbox checked)
     //If TPMCheckBox is false, show warning popup, else resolve the deferred object immediately
     var message = "TPM is not functioning or not present!";
-    capturedVars.TPMCheckBox != true ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
+    capturedVars.TPMCheckBox != "true" ? warnUser(tpmDeferred, message, true) : tpmDeferred.resolve(true);
 
     //Check if OSD checkbox is checked
     //If OSDCheckBox is false, show warning popup, else resolve the deferred object immediately
@@ -330,40 +330,40 @@ function launchFNF() {
 
     //Check if Windows Drive is filled in
     //If Windows Drive is not filled in, show warning popup, else resolve the deferred object immediately
-    cnDeferred.done(function (cnResult){
-        if(cnResult == false){ return };
+    cnDeferred.done(function (cnResult) {
+        if (cnResult == false) { return };
         message = "Windows Drive Letter is not filled in!";
         capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
     });
 
     //Check if Primary Username is filled in
     //If Primary Username is not filled in, show warning popup, else resolve the deferred object immediately
-    wdDeferred.done(function (wdResult){
-        if(wdResult == false){ return };
+    wdDeferred.done(function (wdResult) {
+        if (wdResult == false) { return };
         message = "Primary Username is not filled in!";
         capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
     });
 
     //Check if External Drive is filled in
     //If External Drive is not filled in, show warning popup, else resolve the deferred object immediately
-    puDeferred.done(function (puResult){
-        if(puResult == false){ return };
+    puDeferred.done(function (puResult) {
+        if (puResult == false) { return };
         message = "External Drive Letter is not filled in!";
         capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
     });
 
     //Check if USMT Usernames are selected
     //If USMT Usernames are not selected, show warning popup, else resolve the deferred object immediately
-    edDeferred.done(function (edResult){
-        if(edResult == false){ return };
+    edDeferred.done(function (edResult) {
+        if (edResult == false) { return };
         message = "No USMT Usernames are selected!";
         Object.keys(selectedUsers).length > 0 ? usmtDeferred.resolve(true) : warnUser(usmtDeferred, message, false);
     });
 
     //If we make it past all warning checks, run flushfill function
-    usmtDeferred.done(function (usmtResult){
-        if(capturedVars.scanStateCheckBox == false){return};
-        if(usmtResult == false){ return };
+    usmtDeferred.done(function (usmtResult) {
+        if (capturedVars.scanStateCheckBox == false) { return };
+        if (usmtResult == false) { return };
         $(".pages").mCustomScrollbar("disable");
         $("#general-output-scroll").mCustomScrollbar("disable");
         try {
@@ -387,21 +387,21 @@ function launchDISM() {
 
     var message = "Windows Drive is not filled in!";
     capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
-    
-    wdDeferred.done(function (wdResult){
-        if(wdResult == false){ return };
+
+    wdDeferred.done(function (wdResult) {
+        if (wdResult == false) { return };
         message = "Primary Username is not filled in!";
         capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
     });
 
-    puDeferred.done(function (puResult){
-        if(puResult == false){ return };
+    puDeferred.done(function (puResult) {
+        if (puResult == false) { return };
         message = "External Drive Letter is not filled in!";
         capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
     });
 
-    edDeferred.done(function (edResult){
-        if(edResult == false){ return };
+    edDeferred.done(function (edResult) {
+        if (edResult == false) { return };
 
         //Disable scroll bar replacement because it causes a slow script warning after dism finishes
         $(".pages").mCustomScrollbar("disable");
@@ -442,27 +442,27 @@ function launchScanstate() {
 
     var message = "Windows Drive is not filled in!";
     capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
-    
-    wdDeferred.done(function (wdResult){
-        if(wdResult == false){ return };
+
+    wdDeferred.done(function (wdResult) {
+        if (wdResult == false) { return };
         message = "Primary Username is not filled in!";
         capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
     });
 
-    puDeferred.done(function (puResult){
-        if(puResult == false){ return };
+    puDeferred.done(function (puResult) {
+        if (puResult == false) { return };
         message = "External Drive Letter is not filled in!";
         capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
     });
 
-    edDeferred.done(function (edResult){
-        if(edResult == false){ return };
+    edDeferred.done(function (edResult) {
+        if (edResult == false) { return };
         message = "No USMT Usernames are selected!";
         Object.keys(selectedUsers).length > 0 ? usmtDeferred.resolve(true) : warnUser(usmtDeferred, message, false);
     });
 
-    usmtDeferred.done(function (usmtResult){
-        if(usmtResult == false){ return };
+    usmtDeferred.done(function (usmtResult) {
+        if (usmtResult == false) { return };
 
         $(".pages").mCustomScrollbar("disable");
         $("#general-output-scroll").mCustomScrollbar("disable");
@@ -485,22 +485,22 @@ function launchLoadstate() {
 
     var message = "Windows Drive is not filled in!";
     capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
-    
-    wdDeferred.done(function (wdResult){
-        if(wdResult == false){ return };
+
+    wdDeferred.done(function (wdResult) {
+        if (wdResult == false) { return };
         message = "Primary Username is not filled in!";
         capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
     });
 
-    puDeferred.done(function (puResult){
-        if(puResult == false){ return };
+    puDeferred.done(function (puResult) {
+        if (puResult == false) { return };
         message = "External Drive Letter is not filled in!";
         capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
     });
 
-    edDeferred.done(function (edResult){
-        if(edResult == false){ return };
-            
+    edDeferred.done(function (edResult) {
+        if (edResult == false) { return };
+
         $(".pages").mCustomScrollbar("disable");
         $("#general-output-scroll").mCustomScrollbar("disable");
 
@@ -572,7 +572,7 @@ function showUsersClick() {
         message = "Windows drive letter does not match volume labeled 'Windows' on this machine. Are you sure?";
         warnUser(dlDeferred, message, true);
     }
-    else{dlDeferred.resolve(true);}
+    else { dlDeferred.resolve(true); }
     dlDeferred.done(function (continueFunction) {
         if (continueFunction == false) { return };
         if (winDirFound == false) {
@@ -581,11 +581,11 @@ function showUsersClick() {
             warnUser(dlDeferred, message, false);
             return;
         }
-            //If we made it past all of the error checks, try to enumerate users for the given Windows drive
+        //If we made it past all of the error checks, try to enumerate users for the given Windows drive
         try {
             enumUsers();
         }
-        catch(err) {
+        catch (err) {
             document.getElementById("general-output").innerHTML = err.message;
         }
     });
@@ -593,9 +593,9 @@ function showUsersClick() {
 
 function ReportFolderStatus(fldr) {
     var fso;
-    try{
+    try {
         fso = new ActiveXObject("Scripting.FileSystemObject");
-//fldr = "blah";
+        //fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
             return true;
@@ -604,26 +604,26 @@ function ReportFolderStatus(fldr) {
             return false;
         }
     }
-    catch(err){
+    catch (err) {
         document.getElementById("general-output").innerHTML = err.message;
     }
-        
+
 }
 
-function isWindowsFound(){
+function isWindowsFound() {
     var determinedWindowsDrive = $("#windows-drive-letter").val();
     var winDirFound = ReportFolderStatus(determinedWindowsDrive + ":\\Windows");
     var winDeferred = $.Deferred();
-    
-    if(winDirFound == false) {
+
+    if (winDirFound == false) {
         return false;
     }
-    else{
+    else {
         return true;
     }
 }
 
-function isEncrypted(driveList){
+function isEncrypted(driveList) {
     var k, encryptedDrives = [];
     for (k in driveList) {
         if (driveList[k]["Lock Status"] == "Locked") {
@@ -631,13 +631,13 @@ function isEncrypted(driveList){
         }
     }
 
-    if(encryptedDrives.length > 0){
+    if (encryptedDrives.length > 0) {
         return true;
     }
     else return false;
 }
 
-function isWindowsFoundIsEncrypted(){
+function isWindowsFoundIsEncrypted() {
     var driveList = {};
     driveList = jsListDrives();
     //Check for a Windows directory. Returns true or false
@@ -654,7 +654,7 @@ function isWindowsFoundIsEncrypted(){
     return results;
 }
 
-function dimElements(){
+function dimElements() {
     if (winFoundAndEncrypted["WinFound"] == false && winFoundAndEncrypted["Encrypted"] == true) {
         //No Windows drive found and an encrypted drive WAS found
         //Dim elements that require a Windows directory as a warning
@@ -673,8 +673,5 @@ function dimElements(){
         $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
     }
 }
-// $("#input-windows-drive, #input-primary-username").keyup(function () {
-//     usmtScanstate("false");
-// });
 
 $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
