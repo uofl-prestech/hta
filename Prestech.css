@@ -242,7 +242,7 @@ p {
 .active, .button-nav:hover, .button-nav:focus, .button-exithome:hover {
     background-color: rgba(95, 95, 95, 0.2);
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7);
-    border: 1px solid rgb(90, 90, 90);
+    border: 1px solid rgb(80, 80, 80);
     color: #FFF;
     cursor: default;
 }
@@ -363,10 +363,10 @@ p {
     display: none;
 }
 .win-not-found{
-    background-color: rgba(100, 100, 100, 0.75);
+    background-color: rgba(95, 95, 95, 0.3);
     color: #6E6E6E;
 }
 .win-not-found:hover{
-    background-color: rgba(100, 100, 100, 0.90)!important;
+    background-color: rgba(95, 95, 95, 0.5)!important;
     color: #808080;
 }
