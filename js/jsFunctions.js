@@ -381,23 +381,45 @@ function launchFNF() {
 *******************************/
 function launchDISM() {
     var capturedVars = getInputValues();
+    var wdDeferred = $.Deferred();      //Windows Drive field
+    var puDeferred = $.Deferred();      //Primary Username field
+    var edDeferred = $.Deferred();      //External Drive field
 
-    //Disable scroll bar replacement because it causes a slow script warning after dism finishes
-    $(".pages").mCustomScrollbar("disable");
-    $("#general-output-scroll").mCustomScrollbar("disable");
+    var message = "Windows Drive is not filled in!";
+    capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
+    
+    wdDeferred.done(function (wdResult){
+        if(wdResult == false){ return };
+        message = "Primary Username is not filled in!";
+        capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
+    });
 
-    var dismReturn = dismCapture();
+    puDeferred.done(function (puResult){
+        if(puResult == false){ return };
+        message = "External Drive Letter is not filled in!";
+        capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
+    });
 
-    //Re-enable scroll bar replacement
-    setTimeout(function () {
-        $(".pages").mCustomScrollbar("update");
-        $("#general-output-scroll").mCustomScrollbar("update");
-    }, 2000);
+    edDeferred.done(function (edResult){
+        if(edResult == false){ return };
 
-    //Check if DISM was successful
-    var dismDeferred = $.Deferred();
-    var message = "DISM operation failed!";
-    dismReturn != 0 ? warnUser(dismDeferred, message, false) : dismDeferred.resolve(true);
+        //Disable scroll bar replacement because it causes a slow script warning after dism finishes
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
+
+        var dismReturn = dismCapture();
+
+        //Re-enable scroll bar replacement
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
+        }, 2000);
+
+        //Check if DISM was successful
+        var dismDeferred = $.Deferred();
+        var message = "DISM operation failed!";
+        dismReturn != 0 ? warnUser(dismDeferred, message, false) : dismDeferred.resolve(true);
+    });
 }
 
 /*******************************
@@ -413,30 +435,82 @@ function launchScanstate() {
     for (user in selectedUsers) {
         capturedVars[user] = selectedUsers[user];
     }
+    var wdDeferred = $.Deferred();      //Windows Drive field
+    var puDeferred = $.Deferred();      //Primary Username field
+    var edDeferred = $.Deferred();      //External Drive field
+    var usmtDeferred = $.Deferred();    //USMT usernames select
 
-    $(".pages").mCustomScrollbar("disable");
-    $("#general-output-scroll").mCustomScrollbar("disable");
+    var message = "Windows Drive is not filled in!";
+    capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
+    
+    wdDeferred.done(function (wdResult){
+        if(wdResult == false){ return };
+        message = "Primary Username is not filled in!";
+        capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
+    });
 
-    usmtScanstate("true");
+    puDeferred.done(function (puResult){
+        if(puResult == false){ return };
+        message = "External Drive Letter is not filled in!";
+        capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
+    });
 
-    setTimeout(function () {
-        $(".pages").mCustomScrollbar("update");
-        $("#general-output-scroll").mCustomScrollbar("update");
-    }, 2000);
+    edDeferred.done(function (edResult){
+        if(edResult == false){ return };
+        message = "No USMT Usernames are selected!";
+        Object.keys(selectedUsers).length > 0 ? usmtDeferred.resolve(true) : warnUser(usmtDeferred, message, false);
+    });
+
+    usmtDeferred.done(function (usmtResult){
+        if(usmtResult == false){ return };
+
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
+
+        usmtScanstate("true");
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
+        }, 2000);
+    });
 }
 
 function launchLoadstate() {
     var capturedVars = getInputValues();
 
-    $(".pages").mCustomScrollbar("disable");
-    $("#general-output-scroll").mCustomScrollbar("disable");
+    var wdDeferred = $.Deferred();      //Windows Drive field
+    var puDeferred = $.Deferred();      //Primary Username field
+    var edDeferred = $.Deferred();      //External Drive field
 
-    usmtLoadstate();
+    var message = "Windows Drive is not filled in!";
+    capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
+    
+    wdDeferred.done(function (wdResult){
+        if(wdResult == false){ return };
+        message = "Primary Username is not filled in!";
+        capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
+    });
 
-    setTimeout(function () {
-        $(".pages").mCustomScrollbar("update");
-        $("#general-output-scroll").mCustomScrollbar("update");
-    }, 2000);
+    puDeferred.done(function (puResult){
+        if(puResult == false){ return };
+        message = "External Drive Letter is not filled in!";
+        capturedVars.externalDrive == "" ? warnUser(edDeferred, message, false) : edDeferred.resolve(true);
+    });
+
+    edDeferred.done(function (edResult){
+        if(edResult == false){ return };
+            
+        $(".pages").mCustomScrollbar("disable");
+        $("#general-output-scroll").mCustomScrollbar("disable");
+
+        usmtLoadstate();
+
+        setTimeout(function () {
+            $(".pages").mCustomScrollbar("update");
+            $("#general-output-scroll").mCustomScrollbar("update");
+        }, 2000);
+    });
 }
 
 $('#button-ScanState').on('click', function () {
@@ -498,6 +572,7 @@ function showUsersClick() {
         message = "Windows drive letter does not match volume labeled 'Windows' on this machine. Are you sure?";
         warnUser(dlDeferred, message, true);
     }
+    else{dlDeferred.resolve(true);}
     dlDeferred.done(function (continueFunction) {
         if (continueFunction == false) { return };
         if (winDirFound == false) {
@@ -506,22 +581,21 @@ function showUsersClick() {
             warnUser(dlDeferred, message, false);
             return;
         }
+            //If we made it past all of the error checks, try to enumerate users for the given Windows drive
+        try {
+            enumUsers();
+        }
+        catch(err) {
+            document.getElementById("general-output").innerHTML = err.message;
+        }
     });
-
-    //If we made it past all of the error checks, try to enumerate users for the given Windows drive
-    try {
-        enumUsers();
-    }
-    catch(err) {
-        document.getElementById("general-output").innerHTML = err.message;
-    }
 }
 
 function ReportFolderStatus(fldr) {
     var fso;
     try{
         fso = new ActiveXObject("Scripting.FileSystemObject");
-fldr = "blah";
+//fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
             return true;
