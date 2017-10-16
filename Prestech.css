@@ -165,7 +165,7 @@ p {
     min-height: 200px;
     color: #CCC;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 2px;
 }
 #general-output-scroll {
     width: 355px;
@@ -350,6 +350,10 @@ p {
     background: rgba(104, 110, 175, 0.65);
     overflow: auto;
 } */
+.output-icons{
+    background-color: rgba(241, 40, 40, 0.5);
+    border-radius: 5px;
+}
 .pages {
     position: relative;
     display: none;
@@ -370,6 +374,13 @@ p {
 }
 .no-close .ui-dialog-titlebar-close {
     display: none;
+}
+.warning-image{
+    height: 25px;
+    width: 25px;
+    float: right;
+    position: absolute;
+    right: 15px;
 }
 .win-not-found{
     background-color: rgba(95, 95, 95, 0.3);

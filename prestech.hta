@@ -43,6 +43,8 @@
             <h1>PRESTECH HTA</h1>
         </div>
         <div id="main" class="on-load">
+
+<!-- ******************** Navigation Button Section ******************** -->
             <div class="navigation-bar">
                 <ul>
                     <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
@@ -63,7 +65,7 @@
                         <img src="images/usmt final.png" class="icon">
                         <span>USMT</span>
                     </li>
-                    <li id="button-software" class="button-nav require-win-dir">
+                    <li id="button-software" class="button-nav require-win-dir clearfix">
                         <img src="images/software install.png" class="icon">
                         <span>Software Install</span>
                     </li>
@@ -74,25 +76,26 @@
                 </ul>
                 <div>
                     <button id="button-landing" class="button-exithome button-nav">
-                        <div class="button-background">
-                            <img src="images/homeicon45.svg" class="icon-home-exit">
+                        <div id="screen-test" class="button-background">
+                            <img src="images/home-no-screen-45.svg" class="icon-home-exit">
                         </div>
                     </button>
                     <button class="button-exithome button-nav" onclick="vbscript:ButtonExitClick()">
                         <div class="button-background">
-                            <img src="images/exit1.svg" class="icon-home-exit">
+                            <img src="images/exit-45.svg" class="icon-home-exit">
                         </div>
                     </button>
                 </div>
             </div>
 
+<!-- ******************** Page Header Section ******************** -->
             <div id="content">
                 <div class="category-header">
                     <button class="small-button" id="button-ShowAll">
-                        <img src="images/expand.png" class="icon-only">
+                        <img src="images/expand-45.svg" class="icon-only">
                     </button>
                     <button class="small-button" id="button-HideAll">
-                        <img src="images/collapse.png" class="icon-only">
+                        <img src="images/minimize-45.svg" class="icon-only">
                     </button>
                     <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
                     <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
@@ -105,6 +108,8 @@
                     <h4 id="header-software" class="header-text">Software Installation</h4>
                     <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
                 </div>
+
+<!-- ******************** Page Content Section ******************** -->
                 <!--Landing Page-->
                 <div id="page-landing" class="pages active-page">
                     <ul id="ul-landing" class="accordion ui-accordion ul-elements"></ul>
@@ -148,29 +153,56 @@
                 <!--Troubleshooting Tools Page-->
                 <div id="page-tools" class="pages">
                     <div class="tools-button-bar">
-                        <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
-                            <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                        <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:jsListDrives()">
+                            <img src="images/lock-45.svg" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
-                            <img src="images/command-prompt-icon.png" class="icon-tools">Command Prompt</button>
+                            <img src="images/command-prompt-45.svg" class="icon-tools">Command Prompt</button>
                         <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
-                            <img src="images/explorer-icon.png" class="icon-tools">Explorer ++</button>
+                            <img src="images/Explorerpp-45.svg" class="icon-tools">Explorer ++</button>
                         <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
-                            <img src="images/cmtrace-icon.png" class="icon-tools">Log Viewer</button>
+                            <img src="images/log-viewer-45.svg" class="icon-tools">Log Viewer</button>
                         <button class="button show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
-                            <img src="images/ping-icon.png" class="icon-tools">Ping Test</button>
+                            <img src="images/ping-45.svg" class="icon-tools">Ping Test</button>
                         <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
-                            <img src="images/powershell icon.svg" class="icon-tools">Powershell</button>
+                            <img src="images/powershell-45.svg" class="icon-tools">Powershell</button>
                         <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
-                            <img src="images/code-icon.svg" class="icon-tools">Notepad ++</button>
+                            <img src="images/notepadpp-45.svg" class="icon-tools">Notepad ++</button>
                     </div>
                 </div>
+
+<!-- ******************** Output Section ******************** -->
                 <div id="general-output-scroll">
-                    <ul id="general-output">
-                        <li id="output-bl-info" class="output-list"></li>
-                        <li id="output-bl-unlock" class="output-list"></li>
-                        <li id="output-ping" class="output-list"></li>
-                        <li id="output-dism" class="output-list"></li>
-                        <li id="output-scanstate" class="output-list"></li>
+                    <ul id="general-output" class="ui-accordion">
+                        <li id="output-bl-info" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/lock-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Info</h3>
+                            <div id="bl-info-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-bl-unlock" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/unlock-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Unlock</h3>
+                            <div id="bl-unlock-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-ping" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/ping-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Ping Output</h3>
+                            <div id="ping-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-dism" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/home-no-screen-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
+                            <div id="dism-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-scanstate" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/home-no-screen-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
+                            <div id="scanstate-output" class="ui-widget-content"></div>
+                        </li>
                     </ul>
                     <!-- <div id="general-output"></div> -->
                 </div>
@@ -182,15 +214,10 @@
     </div>
 
     <!-- Dialog Box -->
-    <div id="dialog" title="Warning">I'm a dialog</div>
+    <div id="dialog" title="Warning"></div>
 
     <!--    Landing Page    -->
     <template id="temp-landing-page" class="landing">
-        <li id="li-drive-list" class="li-steps">
-            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>List Drives</h3>
-            <div id="drive-list-output" class="ui-widget-content"></div>
-        </li>
         <li id="li-tpm-check" class="li-steps">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
@@ -205,7 +232,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()">
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:jsListDrives()">
                     <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>

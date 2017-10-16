@@ -23,7 +23,7 @@ Sub pingTest
     htaLog.WriteLine(Now & " ***** Begin Sub pingTest *****")
 
     Dim comspec, strObj
-    dim pingTestDiv: set pingTestDiv = document.getElementById("general-output")
+    dim pingTestDiv: set pingTestDiv = document.getElementById("ping-output")
     pingTestDiv.innerHTML = "<p class='cmdHeading'>Network connectivity test: </p>"
     Set pingShell = CreateObject("WScript.Shell")
     comspec = pingShell.ExpandEnvironmentStrings("%comspec%")
@@ -37,7 +37,7 @@ Sub pingTest
 End Sub
 
 Sub writePing
-    dim pingTestDiv: set pingTestDiv = document.getElementById("general-output")
+    dim pingTestDiv: set pingTestDiv = document.getElementById("ping-output")
     pingOutput = pingShellExec.StdOut.ReadLine()
     pingTestDiv.innerHTML = pingTestDiv.innerHTML & pingOutput & "<br>"
     htaLog.WriteLine(Now & " || " & pingOutput)
@@ -54,7 +54,7 @@ End Sub
 Function listDrives
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
     Dim strComputer, objWMIService, colItems, admin, drivesObj
-	Dim landingPageDiv: Set landingPageDiv = document.getElementById("drive-list-output")
+	Dim landingPageDiv: Set landingPageDiv = document.getElementById("bl-info-output")
     strComputer = "."
     Set drivesObj = CreateJsObj()
 
@@ -73,7 +73,7 @@ Function listDrives
     'Check drives for encryption if running as admin
     If admin = true Then
         Dim arEncryptionMethod
-        arEncryptionMethod = Array("None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256")
+        arEncryptionMethod = Array("None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown")
         Dim arProtectionStatus
         arProtectionStatus = Array("Protection Off", "Protection On", "Protection Unknown")
         Dim arConversionStatus
@@ -92,7 +92,8 @@ Function listDrives
 
         htaLog.WriteLine(Now & " || Win32_EncryptableVolume instance")
         htaLog.WriteLine(Now & " || 0=Protection OFF, 1= Protection ON, unlocked, 2=Protection ON, locked")
-        For Each objItem in colItems 
+        For Each objItem in colItems
+            'Only include drive if it has a drive letter
             If objItem.DriveLetter Then
             On Error Resume Next
                 Dim EncryptionMethod, ProtectionStatus, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID, LockStatus, KeyType, driveInfo
@@ -134,8 +135,11 @@ Function listDrives
     htaLog.WriteLine(Now & " || Executing command: objWMIService.ExecQuery(""Select * from Win32_Volume"")")
     
 	Set colItems = objWMIService.ExecQuery("Select * from Win32_Volume")
-	
-	For Each objItem In colItems
+	Dim arDriveTypes
+    arDriveTypes = Array("Unknown", "No Root Directory", "Removable Disk", "Local Disk", "Network Drive", "Compact Disk", "RAM")
+    For Each objItem In colItems
+        'Only include drive if it has a drive letter
+
         If objItem.DriveLetter Then
             objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
             Dim fso, checkForWindows
@@ -150,9 +154,14 @@ Function listDrives
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
             drivesObj.setProp objItem.DriveLetter, "Label", objItem.Label
             htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
+            fsCapacity = ConvertSize(objItem.Freespace)
+            htaLog.Write("Free Space: " & fsCapacity)
+            drivesObj.setProp objItem.DriveLetter, "Free Space", fsCapacity
             capacity = ConvertSize(objItem.Capacity)
-            drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
             htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
+            drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
+            htaLog.Write("Drive Type: " & arDriveTypes(objItem.DriveType))
+            drivesObj.setProp objItem.DriveLetter, "Drive Type", arDriveTypes(objItem.DriveType)
         End If
 	Next
 
@@ -436,7 +445,7 @@ Function dismCapture
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
 
 	Dim dismShell, strName, destPath, sourcePath, returnCode, wimPath, fso
-	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
+	Dim dismDiv: Set dismDiv = document.getElementById("dism-output")
     strSourcePath = document.getElementById("input-windows-drive").Value
     strDestPath = document.getElementById("input-external-drive").Value
     strName = document.getElementById("input-primary-username").Value
@@ -557,7 +566,7 @@ Sub usmtScanstate(buttonClicked)
 
     Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString, windowsDrive
     userArray = Array()
-    Set scanStateDiv = document.getElementById("general-output")
+    Set scanStateDiv = document.getElementById("scanstate-output")
     Set WshShell = CreateObject("WScript.Shell")
     strCurrentDir = WshShell.currentDirectory
 
