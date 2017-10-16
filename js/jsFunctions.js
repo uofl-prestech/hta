@@ -4,7 +4,7 @@ var winFoundAndEncrypted = [];
 /************************************ JavaScript functions ************************************/
 $(document).ready(function () {
     loadPage("landing");
-    $('#general-output-scroll').css('visibility', 'hidden');
+    //$('#general-output-scroll').css('visibility', 'hidden');
 
     //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
@@ -117,7 +117,7 @@ function loadPage(targetOperation, event) {
     catch (e) { }
     $('#page-' + targetOperation).addClass("active-page");
     $('#header-' + targetOperation).addClass("active-header");
-    $("#general-output-scroll").css('visibility', 'hidden');
+    //$("#general-output-scroll").css('visibility', 'hidden');
 
     dimElements();
 }
