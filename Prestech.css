@@ -214,8 +214,12 @@ p {
     outline: none;
 }
 .button {
-    padding: 10px 20px;
+    /* padding: 5px 10px; */
     margin: 5px;
+    min-width: 150px;
+    font-size: 1.1em;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7);
+    border: 1px inset rgb(0, 0, 0);
 }
 .button-background{
     height: 45px;
@@ -230,8 +234,8 @@ p {
 }
 .button:hover, .small-button:hover {
     background-color: rgb(149, 23, 23);
-    box-shadow: 0px 3px 6px rgba(90, 17, 17, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.7);
-    border: none;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgb(0, 0, 0);
     color: #FFF;
 }
 .button:active, .small-button:active {
@@ -305,6 +309,13 @@ p {
     display: inline-block;
     height: 75px;
     width: 75px;
+    vertical-align: middle;
+}
+.icon-45{
+    height: 45px;
+    width: 45px;
+    margin-right: 5px;
+    display: inline-block;
     vertical-align: middle;
 }
 .icon-only, .icon-tools, .icon-home-exit {

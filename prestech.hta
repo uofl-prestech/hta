@@ -50,23 +50,23 @@
                     <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
                     <input id="input-tpm-checkbox" class="input-objects" type="hidden" name="TPMCheckBox">
                     <li id="button-osd" class="button-nav">
-                        <img src="images/osd final.png" class="icon">
+                        <img src="images/osd-monitor-75.svg" class="icon">
                         <span>OSD</span>
                     </li>
                     <li id="button-flushfill" class="button-nav require-win-dir">
-                        <img src="images/flush and fill final.png" class="icon">
+                        <img src="images/flush-and-fill-monitor-75.svg" class="icon">
                         <span>Flush and Fill</span>
                     </li>
                     <li id="button-dism" class="button-nav require-win-dir">
-                        <img src="images/DISM final.png" class="icon">
+                        <img src="images/DISM-monitor-75.svg" class="icon">
                         <span>DISM</span>
                     </li>
                     <li id="button-usmt" class="button-nav require-win-dir">
-                        <img src="images/usmt final.png" class="icon">
+                        <img src="images/usmt-monitor-75.svg" class="icon">
                         <span>USMT</span>
                     </li>
                     <li id="button-software" class="button-nav require-win-dir clearfix">
-                        <img src="images/software install.png" class="icon">
+                        <img src="images/software-install.png" class="icon">
                         <span>Software Install</span>
                     </li>
                     <li id="button-tools" class="button-nav">
@@ -126,23 +126,23 @@
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-flushfill" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
-                        <img src="images/launch-icon.png" class="icon-tools">Begin!</button>
+                        <img src="images/flush-and-fill-launch-45.svg" class="icon-45">Launch FnF</button>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
-                        <img src="images/DISM final.png" class="icon-tools">Capture Image</button>
+                        <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
-                        <img src="images/launch-icon.png" class="icon-tools">Run USMT</button>
+                        <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
                     <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
-                        <img src="images/launch-icon.png" class="icon-tools">LoadState</button>
+                        <img src="images/launch-icon.png" class="icon-tools">Launch LoadState</button>
                 </div>
 
                 <!--Software Install Page-->
@@ -233,7 +233,7 @@
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
                 <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:jsListDrives()">
-                    <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
+                    <img src="images/lock-45.svg" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
     </template>
@@ -251,7 +251,7 @@
                 <span>Key: &nbsp&nbsp </span>
                 <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
                 <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()">
-                    <img src="images/bitlocker-unlock-icon.png" class="icon-tools">Bitlocker Unlock</button>
+                    <img src="images/unlock-45.svg" class="icon-tools">Bitlocker Unlock</button>
             </div>
         </li>
     </template>
