@@ -73,11 +73,13 @@ $(document).on('click', '.show-output', function () {
     $("#general-output-scroll").css('visibility', 'visible');
 });
 
-$('.button-exithome').hover(
+$('.button-toolbar').hover(
     function () {
         $(this).children().addClass("button-background-hover");
+        $(this).children().removeClass("button-screen");
     }, function () {
         $(this).children().removeClass("button-background-hover");
+        $(this).children().addClass("button-screen");
     }
 );
 

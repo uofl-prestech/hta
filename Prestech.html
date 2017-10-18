@@ -40,11 +40,11 @@
     <div id="container">
         <div class="category-header">
             <button class="button-toolbar" id="button-ShowAll">
-                                <img src="images/expand-45.svg" class="icon-tools">
-                            </button>
+                <img src="images/expand-45.svg" class="icon-tools">
+            </button>
             <button class="button-toolbar" id="button-HideAll">
-                                <img src="images/collapse-45.svg" class="icon-tools">
-                            </button>
+                <img src="images/minimize-45.svg" class="icon-tools">
+            </button>
             <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
             <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
             <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
@@ -120,7 +120,7 @@
                 <div id="page-osd" class="pages">
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button" id="launch-osd" onclick="javascript:launchOSD()">
-                        <img src="images/launch-icon.png" class="icon-tools">Launch OSD</button>
+                        <img src="images/launch-icon-45.svg" class="icon-tools">Launch OSD</button>
                 </div>
 
                 <!-- Flush and Fill Page -->
@@ -152,8 +152,8 @@
                 </div>
 
                 <!--Troubleshooting Tools Page-->
-                <div id="page-tools" class="pages">
-                    <!-- <div class="tools-button-bar">
+                <!-- <div id="page-tools" class="pages"> -->
+                <!-- <div class="tools-button-bar">
                         <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
                             <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
                         <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
@@ -172,260 +172,259 @@
                 </div>
 
 <!-- ******************** Output Section ******************** -->
-                    <div id="general-output-scroll">
-                        <ul id="general-output" class="ui-accordion">
-                            <li id="output-bl-info" class="output-list">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <img src="images/lock-45.svg" class="icon-tools output-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker
-                                    Info</h3>
-                                <div id="bl-info-output" class="ui-widget-content"></div>
-                            </li>
-                            <li id="output-bl-unlock" class="output-list">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <img src="images/unlock-45.svg" class="icon-tools output-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker
-                                    Unlock</h3>
-                                <div id="bl-unlock-output" class="ui-widget-content"></div>
-                            </li>
-                            <li id="output-ping" class="output-list">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <img src="images/ping-45.svg" class="icon-tools output-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Ping Output</h3>
-                                <div id="ping-output" class="ui-widget-content"></div>
-                            </li>
-                            <li id="output-dism" class="output-list">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <img src="images/home-no-screen-45.svg" class="icon-tools output-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
-                                <div id="dism-output" class="ui-widget-content"></div>
-                            </li>
-                            <li id="output-scanstate" class="output-list">
-                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                    <img src="images/home-no-screen-45.svg" class="icon-tools output-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate
-                                    Output</h3>
-                                <div id="scanstate-output" class="ui-widget-content"></div>
-                            </li>
-                        </ul>
-                        <!-- <div id="general-output"></div> -->
-                    </div>
-                    <!--    End content    -->
-                </div>
                 <div id="general-output-scroll">
-                    <ul id="general-output">
-                        <li id="output-bl-info" class="output-list"></li>
-                        <li id="output-bl-unlock" class="output-list"></li>
-                        <li id="output-ping" class="output-list"></li>
-                        <li id="output-dism" class="output-list"></li>
-                        <li id="output-scanstate" class="output-list"></li>
+                    <ul id="general-output" class="ui-accordion">
+                        <li id="output-bl-info" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/lock-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Info</h3>
+                            <div id="bl-info-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-bl-unlock" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/unlock-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Unlock</h3>
+                            <div id="bl-unlock-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-ping" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/ping-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Ping Output</h3>
+                            <div id="ping-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-dism" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/home-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
+                            <div id="dism-output" class="ui-widget-content"></div>
+                        </li>
+                        <li id="output-scanstate" class="output-list">
+                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                <img src="images/home-45.svg" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
+                            <div id="scanstate-output" class="ui-widget-content"></div>
+                        </li>
                     </ul>
                     <!-- <div id="general-output"></div> -->
                 </div>
                 <!--    End content    -->
             </div>
-            <div id="footer" class="on-load">
-                <div class="tools-button-bar">
-                    <button id="button-landing" class="button-toolbar button-exithome">
-                    <div class="button-background">
-                            <img src="images/home-45.svg" class="icon-only" title="Home page">
-                    </div></button>
-                    <button class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
-                    <div class="button-background">
-                            <img src="images/exit-45.svg" class="icon-only" title="Exit program">
-                        </div></button>
-                    <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
-                        <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
-                <button class="button-toolbar" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
-                        <img src="images/command-prompt-45.svg" class="icon-only" title="Command Prompt"></button>
-                    <button class="button-toolbar" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
-                        <img src="images/Explorerpp-45.svg" class="icon-only" title="Explorer ++"></button>
-                    <button class="button-toolbar" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
-                        <img src="images/log-viewer-45.svg" class="icon-only" title="Log Viewer"></button>
-                    <button class="button-toolbar show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
-                        <img src="images/ping-45.svg" class="icon-only" title="Ping Test"></button>
-                    <button class="button-toolbar" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
-                        <img src="images/powershell-45.svg" class="icon-only" title="Powershell"></button>
-                    <button class="button-toolbar" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
-                        <img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++"></button>
-                </div>
-                <!--    End main    -->
-            </div>
-            <!--    End container    -->
+            <!--    End main    -->
         </div>
+        <div id="footer" class="on-load">
+            <div class="tools-button-bar">
+                <button id="button-landing" class="button-toolbar button-exithome">
+                    <div class="button-background button-screen">
+                        <img src="images/home-45.svg" class="icon-only" title="Home page">
+                    </div>
+                </button>
+                <button class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
+                    <div class="button-background button-screen">
+                        <img src="images/exit-45.svg" class="icon-only" title="Exit program">
+                    </div>
+                </button>
+                <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
+                    <div class="button-background button-screen">
+                        <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
+                    <div class="button-background button-screen">
+                        <img src="images/command-prompt-45.svg" class="icon-only" title="Command Prompt">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
+                    <div class="button-background button-screen">
+                        <img src="images/Explorerpp-45.svg" class="icon-only" title="Explorer ++">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
+                    <div class="button-background button-screen">
+                        <img src="images/log-viewer-45.svg" class="icon-only" title="Log Viewer">
+                    </div>
+                </button>
+                <button class="button-toolbar show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
+                    <div class="button-background button-screen">
+                        <img src="images/ping-45.svg" class="icon-only" title="Ping Test">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
+                    <div class="button-background button-screen">
+                        <img src="images/powershell-45.svg" class="icon-only" title="Powershell">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
+                    <div class="button-background button-screen">
+                        <img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++">
+                    </div>
+                </button>
+            </div>
+        </div>
+        <!--    End container    -->
+    </div>
 
-        <!-- Dialog Box -->
-        <div id="dialog" title="Warning"></div>
+    <!-- Dialog Box -->
+    <div id="dialog" title="Warning"></div>
 
-        <!--    Landing Page    -->
-        <template id="temp-landing-page" class="landing">
-            <li id="li-tpm-check" class="li-steps">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
-                <div id="tpm-check-output" class="ui-widget-content"></div>
-            </li>
-        </template>
+    <!--    Landing Page    -->
+    <template id="temp-landing-page" class="landing">
+        <li id="li-tpm-check" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>TPM Status</h3>
+            <div id="tpm-check-output" class="ui-widget-content"></div>
+        </li>
+    </template>
 
-        <!--    Bitlocker Info    -->
-        <template id="temp-bitlocker-info" class="flushfill dism usmt">
-            <li id="li-bitlocker-info" class="li-steps scanState">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
-                </h3>
-                <div id="div-bitlocker-info" class="ui-widget-content">
-                    <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:jsListDrives()">
+    <!--    Bitlocker Info    -->
+    <template id="temp-bitlocker-info" class="flushfill dism usmt">
+        <li id="li-bitlocker-info" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
+            </h3>
+            <div id="div-bitlocker-info" class="ui-widget-content">
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:jsListDrives()">
                     <img src="images/lock-45.svg" class="icon-tools">Bitlocker Info</button>
-                </div>
-            </li>
-        </template>
+            </div>
+        </li>
+    </template>
 
-        <!--    Bitlocker Unlock    -->
-        <template id="temp-bitlocker-unlock" class="flushfill dism usmt">
-            <li id="li-bitlocker-unlock" class="li-steps scanState">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Drive Letter and
-                    Recovery Key to unlock Bitlocker
-                </h3>
-                <div id="div-bitlocker-unlock" class="ui-widget-content">
-                    <span>Drive Letter: &nbsp&nbsp </span>
-                    <input id="input-bitlocker-drive" class="input-objects input-text" name="blDrive" type="Text" maxlength="1" size="1" value="">
-                    <br>
-                    <span>Key: &nbsp&nbsp </span>
-                    <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
-                    <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()">
+    <!--    Bitlocker Unlock    -->
+    <template id="temp-bitlocker-unlock" class="flushfill dism usmt">
+        <li id="li-bitlocker-unlock" class="li-steps scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Drive Letter and Recovery Key to unlock Bitlocker
+            </h3>
+            <div id="div-bitlocker-unlock" class="ui-widget-content">
+                <span>Drive Letter: &nbsp&nbsp </span>
+                <input id="input-bitlocker-drive" class="input-objects input-text" name="blDrive" type="Text" maxlength="1" size="1" value="">
+                <br>
+                <span>Key: &nbsp&nbsp </span>
+                <input id="input-bitlocker-key" class="input-objects input-text" name="blKey" type="Text" maxlength="100" size="35" value="">
+                <button id="bl-unlock" class="button button-bl-unlock show-output" onclick="javascript:blUnlockClick()">
                     <img src="images/unlock-45.svg" class="icon-tools">Bitlocker Unlock</button>
-                </div>
-            </li>
-        </template>
+            </div>
+        </li>
+    </template>
 
-        <!--    OSD Options    -->
-        <template id="temp-osd-options" class="osd">
-            <li id="li-osd-options" class="li-steps">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
-                </h3>
-                <div id="div-format-drive" class="ui-widget-content">
-                    <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox" onchange="javascript:osdCheckboxChange(this)">                    Format Drive and Deploy Image (OSD)?
-                </div>
-            </li>
-        </template>
+    <!--    OSD Options    -->
+    <template id="temp-osd-options" class="osd">
+        <li id="li-osd-options" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>OSD Options
+            </h3>
+            <div id="div-format-drive" class="ui-widget-content">
+                <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox" onchange="javascript:osdCheckboxChange(this)"> Format Drive and Deploy Image (OSD)?
+            </div>
+        </li>
+    </template>
 
-        <!--    FnF Options    -->
-        <template id="temp-fnf-options" class="flushfill">
-            <li id="li-fnf-options" class="li-steps li-win-required">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
-                <div id="div-fnf-options" class="ui-widget-content">
-                    <input id="input-dism-checkbox" class="input-objects" type="checkbox" name="dismCheckBox"> Create Backup
-                    Image (DISM)?
-                    <br>
-                    <input id="input-scanstate-checkbox" class="input-objects" type="checkbox" name="scanStateCheckBox">                    Save User Data (USMT Scanstate)?
-                    <br>
-                    <input id="input-fnfosd-checkbox" class="input-objects" type="checkbox" name="fnfOsdCheckBox" onchange="javascript:osdCheckboxChange(this)">                    Format Drive and Deploy Image (OSD)?
-                    <br>
-                    <input id="input-loadstate-checkbox" class="input-objects" type="checkbox" name="loadStateCheckBox">                    Restore User Data after OSD (USMT Loadstate)?
-                    <br>
-                </div>
-            </li>
-        </template>
+    <!--    FnF Options    -->
+    <template id="temp-fnf-options" class="flushfill">
+        <li id="li-fnf-options" class="li-steps li-win-required">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Flush and Fill Options</h3>
+            <div id="div-fnf-options" class="ui-widget-content">
+                <input id="input-dism-checkbox" class="input-objects" type="checkbox" name="dismCheckBox"> Create Backup Image (DISM)?
+                <br>
+                <input id="input-scanstate-checkbox" class="input-objects" type="checkbox" name="scanStateCheckBox"> Save User Data (USMT Scanstate)?
+                <br>
+                <input id="input-fnfosd-checkbox" class="input-objects" type="checkbox" name="fnfOsdCheckBox" onchange="javascript:osdCheckboxChange(this)"> Format Drive and Deploy Image (OSD)?
+                <br>
+                <input id="input-loadstate-checkbox" class="input-objects" type="checkbox" name="loadStateCheckBox"> Restore User Data after OSD (USMT Loadstate)?
+                <br>
+            </div>
+        </li>
+    </template>
 
-        <!--    Computer Name    -->
-        <template id="temp-computer-name" class="osd flushfill">
-            <li id="li-computer-name" class="li-steps">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
-                </h3>
-                <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp;
-                    <input id="input-comp-name" class="input-objects input-text placeholder" type="text" name="compName" placeholder="Computer Name">
-                    <br>
-                </div>
-            </li>
-        </template>
+    <!--    Computer Name    -->
+    <template id="temp-computer-name" class="osd flushfill">
+        <li id="li-computer-name" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter Computer Name
+            </h3>
+            <div id="div-computer-name" class="ui-widget-content"> Computer Name: &nbsp; &nbsp;
+                <input id="input-comp-name" class="input-objects input-text placeholder" type="text" name="compName" placeholder="Computer Name">
+                <br>
+            </div>
+        </li>
+    </template>
 
-        <!--    Windows Drive    -->
-        <template id="temp-windows-drive" class="flushfill dism usmt">
-            <li id="li-windows-drive" class="li-steps scanState li-win-required">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of
-                    the Windows partition to be imaged
-                </h3>
-                <div id="div-windows-drive" class="ui-widget-content">
-                    <span>Drive Letter: &nbsp&nbsp </span>
-                    <input id="input-windows-drive" class="drive-input input-objects input-text" name="windowsDrive" type="Text" maxlength="1"
-                        size="1">
-                </div>
-            </li>
-        </template>
+    <!--    Windows Drive    -->
+    <template id="temp-windows-drive" class="flushfill dism usmt">
+        <li id="li-windows-drive" class="li-steps scanState li-win-required">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the Windows partition to be imaged
+            </h3>
+            <div id="div-windows-drive" class="ui-widget-content">
+                <span>Drive Letter: &nbsp&nbsp </span>
+                <input id="input-windows-drive" class="drive-input input-objects input-text" name="windowsDrive" type="Text" maxlength="1"
+                    size="1">
+            </div>
+        </li>
+    </template>
 
-        <!--    Primary Username    -->
-        <template id="temp-primary-username" class="flushfill dism usmt">
-            <li id="li-primary-username" class="li-steps li-win-required">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the
-                    user we are copying data for
-                </h3>
-                <div id="div-primary-username" class="ui-widget-content">
-                    <span>Username: &nbsp&nbsp </span>
-                    <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
-                </div>
-            </li>
-        </template>
+    <!--    Primary Username    -->
+    <template id="temp-primary-username" class="flushfill dism usmt">
+        <li id="li-primary-username" class="li-steps li-win-required">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user we are copying data for
+            </h3>
+            <div id="div-primary-username" class="ui-widget-content">
+                <span>Username: &nbsp&nbsp </span>
+                <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
+            </div>
+        </li>
+    </template>
 
-        <!--    External Drive    -->
-        <template id="temp-external-drive" class="flushfill dism usmt">
-            <li id="li-external-drive" class="li-steps li-win-required">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of
-                    the External USB drive where the image will be stored
-                </h3>
-                <div id="div-external-drive" class="ui-widget-content">
-                    <span>Drive Letter: &nbsp&nbsp </span>
-                    <input id="input-external-drive" class="drive-input input-objects input-text" name="externalDrive" type="Text" maxlength="1"
-                        size="1">
-                </div>
-            </li>
-        </template>
+    <!--    External Drive    -->
+    <template id="temp-external-drive" class="flushfill dism usmt">
+        <li id="li-external-drive" class="li-steps li-win-required">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the image will be stored
+            </h3>
+            <div id="div-external-drive" class="ui-widget-content">
+                <span>Drive Letter: &nbsp&nbsp </span>
+                <input id="input-external-drive" class="drive-input input-objects input-text" name="externalDrive" type="Text" maxlength="1"
+                    size="1">
+            </div>
+        </li>
+    </template>
 
-        <!--    Select Users    -->
-        <template id="temp-select-users" class="flushfill usmt">
-            <li id="li-select-users" class="li-steps li-win-required scanState">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data
-                    will be copied
-                </h3>
-                <div id="div-select-users" class="ui-widget-content usmt-users">
-                    <button id="enum-users" class="button" onclick="javascript:showUsersClick()">
+    <!--    Select Users    -->
+    <template id="temp-select-users" class="flushfill usmt">
+        <li id="li-select-users" class="li-steps li-win-required scanState">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will be copied
+            </h3>
+            <div id="div-select-users" class="ui-widget-content usmt-users">
+                <button id="enum-users" class="button" onclick="javascript:showUsersClick()">
                     <img src="images/unlock-45.svg" class="icon-tools">Show Users</button>
-                </div>
-            </li>
-        </template>
+            </div>
+        </li>
+    </template>
 
-        <!--    Software Install    -->
-        <template id="temp-software-install" class="osd flushfill software">
-            <li id="li-software-install" class="li-steps li-win-required">
-                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
-                </h3>
-                <div id="div-software-install" class="ui-widget-content">
-                    <input type="checkbox" id="AdobeReaderDC" class="software-install input-objects" name="AdobeReaderDC">Adobe
-                    Reader DC
-                    <br>
-                    <input type="checkbox" id="AdobeAcrobatProXI" class="software-install input-objects" name="AdobeAcrobatProXI">Adobe
-                    Acrobat Pro XI
-                    <br>
-                    <input type="checkbox" id="Chrome" class="software-install input-objects" name="Chrome">Chrome 58
-                    <br>
-                    <input type="checkbox" id="FileMaker" class="software-install input-objects" name="FileMaker">FileMaker
-                    Pro 16
-                    <br>
-                    <input type="checkbox" id="Office2016" class="software-install input-objects" name="Office2016">Office
-                    2016 (32 Bit)
-                    <br>
-                    <input type="checkbox" id="MBAM" class="software-install input-objects" name="MBAM">MBAM Client (Bitlocker)
-                    <br>
-                </div>
-            </li>
-        </template>
+    <!--    Software Install    -->
+    <template id="temp-software-install" class="osd flushfill software">
+        <li id="li-software-install" class="li-steps li-win-required">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
+            </h3>
+            <div id="div-software-install" class="ui-widget-content">
+                <input type="checkbox" id="AdobeReaderDC" class="software-install input-objects" name="AdobeReaderDC">Adobe Reader DC
+                <br>
+                <input type="checkbox" id="AdobeAcrobatProXI" class="software-install input-objects" name="AdobeAcrobatProXI">Adobe Acrobat Pro XI
+                <br>
+                <input type="checkbox" id="Chrome" class="software-install input-objects" name="Chrome">Chrome 58
+                <br>
+                <input type="checkbox" id="FileMaker" class="software-install input-objects" name="FileMaker">FileMaker Pro 16
+                <br>
+                <input type="checkbox" id="Office2016" class="software-install input-objects" name="Office2016">Office 2016 (32 Bit)
+                <br>
+                <input type="checkbox" id="MBAM" class="software-install input-objects" name="MBAM">MBAM Client (Bitlocker)
+                <br>
+            </div>
+        </li>
+    </template>
 
 </body>
 

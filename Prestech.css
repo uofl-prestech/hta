@@ -211,6 +211,7 @@ p {
 .button-toolbar {
     padding: 0px;
     margin: 0px 10px;
+    border-radius: 5px;
 }
 .button {
     padding: 10px;
@@ -221,6 +222,7 @@ p {
     width: 45px;
     background-color: rgb(149, 23, 23);
     border-radius: 5px;
+    vertical-align: middle;
     display: inline-block;
 }
 .button-background-hover {
@@ -250,6 +252,9 @@ p {
     color: #FFF;
     cursor: pointer;
 }
+.button-screen{
+    background: url(images/screen-only-45.svg);
+}
 .active {
     background-color: rgba(91, 103, 125, 0.6);
     border: 1px solid rgba(91, 103, 125, 1);
@@ -261,7 +266,7 @@ p {
 .tools-button-bar {
     display: inline-block;
     height: 65px;
-    padding: 10px 10px;
+    padding: 5px 5px;
 }
 .category-div {
     background: rgba(0, 0, 0, 0.5);

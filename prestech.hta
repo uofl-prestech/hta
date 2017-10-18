@@ -41,11 +41,9 @@
     <div id="container">
         <div class="category-header">
             <button class="button-toolbar" id="button-ShowAll">
-                                <img src="images/expand-45.svg" class="icon-tools">
-                            </button>
+                <div class="button-background button-screen"><img src="images/expand-45.svg" class="icon-only"></div></button>
             <button class="button-toolbar" id="button-HideAll">
-                                <img src="images/collapse-45.svg" class="icon-tools">
-                            </button>
+                <div class="button-background button-screen"><img src="images/minimize-45.svg" class="icon-only"></div></button>
             <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
             <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
             <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
@@ -121,7 +119,7 @@
                 <div id="page-osd" class="pages">
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
                     <button class="button" id="launch-osd" onclick="javascript:launchOSD()">
-                        <img src="images/launch-icon.png" class="icon-tools">Launch OSD</button>
+                        <img src="images/launch-icon-45.svg" class="icon-tools">Launch OSD</button>
                 </div>
 
                 <!-- Flush and Fill Page -->
@@ -153,7 +151,7 @@
                 </div>
 
                 <!--Troubleshooting Tools Page-->
-                <div id="page-tools" class="pages">
+                <!-- <div id="page-tools" class="pages"> -->
                     <!-- <div class="tools-button-bar">
                         <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
                             <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
@@ -195,13 +193,13 @@
                         </li>
                         <li id="output-dism" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/home-no-screen-45.svg" class="icon-tools output-icons">
+                                <img src="images/home-45.svg" class="icon-tools output-icons">
                                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
                             <div id="dism-output" class="ui-widget-content"></div>
                         </li>
                         <li id="output-scanstate" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/home-no-screen-45.svg" class="icon-tools output-icons">
+                                <img src="images/home-45.svg" class="icon-tools output-icons">
                                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
                             <div id="scanstate-output" class="ui-widget-content"></div>
                         </li>
@@ -210,45 +208,34 @@
                 </div>
                 <!--    End content    -->
             </div>
-            <div id="general-output-scroll">
-                <ul id="general-output">
-                    <li id="output-bl-info" class="output-list"></li>
-                    <li id="output-bl-unlock" class="output-list"></li>
-                    <li id="output-ping" class="output-list"></li>
-                    <li id="output-dism" class="output-list"></li>
-                    <li id="output-scanstate" class="output-list"></li>
-                </ul>
-                <!-- <div id="general-output"></div> -->
-            </div>
-            <!--    End content    -->
+            <!--    End main    -->
         </div>
         <div id="footer" class="on-load">
             <div class="tools-button-bar">
                 <button id="button-landing" class="button-toolbar button-exithome">
-                    <div class="button-background">
-                            <img src="images/home-45.svg" class="icon-only" title="Home page">
+                    <div class="button-background button-screen">
+                        <img src="images/home-45.svg" class="icon-only" title="Home page">
                     </div></button>
                     <button class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
-                    <div class="button-background">
-                            <img src="images/exit-45.svg" class="icon-only" title="Exit program">
-                        </div></button>
+                    <div class="button-background button-screen">
+                        <img src="images/exit-45.svg" class="icon-only" title="Exit program">
+                    </div></button>
                 <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
-                        <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
+                        <div class="button-background button-screen"><img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info"></div></button>
                 <button class="button-toolbar" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
-                        <img src="images/command-prompt-45.svg" class="icon-only" title="Command Prompt"></button>
+                        <div class="button-background button-screen"><img src="images/command-prompt-45.svg" class="icon-only" title="Command Prompt"></div></button>
                 <button class="button-toolbar" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
-                        <img src="images/Explorerpp-45.svg" class="icon-only" title="Explorer ++"></button>
+                        <div class="button-background button-screen"><img src="images/Explorerpp-45.svg" class="icon-only" title="Explorer ++"></div></button>
                 <button class="button-toolbar" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
-                        <img src="images/log-viewer-45.svg" class="icon-only" title="Log Viewer"></button>
+                        <div class="button-background button-screen"><img src="images/log-viewer-45.svg" class="icon-only" title="Log Viewer"></div></button>
                 <button class="button-toolbar show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
-                        <img src="images/ping-45.svg" class="icon-only" title="Ping Test"></button>
+                        <div class="button-background button-screen"><img src="images/ping-45.svg" class="icon-only" title="Ping Test"></div></button>
                 <button class="button-toolbar" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
-                        <img src="images/powershell-45.svg" class="icon-only" title="Powershell"></button>
+                        <div class="button-background button-screen"><img src="images/powershell-45.svg" class="icon-only" title="Powershell"></div></button>
                 <button class="button-toolbar" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
-                        <img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++"></button>
+                        <div class="button-background button-screen"><img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++"></div></button>
             </div>
-        <!--    End main    -->
-    </div>
+        </div>
         <!--    End container    -->
     </div>
 
