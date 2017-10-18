@@ -42,14 +42,14 @@ h4 {
 .input-text {
     background: none;
     border: none;
-    border-bottom: 1px solid rgba(70, 120, 110, 0.8);
-    caret-color: rgb(70, 120, 110);
+    border-bottom: 1px solid rgba(91, 103, 125, 0.6);
+    caret-color: rgb(91, 103, 125);
     margin: 3px;
     padding: 3px;
     color: #FFF;
 }
 .input-text:focus{
-    border-bottom: 1px solid rgba(98, 171, 146, 1);
+    border-bottom: 1px solid rgba(164, 173, 189, 1);
 }
 .navigation-bar ul {
     font-weight: 400;
@@ -99,8 +99,8 @@ p {
     border-radius: 0px;
 }
 .ui-state-default {
-    border: 1px solid rgba(70, 120, 110, 1);
-    background: rgba(70, 120, 110, 0.6);
+    background: rgba(91, 103, 125, 0.6);
+    border: 1px solid rgba(91, 103, 125, 1);
     font-weight: bold;
     color: #fafafa;
 }
@@ -110,41 +110,36 @@ p {
     color: #CCC;
 }
 #button-osd {
-    margin-top: 0;
+    margin-top: 5px;
     padding-top: 0;
 }
 #container {
     display: inline-block;
     height: 768px;
     width: 1024px;
-    background: url(images/helmet-grey-blur2.png);
+    background: url(images/backgrounds/abstract01a.png);
 }
 #content {
     display: inline-block;
     vertical-align: top;
-    height: 680px;
+    height: 638px;
 }
 #main {
-    height: 708px;
+    height: 648px;
     width: 1024px;
     color: #CCC;
 }
 .on-load {
     opacity: 0;
 }
-#header {
-    height: 50px;
-    width: 1024px;
-    display: table-cell;
-    vertical-align: middle;
+#footer {
     text-align: center;
-    padding-right: 20px;
-    color: rgba(205, 205, 205, 0.75);
-    letter-spacing: 3px;
-    font-weight: 200;
+    padding: 0px 10px;
+    background-color: rgba(0, 0, 0, 0.0);
+    height: 60px;
 }
-#header, #main {
-    background-color: rgba(0, 0, 0, 0.25);
+#main {
+    background-color: rgba(0, 0, 0, 0.0);
 }
 #header > h1 {
     margin: 0;
@@ -169,62 +164,66 @@ p {
 }
 #general-output-scroll {
     width: 355px;
-    height: 582px;
+    height: 638px;
     margin: 5px 0px 0px 5px;
-    background: rgba(0, 0, 0, 0.75);
-    border: 3px double rgba(70, 120, 110, 0.6);
+    background: rgba(17, 11, 17, 0.6);
+    border: 3px double rgba(91, 103, 125, 0.6);
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
     overflow: auto;
     position: relative;
 }
-#input-tpm-checkbox{
+#input-tpm-checkbox {
     visibility: hidden;
 }
-#run-LoadState{
+#run-LoadState {
     display: none;
 }
-#tpmGood{
+#tpmGood {
     color: green;
 }
-#tpmWarning{
+#tpmWarning {
     color: red;
 }
 
 /*CLASS STYLES*/
-.active-page{
+.active-page {
     display: inline-block !important;
 }
-.active-header{
+.active-header {
     display: inline !important;
 }
 .small-button {
     padding: 4px 6px;
     margin: 5px;
 }
-.button, .small-button {
+.button, .small-button, .button-toolbar {
     background-color: darkred;
     border: none;
-    cursor: default;
+    cursor: pointer;
     color: #CCC;
     text-decoration: none;
     display: inline-block;
     font-size: 13px;
     outline: none;
 }
-.button {
-    padding: 10px 20px;
-    margin: 5px;
+.button-toolbar {
+    padding: 0px;
+    margin: 0px 10px;
 }
-.button-background{
+.button {
+    padding: 10px;
+    margin: 5px 5px 0px 5px;
+}
+.button-background {
     height: 45px;
     width: 45px;
     background-color: rgb(149, 23, 23);
     border-radius: 5px;
     display: inline-block;
 }
-.button-background-hover{
+.button-background-hover {
     background-color: rgba(255, 116, 116, 0.8) !important;
     box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 1.0), 0px 0px 3px 2px rgba(0, 0, 0, 1.0) !important;
 }
@@ -239,32 +238,29 @@ p {
     border: none;
     color: #FFF;
 }
-.button-nav, .button-exithome {
-    background-color: rgba(85, 85, 85, 0.10);
-    border: 1px solid rgba(70, 70, 70, 0.75);
+.button-nav {
+    background-color: rgba(40, 43, 51, 0.35);
+    border: 1px solid rgba(108, 111, 112, 0.35);
     color: #CCC;
     outline: none;
 }
-.active, .button-nav:hover, .button-nav:focus, .button-exithome:hover {
-    background-color: rgba(95, 95, 95, 0.2);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7);
-    border: 1px solid rgb(80, 80, 80);
+.button-nav:hover, .button-nav:focus {
+    background-color: rgba(91, 103, 125, 0.35);
+    border: 1px solid rgba(108, 111, 112, 0.5);
     color: #FFF;
-    cursor: default;
+    cursor: pointer;
+}
+.active {
+    background-color: rgba(91, 103, 125, 0.6);
+    border: 1px solid rgba(91, 103, 125, 1);
+    color: #FFF;
 }
 .button-exithome {
-    padding: 10px;
-    cursor: default;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0px 25px;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 .tools-button-bar {
-    background-color: none!important;
-    text-align: center;
-    padding: 50px 0px;
+    display: inline-block;
+    padding: 5px 0px;
 }
 .category-div {
     background: rgba(0, 0, 0, 0.5);
@@ -273,32 +269,32 @@ p {
 }
 .category-header {
     width: 100%;
-    min-height: 50px;
+    height: 60px;
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
     padding: 10px 15px;
     color: #CCC;
-    background-color: rgba(139,0,0,0.6);
+    background-color: rgba(139,0,0,1);
 }
-.content-win-not-found{
+.content-win-not-found {
     background-color: rgba(139,0,0,0.6);
     color: grey;
 }
 .drive-input {
     text-align: center;
 }
-.driveLetterSpan{
+.driveLetterSpan {
     color: rgba(98, 171, 146, 1);
 }
-.driveLocked{
+.driveLocked {
     color: rgb(219, 193, 46);
 }
-.h3-win-not-found{
+.h3-win-not-found {
     background-color: rgba(75, 58, 58, 0.6);
     color: grey;
 }
-.header-text{
+.header-text {
     display: none;
 }
 .icon {
@@ -307,15 +303,11 @@ p {
     width: 75px;
     vertical-align: middle;
 }
-.icon-only, .icon-tools, .icon-home-exit {
+.icon-only, .icon-tools {
     display: inline-block;
     vertical-align: middle;
 }
 .icon-only {
-    height: 25px;
-    width: 25px;
-}
-.icon-home-exit {
     height: 45px;
     width: 45px;
 }
@@ -332,14 +324,10 @@ p {
 }
 .navigation-bar {
     position: relative;
-    height: 680px;
+    height: 638px;
     width: 264px;
     display: inline-block;
     background: rgb(34, 45, 50, 1);
-    margin-top: 15px;
-}
-.navigation-bar, #content {
-    margin-top: 15px;
 }
 /* .output-div {
     width: 365px;
@@ -354,24 +342,52 @@ p {
     position: relative;
     display: none;
     vertical-align: top;
-    margin-top: 5px;
+    margin-top: 4px;
     margin-right: 5px;
     width: 360px;
-    height: 582px;
+    height: 638px;
     border: none;
     overflow: auto;
 }
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* .tooltiptext {
+    visibility: visible;
+
+    background-color: rgba(85, 85, 85, .75);
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    opacity: 0;
+    transition: opacity 1s;
+    transition-delay: 0.5s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+} */
 .tpm-error {
     color: rgb(219, 193, 46);
     font-style: bold;
 }
-.ui-dialog{
+.ui-dialog {
     background: rgba(0, 0, 0, 0.90);
 }
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
-.win-not-found{
+.win-not-found {
     background-color: rgba(95, 95, 95, 0.3);
     color: #6E6E6E;
 }
