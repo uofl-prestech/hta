@@ -1,3 +1,6 @@
+'**********************************************************************************************************************
+'						        Function: TPMCheck
+'**********************************************************************************************************************
 Sub TPMCheck
 	htaLog.WriteLine(Now & " ***** Begin Sub TPMCheck *****")
 	
@@ -93,15 +96,18 @@ Sub TPMCheck
 	htaLog.WriteLine(Now & " ***** End Sub TPMCheck *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Bitlocker Info subroutine ************************************
+'**********************************************************************************************************************
+'						        Function: BitlockerInfo
+'**********************************************************************************************************************
 Sub BitlockerInfo
 	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerInfo *****")
 
 	Const ForReading = 1
 	Const TriStateTrue = -1	'Open file as Unicode
 	Dim cmdShell
-	Dim driveDiv:set driveDiv = document.getElementById("general-output")
+	Dim driveDiv:set driveDiv = document.getElementById("bl-info-output")
 
 	Set cmdShell = CreateObject("WScript.Shell")
 	
@@ -126,8 +132,11 @@ Sub BitlockerInfo
 	htaLog.WriteLine(Now & " ***** End Sub BitlockerInfo *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Unlock Bitlocker Drive subroutine ************************************
+'**********************************************************************************************************************
+'						        Function: BitlockerUnlock
+'**********************************************************************************************************************
 Sub BitlockerUnlock
 	htaLog.WriteLine(Now & " ***** Begin Sub BitlockerUnlock *****")
 	Dim cmdShell, blOutput, drive, key
@@ -137,7 +146,7 @@ Sub BitlockerUnlock
 	htaLog.WriteLine(Now & " || document.getElementById(""input-bitlocker-drive"").Value = " & drive)
 	htaLog.WriteLine(Now & " || document.getElementById(""input-bitlocker-key"").Value = " & key)
 
-	Dim driveDiv:set driveDiv = document.getElementById("general-output")
+	Dim driveDiv:set driveDiv = document.getElementById("bl-unlock-output")
 	Set cmdShell = CreateObject("Wscript.Shell")
 
 	htaLog.WriteLine(Now & " || Executing command: cmdShell.Exec(""Powershell.exe -noprofile -windowstyle hidden -noninteractive -executionpolicy bypass -File ./BitlockerUnlock.ps1 -blKey " & Chr(34) & key & Chr(34) & " -drive " & Chr(34) & drive & Chr(34) & ")")
@@ -152,3 +161,4 @@ Sub BitlockerUnlock
 	htaLog.WriteLine(Now & " ***** End Sub BitlockerUnlock *****")
 
 End Sub
+'**********************************************************************************************************************

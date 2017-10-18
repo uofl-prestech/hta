@@ -160,7 +160,7 @@ p {
     min-height: 200px;
     color: #CCC;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 2px;
 }
 #general-output-scroll {
     width: 355px;
@@ -229,8 +229,8 @@ p {
 }
 .button:hover, .small-button:hover {
     background-color: rgb(149, 23, 23);
-    box-shadow: 0px 3px 6px rgba(90, 17, 17, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.7);
-    border: none;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgb(0, 0, 0);
     color: #FFF;
 }
 .button:active, .small-button:active {
@@ -338,6 +338,10 @@ p {
     background: rgba(104, 110, 175, 0.65);
     overflow: auto;
 } */
+.output-icons{
+    background-color: rgba(241, 40, 40, 0.5);
+    border-radius: 5px;
+}
 .pages {
     position: relative;
     display: none;
@@ -387,7 +391,14 @@ p {
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
-.win-not-found {
+.warning-image{
+    height: 25px;
+    width: 25px;
+    float: right;
+    position: absolute;
+    right: 15px;
+}
+.win-not-found{
     background-color: rgba(95, 95, 95, 0.3);
     color: #6E6E6E;
 }
