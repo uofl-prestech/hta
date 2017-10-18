@@ -54,7 +54,7 @@ h4 {
 .navigation-bar ul {
     font-weight: 400;
     list-style: none;
-    margin: 0 10px;
+    margin: 10px 10px 5px 10px;
     padding: 0;
 }
 .navigation-bar ul li {
@@ -136,7 +136,7 @@ p {
     text-align: center;
     padding: 0px 10px;
     background-color: rgba(0, 0, 0, 0.0);
-    height: 60px;
+    height: 65px;
 }
 #main {
     background-color: rgba(0, 0, 0, 0.0);
@@ -164,8 +164,8 @@ p {
 }
 #general-output-scroll {
     width: 355px;
-    height: 638px;
-    margin: 5px 0px 0px 5px;
+    height: 628px;
+    margin: 10px 0px 5px 5px;
     background: rgba(17, 11, 17, 0.6);
     border: 3px double rgba(91, 103, 125, 0.6);
     display: inline-block;
@@ -260,7 +260,8 @@ p {
 }
 .tools-button-bar {
     display: inline-block;
-    padding: 5px 0px;
+    height: 65px;
+    padding: 10px 10px;
 }
 .category-div {
     background: rgba(0, 0, 0, 0.5);
@@ -269,7 +270,7 @@ p {
 }
 .category-header {
     width: 100%;
-    height: 60px;
+    height: 65px;
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
@@ -346,10 +347,11 @@ p {
     position: relative;
     display: none;
     vertical-align: top;
-    margin-top: 4px;
+    margin-top: 10px;
     margin-right: 5px;
+    margin-bottom: 5px;
     width: 360px;
-    height: 638px;
+    height: 628px;
     border: none;
     overflow: auto;
 }
