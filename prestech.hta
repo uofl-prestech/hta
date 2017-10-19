@@ -3,7 +3,7 @@
 
 <head>
     <title>OOP Task Sequence Selections</title>
-    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <meta http-equiv="x-ua-compatible" content="ie=10">
     <link rel="stylesheet" href="./js/jquery-ui-1.11.4.custom/jquery-ui.css">
     <link rel="stylesheet" href="./js/jquery.mCustomScrollbar.css">
     <script src="./js/html5shiv.min.js"></script>
@@ -82,34 +82,11 @@
                         <img src="images/software-install.png" class="icon">
                         <span>Software Install</span>
                     </li>
-                    <!-- <li id="button-tools" class="button-nav">
-                        <img src="images/tools-icon.png" class="icon">
-                        <span>Tools</span>
-                    </li> -->
                 </ul>
             </div>
 
 <!-- ******************** Page Header Section ******************** -->
             <div id="content">
-                <!-- <div class="category-header">
-                    <button class="button-toolbar" id="button-ShowAll">
-                        <img src="images/expand.png" class="icon-only">
-                    </button>
-                    <button class="button-toolbar" id="button-HideAll">
-                        <img src="images/collapse.png" class="icon-only">
-                    </button>
-                    <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
-                    <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
-                    <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
-                    <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
-                    <h4 id="header-usmt" class="header-text">
-                        <button class="small-button usmtStates" id="button-ScanState">Scan</button>
-                        <button class="small-button usmtStates" id="button-LoadState">Load</button> User State Migration
-                        Tool
-                    </h4>
-                    <h4 id="header-software" class="header-text">Software Installation</h4>
-                    <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
-                </div> -->
                 <!--Landing Page-->
                 <div id="page-landing" class="pages active-page">
                     <ul id="ul-landing" class="accordion ui-accordion ul-elements"></ul>
@@ -150,26 +127,6 @@
                     <ul id="ul-software" class="accordion ui-accordion ul-elements"></ul>
                 </div>
 
-                <!--Troubleshooting Tools Page-->
-                <!-- <div id="page-tools" class="pages"> -->
-                    <!-- <div class="tools-button-bar">
-                        <button class="button button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
-                            <img src="images/bitlocker-icon.png" class="icon-tools">Bitlocker Info</button>
-                        <button class="button" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
-                            <img src="images/command-prompt-45.svg" class="icon-tools">Command Prompt</button>
-                        <button class="button" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
-                            <img src="images/Explorerpp-45.svg" class="icon-tools">Explorer ++</button>
-                        <button class="button" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
-                            <img src="images/log-viewer-45.svg" class="icon-tools">Log Viewer</button>
-                        <button class="button show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
-                            <img src="images/ping-45.svg" class="icon-tools">Ping Test</button>
-                        <button class="button" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
-                            <img src="images/powershell-45.svg" class="icon-tools">Powershell</button>
-                        <button class="button" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
-                            <img src="images/notepadpp-45.svg" class="icon-tools">Notepad ++</button>
-                    </div>
-                </div>
-
 <!-- ******************** Output Section ******************** -->
                 <div id="general-output-scroll">
                     <ul id="general-output" class="ui-accordion">
@@ -185,11 +142,11 @@
                                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Unlock</h3>
                             <div id="bl-unlock-output" class="ui-widget-content"></div>
                         </li>
-                        <li id="output-ping" class="output-list">
+                        <li id="li-output-network" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                 <img src="images/ping-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Ping Output</h3>
-                            <div id="ping-output" class="ui-widget-content"></div>
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Network Output</h3>
+                            <div id="div-output-network" class="ui-widget-content"></div>
                         </li>
                         <li id="output-dism" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
@@ -216,9 +173,9 @@
                     <div class="button-background button-screen">
                         <img src="images/home-45.svg" class="icon-only" title="Home page">
                     </div></button>
-                    <button class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
-                    <div class="button-background button-screen">
-                        <img src="images/exit-45.svg" class="icon-only" title="Exit program">
+                    <button id="button-exit" class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
+                    <div id="div-exit" class="button-background button-screen">
+                        <img src="images/exit-45.svg" id="portal-exit" class="icon-only" title="Exit program">
                     </div></button>
                 <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
                         <div class="button-background button-screen"><img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info"></div></button>
@@ -354,6 +311,25 @@
             <div id="div-primary-username" class="ui-widget-content">
                 <span>Username: &nbsp&nbsp </span>
                 <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
+            </div>
+        </li>
+    </template>
+
+    <!--    Map Drive Share    -->
+    <template id="temp-map-drive" class="flushfill dism usmt">
+        <li id="li-map-drive" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>(Optional) Map a drive letter to a network share
+            </h3>
+            <div id="div-map-drive" class="ui-widget-content">
+                <span>Username: &nbsp&nbsp </span>
+                <input id="input-share-username" class="input-objects input-text" name="shareUsername" type="Text"><br>
+                <span>Password: &nbsp&nbsp </span>
+                <input id="input-share-password" class="input-objects input-text" name="sharePassword" type="Password"><br>
+                <span>Network Path: &nbsp&nbsp </span>
+                <input id="input-share-path" class="input-objects input-text" name="sharePath" type="Text"><br>
+                <button id="map-drive" class="button" onclick="javascript:jsMapNetworkDrive()">
+                    <img src="images/ping-45.svg" class="icon-tools">Map Drive</button>
             </div>
         </li>
     </template>

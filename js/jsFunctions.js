@@ -4,7 +4,6 @@ var winFoundAndEncrypted = [];
 /************************************ JavaScript functions ************************************/
 $(document).ready(function () {
     loadPage("landing");
-    //$('#general-output-scroll').css('visibility', 'hidden');
 
     //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
@@ -69,10 +68,6 @@ $('.button-nav').on('click', function (event) {
     loadPage(targetOperation, event);
 });
 
-$(document).on('click', '.show-output', function () {
-    $("#general-output-scroll").css('visibility', 'visible');
-});
-
 $('.button-toolbar').hover(
     function () {
         $(this).children().addClass("button-background-hover");
@@ -80,6 +75,22 @@ $('.button-toolbar').hover(
     }, function () {
         $(this).children().removeClass("button-background-hover");
         $(this).children().addClass("button-screen");
+    }
+);
+
+$('#button-exit').hover(
+    function () {
+        $("#portal-exit").animate({
+            top: "30px",
+            duration: 3000,
+            easing: "linear"
+        });
+    }, function () {
+        $("#portal-exit").animate({
+            top: "0px",
+            duration: 3000,
+            easing: "linear"
+        });
     }
 );
 
@@ -176,7 +187,7 @@ function initAccordion() {
     $('.accordion .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 }
 
-function jsListDrives() {
+function jsListDrives(){
     //Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
     //drives should contain: Drive Letter, Protection Status, Encryption Method, Lock Status, Key Type, Key ID, Label, Capacity 
     var drives = {}, drivesSorted = {};
@@ -187,7 +198,7 @@ function jsListDrives() {
         var keys = [], k, len;
 
         for (k in drives) {
-            if (drives.hasOwnProperty(k)) {
+            if (drives.hasOwnProperty(k)){
                 keys.push(k);
             }
         }
@@ -198,7 +209,7 @@ function jsListDrives() {
         var landingPageDiv = $("#bl-info-output");
         landingPageDiv.empty();
         var arKeyType = ["Unknown or other protector type", "Trusted Platform Module (TPM)", "External key", "Numerical password", "TPM And PIN", "TPM And Startup Key", "TPM And PIN And Startup Key", "Public Key", "Passphrase", "TPM Certificate", "CryptoAPI Next Generation (CNG) Protector"];
-        for (var i = 0; i < len; i++) {
+        for (var i = 0; i < len; i++){
             k = keys[i];
             landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + k);
             drives[k]["Lock Status"] == "Locked" ? landingPageDiv.append(" <span class=\"driveLocked\">(" + drives[k]["Lock Status"] + ")</span> ") : "";
@@ -207,7 +218,7 @@ function jsListDrives() {
             drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
             drives[k]["Free Space"] ? landingPageDiv.append(" | Free Space: " + drives[k]["Free Space"]) : "";
             drives[k]["Encryption Method"] ? landingPageDiv.append("<br>Encryption: " + drives[k]["Encryption Method"]) : "";
-            arKeyType.forEach(function (element) {
+            arKeyType.forEach(function (element){
                 drives[k][element] && element == "Numerical password" ? landingPageDiv.append("<br>Recovery Key ID: " + drives[k][element]) : "";
             });
 
@@ -222,6 +233,29 @@ function jsListDrives() {
     return drivesSorted;
 }
 
+function jsMapNetworkDrive(){
+    var sharePath = $("#input-share-path").val();
+    $("#dialog").dialog({
+        resizable: false,
+        dialogClass: "no-close",
+        autoOpen: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        title: "Map Network Drive",
+        hide: { effect: "explode", duration: 200 }
+    });
+    $("#dialog").text("Mapping " + sharePath + " as drive N:");
+    $("#dialog").dialog("open");
+    setTimeout(function() {
+        try {
+            mapNetDrive();
+        }
+        catch (e) { };
+        $("#dialog").dialog("close");
+    }, 1000);
+
+}
 // ******************** Verification/Error Checking Functions ********************
 function warnUser(objDeferred, message, continueButton) {
     $("#dialog").dialog({
@@ -233,6 +267,7 @@ function warnUser(objDeferred, message, continueButton) {
         modal: true,
         hide: { effect: "explode", duration: 200 }
     });
+    
     if (continueButton == true) {
         $("#dialog").dialog({
             buttons: {

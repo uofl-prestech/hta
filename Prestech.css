@@ -161,6 +161,7 @@ p {
     color: #CCC;
     font-size: 14px;
     padding: 2px;
+    position: relative;
 }
 #general-output-scroll {
     width: 355px;
@@ -412,4 +413,7 @@ p {
 .win-not-found:hover{
     background-color: rgba(95, 95, 95, 0.5)!important;
     color: #808080;
+}
+#portal-exit{
+    position:relative;
 }
