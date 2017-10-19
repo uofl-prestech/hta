@@ -62,7 +62,7 @@ $('#button-HideAll').on('click', function () {
     $('.accordion .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
 });
 
-$('.button-nav').on('click', function (event) {
+$('.button-nav, #button-landing').on('click', function (event) {
     var targetID = $(this).attr("id");      //Get the id of the button that was clicked
     var targetOperation = targetID.replace("button-", "");  //Strip away button-, leaving us with osd, flushfill, dism, usmt, software, or tools
     loadPage(targetOperation, event);
@@ -108,6 +108,7 @@ function loadPage(targetOperation, event) {
         //Find and list drives attached to this machine
         //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
         isWindowsFoundIsEncrypted();
+        event = null;
         try {
             //Check for a TPM chip
             TPMCheck();
@@ -601,7 +602,8 @@ function blUnlockClick() {
     }
     var spinner = new Spinner(opts).spin(target);
     BitlockerUnlock();
-    BitlockerInfo();
+    // BitlockerInfo();
+    jsListDrives();
     isWindowsFoundIsEncrypted();
     spinner.stop(target);
 }

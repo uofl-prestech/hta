@@ -60,13 +60,13 @@ End Sub
 '						        Function: listDrives
 '**********************************************************************************************************************
 Function listDrives
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
     Dim strComputer, objWMIService, colItems, admin, drivesObj
 	Dim landingPageDiv: Set landingPageDiv = document.getElementById("bl-info-output")
     strComputer = "."
     Set drivesObj = CreateJsObj()
 
-    On Error Resume Next
     'Quick check to see if we are running as admin
     CreateObject("WScript.Shell").RegRead("HKEY_USERS\S-1-5-19\Environment\TEMP")
     If Err.number = 0 Then 
