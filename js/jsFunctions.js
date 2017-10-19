@@ -4,7 +4,6 @@ var winFoundAndEncrypted = [];
 /************************************ JavaScript functions ************************************/
 $(document).ready(function () {
     loadPage("landing");
-    //$('#general-output-scroll').css('visibility', 'hidden');
 
     //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
@@ -20,6 +19,14 @@ $(document).ready(function () {
     $("#dialog").dialog({
         autoOpen: false
     });
+
+    $('#general-output h3').click(function () {
+        $(this).next().toggle('fast');
+        $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
+        return false;
+    }).next().hide();
+    $('#general-output .ui-widget-content').show('fast');
+    $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 });
 
 // ******************* Placeholder Text ***********************
@@ -46,13 +53,13 @@ $('[placeholder]').focus(function () {
 
 // ******************** Navigation Buttons ********************
 $('#button-ShowAll').on('click', function () {
-    $('ul .ui-widget-content').show('fast');
-    $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+    $('.accordion .ui-widget-content').show('fast');
+    $('.accordion .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 });
 
 $('#button-HideAll').on('click', function () {
-    $('ul .ui-widget-content').hide('fast');
-    $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
+    $('.accordion .ui-widget-content').hide('fast');
+    $('.accordion .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
 });
 
 $('.button-nav').on('click', function (event) {
@@ -61,17 +68,39 @@ $('.button-nav').on('click', function (event) {
     loadPage(targetOperation, event);
 });
 
-$(document).on('click', '.show-output', function () {
-    $("#general-output-scroll").css('visibility', 'visible');
-});
-
-$('.button-exithome').hover(
+$('.button-toolbar').hover(
     function () {
         $(this).children().addClass("button-background-hover");
+        $(this).children().removeClass("button-screen");
     }, function () {
         $(this).children().removeClass("button-background-hover");
+        $(this).children().addClass("button-screen");
     }
 );
+
+$('#button-exit').hover(
+    function () {
+        $("#portal-exit").animate({
+            top: "30px",
+            duration: 3000,
+            easing: "linear"
+        });
+    }, function () {
+        $("#portal-exit").animate({
+            top: "0px",
+            duration: 3000,
+            easing: "linear"
+        });
+    }
+);
+
+$("#screen-test").hover(
+    function () {
+        $("#screen-test").children().css("background-image", "");
+    }, function () {
+        $("#screen-test").children().css("background-image", "url(images/screen-only-45.svg)");
+    }
+)
 
 function loadPage(targetOperation, event) {
     //Rerun listDrives function if returning to landing page
@@ -125,7 +154,7 @@ function loadPage(targetOperation, event) {
 // ******************** Misc functions ********************
 function getInputValues() {
     var inputValues = {};
-    $("ul .input-objects").each(function () {
+    $(".accordion .input-objects").each(function () {
         //If this input is a checkbox, get the value of prop("checked") instead of val()
         if ($(this).attr("type") == "checkbox") {
             inputValues[$(this).attr("name")] = $(this).prop("checked");
@@ -154,11 +183,11 @@ function initAccordion() {
         $(this).children().toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
         return false;
     }).next().hide();
-    $('ul .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).show('fast');
-    $('ul .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+    $('.accordion .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).show('fast');
+    $('.accordion .ui-widget-content').not($(".li-win-not-found .ui-widget-content")).prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 }
 
-function jsListDrives() {
+function jsListDrives(){
     //Get Drive Letter, Label, Capacity, and Encryption status for each drive that has a Letter mapped to it
     //drives should contain: Drive Letter, Protection Status, Encryption Method, Lock Status, Key Type, Key ID, Label, Capacity 
     var drives = {}, drivesSorted = {};
@@ -169,24 +198,27 @@ function jsListDrives() {
         var keys = [], k, len;
 
         for (k in drives) {
-            if (drives.hasOwnProperty(k)) {
+            if (drives.hasOwnProperty(k)){
                 keys.push(k);
             }
         }
         keys.sort();
         len = keys.length;
 
-        var landingPageDiv = $("#drive-list-output");
+        // var landingPageDiv = $("#drive-list-output");
+        var landingPageDiv = $("#bl-info-output");
         landingPageDiv.empty();
         var arKeyType = ["Unknown or other protector type", "Trusted Platform Module (TPM)", "External key", "Numerical password", "TPM And PIN", "TPM And Startup Key", "TPM And PIN And Startup Key", "Public Key", "Passphrase", "TPM Certificate", "CryptoAPI Next Generation (CNG) Protector"];
-        for (var i = 0; i < len; i++) {
+        for (var i = 0; i < len; i++){
             k = keys[i];
             landingPageDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + k);
             drives[k]["Lock Status"] == "Locked" ? landingPageDiv.append(" <span class=\"driveLocked\">(" + drives[k]["Lock Status"] + ")</span> ") : "";
+            drives[k]["Drive Type"] ? landingPageDiv.append("<br>Drive Type: " + drives[k]["Drive Type"]) : "";
             drives[k]["Label"] ? landingPageDiv.append(" | Label: " + drives[k]["Label"]) : "";
             drives[k]["Capacity"] ? landingPageDiv.append("<br>Capacity: " + drives[k]["Capacity"]) : "";
-            drives[k]["Encryption Method"] ? landingPageDiv.append(" | Encryption: " + drives[k]["Encryption Method"]) : "";
-            arKeyType.forEach(function (element) {
+            drives[k]["Free Space"] ? landingPageDiv.append(" | Free Space: " + drives[k]["Free Space"]) : "";
+            drives[k]["Encryption Method"] ? landingPageDiv.append("<br>Encryption: " + drives[k]["Encryption Method"]) : "";
+            arKeyType.forEach(function (element){
                 drives[k][element] && element == "Numerical password" ? landingPageDiv.append("<br>Recovery Key ID: " + drives[k][element]) : "";
             });
 
@@ -201,6 +233,29 @@ function jsListDrives() {
     return drivesSorted;
 }
 
+function jsMapNetworkDrive(){
+    var sharePath = $("#input-share-path").val();
+    $("#dialog").dialog({
+        resizable: false,
+        dialogClass: "no-close",
+        autoOpen: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        title: "Map Network Drive",
+        hide: { effect: "explode", duration: 200 }
+    });
+    $("#dialog").text("Mapping " + sharePath + " as drive N:");
+    $("#dialog").dialog("open");
+    setTimeout(function() {
+        try {
+            mapNetDrive();
+        }
+        catch (e) { };
+        $("#dialog").dialog("close");
+    }, 1000);
+
+}
 // ******************** Verification/Error Checking Functions ********************
 function warnUser(objDeferred, message, continueButton) {
     $("#dialog").dialog({
@@ -212,6 +267,7 @@ function warnUser(objDeferred, message, continueButton) {
         modal: true,
         hide: { effect: "explode", duration: 200 }
     });
+    
     if (continueButton == true) {
         $("#dialog").dialog({
             buttons: {
@@ -595,7 +651,7 @@ function ReportFolderStatus(fldr) {
     var fso;
     try {
         fso = new ActiveXObject("Scripting.FileSystemObject");
-        //fldr = "blah";
+        // fldr = "blah";
         //If windows directory doesn't exist, add win-not-found class to USMT, DISM, FnF, and Software Install buttons
         if (fso.FolderExists(fldr)) {
             return true;
@@ -658,10 +714,14 @@ function dimElements() {
     if (winFoundAndEncrypted["WinFound"] == false && winFoundAndEncrypted["Encrypted"] == true) {
         //No Windows drive found and an encrypted drive WAS found
         //Dim elements that require a Windows directory as a warning
-        $(".li-win-required").addClass("li-win-not-found");
-        $(".li-win-required .ui-widget-content").addClass("content-win-not-found");
-        $(".li-win-required .ui-accordion-header").addClass("h3-win-not-found");
-        $(".require-win-dir").addClass("win-not-found");
+        if ($(".li-win-not-found").length == 0){
+            $(".li-win-required").addClass("li-win-not-found");
+            $(".li-win-required .ui-widget-content").addClass("content-win-not-found");
+            $(".li-win-required .ui-accordion-header").addClass("h3-win-not-found");
+            $(".require-win-dir").addClass("win-not-found");
+            $(".require-win-dir").append("<img src=\"images/alert-25.svg\" class=\"warning-image\">"); 
+        }
+
     }
     else {
         //Windows drive found. Remove dimming effect and show all list items
@@ -669,8 +729,9 @@ function dimElements() {
         $(".li-win-required .ui-widget-content").removeClass("content-win-not-found");
         $(".li-win-required .ui-accordion-header").removeClass("h3-win-not-found");
         $(".require-win-dir").removeClass("win-not-found");
-        $('ul .ui-widget-content').show('fast');
-        $('ul .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+        $(".accordion .ui-widget-content").show("fast");
+        $(".accordion .ui-widget-content").prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+        $(".warning-image").remove();
     }
 }
 

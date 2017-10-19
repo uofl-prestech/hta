@@ -54,7 +54,7 @@ h4 {
 .navigation-bar ul {
     font-weight: 400;
     list-style: none;
-    margin: 0 10px;
+    margin: 10px 10px 5px 10px;
     padding: 0;
 }
 .navigation-bar ul li {
@@ -160,12 +160,13 @@ p {
     min-height: 200px;
     color: #CCC;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 2px;
+    position: relative;
 }
 #general-output-scroll {
     width: 355px;
-    height: 638px;
-    margin: 5px 0px 0px 5px;
+    height: 628px;
+    margin: 10px 0px 5px 5px;
     background: rgba(17, 11, 17, 0.6);
     border: 3px double rgba(91, 103, 125, 0.6);
     display: inline-block;
@@ -211,6 +212,7 @@ p {
 .button-toolbar {
     padding: 0px;
     margin: 0px 10px;
+    border-radius: 5px;
 }
 .button {
     padding: 10px;
@@ -221,16 +223,17 @@ p {
     width: 45px;
     background-color: rgb(149, 23, 23);
     border-radius: 5px;
+    vertical-align: middle;
     display: inline-block;
 }
 .button-background-hover {
     background-color: rgba(255, 116, 116, 0.8) !important;
-    box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 1.0), 0px 0px 3px 2px rgba(0, 0, 0, 1.0) !important;
+    /* box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 1.0), 0px 0px 3px 2px rgba(0, 0, 0, 1.0) !important; */
 }
 .button:hover, .small-button:hover {
     background-color: rgb(149, 23, 23);
-    box-shadow: 0px 3px 6px rgba(90, 17, 17, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.7);
-    border: none;
+    /* box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.40), 0px 1px 2px rgba(0, 0, 0, 0.7); */
+    /* border: 1px solid rgb(0, 0, 0); */
     color: #FFF;
 }
 .button:active, .small-button:active {
@@ -250,6 +253,9 @@ p {
     color: #FFF;
     cursor: pointer;
 }
+.button-screen{
+    background: url(images/screen-only-45.svg);
+}
 .active {
     background-color: rgba(91, 103, 125, 0.6);
     border: 1px solid rgba(91, 103, 125, 1);
@@ -260,7 +266,8 @@ p {
 }
 .tools-button-bar {
     display: inline-block;
-    padding: 5px 0px;
+    height: 65px;
+    padding: 5px 5px;
 }
 .category-div {
     background: rgba(0, 0, 0, 0.5);
@@ -273,7 +280,7 @@ p {
     font-size: 1.17em;
     font-weight: bold;
     text-align: center;
-    padding: 10px 15px;
+    padding: 7px;
     color: #CCC;
     background-color: rgba(139,0,0,1);
 }
@@ -285,7 +292,7 @@ p {
     text-align: center;
 }
 .driveLetterSpan {
-    color: rgba(98, 171, 146, 1);
+    color: rgb(164, 173, 189);
 }
 .driveLocked {
     color: rgb(219, 193, 46);
@@ -308,13 +315,20 @@ p {
     vertical-align: middle;
 }
 .icon-only {
-    height: 45px;
-    width: 45px;
+    height: 38px;
+    width: 38px;
+    padding: 3px;
 }
 .icon-tools {
     height: 25px;
     width: 25px;
     margin-right: 5px;
+}
+.launch-box {
+    width: 100%;
+    display: inline-block;
+    text-align: right;
+    padding: 6px 12px 6px 0px;
 }
 .li-content{
     display: block;
@@ -338,14 +352,19 @@ p {
     background: rgba(104, 110, 175, 0.65);
     overflow: auto;
 } */
+.output-icons{
+    background-color: rgba(241, 40, 40, 0.5);
+    border-radius: 5px;
+}
 .pages {
     position: relative;
     display: none;
     vertical-align: top;
-    margin-top: 4px;
+    margin-top: 10px;
     margin-right: 5px;
+    margin-bottom: 5px;
     width: 360px;
-    height: 638px;
+    height: 628px;
     border: none;
     overflow: auto;
 }
@@ -387,11 +406,21 @@ p {
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
-.win-not-found {
+.warning-image{
+    height: 25px;
+    width: 25px;
+    float: right;
+    position: absolute;
+    right: 15px;
+}
+.win-not-found{
     background-color: rgba(95, 95, 95, 0.3);
     color: #6E6E6E;
 }
 .win-not-found:hover{
     background-color: rgba(95, 95, 95, 0.5)!important;
     color: #808080;
+}
+#portal-exit{
+    position:relative;
 }
