@@ -6,7 +6,9 @@ ProgressUI.CloseProgressDialog
 Set env = CreateObject("Microsoft.SMS.TSEnvironment")
 Set objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
 
-'************************************ Create Log File ************************************
+'**********************************************************************************************************************
+'						        Create Log File
+'**********************************************************************************************************************
 CONST ForAppending = 8
 Dim logShell, strLogDir, objFSO, htaLog
 Set logShell = CreateObject("WScript.Shell")
@@ -15,15 +17,18 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.txt", ForAppending, True)
 
 htaLog.WriteLine(vbCrLf & "====================== Begin Logging at " & Now & " ======================")
+'**********************************************************************************************************************
 
-'************************************ Ping test subroutines ************************************
+'**********************************************************************************************************************
+'						        Function: pingTest
+'**********************************************************************************************************************
 Dim iTimerID
 Dim pingShell, pingShellExec
 Sub pingTest
     htaLog.WriteLine(Now & " ***** Begin Sub pingTest *****")
 
     Dim comspec, strObj
-    dim pingTestDiv: set pingTestDiv = document.getElementById("general-output")
+    dim pingTestDiv: set pingTestDiv = document.getElementById("div-output-network")
     pingTestDiv.innerHTML = "<p class='cmdHeading'>Network connectivity test: </p>"
     Set pingShell = CreateObject("WScript.Shell")
     comspec = pingShell.ExpandEnvironmentStrings("%comspec%")
@@ -37,7 +42,7 @@ Sub pingTest
 End Sub
 
 Sub writePing
-    dim pingTestDiv: set pingTestDiv = document.getElementById("general-output")
+    dim pingTestDiv: set pingTestDiv = document.getElementById("div-output-network")
     pingOutput = pingShellExec.StdOut.ReadLine()
     pingTestDiv.innerHTML = pingTestDiv.innerHTML & pingOutput & "<br>"
     htaLog.WriteLine(Now & " || " & pingOutput)
@@ -49,12 +54,15 @@ Sub writePing
 	End If
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ List local drives ************************************
+'**********************************************************************************************************************
+'						        Function: listDrives
+'**********************************************************************************************************************
 Function listDrives
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
     Dim strComputer, objWMIService, colItems, admin, drivesObj
-	Dim landingPageDiv: Set landingPageDiv = document.getElementById("drive-list-output")
+	Dim landingPageDiv: Set landingPageDiv = document.getElementById("bl-info-output")
     strComputer = "."
     Set drivesObj = CreateJsObj()
 
@@ -73,7 +81,7 @@ Function listDrives
     'Check drives for encryption if running as admin
     If admin = true Then
         Dim arEncryptionMethod
-        arEncryptionMethod = Array("None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256")
+        arEncryptionMethod = Array("None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown")
         Dim arProtectionStatus
         arProtectionStatus = Array("Protection Off", "Protection On", "Protection Unknown")
         Dim arConversionStatus
@@ -92,7 +100,8 @@ Function listDrives
 
         htaLog.WriteLine(Now & " || Win32_EncryptableVolume instance")
         htaLog.WriteLine(Now & " || 0=Protection OFF, 1= Protection ON, unlocked, 2=Protection ON, locked")
-        For Each objItem in colItems 
+        For Each objItem in colItems
+            'Only include drive if it has a drive letter
             If objItem.DriveLetter Then
             On Error Resume Next
                 Dim EncryptionMethod, ProtectionStatus, ConversionStatus, EncryptionPercentage, VolumeKeyProtectorID, LockStatus, KeyType, driveInfo
@@ -134,8 +143,11 @@ Function listDrives
     htaLog.WriteLine(Now & " || Executing command: objWMIService.ExecQuery(""Select * from Win32_Volume"")")
     
 	Set colItems = objWMIService.ExecQuery("Select * from Win32_Volume")
-	
-	For Each objItem In colItems
+	Dim arDriveTypes
+    arDriveTypes = Array("Unknown", "No Root Directory", "Removable Disk", "Local Disk", "Network Drive", "Compact Disk", "RAM")
+    For Each objItem In colItems
+        'Only include drive if it has a drive letter
+
         If objItem.DriveLetter Then
             objItem.DriveLetter = Replace(objItem.DriveLetter, ":", "")
             Dim fso, checkForWindows
@@ -150,17 +162,68 @@ Function listDrives
             htaLog.Write(Now & " || ""Drive Letter: " & objItem.DriveLetter & " | ")
             drivesObj.setProp objItem.DriveLetter, "Label", objItem.Label
             htaLog.Write(Now & " || ""Label: " & objItem.Label & " | ")
+            fsCapacity = ConvertSize(objItem.Freespace)
+            htaLog.Write("Free Space: " & fsCapacity)
+            drivesObj.setProp objItem.DriveLetter, "Free Space", fsCapacity
             capacity = ConvertSize(objItem.Capacity)
-            drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
             htaLog.Write("Capacity: " & ConvertSize(objItem.Capacity))
+            drivesObj.setProp objItem.DriveLetter, "Capacity", ConvertSize(objItem.Capacity)
+            htaLog.Write("Drive Type: " & arDriveTypes(objItem.DriveType))
+            drivesObj.setProp objItem.DriveLetter, "Drive Type", arDriveTypes(objItem.DriveType)
         End If
 	Next
 
     htaLog.WriteLine(Now & " ***** End Sub listDrives *****")
     Set listDrives = drivesObj
 End Function
+'**********************************************************************************************************************
 
-'************************************ Enumerate users ************************************
+'**********************************************************************************************************************
+'						        Function: mapNetDrive
+'**********************************************************************************************************************
+Sub mapNetDrive
+	Dim strUser, strPass, strSharePath, strDriveLetter, usmtCommandDiv, getUser, objDrives, mapShell, objNetwork, networkMapDiv
+	strUser = document.getElementById("input-share-username").Value
+    strPass = document.getElementById("input-share-password").Value
+    strSharePath = document.getElementById("input-share-path").Value
+	
+    If (strUser <> "") and (strPass <> "") and (strSharePath <> "") Then
+        strDriveLetter = document.getElementById("input-windows-drive").Value
+	    getUser = document.getElementById("input-primary-username").Value
+        Set networkMapDiv = document.getElementById("div-output-network")
+        networkMapDiv.innerHTML = ""
+		Set mapShell = CreateObject("WScript.Shell")
+		Set objNetwork = CreateObject("WScript.Network")
+		On Error Resume Next
+		objNetwork.RemoveNetworkDrive "N:"
+		objNetwork.MapNetworkDrive "N:", strSharePath, "False", strUser, strPass
+		Set objDrives = objNetwork.EnumNetworkDrives
+	
+		'Error traps
+		If Err <> 0 Then
+            Select Case Err.Number
+                ' This case is if we try to remove a mapping that isn't there. Can be ignored
+                Case -2147022646
+                
+                ' Add case if error is permissions or no network connection etc
+                Case Else
+                    networkMapDiv.innerHTML = Err.Number & " " & Err.Description & "<br>"
+            End Select
+            Exit Sub
+		End If
+		
+		networkMapDiv.innerHTML = "<h2>Drives currently mapped:<h2>"
+		For i = 0 To objDrives.Count-1
+			networkMapDiv.innerHTML = networkMapDiv.innerHTML & objDrives.Item(i) & "<br>"
+		Next
+	End If
+	
+End Sub
+'**********************************************************************************************************************
+
+'**********************************************************************************************************************
+'						        Function: enumUsers
+'**********************************************************************************************************************
 Sub enumUsers
     htaLog.WriteLine(Now & " ***** Begin Sub enumUsers *****")
 
@@ -246,8 +309,11 @@ Sub enumUsers
     htaLog.WriteLine(Now & " ***** End Sub enumUsers *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Open new command prompt ************************************
+'**********************************************************************************************************************
+'						        Function: cmdPrompt
+'**********************************************************************************************************************
 Sub cmdPrompt
     htaLog.WriteLine(Now & " ***** Begin Sub cmdPrompt *****")
 	Dim cmdShell
@@ -257,8 +323,11 @@ Sub cmdPrompt
     cmdShell.Run "cmd /k"
     htaLog.WriteLine(Now & " ***** End Sub cmdPrompt *****")
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Open powershell prompt ************************************
+'**********************************************************************************************************************
+'						        Function: psPrompt
+'**********************************************************************************************************************
 Sub psPrompt
     htaLog.WriteLine(Now & " ***** Begin Sub psPrompt *****")
 	Dim cmdShell
@@ -271,8 +340,11 @@ Sub psPrompt
     htaLog.WriteLine(Now & " ***** End Sub psPrompt *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Open cmtrace64 log viewer ************************************
+'**********************************************************************************************************************
+'						        Function: logViewer
+'**********************************************************************************************************************
 Sub logViewer
     htaLog.WriteLine(Now & " ***** Begin Sub logViewer *****")
 
@@ -285,8 +357,11 @@ Sub logViewer
     htaLog.WriteLine(Now & " ***** End Sub logViewer *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Open Notepad ++ ************************************
+'**********************************************************************************************************************
+'						        Function: notepadPP
+'**********************************************************************************************************************
 Sub notepadPP
     htaLog.WriteLine(Now & " ***** Begin Sub notepadPP *****")
 
@@ -299,8 +374,11 @@ Sub notepadPP
     htaLog.WriteLine(Now & " ***** End Sub notepadPP *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Open Explorer++ file manager ************************************
+'**********************************************************************************************************************
+'						        Function: explorer
+'**********************************************************************************************************************
 Sub explorer
     htaLog.WriteLine(Now & " ***** Begin Sub explorer *****")
 
@@ -311,11 +389,13 @@ Sub explorer
     htaLog.WriteLine(Now & " ***** End Sub explorer *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Convert Bytes to KB, MB, GB, TB subroutine************************************
+'**********************************************************************************************************************
+'						        Function: ConvertSize(Size)
+'**********************************************************************************************************************
 Function ConvertSize(Size)
-    'htaLog.WriteLine(Now & " ***** Begin Sub ConvertSize *****")
-
+' Convert Bytes to KB, MB, GB, TB
 	suffix = "0 Bytes" 
 	If Size >= 1024 Then suffix = " KB" 
 	If Size >= 1048576 Then suffix = " MB" 
@@ -329,13 +409,14 @@ Function ConvertSize(Size)
 	    Case " TB" Size = Round(Size / 1099511627776, 1) 
 	End Select
     ConvertSize = Size & Suffix
-
-    'htaLog.WriteLine(Now & " ***** End Sub ConvertSize *****")
-
 End Function
+'**********************************************************************************************************************
 
-'************************************ Execute OSD subroutine ************************************
+'**********************************************************************************************************************
+'						        Function: ButtonFinishClick
+'**********************************************************************************************************************
 Sub ButtonFinishClick
+' Execute OSD subroutine
     htaLog.WriteLine(Now & " ***** Begin Sub ButtonFinishClick *****")
 
     iAdobeReaderDC = document.getElementById("AdobeReaderDC").Checked
@@ -430,13 +511,17 @@ Sub ButtonFinishClick
     htaLog.WriteLine(Now & " ***** End Sub ButtonFinishClick *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ DISM Capture Image subroutine ************************************
+'**********************************************************************************************************************
+'						        Function: dismCapture
+'**********************************************************************************************************************
 Function dismCapture
+' DISM Capture Image subroutine
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
 
 	Dim dismShell, strName, destPath, sourcePath, returnCode, wimPath, fso
-	Dim dismDiv: Set dismDiv = document.getElementById("general-output")
+	Dim dismDiv: Set dismDiv = document.getElementById("dism-output")
     strSourcePath = document.getElementById("input-windows-drive").Value
     strDestPath = document.getElementById("input-external-drive").Value
     strName = document.getElementById("input-primary-username").Value
@@ -470,9 +555,13 @@ Function dismCapture
     dismCapture = returnCode
 
 End Function
+'**********************************************************************************************************************
 
-'************************************ Execute DISM script ************************************
+'**********************************************************************************************************************
+'						        Function: runDISM_TS
+'**********************************************************************************************************************
 Sub runDISM_TS
+' Set environment variables for running DISM during task sequence
     htaLog.WriteLine(Now & " ***** Begin Sub runDISM_TS *****")
 
     htaLog.WriteLine(Now & " || Setting Environment Variables")
@@ -494,8 +583,11 @@ Sub runDISM_TS
     window.close
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Copy Wallpaper ************************************
+'**********************************************************************************************************************
+'						        Function: copyWallpaper
+'**********************************************************************************************************************
 Sub copyWallpaper
     htaLog.WriteLine(Now & " ***** Begin Sub copyWallpaper *****")
 
@@ -550,14 +642,17 @@ Sub copyWallpaper
 
     htaLog.WriteLine(Now & " ***** End Sub copyWallpaper *****")
 End Sub
+'**********************************************************************************************************************
 
-'************************************ USMT Scanstate subroutine ************************************
+'**********************************************************************************************************************
+'						        Function: usmtScanstate(buttonClicked)
+'**********************************************************************************************************************
 Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " ***** Begin Sub usmtScanstate(buttonClicked) *****")
 
     Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString, windowsDrive
     userArray = Array()
-    Set scanStateDiv = document.getElementById("general-output")
+    Set scanStateDiv = document.getElementById("scanstate-output")
     Set WshShell = CreateObject("WScript.Shell")
     strCurrentDir = WshShell.currentDirectory
 
@@ -620,8 +715,11 @@ Sub usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " ***** End Sub usmtScanstate(buttonClicked) *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Execute Loadstate ************************************
+'**********************************************************************************************************************
+'						        Function: usmtLoadstate
+'**********************************************************************************************************************
 Sub usmtLoadstate
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate *****")
 
@@ -721,8 +819,11 @@ Sub usmtLoadstate
     htaLog.WriteLine(Now & " ***** End Sub usmtLoadstate *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Set up Loadstate ************************************
+'**********************************************************************************************************************
+'						        Function: usmtLoadstate_TS
+'**********************************************************************************************************************
 Function usmtLoadstate_TS
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate_TS *****")
 
@@ -739,8 +840,11 @@ Function usmtLoadstate_TS
     htaLog.WriteLine(Now & " ***** End Sub usmtLoadstate_TS *****")
 
 End Function
+'**********************************************************************************************************************
 
-'************************************ Execute Flush and Fill script ************************************
+'**********************************************************************************************************************
+'						        Function: runFlushFill
+'**********************************************************************************************************************
 Sub runFlushFill
     htaLog.WriteLine(Now & " ***** Begin Sub runFlushFill *****")
 
@@ -791,8 +895,11 @@ Sub runFlushFill
     htaLog.WriteLine(Now & " ***** End Sub runFlushFill *****")
 
 End Sub
+'**********************************************************************************************************************
 
-'************************************ Exit HTA subroutine ************************************
+'**********************************************************************************************************************
+'						        Function: ButtonExitClick
+'**********************************************************************************************************************
 Sub ButtonExitClick
     htaLog.WriteLine(Now & " ***** Begin Sub ButtonExitClick *****")
 
@@ -800,7 +907,7 @@ Sub ButtonExitClick
     
     htaLog.WriteLine(Now & " ***** End Sub ButtonExitClick *****")
 End Sub
-
+'**********************************************************************************************************************
 
 
 
