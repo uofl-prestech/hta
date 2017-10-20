@@ -182,17 +182,14 @@ End Function
 '						        Function: mapNetDrive
 '**********************************************************************************************************************
 Sub mapNetDrive
-	Dim strUser, strPass, strSharePath, strDriveLetter, usmtCommandDiv, getUser, objDrives, mapShell, objNetwork, networkMapDiv
+	Dim strUser, strPass, strSharePath, strDriveLetter, objDrives, objNetwork, networkMapDiv
 	strUser = document.getElementById("input-share-username").Value
     strPass = document.getElementById("input-share-password").Value
     strSharePath = document.getElementById("input-share-path").Value
-	
+	Set networkMapDiv = document.getElementById("div-output-network")
+    networkMapDiv.innerHTML = ""
+
     If (strUser <> "") and (strPass <> "") and (strSharePath <> "") Then
-        strDriveLetter = document.getElementById("input-windows-drive").Value
-	    getUser = document.getElementById("input-primary-username").Value
-        Set networkMapDiv = document.getElementById("div-output-network")
-        networkMapDiv.innerHTML = ""
-		Set mapShell = CreateObject("WScript.Shell")
 		Set objNetwork = CreateObject("WScript.Network")
 		On Error Resume Next
 		objNetwork.RemoveNetworkDrive "N:"
@@ -204,18 +201,20 @@ Sub mapNetDrive
             Select Case Err.Number
                 ' This case is if we try to remove a mapping that isn't there. Can be ignored
                 Case -2147022646
-                
+                    
                 ' Add case if error is permissions or no network connection etc
                 Case Else
-                    networkMapDiv.innerHTML = Err.Number & " " & Err.Description & "<br>"
+                    networkMapDiv.innerHTML = "Error " & Err.Number & ": " & Err.Description & "<br>"
+                    Exit Sub
             End Select
-            Exit Sub
 		End If
 		
 		networkMapDiv.innerHTML = "<h2>Drives currently mapped:<h2>"
 		For i = 0 To objDrives.Count-1
 			networkMapDiv.innerHTML = networkMapDiv.innerHTML & objDrives.Item(i) & "<br>"
-		Next
+        Next
+    Else
+        networkMapDiv.innerHTML = "<h2>Username, Password, or Network Path not filled in<h2>"
 	End If
 	
 End Sub
@@ -533,6 +532,7 @@ Function dismCapture
     'Check if file with this name already exists
     If (fso.FileExists(wimPath)) Then
         MsgBox wimPath & " already exists. Try changing the username or deleting the existing wim file."
+        dismCapture = returnCode
         Exit Function
     End If
 

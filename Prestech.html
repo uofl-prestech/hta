@@ -102,7 +102,7 @@
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
                     <div class="launch-box">
                         <button class="button" id="launch-osd" onclick="javascript:launchOSD()">
-                        <img src="images/osd-launch-45.svg" class="icon-tools">Launch OSD</button>
+                            <img src="images/osd-launch-45.svg" class="icon-tools">Launch OSD</button>
                     </div>
                 </div>
 
@@ -110,26 +110,28 @@
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-flushfill" class="accordion ui-accordion ul-elements"></ul>
                     <div class="launch-box">
-                    <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
-                        <img src="images/flush-and-fill-launch-45.svg" class="icon-tools">Launch FnF</button>
+                        <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
+                            <img src="images/flush-and-fill-launch-45.svg" class="icon-tools">Launch FnF</button>
                     </div>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box"><button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
-                        <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
+                    <div class="launch-box">
+                        <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
+                            <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
                     </div>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box"><button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
-                        <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
+                    <div class="launch-box">
+                        <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
+                            <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
                         <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
-                        <img src="images/launch-icon.png" class="icon-tools">Launch LoadState</button>
+                            <img src="images/launch-icon.png" class="icon-tools">Launch LoadState</button>
                     </div>
                 </div>
 
@@ -138,13 +140,13 @@
                     <ul id="ul-software" class="accordion ui-accordion ul-elements"></ul>
                 </div>
 
-<!-- ******************** Output Section ******************** -->
+                <!-- ******************** Output Section ******************** -->
                 <div id="general-output-scroll">
                     <ul id="general-output" class="ui-accordion">
                         <li id="output-bl-info" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/lock-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Info</h3>
+                                <img src="images/list-view-icon.png" class="icon-tools output-icons">
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Drive List</h3>
                             <div id="bl-info-output" class="ui-widget-content"></div>
                         </li>
                         <li id="output-bl-unlock" class="output-list">
@@ -153,21 +155,21 @@
                                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Unlock</h3>
                             <div id="bl-unlock-output" class="ui-widget-content"></div>
                         </li>
-                        <li id="output-ping" class="output-list">
+                        <li id="li-output-network" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                 <img src="images/ping-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Ping Output</h3>
-                            <div id="ping-output" class="ui-widget-content"></div>
+                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Network Output</h3>
+                            <div id="div-output-network" class="ui-widget-content"></div>
                         </li>
                         <li id="output-dism" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/home-45.svg" class="icon-tools output-icons">
+                                <img src="images/dism-launch-45.svg" class="icon-tools output-icons">
                                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
                             <div id="dism-output" class="ui-widget-content"></div>
                         </li>
                         <li id="output-scanstate" class="output-list">
                             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/home-45.svg" class="icon-tools output-icons">
+                                <img src="images/usmt-launch-45.svg" class="icon-tools output-icons">
                                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
                             <div id="scanstate-output" class="ui-widget-content"></div>
                         </li>
@@ -185,9 +187,10 @@
                         <img src="images/home-45.svg" class="icon-only" title="Home page">
                     </div>
                 </button>
-                <button class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
-                    <div class="button-background button-screen">
-                        <img src="images/exit-45.svg" class="icon-only" title="Exit program">
+                <button id="button-exit" class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()">
+                    <div id="div-exit" class="button-background button-screen">
+                        <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only" title="Exit program">
+                        <div><img src="images/exit-no-circle-45.svg" id="portal-exit" class="icon-only" title="Exit program"></div>
                     </div>
                 </button>
                 <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
@@ -256,7 +259,7 @@
     </template>
 
     <!--    Bitlocker Unlock    -->
-    <template id="temp-bitlocker-unlock" class="flushfill dism usmt">
+    <template id="temp-bitlocker-unlock" class="landing flushfill dism usmt">
         <li id="li-bitlocker-unlock" class="li-steps scanState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Drive Letter and Recovery Key to unlock Bitlocker
@@ -339,6 +342,28 @@
             <div id="div-primary-username" class="ui-widget-content">
                 <span>Username: &nbsp&nbsp </span>
                 <input id="input-primary-username" class="input-objects input-text" name="primaryUsername" type="Text" size="15">
+            </div>
+        </li>
+    </template>
+
+    <!--    Map Drive Share    -->
+    <template id="temp-map-drive" class="flushfill dism usmt">
+        <li id="li-map-drive" class="li-steps">
+            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>(Optional) Map a drive letter to a network share
+            </h3>
+            <div id="div-map-drive" class="ui-widget-content">
+                <span>Username: &nbsp&nbsp </span>
+                <input id="input-share-username" class="input-objects input-text" name="shareUsername" type="Text">
+                <br>
+                <span>Password: &nbsp&nbsp </span>
+                <input id="input-share-password" class="input-objects input-text" name="sharePassword" type="Password">
+                <br>
+                <span>Network Path: &nbsp&nbsp </span>
+                <input id="input-share-path" class="input-objects input-text" name="sharePath" type="Text">
+                <br>
+                <button id="map-drive" class="button" onclick="javascript:jsMapNetworkDrive()">
+                    <img src="images/map-drive.png" class="icon-tools">Map Drive</button>
             </div>
         </li>
     </template>

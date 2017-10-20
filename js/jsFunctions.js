@@ -81,16 +81,14 @@ $('.button-toolbar').hover(
 $('#button-exit').hover(
     function () {
         $("#portal-exit").animate({
-            top: "30px",
-            duration: 3000,
-            easing: "linear"
-        });
+            top: "20px",
+            queue: false
+        }, 300, "easeInOutElastic");
     }, function () {
         $("#portal-exit").animate({
-            top: "0px",
-            duration: 3000,
-            easing: "linear"
-        });
+            top: "3px",
+            queue: false
+        }, 300, "easeInBounce", function(){$(this).clearQueue();});
     }
 );
 
@@ -130,9 +128,12 @@ function loadPage(targetOperation, event) {
     var templates = $("." + targetOperation);
     if (templates.length > 0) {
         var template = "";
-
+        
         templates.each(function () {
-            template += $(this).html();
+            //Only show the Bitlocker Unlock template if an encrypted drive is found and locked
+            if (!($(this).attr("id") == "temp-bitlocker-unlock" && winFoundAndEncrypted["Encrypted"] == false)){
+                template += $(this).html();
+            }
         });
 
         //Insert the joined templates into the page we are nevigating to
@@ -524,7 +525,7 @@ function launchScanstate() {
         $(".pages").mCustomScrollbar("disable");
         $("#general-output-scroll").mCustomScrollbar("disable");
 
-        usmtScanstate("true");
+        usmtScanstate(true);
 
         setTimeout(function () {
             $(".pages").mCustomScrollbar("update");
@@ -536,18 +537,11 @@ function launchScanstate() {
 function launchLoadstate() {
     var capturedVars = getInputValues();
 
-    var wdDeferred = $.Deferred();      //Windows Drive field
     var puDeferred = $.Deferred();      //Primary Username field
     var edDeferred = $.Deferred();      //External Drive field
 
-    var message = "Windows Drive is not filled in!";
-    capturedVars.windowsDrive == "" ? warnUser(wdDeferred, message, false) : wdDeferred.resolve(true);
-
-    wdDeferred.done(function (wdResult) {
-        if (wdResult == false) { return };
-        message = "Primary Username is not filled in!";
-        capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
-    });
+    var message = "Primary Username is not filled in!";
+    capturedVars.primaryUsername == "" ? warnUser(puDeferred, message, false) : puDeferred.resolve(true);
 
     puDeferred.done(function (puResult) {
         if (puResult == false) { return };
