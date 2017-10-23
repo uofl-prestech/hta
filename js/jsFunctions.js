@@ -715,7 +715,7 @@ function dimElements() {
             $(".li-win-required .ui-widget-content").addClass("content-win-not-found");
             $(".li-win-required .ui-accordion-header").addClass("h3-win-not-found");
             $(".require-win-dir").addClass("win-not-found");
-            $(".require-win-dir").append("<img src=\"images/alert-25.svg\" class=\"warning-image\">"); 
+            $(".require-win-dir").append("<img src=\"images/alert-25.svg\" class=\"warning-image\" title=\"Encrypted drive needs to be unlocked\">"); 
         }
 
     }

@@ -500,9 +500,9 @@ Sub ButtonFinishClick
     env("OSDComputerName") = strCompName
     env("envMBAM") = strMBAM
 
-    For each v in env.GetVariables 
-        htaLog.WriteLine(v & " = " & env(v)) 
-    Next 
+    'For each v in env.GetVariables 
+    '    htaLog.WriteLine(v & " = " & env(v)) 
+    'Next 
     'MsgBox "End Finish Subroutine"
 
     window.close
