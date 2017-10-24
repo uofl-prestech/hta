@@ -1,7 +1,9 @@
 /* Globals */
 var winFoundAndEncrypted = [];
 
-/************************************ JavaScript functions ************************************/
+/**********************************************************************************************************************
+*						        Document ready functions
+**********************************************************************************************************************/
 $(document).ready(function () {
     loadPage("landing");
 
@@ -29,29 +31,11 @@ $(document).ready(function () {
     $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 });
 
-// ******************* Placeholder Text ***********************
-$('[placeholder]').focus(function () {
-    var input = $(this);
-    if (input.val() == input.attr('placeholder')) {
-        input.val('');
-        input.removeClass('placeholder');
-    }
-}).blur(function () {
-    var input = $(this);
-    if (input.val() == '' || input.val() == input.attr('placeholder')) {
-        input.addClass('placeholder');
-        input.val(input.attr('placeholder'));
-    }
-}).blur().parents('form').submit(function () {
-    $(this).find('[placeholder]').each(function () {
-        var input = $(this);
-        if (input.val() == input.attr('placeholder')) {
-            input.val('');
-        }
-    })
-});
+$(".on-load").delay(200).animate({ "opacity": "1" }, 700);
 
-// ******************** Navigation Buttons ********************
+/**********************************************************************************************************************
+*						        Navigation Functions
+**********************************************************************************************************************/
 $('#button-ShowAll').on('click', function () {
     $('.accordion .ui-widget-content').show('fast');
     $('.accordion .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
@@ -98,7 +82,19 @@ $("#screen-test").hover(
     }, function () {
         $("#screen-test").children().css("background-image", "url(images/screen-only-45.svg)");
     }
-)
+);
+
+$('#button-ScanState').on('click', function () {
+    $('#page-usmt .scanState').css('display', 'list-item');
+    $('#page-usmt #run-usmt').css('display', 'inline-block');
+    $('#page-usmt #run-LoadState').css('display', 'none');
+});
+
+$('#button-LoadState').on('click', function () {
+    $('#page-usmt .scanState').css('display', 'none');
+    $('#page-usmt #run-LoadState').css('display', 'inline-block');
+    $('#page-usmt #run-usmt').css('display', 'none');
+});
 
 function loadPage(targetOperation, event) {
     //Rerun listDrives function if returning to landing page
@@ -148,12 +144,16 @@ function loadPage(targetOperation, event) {
     catch (e) { }
     $('#page-' + targetOperation).addClass("active-page");
     $('#header-' + targetOperation).addClass("active-header");
-    //$("#general-output-scroll").css('visibility', 'hidden');
+    //Reset Scanstate button, since the template for USMT always starts on Scanstate
+    $('#page-usmt #run-usmt').css('display', 'inline-block');
+    $('#page-usmt #run-LoadState').css('display', 'none');
 
     dimElements();
 }
 
-// ******************** Misc functions ********************
+/**********************************************************************************************************************
+*						        Misc Functions
+**********************************************************************************************************************/
 function getInputValues() {
     var inputValues = {};
     $(".accordion .input-objects").each(function () {
@@ -235,73 +235,9 @@ function jsListDrives(){
     return drivesSorted;
 }
 
-function jsMapNetworkDrive(){
-    var sharePath = $("#input-share-path").val();
-    $("#dialog").dialog({
-        resizable: false,
-        dialogClass: "no-close",
-        autoOpen: false,
-        height: "auto",
-        width: 400,
-        modal: true,
-        title: "Map Network Drive",
-        hide: { effect: "explode", duration: 200 }
-    });
-    $("#dialog").text("Mapping " + sharePath + " as drive N:");
-    $("#dialog").dialog("open");
-    setTimeout(function() {
-        try {
-            mapNetDrive();
-        }
-        catch (e) { };
-        $("#dialog").dialog("close");
-    }, 1000);
-
-}
-// ******************** Verification/Error Checking Functions ********************
-function warnUser(objDeferred, message, continueButton) {
-    $("#dialog").dialog({
-        resizable: false,
-        dialogClass: "no-close",
-        autoOpen: false,
-        height: "auto",
-        width: 400,
-        modal: true,
-        hide: { effect: "explode", duration: 200 }
-    });
-    
-    if (continueButton == true) {
-        $("#dialog").dialog({
-            buttons: {
-                "Continue anyway": function () {
-                    $(this).dialog("close");
-                    objDeferred.resolve(true);
-                },
-                Cancel: function () {
-                    $(this).dialog("close");
-                    objDeferred.resolve(false);
-                }
-            }
-        });
-    }
-    else {
-        $("#dialog").dialog({
-            buttons: {
-                Cancel: function () {
-                    $(this).dialog("close");
-                    objDeferred.resolve(false);
-                }
-            }
-        });
-    }
-    $("#dialog").text(message);
-    $("#dialog").dialog("open");
-}
-
-
-/*******************************
-************* OSD **************
-*******************************/
+/**********************************************************************************************************************
+*						        Launch Button Functions
+**********************************************************************************************************************/
 function launchOSD() {
     var capturedVars = getInputValues();
     var tpmDeferred = $.Deferred();
@@ -342,9 +278,6 @@ function launchOSD() {
     });
 }
 
-/*******************************
-************* FnF **************
-*******************************/
 function launchFNF() {
     var capturedVars = getInputValues();
     var selectedUsers = {};
@@ -434,9 +367,6 @@ function launchFNF() {
     });
 }
 
-/*******************************
-************* DISM *************
-*******************************/
 function launchDISM() {
     var capturedVars = getInputValues();
     var wdDeferred = $.Deferred();      //Windows Drive field
@@ -480,9 +410,6 @@ function launchDISM() {
     });
 }
 
-/*******************************
-************* USMT *************
-*******************************/
 function launchScanstate() {
     var selectedUsers = {};
     $('#input-usmt-usernames :selected').each(function () {
@@ -564,19 +491,27 @@ function launchLoadstate() {
     });
 }
 
-$('#button-ScanState').on('click', function () {
-    $('.scanState').css('display', 'list-item');
-    $('#run-usmt').css('display', 'inline-block');
-    $('#run-LoadState').css('display', 'none');
-});
+function launchSoftwareInstall() {
+    var softwareInstall = false;
+    $(".accordion .software-install").each(function () {
+        //If any software install boxes are checked, continue with software installation
+        if($(this).prop("checked") == true){
+            softwareInstall = true;
+        }
+    });
+    if(softwareInstall == false){return;}
 
-$('#button-LoadState').on('click', function () {
-    $('.scanState').css('display', 'none');
-    $('#run-LoadState').css('display', 'inline-block');
-    $('#run-usmt').css('display', 'none');
-});
+    try {
+        ButtonFinishClick();
+    }
+    catch (err) {
+        document.getElementById("general-output").innerHTML = err.message;
+    }
+}
 
-//*******************Bitlocker loading spinner*****************
+/**********************************************************************************************************************
+*						        Buttons Inside List Elements
+**********************************************************************************************************************/
 function blInfoClick() {
     $("#general-output-scroll").css('visibility', 'visible');
     var target = document.getElementById('general-output');
@@ -588,6 +523,7 @@ function blInfoClick() {
     spinner.stop(target);
 
 }
+
 function blUnlockClick() {
     $("#general-output-scroll").css('visibility', 'visible');
     var target = document.getElementById('general-output');
@@ -641,6 +577,72 @@ function showUsersClick() {
             document.getElementById("general-output").innerHTML = err.message;
         }
     });
+}
+
+function jsMapNetworkDrive() {
+    var sharePath = $("#input-share-path").val();
+    $("#dialog").dialog({
+        resizable: false,
+        dialogClass: "no-close",
+        autoOpen: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        title: "Map Network Drive",
+        hide: { effect: "explode", duration: 200 }
+    });
+    $("#dialog").text("Mapping " + sharePath + " as drive N:");
+    $("#dialog").dialog("open");
+    setTimeout(function () {
+        try {
+            mapNetDrive();
+        }
+        catch (e) { };
+        $("#dialog").dialog("close");
+    }, 1000);
+
+}
+
+/**********************************************************************************************************************
+*						        Verification/Warning Functions
+**********************************************************************************************************************/
+function warnUser(objDeferred, message, continueButton) {
+    $("#dialog").dialog({
+        resizable: false,
+        dialogClass: "no-close",
+        autoOpen: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        hide: { effect: "explode", duration: 200 }
+    });
+
+    if (continueButton == true) {
+        $("#dialog").dialog({
+            buttons: {
+                "Continue anyway": function () {
+                    $(this).dialog("close");
+                    objDeferred.resolve(true);
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                    objDeferred.resolve(false);
+                }
+            }
+        });
+    }
+    else {
+        $("#dialog").dialog({
+            buttons: {
+                Cancel: function () {
+                    $(this).dialog("close");
+                    objDeferred.resolve(false);
+                }
+            }
+        });
+    }
+    $("#dialog").text(message);
+    $("#dialog").dialog("open");
 }
 
 function ReportFolderStatus(fldr) {
@@ -730,5 +732,3 @@ function dimElements() {
         $(".warning-image").remove();
     }
 }
-
-$(".on-load").delay(200).animate({ "opacity": "1" }, 700);

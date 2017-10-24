@@ -14,7 +14,7 @@ Dim logShell, strLogDir, objFSO, htaLog
 Set logShell = CreateObject("WScript.Shell")
 strLogDir = logShell.currentDirectory
 Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.txt", ForAppending, True)
+Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.log", ForAppending, True)
 
 htaLog.WriteLine(vbCrLf & "====================== Begin Logging at " & Now & " ======================")
 '**********************************************************************************************************************
@@ -387,6 +387,34 @@ Sub explorer
     
     htaLog.WriteLine(Now & " ***** End Sub explorer *****")
 
+End Sub
+'**********************************************************************************************************************
+
+'**********************************************************************************************************************
+'						        Function: FTK
+'**********************************************************************************************************************
+Sub FTK
+    htaLog.WriteLine(Now & " ***** Begin Sub FTK *****")
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+
+    htaLog.WriteLine(Now & " || Executing command: .\tools\FTK\FTK Imager.exe")
+    cmdShell.Run ".\tools\FTK\FTKImager.exe"
+    htaLog.WriteLine(Now & " ***** End Sub FTK *****")
+End Sub
+'**********************************************************************************************************************
+
+'**********************************************************************************************************************
+'						        Function: WMIExplorer
+'**********************************************************************************************************************
+Sub WMIExplorer
+    htaLog.WriteLine(Now & " ***** Begin Sub WMIExplorer *****")
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+
+    htaLog.WriteLine(Now & " || Executing command: .\tools\WMIExplorer.exe")
+    cmdShell.Run ".\tools\WMIExplorer.exe"
+    htaLog.WriteLine(Now & " ***** End Sub WMIExplorer *****")
 End Sub
 '**********************************************************************************************************************
 
