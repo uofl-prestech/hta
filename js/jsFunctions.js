@@ -6,7 +6,7 @@ var winFoundAndEncrypted = [];
 **********************************************************************************************************************/
 $(document).ready(function () {
     loadPage("landing");
-
+    WMIListDrives();
     //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
         theme: "minimal",
@@ -731,4 +731,75 @@ function dimElements() {
         $(".accordion .ui-widget-content").prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
         $(".warning-image").remove();
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function WMIListDrives(){
+    var objDrives = {};
+    var loc = new ActiveXObject("WbemScripting.SWbemLocator");
+    var svc = loc.ConnectServer(".", "root\\cimv2\\Security\\MicrosoftVolumeEncryption");
+    var colItems = svc.ExecQuery("SELECT * FROM Win32_EncryptableVolume");
+
+    var arEncryptionMethod = ["None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown"];
+    var arProtectionStatus = ["Protection Off", "Protection On", "Protection Unknown"];
+    var arConversionStatus = ["Fully Decrypted", "Fully Encrypted", "Encryption In Progress", "Decryption In Progress", "Encryption Paused", "Decryption Paused"];
+    var arLockStatus = ["Unlocked", "Locked"];
+    var arKeyType = ["Unknown or other protector type", "Trusted Platform Module (TPM)", "External key", "Numerical password", "TPM And PIN", "TPM And Startup Key", "TPM And PIN And Startup Key", "Public Key", "Passphrase", "TPM Certificate", "CryptoAPI Next Generation (CNG) Protector"];
+    var arDriveTypes = ["Unknown", "No Root Directory", "Removable Disk", "Local Disk", "Network Drive", "Compact Disk", "RAM"];
+
+    var enumItems = new Enumerator(colItems);
+    for (; !enumItems.atEnd(); enumItems.moveNext()) { 
+        var objItem = enumItems.item();
+        var VolumeKeyProtectorID;
+        objItem.DriveLetter.replace(objItem.DriveLetter, ":", "");
+        objDrives["DriveLetter"] = objItem.DriveLetter;
+        objDrives["DriveLetter"]["EncryptionMethod"] = objItem.GetEncryptionMethod;
+        objDrives["DriveLetter"]["ProtectionStatus"] = objItem.GetProtectionStatus;
+        objDrives["DriveLetter"]["LockStatus"] = objItem.GetLockStatus;
+        VolumeKeyProtectorID = objItem.GetKeyProtectors(0);
+        
+        for(objId in VolumeKeyProtectorID)
+        {
+            var VolumeKeyProtectorType = objItem.GetKeyProtectorType(objId);
+            if(VolumeKeyProtectorType != ""){
+                objDrives["DriveLetter"]["VolumeKeyProtectorType"] = VolumeKeyProtectorType; // arKeyType(VolumeKeyProtectorType), objId
+            }
+        }
+    }
+
+    loc = new ActiveXObject("WbemScripting.SWbemLocator");
+    svc = loc.ConnectServer(".", "root\\cimv2");
+    colItems = svc.ExecQuery("SELECT * FROM Win32_Volume");
+    enumItems = new Enumerator(colItems);
+    for (; !enumItems.atEnd(); enumItems.moveNext()) { 
+        var objItem = enumItems.item();
+        var objDriveLetter = objItem.DriveLetter;
+        if(objDriveLetter){
+            objDriveLetter = objDriveLetter.replace(objDriveLetter, ":", "");
+            objDrives["DriveLetter"]["Label"] = objItem.Label;
+            objDrives["DriveLetter"]["FreeSpace"] = ConvertSize(objItem.Freespace);
+            objDrives["DriveLetter"]["Capacity"] = ConvertSize(objItem.Capacity);
+            objDrives["DriveLetter"]["DriveType"] = objItem.DriveType;
+        }
+        alert(JSON.stringify(objDrives));
+    }
+
+
+    
 }
