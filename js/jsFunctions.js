@@ -752,6 +752,7 @@ function dimElements() {
 
 function WMIListDrives(){
     var objDrives = {};
+    var outputDiv = $("#bl-info-output");
     var arEncryptionMethod = ["None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown"];
     var arProtectionStatus = ["Protection Off", "Protection On", "Protection Unknown"];
     var arLockStatus = ["Unlocked", "Locked"];
@@ -760,30 +761,35 @@ function WMIListDrives(){
     // var arConversionStatus = ["Fully Decrypted", "Fully Encrypted", "Encryption In Progress", "Decryption In Progress", "Encryption Paused", "Decryption Paused"];
 
 /*  ********* Get Encryption information **********/
-    var loc = new ActiveXObject("WbemScripting.SWbemLocator");
-    var svc = loc.ConnectServer(".", "root\\cimv2\\Security\\MicrosoftVolumeEncryption");
-    var colItems = svc.ExecQuery("SELECT * FROM Win32_EncryptableVolume");
-    var enumItems = new Enumerator(colItems);
-    for (; !enumItems.atEnd(); enumItems.moveNext()) { 
-        var objItem = enumItems.item();
-        var VolumeKeyProtectorID;
-        var DriveLetter = objItem.DriveLetter.replace(":", "");
-        objDrives[DriveLetter] = {  
+    try{
+        var loc = new ActiveXObject("WbemScripting.SWbemLocator");
+        var svc = loc.ConnectServer(".", "root\\cimv2\\Security\\MicrosoftVolumeEncryption");
+        var colItems = svc.ExecQuery("SELECT * FROM Win32_EncryptableVolume");
+        var enumItems = new Enumerator(colItems);
+        for (; !enumItems.atEnd(); enumItems.moveNext()) {
+            var objItem = enumItems.item();
+            var VolumeKeyProtectorID;
+            var DriveLetter = objItem.DriveLetter.replace(":", "");
+            objDrives[DriveLetter] = {
                 "Drive Letter": DriveLetter,
                 "Encryption Method": arEncryptionMethod[objItem.GetEncryptionMethod],
                 "Protection Status": arProtectionStatus[objItem.GetProtectionStatus],
                 "Lock Status": arLockStatus[objItem.GetLockStatus]
             };
 
-        VolumeKeyProtectorID = objItem.GetKeyProtectors(0);
-        
-        for(objId in VolumeKeyProtectorID)
-        {
-            var VolumeKeyProtectorType = objItem.GetKeyProtectorType(objId);
-            if(VolumeKeyProtectorType != ""){
-                objDrives[DriveLetter]["VolumeKeyProtectorType"] = arKeyType[VolumeKeyProtectorType];
+            VolumeKeyProtectorID = objItem.GetKeyProtectors(0);
+
+            for (objId in VolumeKeyProtectorID) {
+                var VolumeKeyProtectorType = objItem.GetKeyProtectorType(objId);
+                if (VolumeKeyProtectorType != "") {
+                    objDrives[DriveLetter]["VolumeKeyProtectorType"] = arKeyType[VolumeKeyProtectorType];
+                }
             }
         }
+    }
+
+    catch (err) {
+        outputDiv.append(err.message);
     }
 
 /*  ********* Get Volume information **********/
@@ -811,7 +817,6 @@ function WMIListDrives(){
         }
         keys.sort();
         len = keys.length;
-        var outputDiv = $("#bl-info-output");
         outputDiv.empty();
 
 /*      ********* Output drive info to #bl-info-output div in sorted order **********/
