@@ -134,7 +134,7 @@
                         <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
                             <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
                         <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
-                            <img src="images/launch-icon-45.svg" class="icon-tools">Launch LoadState</button>
+                            <img src="images/load-state-45.svg" class="icon-tools">Launch LoadState</button>
                     </div>
                 </div>
 
@@ -187,6 +187,8 @@
             </div>
             <!--    End main    -->
         </div>
+
+        <!-- ******************** Footer Button Bar Section ******************** -->
         <div id="footer" class="on-load">
             <div class="tools-button-bar">
                 <button id="button-landing" class="button-toolbar button-exithome">
@@ -235,6 +237,16 @@
                 <button class="button-toolbar" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
                     <div class="button-background button-screen">
                         <img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-ftk" name="ftk" onclick="vbscript:FTK()">
+                    <div class="button-background button-screen">
+                        <img src="images/binary-capture-45.svg" class="icon-only" title="Forensic ToolKit">
+                    </div>
+                </button>
+                <button class="button-toolbar" id="button-WMIExplorer" name="WMIExplorer" onclick="vbscript:WMIExplorer()">
+                    <div class="button-background button-screen">
+                        <img src="images/tools.png" class="icon-only" title="WMI Explorer">
                     </div>
                 </button>
             </div>
@@ -373,7 +385,7 @@
                 <input id="input-share-path" class="input-objects input-text" name="sharePath" type="Text">
                 <br>
                 <button id="map-drive" class="button" onclick="javascript:jsMapNetworkDrive()">
-                    <img src="images/map-drive.png" class="icon-tools">Map Drive</button>
+                    <img src="images/map-drives-45.svg" class="icon-tools">Map Drive</button>
             </div>
         </li>
     </template>
@@ -400,7 +412,7 @@
             </h3>
             <div id="div-select-users" class="ui-widget-content usmt-users">
                 <button id="enum-users" class="button" onclick="javascript:showUsersClick()">
-                    <img src="images/users.svg" class="icon-tools">Show Users</button>
+                    <img src="images/show-users-45.svg" class="icon-tools">Show Users</button>
             </div>
         </li>
     </template>

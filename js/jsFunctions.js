@@ -1,12 +1,12 @@
 /* Globals */
-var winFoundAndEncrypted = [];
+var objDrives = {};
 
 /**********************************************************************************************************************
 *						        Document ready functions
 **********************************************************************************************************************/
 $(document).ready(function () {
     loadPage("landing");
-    WMIListDrives();
+
     //Initialize replacement scrollbars
     $(".pages").mCustomScrollbar({
         theme: "minimal",
@@ -101,7 +101,8 @@ function loadPage(targetOperation, event) {
     if (targetOperation == "landing") {
         //Find and list drives attached to this machine
         //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
-        isWindowsFoundIsEncrypted();
+        WMIListDrives();
+        dimElements();
         event = null;
         try {
             //Check for a TPM chip
@@ -127,7 +128,7 @@ function loadPage(targetOperation, event) {
         
         templates.each(function () {
             //Only show the Bitlocker Unlock template if an encrypted drive is found and locked
-            if (!($(this).attr("id") == "temp-bitlocker-unlock" && winFoundAndEncrypted["Encrypted"] == false)){
+            if (!($(this).attr("id") == "temp-bitlocker-unlock" && objDrives["Encrypted Drive Found"] == false)){
                 template += $(this).html();
             }
         });
@@ -534,7 +535,7 @@ function blUnlockClick() {
     BitlockerUnlock();
     // BitlockerInfo();
     WMIListDrives();
-    isWindowsFoundIsEncrypted();
+    dimElements();
     spinner.stop(target);
 }
 
@@ -661,7 +662,18 @@ function ReportFolderStatus(fldr) {
     catch (err) {
         document.getElementById("general-output").innerHTML = err.message;
     }
+}
 
+function updateWindowsVolumes(){
+    for (var drive in objDrives["Volumes"]) {
+        drive != "X" ? objDrives["Volumes"][drive]["isWindowsFound"] = ReportFolderStatus(drive + ":\\Windows") : objDrives["Volumes"][drive]["isWindowsFound"] = false;
+    }
+}
+
+function updateEncryptedVolumes() {
+    for (var drive in objDrives["Volumes"]) {
+        drive["Lock Status"] == "Locked" ? objDrives["Volumes"][drive]["isEncrypted"] = true : objDrives["Volumes"][drive]["isEncrypted"] = false;
+    }
 }
 
 function isWindowsFound() {
@@ -692,24 +704,38 @@ function isEncrypted(driveList) {
 }
 
 function isWindowsFoundIsEncrypted() {
-    var driveList = {};
-    driveList = WMIListDrives();
-    //Check for a Windows directory. Returns true or false
-    var windowsFound = isWindowsFound();
-    //Check for any encrypted drives. Returns true if any are found, false otherwise
-    var encryptedDriveFound = isEncrypted(driveList);
-    var results = [];
+    WMIListDrives();
+    objDrives["Encrypted Drive Found"] = false;
+    objDrives["Windows Drive Found"] = false;
 
-    winFoundAndEncrypted["WinFound"] = windowsFound;
-    winFoundAndEncrypted["Encrypted"] = encryptedDriveFound;
+    for (var drive in objDrives["Volumes"]) {
+        if(drive["isEncrypted"] == true){
+            objDrives["Encrypted Drives"].push(drive);
+            objDrives["Encrypted Drive Found"] = true;
+        }
+        if(drive["isWindowsFound"] == true){
+            objDrives["Windows Drives"].push(drive);
+            objDrives["Windows Drive Found"] = true;
+        }
+    }
+
+    if (objDrives["Encrypted Drive Found"] == true && objDrives["Windows Drive Found"] == false) {
+        objDrives["Windows Drive Probably Locked"] = true;
+    }
+    // //Check for a Windows directory. Returns true or false
+    // var windowsFound = isWindowsFound();
+    // //Check for any encrypted drives. Returns true if any are found, false otherwise
+    // var encryptedDriveFound = isEncrypted(driveList);
+    // var results = [];
+
+    // winFoundAndEncrypted["WinFound"] = windowsFound;
+    // winFoundAndEncrypted["Encrypted"] = encryptedDriveFound;
 
     dimElements();
-
-    return results;
 }
 
 function dimElements() {
-    if (winFoundAndEncrypted["WinFound"] == false && winFoundAndEncrypted["Encrypted"] == true) {
+    if (objDrives["Windows Drive Probably Locked"] == true) {
         //No Windows drive found and an encrypted drive WAS found
         //Dim elements that require a Windows directory as a warning
         if ($(".li-win-not-found").length == 0){
@@ -751,7 +777,7 @@ function dimElements() {
 
 
 function WMIListDrives(){
-    var objDrives = {};
+    objDrives = {"Volumes" : {}};
     var outputDiv = $("#bl-info-output");
     var arEncryptionMethod = ["None", "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown"];
     var arProtectionStatus = ["Protection Off", "Protection On", "Protection Unknown"];
@@ -770,19 +796,20 @@ function WMIListDrives(){
             var objItem = enumItems.item();
             var VolumeKeyProtectorID;
             var DriveLetter = objItem.DriveLetter.replace(":", "");
-            objDrives[DriveLetter] = {
+            objDrives["Volumes"][DriveLetter] = {
                 "Drive Letter": DriveLetter,
-                "Encryption Method": arEncryptionMethod[objItem.GetEncryptionMethod],
-                "Protection Status": arProtectionStatus[objItem.GetProtectionStatus],
-                "Lock Status": arLockStatus[objItem.GetLockStatus]
+                "Encryption Method": arEncryptionMethod[objItem.GetEncryptionMethod()],
+                "Protection Status": arProtectionStatus[objItem.GetProtectionStatus()],
+                "Lock Status": arLockStatus[objItem.GetLockStatus()]
             };
-
+            objDrives["Volumes"][DriveLetter]["Lock Status"] == "Locked" ? objDrives["Volumes"][DriveLetter]["isEncrypted"] = true : objDrives["Volumes"][DriveLetter]["isEncrypted"] = false;
+            alert(objItem.DriveLetter + " " + objItem.GetEncryptionMethod());
             VolumeKeyProtectorID = objItem.GetKeyProtectors(0);
-
             for (objId in VolumeKeyProtectorID) {
                 var VolumeKeyProtectorType = objItem.GetKeyProtectorType(objId);
+                
                 if (VolumeKeyProtectorType != "") {
-                    objDrives[DriveLetter]["VolumeKeyProtectorType"] = arKeyType[VolumeKeyProtectorType];
+                    objDrives["Volumes"][DriveLetter]["VolumeKeyProtectorType"] = arKeyType[VolumeKeyProtectorType];
                 }
             }
         }
@@ -801,19 +828,22 @@ function WMIListDrives(){
         var objItem = enumItems.item();
         if (objItem.DriveLetter){
             var DriveLetter = objItem.DriveLetter.replace(":", "");
-            if (!objDrives.hasOwnProperty(DriveLetter)) { objDrives[DriveLetter] = { "Drive Letter": DriveLetter};}
-            objDrives[DriveLetter]["Label"] = objItem.Label;
-            objDrives[DriveLetter]["Free Space"] = ConvertSize(objItem.Freespace);
-            objDrives[DriveLetter]["Capacity"] = ConvertSize(objItem.Capacity);
-            objDrives[DriveLetter]["Drive Type"] = arDriveTypes[objItem.DriveType];
+
+            if (!objDrives["Volumes"].hasOwnProperty(DriveLetter)) { objDrives["Volumes"][DriveLetter] = { "Drive Letter": DriveLetter};}
+            objDrives["Volumes"][DriveLetter]["Label"] = objItem.Label;
+            objDrives["Volumes"][DriveLetter]["Free Space"] = ConvertSize(objItem.Freespace);
+            objDrives["Volumes"][DriveLetter]["Capacity"] = ConvertSize(objItem.Capacity);
+            objDrives["Volumes"][DriveLetter]["Drive Type"] = arDriveTypes[objItem.DriveType];
+            DriveLetter != "X" ? objDrives["Volumes"][DriveLetter]["isWindowsFound"] = ReportFolderStatus(DriveLetter + ":\\Windows") : objDrives["Volumes"][DriveLetter]["isWindowsFound"] = false;
+            objDrives["Volumes"][DriveLetter]["isWindowsFound"] == true ? $("#windows-drive-letter").val(DriveLetter) : null;
         }
     }
-
+    
 /*  ********* Sort the objDrives object by Drive Letter **********/
     var keys = [], k, len, drivesSorted = {};
     try {
-        for (k in objDrives) {
-            if (objDrives.hasOwnProperty(k)) {keys.push(k);}
+        for (k in objDrives["Volumes"]) {
+            if (objDrives["Volumes"].hasOwnProperty(k)) {keys.push(k);}
         }
         keys.sort();
         len = keys.length;
@@ -823,33 +853,45 @@ function WMIListDrives(){
         for (var i = 0; i < len; i++) {
             k = keys[i];
             outputDiv.append("<span class='driveLetterSpan'>Drive Letter:</span> " + k);
-            objDrives[k]["Lock Status"] == "Locked" ? outputDiv.append(" <span class=\"driveLocked\">(" + objDrives[k]["Lock Status"] + ")</span> ") : "";
-            objDrives[k]["Drive Type"] ? outputDiv.append("<br>Drive Type: " + objDrives[k]["Drive Type"]) : "";
-            objDrives[k]["Label"] ? outputDiv.append(" | Label: " + objDrives[k]["Label"]) : "";
-            objDrives[k]["Capacity"] ? outputDiv.append("<br>Capacity: " + objDrives[k]["Capacity"]) : "";
-            objDrives[k]["Free Space"] ? outputDiv.append(" | Free Space: " + objDrives[k]["Free Space"]) : "";
-            objDrives[k]["Encryption Method"] ? outputDiv.append("<br>Encryption: " + objDrives[k]["Encryption Method"]) : "";
+            objDrives["Volumes"][k]["Lock Status"] == "Locked" ? outputDiv.append(" <span class=\"driveLocked\">(" + objDrives["Volumes"][k]["Lock Status"] + ")</span> ") : "";
+            objDrives["Volumes"][k]["Drive Type"] ? outputDiv.append("<br>Drive Type: " + objDrives["Volumes"][k]["Drive Type"]) : "";
+            objDrives["Volumes"][k]["Label"] ? outputDiv.append(" | Label: " + objDrives["Volumes"][k]["Label"]) : "";
+            objDrives["Volumes"][k]["Capacity"] ? outputDiv.append("<br>Capacity: " + objDrives["Volumes"][k]["Capacity"]) : "";
+            objDrives["Volumes"][k]["Free Space"] ? outputDiv.append(" | Free Space: " + objDrives["Volumes"][k]["Free Space"]) : "";
+            objDrives["Volumes"][k]["Encryption Method"] ? outputDiv.append("<br>Encryption: " + objDrives["Volumes"][k]["Encryption Method"]) : "";
             arKeyType.forEach(function (element) {
-                objDrives[k][element] && element == "Numerical password" ? outputDiv.append("<br>Recovery Key ID: " + objDrives[k][element]) : "";
+                objDrives["Volumes"][k][element] && element == "Numerical password" ? outputDiv.append("<br>Recovery Key ID: " + objDrives["Volumes"][k][element]) : "";
             });
             outputDiv.append("<br><br>");
-            drivesSorted[k] = objDrives[k];
+            drivesSorted[k] = objDrives["Volumes"][k];
         }
     }
     catch (err) {
         $('#page-landing').append(err.message);
     }
+
+/*  ********* Update Windows Drive Found and Encrypted Drive Found status **********/
+    objDrives["Encrypted Drive Found"] = false;
+    objDrives["Windows Drive Found"] = false;
+
+    for (var drive in objDrives["Volumes"]) {
+        if (drive["isEncrypted"] == true) {
+            objDrives["Encrypted Drives"].push(drive);
+            objDrives["Encrypted Drive Found"] = true;
+        }
+        if (drive["isWindowsFound"] == true) {
+            objDrives["Windows Drives"].push(drive);
+            objDrives["Windows Drive Found"] = true;
+        }
+    }
+
+    if (objDrives["Encrypted Drive Found"] == true && objDrives["Windows Drive Found"] == false) {
+        objDrives["Windows Drive Probably Locked"] = true;
+    }
+
     return drivesSorted;
 }
 
-// Dim fso, checkForWindows
-// checkForWindows = objItem.DriveLetter & ":\Windows"
-// Set fso = CreateObject("Scripting.FileSystemObject")
-// If(fso.FolderExists(checkForWindows) AND objItem.DriveLetter <> "X") Then
-// htaLog.WriteLine(Now & " || Windows Drive found at: " & checkForWindows)
-// document.getElementById("windows-drive-letter").Value = objItem.DriveLetter
-// objItem.Label = "Windows Drive!"
-// End If
 
 
 function ConvertSize(Size){
@@ -860,3 +902,33 @@ function ConvertSize(Size){
     else if (Size >= 1024) { return Math.round(Size / 1024) + " KB"}
     else {return Size + " Bytes"}
 }
+
+function writeToLog(){
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var ForReading = 1, ForAppending = 8;
+    var strCurrentPath = window.location.pathname;
+    var strLogDir = strCurrentPath.substring(0, strCurrentPath.lastIndexOf('\\'));
+    var htaLog = fso.OpenTextFile(strLogDir + "\\HTALOG.txt", ForAppending, true);
+    htaLog.write("test");
+    htaLog.close();
+}
+
+// set shell = createobject("wscript.shell")
+// '=====
+// 'Changing this under the HKLM makes it effective for all users
+// 'at next logon...
+// '=====
+// HKLM_MyComputer_key = "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0\"
+// valuename = "Flags"
+// shell.RegWrite HKLM_MyComputer_key & valuename, 1, "REG_DWORD"
+// '=====
+// 'Changing this under the HKCU makes it effective for this user
+// 'immediately and at every logon...
+// '=====
+// HKCU_MyComputer_key = "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0\"
+// valuename = "Flags"
+// shell.RegWrite HKCU_MyComputer_key & valuename, 1, "REG_DWORD"
+
+// msgbox "The 'My Computer' security zone is now visible in the IE security dialog."
+
+// wscript.quit
