@@ -118,6 +118,7 @@ p {
     height: 768px;
     width: 1024px;
     background: url(images/backgrounds/abstract01a.png);
+    z-index: -10;
 }
 #content {
     display: inline-block;
@@ -137,6 +138,7 @@ p {
     padding: 0px 10px;
     background-color: rgba(0, 0, 0, 0.0);
     height: 60px;
+    z-index: 1;
 }
 #main {
     background-color: rgba(0, 0, 0, 0.0);
@@ -213,6 +215,8 @@ p {
     padding: 0px;
     margin: 0px 10px;
     border-radius: 5px;
+    z-index: 10;
+    position: relative;
 }
 .button {
     padding: 10px;
@@ -439,9 +443,20 @@ p {
     position: absolute;
     bottom: 0px;
     left: 0px;
+    padding: 25px 40px;
 }
 #minerva{
     height: 175px;
     width: 175px;
     opacity: 0.8;
+}
+#button-landing{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+#button-exit{
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
