@@ -435,3 +435,13 @@ p {
 #hidden-inputs{
     display: none;
 }
+#minervaDiv{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+#minerva{
+    height: 175px;
+    width: 175px;
+    opacity: 0.8;
+}
