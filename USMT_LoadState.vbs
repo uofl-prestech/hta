@@ -4,7 +4,7 @@ Dim logShell, strLogDir, objFSO, htaLog
 Set logShell = CreateObject("WScript.Shell")
 strLogDir = logShell.currentDirectory
 Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.txt", ForAppending, True)	
+Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.log", ForAppending, True)	
 Set env = CreateObject("Microsoft.SMS.TSEnvironment")
 On Error Resume Next
 

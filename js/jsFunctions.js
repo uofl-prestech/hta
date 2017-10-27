@@ -721,19 +721,18 @@ function launchSoftwareInstall() {
 *						        Buttons Inside List Elements
 **********************************************************************************************************************/
 function blInfoClick() {
-    $("#general-output-scroll").css('visibility', 'visible');
     var target = document.getElementById('general-output');
     var opts = {
         color: '#FFF'
     }
     var spinner = new Spinner(opts).spin(target);
-    BitlockerInfo();
+    WMIListDrives();
+    //BitlockerInfo();
     spinner.stop(target);
 
 }
 
 function blUnlockClick() {
-    $("#general-output-scroll").css('visibility', 'visible');
     var target = document.getElementById('general-output');
     var opts = {
         color: '#FFF'
