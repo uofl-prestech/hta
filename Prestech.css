@@ -109,17 +109,9 @@ p {
     border: 1px solid rgba(80, 80, 80, 0.5);
     color: #CCC;
 }
-#button-exit {
-    position: absolute;
-    right: 12px;
-}
 #button-osd {
     margin-top: 5px;
     padding-top: 0;
-}
-#button-landing {
-    margin-left: 10px;
-    margin-right: 200px;
 }
 #container {
     display: inline-block;
@@ -319,7 +311,7 @@ p {
 #header {
     display: inline-block;
     vertical-align: middle;
-    /* text-align: left; */
+    text-align: center;
     width: 100%;
     background-color: rgba(139, 0, 0, 1);
 }
@@ -470,17 +462,15 @@ p {
     padding: 25px 40px;
 }
 #minerva{
-    height: 175px;
-    width: 175px;
+    height: 120px;
+    width: 120px;
     opacity: 0.8;
 }
 #button-landing{
     position: absolute;
-    top: 5px;
     left: 5px;
 }
 #button-exit{
     position: absolute;
-    top: 5px;
     right: 5px;
 }

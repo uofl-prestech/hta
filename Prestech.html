@@ -41,24 +41,45 @@
         <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
         <input id="input-tpm-checkbox" class="input-objects" type="hidden" name="TPMCheckBox">
     </div>
+
+    <div id="minervaDiv">
+        <img src="images/minervas/minerva_white.png" id="minerva" class="icon">
+    </div>
+
+    <!-- <button id="button-landing" class="button-header button-exithome">
+        <div class="button-background">
+            <img src="images/home-45.svg" class="icon-only" title="Home page">
+        </div>
+    </button>
+
+    <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
+        <div id="div-exit" class="button-background">
+            <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
+            <div id="portal">
+                <img src="images/exit-no-circle-45.svg" id="portal-exit" class="icon-only">
+            </div>
+        </div>
+    </button> -->
+
+
     <div id="container">
         <!-- ******************** Page Header Section ******************** -->
         <div id="header">
-                <button id="button-landing" class="button-header button-exithome">
+            <button id="button-landing" class="button-header button-exithome">
                     <div class="button-background">
                         <img src="images/home-45.svg" class="icon-only" title="Home page">
                     </div>
                 </button>
-                <button class="button-header" id="button-ShowAll">
-                    <div class="button-background">
-                        <img src="images/expand-45.svg" class="icon-only">
-                    </div>
-                </button>
-                <button class="button-header" id="button-HideAll">
-                    <div class="button-background">
-                        <img src="images/minimize-45.svg" class="icon-only">
-                    </div>
-                </button>
+            <button class="button-header" id="button-ShowAll">
+                <div class="button-background">
+                    <img src="images/expand-45.svg" class="icon-only">
+                </div>
+            </button>
+            <button class="button-header" id="button-HideAll">
+                <div class="button-background">
+                    <img src="images/minimize-45.svg" class="icon-only">
+                </div>
+            </button>
             <div class="category-header">
                 <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
                 <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
@@ -71,7 +92,7 @@
                 <h4 id="header-software" class="header-text">Software Installation</h4>
                 <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
             </div>
-                <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
+            <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
                     <div id="div-exit" class="button-background">
                         <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
                         <div id="portal">
@@ -94,16 +115,20 @@
                         <span>Flush and Fill</span>
                     </li>
                     <li id="button-dism" class="button-nav require-win-dir">
-                        <img src="images/DISM-monitor-75.svg" class="icon">
+                        <img src="images/dism-monitor-75.svg" class="icon">
                         <span>DISM</span>
                     </li>
                     <li id="button-usmt" class="button-nav require-win-dir">
                         <img src="images/usmt-monitor-75.svg" class="icon">
                         <span>USMT</span>
                     </li>
-                    <li id="button-software" class="button-nav require-win-dir clearfix">
+                    <!-- <li id="button-software" class="button-nav require-win-dir clearfix">
                         <img src="images/software-install.png" class="icon">
                         <span>Software Install</span>
+                    </li> -->
+                    <li id="button-binary" class="button-nav clearfix">
+                        <img src="images/binary-capture-monitor-75.svg" class="icon">
+                        <span>Binary Capture</span>
                     </li>
                 </ul>
             </div>
@@ -154,11 +179,18 @@
                 </div>
 
                 <!--Software Install Page-->
-                <div id="page-software" class="pages">
+                <!-- <div id="page-software" class="pages">
                     <ul id="ul-software" class="accordion ui-accordion ul-elements"></ul>
                     <div class="launch-box">
                         <button class="button show-output" id="run-software-install" onclick="javascript:launchSoftwareInstall()">
                             <img src="images/software-install.png" class="icon-tools">Install Software</button>
+                    </div>
+                </div> -->
+                <div id="page-binary" class="pages">
+                    <ul id="ul-binary" class="accordion ui-accordion ul-elements"></ul>
+                    <div class="launch-box">
+                        <button class="button show-output" id="run-binary-capture" onclick="javascript:launchBinaryCapture()">
+                            <img src="images/binary-capture-45.svg" class="icon-tools">Launch Binary Capture</button>
                     </div>
                 </div>
 
@@ -248,7 +280,7 @@
                 </button>
                 <button class="button-toolbar" id="button-WMIExplorer" name="WMIExplorer" onclick="vbscript:WMIExplorer()">
                     <div class="button-background button-screen">
-                        <img src="images/tools.png" class="icon-only" title="WMI Explorer">
+                        <img src="images/WMI-viewer-45.svg" class="icon-only" title="WMI Explorer">
                     </div>
                 </button>
             </div>
@@ -276,7 +308,7 @@
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
-                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:jsListDrives()">
+                <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()">
                     <img src="images/lock-45.svg" class="icon-tools">Bitlocker Info</button>
             </div>
         </li>
@@ -420,7 +452,7 @@
     </template>
 
     <!--    Software Install    -->
-    <template id="temp-software-install" class="osd flushfill software">
+    <template id="temp-software-install" class="osd flushfill software binary">
         <li id="li-software-install" class="li-steps li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
