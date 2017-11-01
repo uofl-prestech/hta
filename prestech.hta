@@ -42,32 +42,47 @@
         <input id="input-tpm-checkbox" class="input-objects" type="hidden" name="TPMCheckBox">
     </div>
     <div id="container">
-<!-- ******************** Page Header Section ******************** -->
-        <div class="category-header">
-            <button class="button-toolbar" id="button-ShowAll">
-                <div class="button-background button-screen">
-                    <img src="images/expand-45.svg" class="icon-only">
-                </div>
-            </button>
-            <button class="button-toolbar" id="button-HideAll">
-                <div class="button-background button-screen">
-                    <img src="images/minimize-45.svg" class="icon-only">
-                </div>
-            </button>
-            <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
-            <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
-            <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
-            <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
-            <h4 id="header-usmt" class="header-text">
-                <button class="small-button usmtStates" id="button-ScanState">Scan</button>
-                <button class="small-button usmtStates" id="button-LoadState">Load</button> User State Migration Tool
-            </h4>
-            <h4 id="header-software" class="header-text">Software Installation</h4>
-            <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
+        <!-- ******************** Page Header Section ******************** -->
+        <div id="header">
+                <button id="button-landing" class="button-header button-exithome">
+                    <div class="button-background">
+                        <img src="images/home-45.svg" class="icon-only" title="Home page">
+                    </div>
+                </button>
+                <button class="button-header" id="button-ShowAll">
+                    <div class="button-background">
+                        <img src="images/expand-45.svg" class="icon-only">
+                    </div>
+                </button>
+                <button class="button-header" id="button-HideAll">
+                    <div class="button-background">
+                        <img src="images/minimize-45.svg" class="icon-only">
+                    </div>
+                </button>
+            <div class="category-header">
+                <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
+                <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
+                <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
+                <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
+                <h4 id="header-usmt" class="header-text">
+                    <button class="small-button usmtStates" id="button-ScanState">Scan</button>
+                    <button class="small-button usmtStates" id="button-LoadState">Load</button> User State Migration Tool
+                </h4>
+                <h4 id="header-software" class="header-text">Software Installation</h4>
+                <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
+            </div>
+                <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
+                    <div id="div-exit" class="button-background">
+                        <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
+                        <div id="portal">
+                            <img src="images/exit-no-circle-45.svg" id="portal-exit" class="icon-only">
+                        </div>
+                    </div>
+                </button>
         </div>
         <div id="main" class="on-load">
 
-<!-- ******************** Navigation Button Section ******************** -->
+            <!-- ******************** Navigation Button Section ******************** -->
             <div class="navigation-bar">
                 <ul>
                     <li id="button-osd" class="button-nav">
@@ -93,7 +108,7 @@
                 </ul>
             </div>
 
-<!-- ******************** Page Content Section ******************** -->
+            <!-- ******************** Page Content Section ******************** -->
             <div id="content">
                 <!--Landing Page-->
                 <div id="page-landing" class="pages active-page">
@@ -105,7 +120,7 @@
                     <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
                     <div class="launch-box">
                         <button class="button" id="launch-osd" onclick="javascript:launchOSD()">
-                        <img src="images/osd-launch-45.svg" class="icon-tools">Launch OSD</button>
+                            <img src="images/osd-launch-45.svg" class="icon-tools">Launch OSD</button>
                     </div>
                 </div>
 
@@ -113,26 +128,28 @@
                 <div id="page-flushfill" class="pages">
                     <ul id="ul-flushfill" class="accordion ui-accordion ul-elements"></ul>
                     <div class="launch-box">
-                    <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
-                        <img src="images/flush-and-fill-launch-45.svg" class="icon-tools">Launch FnF</button>
+                        <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
+                            <img src="images/flush-and-fill-launch-45.svg" class="icon-tools">Launch FnF</button>
                     </div>
                 </div>
 
                 <!--DISM Page-->
                 <div id="page-dism" class="pages">
                     <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box"><button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
-                        <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
+                    <div class="launch-box">
+                        <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
+                            <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
                     </div>
                 </div>
 
                 <!--USMT Page-->
                 <div id="page-usmt" class="pages">
                     <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box"><button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
-                        <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
+                    <div class="launch-box">
+                        <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
+                            <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
                         <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
-                        <img src="images/launch-icon-45.svg" class="icon-tools">Launch LoadState</button>
+                            <img src="images/launch-icon-45.svg" class="icon-tools">Launch LoadState</button>
                     </div>
                 </div>
 
@@ -145,7 +162,7 @@
                     </div>
                 </div>
 
-<!-- ******************** Output Section ******************** -->
+                <!-- ******************** Output Section ******************** -->
                 <div id="general-output-scroll">
                     <ul id="general-output" class="ui-accordion">
                         <li id="output-bl-info" class="output-list">
@@ -186,20 +203,9 @@
             <!--    End main    -->
         </div>
 
-<!-- ******************** Footer Button Bar Section ******************** -->
+        <!-- ******************** Footer Button Bar Section ******************** -->
         <div id="footer" class="on-load">
             <div class="tools-button-bar">
-                <button id="button-landing" class="button-toolbar button-exithome">
-                    <div class="button-background button-screen">
-                        <img src="images/home-45.svg" class="icon-only" title="Home page">
-                    </div></button>
-                    <button id="button-exit" class="button-toolbar button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
-                    <div id="div-exit" class="button-background button-screen">
-                        <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
-                        <div id="portal">
-                            <img src="images/exit-no-circle-45.svg" id="portal-exit" class="icon-only">
-                        </div>
-                    </div></button>
                 <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
                     <div class="button-background button-screen">
                         <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
@@ -253,7 +259,7 @@
     <!-- Dialog Box -->
     <div id="dialog" title="Warning"></div>
 
-<!-- ******************** Template Section ******************** -->
+    <!-- ******************** Template Section ******************** -->
     <!--    Landing Page    -->
     <template id="temp-landing-page" class="landing">
         <li id="li-tpm-check" class="li-steps">
@@ -372,11 +378,14 @@
             </h3>
             <div id="div-map-drive" class="ui-widget-content">
                 <span>Username: &nbsp&nbsp </span>
-                <input id="input-share-username" class="input-objects input-text" name="shareUsername" type="Text"><br>
+                <input id="input-share-username" class="input-objects input-text" name="shareUsername" type="Text">
+                <br>
                 <span>Password: &nbsp&nbsp </span>
-                <input id="input-share-password" class="input-objects input-text" name="sharePassword" type="Password"><br>
+                <input id="input-share-password" class="input-objects input-text" name="sharePassword" type="Password">
+                <br>
                 <span>Network Path: &nbsp&nbsp </span>
-                <input id="input-share-path" class="input-objects input-text" name="sharePath" type="Text"><br>
+                <input id="input-share-path" class="input-objects input-text" name="sharePath" type="Text">
+                <br>
                 <button id="map-drive" class="button" onclick="javascript:jsMapNetworkDrive()">
                     <img src="images/map-drive.png" class="icon-tools">Map Drive</button>
             </div>

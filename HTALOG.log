@@ -1,0 +1,66 @@
+
+====================== Begin Logging at 10/24/2017 12:08:44 PM ======================
+10/24/2017 12:08:44 PM ***** Begin Sub listDrives *****
+10/24/2017 12:08:44 PM || Error. Must run as Administrator to check encryption status
+10/24/2017 12:08:44 PM || Skipping check for Encryption Status
+10/24/2017 12:08:44 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/24/2017 12:08:44 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/24/2017 12:08:44 PM || "Drive Letter: E | 10/24/2017 12:08:44 PM || "Label: WIN_1703 | Free Space: 54.9 GBCapacity: 58.4 GBDrive Type: Removable Disk10/24/2017 12:08:44 PM || "Drive Letter: F | 10/24/2017 12:08:44 PM || "Label: UEFI_NTFS | Free Space: 00 BytesCapacity: 238 KBDrive Type: Removable Disk10/24/2017 12:08:44 PM || Windows Drive found at: C:\Windows
+10/24/2017 12:08:44 PM || "Drive Letter: C | 10/24/2017 12:08:44 PM || "Label: Windows Drive! | Free Space: 58.7 GBCapacity: 237.7 GBDrive Type: Local Disk10/24/2017 12:08:44 PM || "Drive Letter: D | 10/24/2017 12:08:44 PM || "Label:  | Free Space: 0 BytesCapacity: 0 BytesDrive Type: Compact Disk10/24/2017 12:08:44 PM || "Drive Letter: H | 10/24/2017 12:08:44 PM || "Label:  | Free Space: 0 BytesCapacity: 0 BytesDrive Type: Compact Disk10/24/2017 12:08:44 PM ***** End Sub listDrives *****
+10/24/2017 12:08:44 PM ***** Begin Sub TPMCheck *****
+10/24/2017 12:08:44 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/24/2017 12:10:07 PM ======================
+10/24/2017 12:10:07 PM ***** Begin Sub listDrives *****
+10/24/2017 12:10:07 PM || Error. Must run as Administrator to check encryption status
+10/24/2017 12:10:07 PM || Skipping check for Encryption Status
+10/24/2017 12:10:07 PM || Executing command: GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+10/24/2017 12:10:07 PM || Executing command: objWMIService.ExecQuery("Select * from Win32_Volume")
+10/24/2017 12:10:07 PM || "Drive Letter: E | 10/24/2017 12:10:07 PM || "Label: WIN_1703 | Free Space: 54.9 GBCapacity: 58.4 GBDrive Type: Removable Disk10/24/2017 12:10:07 PM || "Drive Letter: F | 10/24/2017 12:10:07 PM || "Label: UEFI_NTFS | Free Space: 00 BytesCapacity: 238 KBDrive Type: Removable Disk10/24/2017 12:10:07 PM || Windows Drive found at: C:\Windows
+10/24/2017 12:10:07 PM || "Drive Letter: C | 10/24/2017 12:10:07 PM || "Label: Windows Drive! | Free Space: 58.6 GBCapacity: 237.7 GBDrive Type: Local Disk10/24/2017 12:10:07 PM || "Drive Letter: D | 10/24/2017 12:10:07 PM || "Label:  | Free Space: 0 BytesCapacity: 0 BytesDrive Type: Compact Disk10/24/2017 12:10:07 PM || "Drive Letter: H | 10/24/2017 12:10:07 PM || "Label:  | Free Space: 0 BytesCapacity: 0 BytesDrive Type: Compact Disk10/24/2017 12:10:07 PM ***** End Sub listDrives *****
+10/24/2017 12:10:07 PM ***** Begin Sub TPMCheck *****
+10/24/2017 12:10:07 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 10/24/2017 12:13:31 PM ======================
+10/24/2017 12:13:37 PM ***** Begin Sub TPMCheck *****
+10/24/2017 12:13:37 PM || Error: Must run as Administrator to check TPM status!
+10/24/2017 12:15:38 PM ***** Begin Sub FTK *****
+10/24/2017 12:15:38 PM || Executing command: .\tools\FTK\FTK Imager.exe
+
+====================== Begin Logging at 10/24/2017 1:25:03 PM ======================
+10/24/2017 1:25:08 PM ***** Begin Sub TPMCheck *****
+10/24/2017 1:25:08 PM || Error: Must run as Administrator to check TPM status!
+10/24/2017 1:27:46 PM ***** Begin Sub ButtonExitClick *****
+10/24/2017 1:27:46 PM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/1/2017 10:44:38 AM ======================
+11/1/2017 10:44:43 AM ***** Begin Sub TPMCheck *****
+11/1/2017 10:44:43 AM || Error: Must run as Administrator to check TPM status!
+11/1/2017 10:51:46 AM ***** Begin Sub ButtonExitClick *****
+11/1/2017 10:51:46 AM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/1/2017 11:10:15 AM ======================
+11/1/2017 11:10:20 AM ***** Begin Sub TPMCheck *****
+11/1/2017 11:10:20 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/1/2017 11:10:55 AM ======================
+11/1/2017 11:11:00 AM ***** Begin Sub TPMCheck *****
+11/1/2017 11:11:00 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/1/2017 11:11:26 AM ======================
+11/1/2017 11:11:31 AM ***** Begin Sub TPMCheck *****
+11/1/2017 11:11:31 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/1/2017 11:11:51 AM ======================
+11/1/2017 11:11:56 AM ***** Begin Sub TPMCheck *****
+11/1/2017 11:11:56 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/1/2017 11:12:24 AM ======================
+11/1/2017 11:12:29 AM ***** Begin Sub TPMCheck *****
+11/1/2017 11:12:29 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/1/2017 11:13:28 AM ======================
+11/1/2017 11:13:34 AM ***** Begin Sub TPMCheck *****
+11/1/2017 11:13:34 AM || Error: Must run as Administrator to check TPM status!
+11/1/2017 11:14:40 AM ***** Begin Sub ButtonExitClick *****
+11/1/2017 11:14:40 AM ***** End Sub ButtonExitClick *****
