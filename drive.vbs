@@ -1,29 +1,33 @@
-On Error Resume Next
-strComputer = "."
-Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
-Set colItems = objWMIService.ExecQuery("Select * from Win32_PhysicalMedia",,48)
-For Each objItem in colItems
-    Wscript.Echo "Capacity: " & objItem.Capacity
-    Wscript.Echo "Caption: " & objItem.Caption
-    Wscript.Echo "CleanerMedia: " & objItem.CleanerMedia
-    Wscript.Echo "CreationClassName: " & objItem.CreationClassName
-    Wscript.Echo "Description: " & objItem.Description
-    Wscript.Echo "HotSwappable: " & objItem.HotSwappable
-    Wscript.Echo "InstallDate: " & objItem.InstallDate
-    Wscript.Echo "Manufacturer: " & objItem.Manufacturer
-    Wscript.Echo "MediaDescription: " & objItem.MediaDescription
-    Wscript.Echo "MediaType: " & objItem.MediaType
-    Wscript.Echo "Model: " & objItem.Model
-    Wscript.Echo "Name: " & objItem.Name
-    Wscript.Echo "OtherIdentifyingInfo: " & objItem.OtherIdentifyingInfo
-    Wscript.Echo "PartNumber: " & objItem.PartNumber
-    Wscript.Echo "PoweredOn: " & objItem.PoweredOn
-    Wscript.Echo "Removable: " & objItem.Removable
-    Wscript.Echo "Replaceable: " & objItem.Replaceable
-    Wscript.Echo "SerialNumber: " & objItem.SerialNumber
-    Wscript.Echo "SKU: " & objItem.SKU
-    Wscript.Echo "Status: " & objItem.Status
-    Wscript.Echo "Tag: " & objItem.Tag
-    Wscript.Echo "Version: " & objItem.Version
-    Wscript.Echo "WriteProtectOn: " & objItem.WriteProtectOn
+ComputerName = "."
+Set wmiServices  = GetObject ( _
+    "winmgmts:{impersonationLevel=Impersonate}!//" & ComputerName)
+' Get physical disk drive
+Set wmiDiskDrives =  wmiServices.ExecQuery ( "SELECT Caption, DeviceID FROM Win32_DiskDrive")
+
+For Each wmiDiskDrive In wmiDiskDrives
+    WScript.Echo "Disk drive Caption: " & wmiDiskDrive.Caption & VbNewLine & "DeviceID: " & " (" & wmiDiskDrive.DeviceID & ")"
+
+    'Use the disk drive device id to
+    ' find associated partition
+    query = "ASSOCIATORS OF {Win32_DiskDrive.DeviceID='" _
+        & wmiDiskDrive.DeviceID & "'} WHERE AssocClass = Win32_DiskDriveToDiskPartition"    
+    Set wmiDiskPartitions = wmiServices.ExecQuery(query)
+
+    For Each wmiDiskPartition In wmiDiskPartitions
+        'Use partition device id to find logical disk
+        Set wmiLogicalDisks = wmiServices.ExecQuery _
+            ("ASSOCIATORS OF {Win32_DiskPartition.DeviceID='" _
+             & wmiDiskPartition.DeviceID & "'} WHERE AssocClass = Win32_LogicalDiskToPartition") 
+
+        For Each wmiLogicalDisk In wmiLogicalDisks
+            WScript.Echo "Drive letter associated" _
+                & " with disk drive = " _ 
+                & wmiDiskDrive.Caption _
+                & wmiDiskDrive.DeviceID _
+                & VbNewLine & " Partition = " _
+                & wmiDiskPartition.DeviceID _
+                & VbNewLine & " is " _
+                & wmiLogicalDisk.DeviceID
+        Next      
+    Next
 Next
