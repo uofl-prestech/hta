@@ -398,8 +398,8 @@ Sub FTK
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
-    htaLog.WriteLine(Now & " || Executing command: "".\tools\FTK\FTK Imager.exe""")
-    cmdShell.Run """.\tools\FTK\FTK Imager.exe"""
+    htaLog.WriteLine(Now & " || Executing command: "".\tools\FTK\FTKImager.exe""")
+    cmdShell.Run """.\tools\FTK\FTKImager.exe"""
     htaLog.WriteLine(Now & " ***** End Sub FTK *****")
 End Sub
 '**********************************************************************************************************************
