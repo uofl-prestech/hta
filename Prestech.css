@@ -195,13 +195,15 @@ p {
     display: inline-block !important;
 }
 .active-header {
-    display: inline !important;
+    display: table-cell !important;
+    vertical-align: middle;
+    height: 55px;
 }
 .small-button {
     padding: 4px 6px;
     margin: 5px;
 }
-.button, .small-button, .button-toolbar, .button-header {
+.button, .small-button, .button-toolbar{
     background-color: darkred;
     border: none;
     cursor: pointer;
@@ -213,16 +215,19 @@ p {
 }
 .button-toolbar, .button-header {
     padding: 0px;
-    margin: 0px 10px;
+    margin: 5px 10px;
     border-radius: 5px;
     z-index: 10;
     position: relative;
 }
 .button-header {
-    padding-top: 8px;
-    padding-bottom: 7px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
-
+.button-header:hover{
+    background-color: rgba(255, 116, 116, 0.8) !important;
+}
 .button {
     padding: 10px;
     margin: 5px 5px 0px 5px;
@@ -230,7 +235,7 @@ p {
 .button-background {
     height: 45px;
     width: 45px;
-    background-color: rgb(149, 23, 23);
+    /* background-color: rgb(149, 23, 23); */
     border-radius: 5px;
     vertical-align: middle;
     display: inline-block;
@@ -313,6 +318,7 @@ p {
     vertical-align: middle;
     text-align: center;
     width: 100%;
+    min-height: 55px;
     background-color: rgba(139, 0, 0, 1);
 }
 .header-text {
@@ -423,6 +429,14 @@ p {
 .ui-dialog {
     background: rgba(0, 0, 0, 0.90);
 }
+
+.usmtBackground{
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+    vertical-align: middle;
+    display: inline-block;
+}
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
@@ -471,6 +485,25 @@ p {
     left: 5px;
 }
 #button-exit{
-    position: absolute;
-    right: 5px;
+    /* position: absolute;
+    right: 5px; */
+}
+#button-ShowAll{
+    /* position: absolute;
+    left: 55px; */
+}
+#button-HideAll{
+    /* position: absolute;
+    left: 105px; */
+}
+#header-left{
+    width: 264px;
+    float: left;
+}
+#header-middle{
+    float: left;
+    width: 645px;
+}
+#header-right{
+    float: right;
 }

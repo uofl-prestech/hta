@@ -605,21 +605,22 @@ function launchDISM() {
 
         var dismReturn = dismCapture();
 
-        //Re-enable scroll bar replacement
-        setTimeout(function () {
-            $(".pages").mCustomScrollbar("update");
-            $("#general-output-scroll").mCustomScrollbar("update");
-        }, 2000);
-
         //Check if DISM was successful
         var dismDeferred = $.Deferred();
         var message = "DISM operation failed!";
         dismReturn != 0 ? warnUser(dismDeferred, message, false) : dismDeferred.resolve(true);
     });
+
+    //Re-enable scroll bar replacement
+    setTimeout(function () {
+        $(".pages").mCustomScrollbar("update");
+        $("#general-output-scroll").mCustomScrollbar("update");
+    }, 2000);
 }
 
 function launchScanstate() {
     var selectedUsers = {};
+    var scanReturn = 1;     //scanReturn should be set by the vbscript scanState function. It should set to 0 if scanstate completed successfully. Initialize to something other than 0 here so the program will ONLY continue if scanstate runs ans is successful
     $('#input-usmt-usernames :selected').each(function () {
         selectedUsers[$(this).text()] = $(this).val();
     });
@@ -660,13 +661,13 @@ function launchScanstate() {
         $(".pages").mCustomScrollbar("disable");
         $("#general-output-scroll").mCustomScrollbar("disable");
 
-        usmtScanstate(true);
-
-        setTimeout(function () {
-            $(".pages").mCustomScrollbar("update");
-            $("#general-output-scroll").mCustomScrollbar("update");
-        }, 2000);
+        scanReturn = usmtScanstate(true);
     });
+    
+    setTimeout(function () {
+        $(".pages").mCustomScrollbar("update");
+        $("#general-output-scroll").mCustomScrollbar("update");
+    }, 2000);
 }
 
 function launchLoadstate() {
