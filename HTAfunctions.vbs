@@ -398,8 +398,8 @@ Sub FTK
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
-    htaLog.WriteLine(Now & " || Executing command: .\tools\FTK\FTK Imager.exe")
-    cmdShell.Run ".\tools\FTK\FTKImager.exe"
+    htaLog.WriteLine(Now & " || Executing command: "".\tools\FTK\FTKImager.exe""")
+    cmdShell.Run """.\tools\FTK\FTKImager.exe"""
     htaLog.WriteLine(Now & " ***** End Sub FTK *****")
 End Sub
 '**********************************************************************************************************************
@@ -675,7 +675,7 @@ End Sub
 '**********************************************************************************************************************
 '						        Function: usmtScanstate(buttonClicked)
 '**********************************************************************************************************************
-Sub usmtScanstate(buttonClicked)
+Function usmtScanstate(buttonClicked)
     htaLog.WriteLine(Now & " ***** Begin Sub usmtScanstate(buttonClicked) *****")
 
     Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString, windowsDrive
@@ -683,6 +683,8 @@ Sub usmtScanstate(buttonClicked)
     Set scanStateDiv = document.getElementById("scanstate-output")
     Set WshShell = CreateObject("WScript.Shell")
     strCurrentDir = WshShell.currentDirectory
+    returnCode = 1
+    Err.Clear
 
     htaLog.WriteLine(Now & " || strCurrentDir = " & strCurrentDir)
     htaLog.WriteLine(Now & " || usmtUsernameList.Options.Length = " & usmtUsernameList.Options.Length)
@@ -707,11 +709,12 @@ Sub usmtScanstate(buttonClicked)
 
     scanStateDiv.innerHTML = "USMT Command that will execute: <br><br>" & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c <br> /offline:" & strCurrentDir & "\USMT\offline.xml <br> /i:" & strCurrentDir & "\USMT\migdocs.xml <br> /i:" & strCurrentDir & "\USMT\migapp.xml <br> /i:" & strCurrentDir & "\USMT\oopexcludes.xml <br> /progress:" & strCurrentDir & "\prog.log <br> /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log <br> /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 <br> /ue:* " & userIncludeString & ", 1, True"
 
-    htaLog.WriteLine(Now & " || Execute Scanstate if buttonClicked = true, getUser is not blank, and destDrive is not blank")
+    htaLog.WriteLine(Now & " || Execute Scanstate if buttonClicked = True, getUser is not blank, and destDrive is not blank")
     htaLog.WriteLine(Now & " || buttonClicked = " & buttonClicked & ", getUser = " & getUser & ", destDrive = " & destDrive)
-    htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, True)")
 
-    If buttonClicked = "true" AND getUser <> "" AND destDrive <> "" Then
+    If buttonClicked = "True" AND getUser <> "" AND destDrive <> "" Then
+        htaLog.WriteLine(Now & " || Executing command: WshShell.Run (""cmd /c "&strCurrentDir&"\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* "&userIncludeString&", 1, True)")
+
         returnCode = WshShell.Run ("cmd /c " & strCurrentDir & "\USMT\scanstate.exe "&destDrive&":\USMT\"&getUser&" /c /o /offline:USMT\offline.xml /i:USMT\migdocs.xml /i:USMT\migapp.xml /i:USMT\oopexcludes.xml /L:"&destDrive&":\USMT\"&getUser&"\scanstate.log /listfiles:"&destDrive&":\USMT\"&getUser&"\filesCopied.log /V:5 /ue:* " & userIncludeString, 1, True)
 
         If returnCode = 0 Then
@@ -720,7 +723,7 @@ Sub usmtScanstate(buttonClicked)
             copyWallpaper
             scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
         Else
-            htaLog.WriteLine(Now & " || Scanstate Failed!")
+            htaLog.WriteLine(Now & " || Scanstate Failed! Return Code: " & returnCode)
             htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
             htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
 
@@ -738,11 +741,13 @@ Sub usmtScanstate(buttonClicked)
             htaLog.WriteLine(Now & " || Scanstate log can be found at " & fileName)
             scanStateDiv.innerHTML = scanStateDiv.innerHTML & "<br><br> Scanstate Failed! <br><br>" & strRead
         End If
+    Else
+        htaLog.WriteLine(Now & " || Scanstate Skipped!")
     End If
 
     htaLog.WriteLine(Now & " ***** End Sub usmtScanstate(buttonClicked) *****")
-
-End Sub
+    usmtScanstate = returnCode
+End Function
 '**********************************************************************************************************************
 
 '**********************************************************************************************************************
@@ -876,7 +881,7 @@ End Function
 Sub runFlushFill
     htaLog.WriteLine(Now & " ***** Begin Sub runFlushFill *****")
 
-    Dim dismError
+    Dim dismError, scanstateError
     iWindowsDrive = document.getElementById("input-windows-drive").Value
     iExternalDrive = document.getElementById("input-external-drive").Value
     iPrimaryUsername = document.getElementById("input-primary-username").Value
@@ -906,7 +911,12 @@ Sub runFlushFill
 
     If iScanStateCheckBox Then
         htaLog.WriteLine(Now & " || scanStateCheckBox is checked. Run usmtScanstate routine")
-        usmtScanstate "true"
+        usmtError = usmtScanstate("True")
+        If usmtError Then
+            MsgBox "Scanstate Failed with error " & usmtError & ". Halting Flush and Fill sequence."
+            htaLog.WriteLine(Now & " || Scanstate Failed with error " & usmtError & ". Halting Flush and Fill sequence.")
+            Exit Sub
+        End If
     End If
 
     htaLog.WriteLine(Now & " || loadStateCheckBox.Checked = " & iLoadStateCheckBox)

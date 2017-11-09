@@ -3,18 +3,17 @@
 <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
 <style type="text/css">
-	.st0{font-family:'MyriadPro-BoldCond';}
-	.st1{font-size:20px;}
+	.st0{font-family:'Arial-BoldMT';}
+	.st1{font-size:14.8446px;}
 	.st2{fill:url(#SVGID_1_);}
 </style>
-<text transform="matrix(0.8366 0 0 1 3.8823 22.5)" class="st0 st1">WMI</text>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="22.5" x2="45" y2="22.5">
+<text transform="matrix(0.8239 0 0 1 4.2431 21.311)" class="st0 st1">WMI</text>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="22.5" x2="45" y2="22.5" gradientTransform="matrix(1 0 0 -1 0 45)">
 	<stop  offset="0" style="stop-color:#919191"/>
 	<stop  offset="0.4093" style="stop-color:#6D6D6D"/>
 	<stop  offset="1" style="stop-color:#000000"/>
 </linearGradient>
 <path class="st2" d="M45,40.3l-7.9-7.7c-0.1-0.3-1-0.4-1.8-0.2l-5.6-5.5c2.3-2.8,3.7-6.4,3.7-10.3C33.4,7.4,25.9,0,16.7,0
-	C7.5,0,0,7.4,0,16.5C0,25.6,7.5,33,16.7,33c4.2,0,8-1.5,10.9-4l5.7,5.6c-0.1,0.5,0,0.9,0.1,1.4l0,0l0.1,0.1v0h0l9.1,8.9
-	c0.8,0,1.7,0,2.5,0C45,43.5,45,42.1,45,40.3z M16.7,29.9c-7.5,0-13.5-6-13.5-13.4c0-7.4,6-13.4,13.5-13.4c7.5,0,13.5,6,13.5,13.4
-	C30.2,23.9,24.1,29.9,16.7,29.9z"/>
+	S0,7.4,0,16.5S7.5,33,16.7,33c4.2,0,8-1.5,10.9-4l5.7,5.6c-0.1,0.5,0,0.9,0.1,1.4l0,0l0.1,0.1l0,0l0,0l9.1,8.9c0.8,0,1.7,0,2.5,0
+	C45,43.5,45,42.1,45,40.3z M16.7,29.9c-7.5,0-13.5-6-13.5-13.4s6-13.4,13.5-13.4s13.5,6,13.5,13.4S24.1,29.9,16.7,29.9z"/>
 </svg>

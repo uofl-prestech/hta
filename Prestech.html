@@ -41,12 +41,12 @@
         <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
         <input id="input-tpm-checkbox" class="input-objects" type="hidden" name="TPMCheckBox">
     </div>
-
     <div id="minervaDiv">
         <img src="images/minervas/minerva_white.png" id="minerva" class="icon">
         <p>Office of the President</p>
     </div>
 
+<<<<<<< HEAD
     <!-- <button id="button-landing" class="button-header button-exithome">
         <div class="button-background">
             <img src="images/home-45.svg" class="icon-only" title="Home page">
@@ -62,37 +62,55 @@
         </div>
     </button> -->
 
+=======
+>>>>>>> a427419f4ba5acd4e2d66bb31dc4346e647e66f6
     <div id="container">
         <!-- ******************** Page Header Section ******************** -->
         <div id="header">
-            <button id="button-landing" class="button-header button-exithome">
+            <div id="header-left">
+                <!-- Home Button -->
+                <button id="button-landing" class="button-header button-exithome">
                     <div class="button-background">
                         <img src="images/home-45.svg" class="icon-only" title="Home page">
                     </div>
                 </button>
-            <button class="button-header" id="button-ShowAll">
-                <div class="button-background">
-                    <img src="images/expand-45.svg" class="icon-only">
-                </div>
-            </button>
-            <button class="button-header" id="button-HideAll">
-                <div class="button-background">
-                    <img src="images/minimize-45.svg" class="icon-only">
-                </div>
-            </button>
-            <div class="category-header">
+                <!-- Expand Accordion Button -->
+                <button class="button-header" id="button-ShowAll">
+                    <div class="button-background">
+                        <img src="images/expand-45.svg" class="icon-only" title="Expand Accordion">
+                    </div>
+                </button>
+                <!-- Collapse Accordion Button -->
+                <button class="button-header" id="button-HideAll">
+                    <div class="button-background">
+                        <img src="images/minimize-45.svg" class="icon-only" title="Collapse Accordion">
+                    </div>
+                </button>
+            </div>
+            <div id="header-middle" class="category-header">
                 <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
                 <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
                 <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
                 <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
                 <h4 id="header-usmt" class="header-text">
-                    <button class="small-button usmtStates" id="button-ScanState">Scan</button>
-                    <button class="small-button usmtStates" id="button-LoadState">Load</button> User State Migration Tool
+                    <button id="button-ScanState" class="button-header" title="Scanstate">
+                        <div class="button-background">
+                            <img src="images/usmt-launch-grey-45.svg" class="icon-only">
+                        </div>
+                    </button>
+                    <button id="button-LoadState" class="button-header" title="Loadstate">
+                        <div class="button-background">
+                            <img src="images/load-state-grey-45.svg" class="icon-only">
+                        </div>
+                    </button>
+                    <span>User State Migration Tool</span>
                 </h4>
                 <h4 id="header-software" class="header-text">Software Installation</h4>
                 <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
             </div>
-            <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
+            <div id="header-right">
+                <!-- Exit Button -->
+                <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
                     <div id="div-exit" class="button-background">
                         <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
                         <div id="portal">
@@ -100,6 +118,7 @@
                         </div>
                     </div>
                 </button>
+            </div>
         </div>
         <div id="main" class="on-load">
 
@@ -186,13 +205,13 @@
                             <img src="images/software-install.png" class="icon-tools">Install Software</button>
                     </div>
                 </div> -->
-                <div id="page-binary" class="pages">
+                <!-- <div id="page-binary" class="pages">
                     <ul id="ul-binary" class="accordion ui-accordion ul-elements"></ul>
                     <div class="launch-box">
                         <button class="button show-output" id="run-binary-capture" onclick="javascript:launchBinaryCapture()">
                             <img src="images/binary-capture-45.svg" class="icon-tools">Launch Binary Capture</button>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- ******************** Output Section ******************** -->
                 <div id="general-output-scroll">
@@ -275,7 +294,7 @@
                 </button>
                 <button class="button-toolbar" id="button-ftk" name="ftk" onclick="vbscript:FTK()">
                     <div class="button-background button-screen">
-                        <img src="images/binary-capture-45.svg" class="icon-only" title="Forensic ToolKit">
+                        <img src="images/FTK-45.svg" class="icon-only" title="Forensic ToolKit">
                     </div>
                 </button>
                 <button class="button-toolbar" id="button-WMIExplorer" name="WMIExplorer" onclick="vbscript:WMIExplorer()">

@@ -135,6 +135,7 @@
 11/1/2017 12:37:00 PM ***** Begin Sub ButtonExitClick *****
 11/1/2017 12:37:00 PM ***** End Sub ButtonExitClick *****
 
+<<<<<<< HEAD
 ====================== Begin Logging at 11/1/2017 2:03:32 PM ======================
 11/1/2017 2:03:38 PM ***** Begin Sub TPMCheck *****
 11/1/2017 2:03:38 PM || Error: Must run as Administrator to check TPM status!
@@ -150,3 +151,499 @@
 11/9/2017 10:03:18 AM || Error: Must run as Administrator to check TPM status!
 11/9/2017 10:03:38 AM ***** Begin Sub ButtonExitClick *****
 11/9/2017 10:03:38 AM ***** End Sub ButtonExitClick *****
+=======
+====================== Begin Logging at 11/8/2017 1:31:04 PM ======================
+11/8/2017 1:31:20 PM ***** Begin Sub TPMCheck *****
+11/8/2017 1:31:20 PM || Error: Must run as Administrator to check TPM status!
+11/8/2017 2:56:07 PM ***** Begin Sub ButtonExitClick *****
+11/8/2017 2:56:07 PM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/8/2017 2:56:11 PM ======================
+11/8/2017 2:56:12 PM ***** Begin Sub TPMCheck *****
+11/8/2017 2:56:12 PM || User is running script as admin
+11/8/2017 2:56:12 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 2:56:12 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 2:56:12 PM ***** End Sub TPMCheck *****
+11/8/2017 2:56:12 PM ***** Begin Sub ButtonExitClick *****
+11/8/2017 2:56:12 PM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/8/2017 2:56:18 PM ======================
+11/8/2017 2:56:18 PM ***** Begin Sub TPMCheck *****
+11/8/2017 2:56:18 PM || User is running script as admin
+11/8/2017 2:56:18 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 2:56:18 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 2:56:18 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 2:59:16 PM ======================
+11/8/2017 2:59:17 PM ***** Begin Sub TPMCheck *****
+11/8/2017 2:59:17 PM || User is running script as admin
+11/8/2017 2:59:17 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 2:59:17 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 2:59:17 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:00:02 PM ======================
+11/8/2017 3:00:03 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:00:03 PM || User is running script as admin
+11/8/2017 3:00:03 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:00:03 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:00:03 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:00:39 PM ======================
+11/8/2017 3:00:39 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:00:39 PM || User is running script as admin
+11/8/2017 3:00:39 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:00:39 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:00:39 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:01:17 PM ======================
+11/8/2017 3:01:18 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:01:18 PM || User is running script as admin
+11/8/2017 3:01:18 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:01:18 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:01:18 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:01:26 PM ======================
+11/8/2017 3:01:27 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:01:27 PM || User is running script as admin
+11/8/2017 3:01:27 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:01:27 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:01:27 PM ***** End Sub TPMCheck *****
+11/8/2017 3:01:34 PM ***** Begin Sub ButtonExitClick *****
+11/8/2017 3:01:34 PM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/8/2017 3:01:38 PM ======================
+11/8/2017 3:01:38 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:01:38 PM || User is running script as admin
+11/8/2017 3:01:38 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:01:38 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:01:38 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:06:55 PM ======================
+11/8/2017 3:06:56 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:06:56 PM || User is running script as admin
+11/8/2017 3:06:56 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:06:56 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:06:56 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:09:49 PM ======================
+11/8/2017 3:09:50 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:09:50 PM || User is running script as admin
+11/8/2017 3:09:50 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:09:50 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:09:50 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:10:27 PM ======================
+11/8/2017 3:10:28 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:10:28 PM || User is running script as admin
+11/8/2017 3:10:28 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:10:28 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:10:28 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:10:46 PM ======================
+11/8/2017 3:10:47 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:10:47 PM || User is running script as admin
+11/8/2017 3:10:47 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:10:47 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:10:47 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:14:00 PM ======================
+11/8/2017 3:14:00 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:14:00 PM || User is running script as admin
+11/8/2017 3:14:00 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:14:00 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:14:00 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:15:41 PM ======================
+11/8/2017 3:15:41 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:15:41 PM || User is running script as admin
+11/8/2017 3:15:41 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:15:41 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:15:41 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:15:55 PM ======================
+11/8/2017 3:15:55 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:15:55 PM || User is running script as admin
+11/8/2017 3:15:55 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:15:55 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:15:55 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:17:10 PM ======================
+11/8/2017 3:17:10 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:17:10 PM || User is running script as admin
+11/8/2017 3:17:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:17:10 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:17:10 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:18:04 PM ======================
+11/8/2017 3:18:05 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:18:05 PM || User is running script as admin
+11/8/2017 3:18:05 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:18:05 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:18:05 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:18:26 PM ======================
+11/8/2017 3:18:27 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:18:27 PM || User is running script as admin
+11/8/2017 3:18:27 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:18:27 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:18:27 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:19:50 PM ======================
+11/8/2017 3:19:51 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:19:51 PM || User is running script as admin
+11/8/2017 3:19:51 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:19:51 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:19:51 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:20:07 PM ======================
+11/8/2017 3:20:07 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:20:07 PM || User is running script as admin
+11/8/2017 3:20:07 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:20:07 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:20:07 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:20:32 PM ======================
+11/8/2017 3:20:32 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:20:32 PM || User is running script as admin
+11/8/2017 3:20:32 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:20:32 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:20:32 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:20:55 PM ======================
+11/8/2017 3:20:55 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:20:55 PM || User is running script as admin
+11/8/2017 3:20:55 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:20:55 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:20:55 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:21:16 PM ======================
+11/8/2017 3:21:17 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:21:17 PM || User is running script as admin
+11/8/2017 3:21:17 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:21:17 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:21:17 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:21:30 PM ======================
+11/8/2017 3:21:30 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:21:30 PM || User is running script as admin
+11/8/2017 3:21:30 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:21:30 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:21:30 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:22:22 PM ======================
+11/8/2017 3:22:23 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:22:23 PM || User is running script as admin
+11/8/2017 3:22:23 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:22:23 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:22:23 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:27:32 PM ======================
+11/8/2017 3:27:32 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:27:32 PM || User is running script as admin
+11/8/2017 3:27:32 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:27:32 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:27:32 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:30:52 PM ======================
+11/8/2017 3:30:52 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:30:52 PM || User is running script as admin
+11/8/2017 3:30:52 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:30:52 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:30:52 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:35:28 PM ======================
+11/8/2017 3:35:28 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:35:28 PM || User is running script as admin
+11/8/2017 3:35:28 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:35:28 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:35:28 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:40:16 PM ======================
+11/8/2017 3:40:17 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:40:17 PM || User is running script as admin
+11/8/2017 3:40:17 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:40:17 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:40:17 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:40:45 PM ======================
+11/8/2017 3:40:45 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:40:45 PM || User is running script as admin
+11/8/2017 3:40:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:40:45 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:40:45 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:40:55 PM ======================
+11/8/2017 3:40:55 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:40:55 PM || User is running script as admin
+11/8/2017 3:40:55 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:40:55 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:40:55 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:41:12 PM ======================
+11/8/2017 3:41:13 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:41:13 PM || User is running script as admin
+11/8/2017 3:41:13 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:41:13 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:41:13 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:41:26 PM ======================
+11/8/2017 3:41:26 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:41:26 PM || User is running script as admin
+11/8/2017 3:41:26 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:41:26 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:41:26 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:41:33 PM ======================
+11/8/2017 3:41:34 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:41:34 PM || User is running script as admin
+11/8/2017 3:41:34 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:41:34 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:41:34 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:46:11 PM ======================
+11/8/2017 3:46:11 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:46:11 PM || User is running script as admin
+11/8/2017 3:46:11 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:46:11 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:46:11 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:49:35 PM ======================
+11/8/2017 3:49:36 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:49:36 PM || User is running script as admin
+11/8/2017 3:49:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:49:36 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:49:36 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:49:56 PM ======================
+11/8/2017 3:49:56 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:49:56 PM || User is running script as admin
+11/8/2017 3:49:56 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:49:56 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:49:56 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:50:59 PM ======================
+11/8/2017 3:50:59 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:50:59 PM || User is running script as admin
+11/8/2017 3:50:59 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:50:59 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:50:59 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:51:21 PM ======================
+11/8/2017 3:51:21 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:51:21 PM || User is running script as admin
+11/8/2017 3:51:21 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:51:21 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:51:21 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:51:36 PM ======================
+11/8/2017 3:51:37 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:51:37 PM || User is running script as admin
+11/8/2017 3:51:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:51:37 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:51:37 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:51:42 PM ======================
+11/8/2017 3:51:43 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:51:43 PM || User is running script as admin
+11/8/2017 3:51:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:51:43 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:51:43 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:51:51 PM ======================
+11/8/2017 3:51:51 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:51:51 PM || User is running script as admin
+11/8/2017 3:51:51 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:51:51 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:51:51 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:52:23 PM ======================
+11/8/2017 3:52:24 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:52:24 PM || User is running script as admin
+11/8/2017 3:52:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:52:24 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:52:24 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:52:57 PM ======================
+11/8/2017 3:52:58 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:52:58 PM || User is running script as admin
+11/8/2017 3:52:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:52:58 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:52:58 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:53:38 PM ======================
+11/8/2017 3:53:38 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:53:38 PM || User is running script as admin
+11/8/2017 3:53:38 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:53:38 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:53:38 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:54:36 PM ======================
+11/8/2017 3:54:37 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:54:37 PM || User is running script as admin
+11/8/2017 3:54:37 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:54:37 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:54:37 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 3:59:31 PM ======================
+11/8/2017 3:59:31 PM ***** Begin Sub TPMCheck *****
+11/8/2017 3:59:31 PM || User is running script as admin
+11/8/2017 3:59:31 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 3:59:31 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 3:59:31 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:00:24 PM ======================
+11/8/2017 4:00:24 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:00:24 PM || User is running script as admin
+11/8/2017 4:00:24 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:00:24 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:00:24 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:00:58 PM ======================
+11/8/2017 4:00:58 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:00:58 PM || User is running script as admin
+11/8/2017 4:00:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:00:58 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:00:58 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:01:55 PM ======================
+11/8/2017 4:01:56 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:01:56 PM || User is running script as admin
+11/8/2017 4:01:56 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:01:56 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:01:56 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:03:06 PM ======================
+11/8/2017 4:03:06 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:03:06 PM || User is running script as admin
+11/8/2017 4:03:06 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:03:06 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:03:06 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:03:25 PM ======================
+11/8/2017 4:03:25 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:03:25 PM || User is running script as admin
+11/8/2017 4:03:25 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:03:25 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:03:25 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:05:36 PM ======================
+11/8/2017 4:05:36 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:05:36 PM || User is running script as admin
+11/8/2017 4:05:36 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:05:36 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:05:36 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:06:23 PM ======================
+11/8/2017 4:06:23 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:06:23 PM || User is running script as admin
+11/8/2017 4:06:23 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:06:23 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:06:23 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:11:03 PM ======================
+11/8/2017 4:11:03 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:11:03 PM || User is running script as admin
+11/8/2017 4:11:03 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:11:03 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:11:03 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:12:34 PM ======================
+11/8/2017 4:12:34 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:12:34 PM || User is running script as admin
+11/8/2017 4:12:34 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:12:34 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:12:34 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:13:25 PM ======================
+11/8/2017 4:13:25 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:13:25 PM || User is running script as admin
+11/8/2017 4:13:25 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:13:25 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:13:25 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:14:07 PM ======================
+11/8/2017 4:14:08 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:14:08 PM || User is running script as admin
+11/8/2017 4:14:08 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:14:08 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:14:08 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:14:58 PM ======================
+11/8/2017 4:14:58 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:14:58 PM || User is running script as admin
+11/8/2017 4:14:58 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:14:58 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:14:58 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:16:03 PM ======================
+11/8/2017 4:16:03 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:16:03 PM || User is running script as admin
+11/8/2017 4:16:03 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:16:03 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:16:03 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:17:03 PM ======================
+11/8/2017 4:17:04 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:17:04 PM || User is running script as admin
+11/8/2017 4:17:04 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:17:04 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:17:04 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:18:28 PM ======================
+11/8/2017 4:18:28 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:18:28 PM || User is running script as admin
+11/8/2017 4:18:28 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:18:28 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:18:28 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:18:49 PM ======================
+11/8/2017 4:18:50 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:18:50 PM || User is running script as admin
+11/8/2017 4:18:50 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:18:50 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:18:50 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:20:09 PM ======================
+11/8/2017 4:20:10 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:20:10 PM || User is running script as admin
+11/8/2017 4:20:10 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:20:10 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:20:10 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:20:25 PM ======================
+11/8/2017 4:20:25 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:20:25 PM || User is running script as admin
+11/8/2017 4:20:25 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:20:25 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:20:25 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:24:43 PM ======================
+11/8/2017 4:24:43 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:24:43 PM || User is running script as admin
+11/8/2017 4:24:43 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:24:43 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:24:43 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:24:51 PM ======================
+11/8/2017 4:24:52 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:24:52 PM || User is running script as admin
+11/8/2017 4:24:52 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:24:52 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:24:52 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:26:45 PM ======================
+11/8/2017 4:26:45 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:26:45 PM || User is running script as admin
+11/8/2017 4:26:45 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:26:45 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:26:45 PM ***** End Sub TPMCheck *****
+
+====================== Begin Logging at 11/8/2017 4:28:23 PM ======================
+11/8/2017 4:28:23 PM ***** Begin Sub TPMCheck *****
+11/8/2017 4:28:23 PM || User is running script as admin
+11/8/2017 4:28:23 PM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/8/2017 4:28:23 PM || Error: -2147217406. Not found . TPM Not Found
+11/8/2017 4:28:23 PM ***** End Sub TPMCheck *****
+11/8/2017 4:38:56 PM ***** Begin Sub ButtonExitClick *****
+11/8/2017 4:38:56 PM ***** End Sub ButtonExitClick *****
+>>>>>>> a427419f4ba5acd4e2d66bb31dc4346e647e66f6
