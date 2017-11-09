@@ -667,7 +667,9 @@ Sub copyWallpaper
 		fsoExtension = fsoWallPaper.GetExtensionName(strWallpaperPath)
 		strNewPath = strDestDrive & ":\USMT\" & getUser & "\" & getUser & "." & fsoExtension
         fsoWallPaper.CopyFile strWallpaperPath, strNewPath
-		env("envWallpaperFile") = strNewPath
+        env("envWallpaperFile") = strNewPath
+        htaLog.WriteLine(Now & " || Executing command: ""reg.exe unload HKEY_USERS\TempUser"", 0, true")
+        objshell.Run "reg.exe unload HKEY_USERS\TempUser", 0, true
     End If
 
     htaLog.WriteLine(Now & " ***** End Sub copyWallpaper *****")
