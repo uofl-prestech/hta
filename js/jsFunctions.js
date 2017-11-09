@@ -563,8 +563,8 @@ function launchFNF() {
     usmtDeferred.done(function (usmtResult) {
         if (capturedVars.scanStateCheckBox == false) { return };
         if (usmtResult == false) { return };
-        $(".pages").mCustomScrollbar("disable");
-        $("#general-output-scroll").mCustomScrollbar("disable");
+        $(".pages").mCustomScrollbar("destroy");
+        $("#general-output-scroll").mCustomScrollbar("destroy");
         try {
             runFlushFill();
             //runFlushFill2(capturedVarsString);
