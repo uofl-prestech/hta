@@ -486,10 +486,6 @@ p {
     left: 5px;
 }
 #button-exit{
-<<<<<<< HEAD
-    position: absolute;
-    left: 950px;
-=======
     /* position: absolute;
     right: 5px; */
 }
@@ -511,5 +507,4 @@ p {
 }
 #header-right{
     float: right;
->>>>>>> a427419f4ba5acd4e2d66bb31dc4346e647e66f6
 }
