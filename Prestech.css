@@ -13,7 +13,7 @@ input:focus {
     color: #CCC;
 }
 body {
-    color: #333;
+    color: rgba(255, 255, 255, .8);
     height: 768px;
     width: 1024px;
     margin: 0px;
@@ -457,9 +457,10 @@ p {
 }
 #minervaDiv{
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    padding: 25px 40px;
+    vertical-align: top;
+    bottom: 90px;
+    left: 75px;
+    /* padding: 25px 40px; */
 }
 #minerva{
     height: 120px;
@@ -472,5 +473,5 @@ p {
 }
 #button-exit{
     position: absolute;
-    right: 5px;
+    left: 950px;
 }

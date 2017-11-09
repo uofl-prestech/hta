@@ -134,3 +134,19 @@
 11/1/2017 12:37:00 PM || Error: Must run as Administrator to check TPM status!
 11/1/2017 12:37:00 PM ***** Begin Sub ButtonExitClick *****
 11/1/2017 12:37:00 PM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/1/2017 2:03:32 PM ======================
+11/1/2017 2:03:38 PM ***** Begin Sub TPMCheck *****
+11/1/2017 2:03:38 PM || Error: Must run as Administrator to check TPM status!
+11/1/2017 2:04:54 PM ***** Begin Sub ButtonExitClick *****
+11/1/2017 2:04:54 PM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/6/2017 9:47:56 AM ======================
+11/6/2017 9:48:01 AM ***** Begin Sub TPMCheck *****
+11/6/2017 9:48:01 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/9/2017 10:03:13 AM ======================
+11/9/2017 10:03:18 AM ***** Begin Sub TPMCheck *****
+11/9/2017 10:03:18 AM || Error: Must run as Administrator to check TPM status!
+11/9/2017 10:03:38 AM ***** Begin Sub ButtonExitClick *****
+11/9/2017 10:03:38 AM ***** End Sub ButtonExitClick *****
