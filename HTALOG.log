@@ -647,3 +647,13 @@
 11/8/2017 4:38:56 PM ***** Begin Sub ButtonExitClick *****
 11/8/2017 4:38:56 PM ***** End Sub ButtonExitClick *****
 >>>>>>> a427419f4ba5acd4e2d66bb31dc4346e647e66f6
+
+====================== Begin Logging at 11/13/2017 10:01:24 AM ======================
+11/13/2017 10:01:29 AM ***** Begin Sub TPMCheck *****
+11/13/2017 10:01:29 AM || Error: Must run as Administrator to check TPM status!
+11/13/2017 10:02:53 AM ***** Begin Sub ButtonExitClick *****
+11/13/2017 10:02:53 AM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 11/13/2017 12:26:28 PM ======================
+11/13/2017 12:26:33 PM ***** Begin Sub TPMCheck *****
+11/13/2017 12:26:33 PM || Error: Must run as Administrator to check TPM status!

@@ -469,33 +469,22 @@ p {
 #hidden-inputs{
     display: none;
 }
-#minervaDiv{
+#watermark{
     position: absolute;
-    vertical-align: top;
-    bottom: 90px;
-    left: 75px;
+    bottom: 120px;
+    left: 40px;
+    display: block;
+    width: 200px;
     /* padding: 25px 40px; */
 }
-#minerva{
-    /* height: 120px;
-    width: 120px; */
+.logo{
+    max-height: auto;
+    max-width: 200px;
     opacity: 0.8;
 }
 #button-landing{
     position: absolute;
     left: 5px;
-}
-#button-exit{
-    /* position: absolute;
-    right: 5px; */
-}
-#button-ShowAll{
-    /* position: absolute;
-    left: 55px; */
-}
-#button-HideAll{
-    /* position: absolute;
-    left: 105px; */
 }
 #header-left{
     width: 264px;
