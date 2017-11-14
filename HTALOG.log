@@ -663,3 +663,10 @@
 11/14/2017 10:39:08 AM || Error: Must run as Administrator to check TPM status!
 
 ====================== Begin Logging at 11/14/2017 10:39:45 AM ======================
+
+====================== Begin Logging at 11/14/2017 10:54:11 AM ======================
+11/14/2017 10:54:11 AM ***** Begin Sub TPMCheck *****
+11/14/2017 10:54:11 AM || User is running script as admin
+11/14/2017 10:54:11 AM || Executing command: GetObject("winmgmts:{impersonationLevel=impersonate,authenticationLevel=pktPrivacy}!root\cimv2\Security\MicrosoftTpm)"
+11/14/2017 10:54:11 AM || Error: -2147217406. Not found . TPM Not Found
+11/14/2017 10:54:11 AM ***** End Sub TPMCheck *****
