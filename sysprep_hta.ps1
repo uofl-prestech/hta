@@ -1,6 +1,6 @@
-#BitlockerInfo.ps1
+#sysprep_hta.ps1
 #Last Updated: 7/21/2017
 #Decription:
-#Collect encryption information and volume information for each volume on the computer
-#and combine all of the information into on ArrayList of objects for output as HTML
-#Get the ID and security principal of the current user account
+#Run sysprep after deploying an image so that we can move this hard drive to a new computer
+
+Start-Process -FilePath C:\Windows\System32\Sysprep\Sysprep.exe -ArgumentList '/generalize /oobe /shutdown'

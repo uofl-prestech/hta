@@ -571,6 +571,11 @@ function launchFNF() {
         }
         catch (err) {
             document.getElementById("general-output").innerHTML = err.message;
+            //Re-enable scroll bar replacement
+            setTimeout(function () {
+                $(".pages").mCustomScrollbar("update");
+                $("#general-output-scroll").mCustomScrollbar("update");
+            }, 2000);
         }
     });
 }
