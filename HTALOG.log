@@ -657,3 +657,9 @@
 ====================== Begin Logging at 11/13/2017 12:26:28 PM ======================
 11/13/2017 12:26:33 PM ***** Begin Sub TPMCheck *****
 11/13/2017 12:26:33 PM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/14/2017 10:39:03 AM ======================
+11/14/2017 10:39:08 AM ***** Begin Sub TPMCheck *****
+11/14/2017 10:39:08 AM || Error: Must run as Administrator to check TPM status!
+
+====================== Begin Logging at 11/14/2017 10:39:45 AM ======================

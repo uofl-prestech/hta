@@ -472,7 +472,7 @@ p {
 #watermark{
     position: absolute;
     bottom: 120px;
-    left: 40px;
+    left: 35px;
     display: block;
     width: 200px;
     /* padding: 25px 40px; */
