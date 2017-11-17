@@ -211,7 +211,9 @@ function WMIListDrives() {
         query = "ASSOCIATORS OF {Win32_DiskDrive.DeviceID='" + driveID + "'} WHERE AssocClass = Win32_DiskDriveToDiskPartition"
         var wmiPartitions = svc.ExecQuery(query);
         var enumPartitions = new Enumerator(wmiPartitions);
-        
+        objDrives["Physical Drives"][driveID] = {};
+        objDrives["Physical Drives"][driveID]["Model"] = objDrive.Caption;
+
         for (; !enumPartitions.atEnd(); enumPartitions.moveNext()) {
             var objPartition = enumPartitions.item();
             var partitionID = objPartition.DeviceID;
@@ -222,8 +224,6 @@ function WMIListDrives() {
                 try{
                     var objLogicalDisk = enumLogicalDisks.item();
                     var DriveLetter = objLogicalDisk.DeviceID.replace(":", "");
-                    objDrives["Physical Drives"][driveID] = {};
-                    objDrives["Physical Drives"][driveID]["Model"] = objDrive.Caption;
                     objDrives["Physical Drives"][driveID]["Volumes"] = {};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = {"DriveLetter" : DriveLetter};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Partition"] = partitionID;
@@ -252,7 +252,6 @@ function WMIListDrives() {
         pLength = pKeys.length;
 
         outputDiv.empty();
-
         /*      ********* Output drive info to #bl-info-output div in sorted order **********/
         for(var i = 0; i < pLength; i++)
         {            
