@@ -901,13 +901,17 @@ function dimElements() {
 }
 
 function writeToLog(text){
-    var stamp = new Date();
-    stamp = stamp.toUTCString();
-    var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var ForReading = 1, ForAppending = 8;
-    var strCurrentPath = window.location.pathname;
-    var strLogDir = strCurrentPath.substring(0, strCurrentPath.lastIndexOf('\\'));
-    var htaLog = fso.OpenTextFile(strLogDir + "\\HTALOG.txt", ForAppending, true);
-    htaLog.writeLine("<<" + stamp + ">> " + text);
-    htaLog.close();
+    try{
+        var stamp = new Date();
+        stamp = stamp.toUTCString();
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var ForReading = 1, ForAppending = 8;
+        var strCurrentPath = window.location.pathname;
+        var strLogDir = strCurrentPath.substring(0, strCurrentPath.lastIndexOf('\\'));
+        var htaLog = fso.OpenTextFile(strLogDir + "\\HTALOG.txt", ForAppending, true);
+        htaLog.writeLine("<<" + stamp + ">> " + text);
+        htaLog.close();
+    }
+    catch(err){
+    }
 }

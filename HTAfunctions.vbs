@@ -25,7 +25,12 @@ htaLog.WriteLine(vbCrLf & "====================== Begin Logging at " & Now & " =
 Dim iTimerID
 Dim pingShell, pingShellExec
 Sub pingTest
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub pingTest *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     Dim comspec, strObj
     dim pingTestDiv: set pingTestDiv = document.getElementById("div-output-network")
@@ -62,6 +67,11 @@ End Sub
 Function listDrives
     On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub listDrives *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
+
     Dim strComputer, objWMIService, colItems, admin, drivesObj
 	Dim landingPageDiv: Set landingPageDiv = document.getElementById("bl-info-output")
     strComputer = "."
@@ -224,7 +234,12 @@ End Sub
 '						        Function: enumUsers
 '**********************************************************************************************************************
 Sub enumUsers
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub enumUsers *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     Const HKLM = &H80000002
     Dim htmlString, strComputer, strHivePath, strKeyPath, strSubKeyPath, profilePath, userName, selectLength, strSourceDrive
@@ -314,7 +329,13 @@ End Sub
 '						        Function: cmdPrompt
 '**********************************************************************************************************************
 Sub cmdPrompt
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub cmdPrompt *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
+
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
@@ -328,8 +349,14 @@ End Sub
 '						        Function: psPrompt
 '**********************************************************************************************************************
 Sub psPrompt
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub psPrompt *****")
-	Dim cmdShell
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
+
+    Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
     htaLog.WriteLine(Now & " || Executing command: Powershell.exe -noprofile -noexit -executionpolicy bypass")
@@ -345,7 +372,12 @@ End Sub
 '						        Function: logViewer
 '**********************************************************************************************************************
 Sub logViewer
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub logViewer *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
@@ -362,7 +394,12 @@ End Sub
 '						        Function: notepadPP
 '**********************************************************************************************************************
 Sub notepadPP
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub notepadPP *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
@@ -379,7 +416,12 @@ End Sub
 '						        Function: explorer
 '**********************************************************************************************************************
 Sub explorer
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub explorer *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
@@ -394,7 +436,13 @@ End Sub
 '						        Function: FTK
 '**********************************************************************************************************************
 Sub FTK
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub FTK *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
+
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
@@ -408,7 +456,12 @@ End Sub
 '						        Function: WMIExplorer
 '**********************************************************************************************************************
 Sub WMIExplorer
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub WMIExplorer *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 	Dim cmdShell
     Set cmdShell = CreateObject("WScript.Shell")
 
@@ -443,8 +496,13 @@ End Function
 '						        Function: ButtonFinishClick
 '**********************************************************************************************************************
 Sub ButtonFinishClick
-' Execute OSD subroutine
+    On Error Resume Next
+    ' Execute OSD subroutine
     htaLog.WriteLine(Now & " ***** Begin Sub ButtonFinishClick *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     iAdobeReaderDC = document.getElementById("AdobeReaderDC").Checked
     iAdobeAcrobatProXI = document.getElementById("AdobeAcrobatProXI").Checked
@@ -544,8 +602,13 @@ End Sub
 '						        Function: dismCapture
 '**********************************************************************************************************************
 Function dismCapture
-' DISM Capture Image subroutine
+    On Error Resume Next
+    ' DISM Capture Image subroutine
     htaLog.WriteLine(Now & " ***** Begin Sub dismCapture *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
 	Dim dismShell, strName, destPath, sourcePath, returnCode, wimPath, fso
 	Dim dismDiv: Set dismDiv = document.getElementById("dism-output")
@@ -591,8 +654,13 @@ End Function
 '						        Function: runDISM_TS
 '**********************************************************************************************************************
 Sub runDISM_TS
-' Set environment variables for running DISM during task sequence
+    On Error Resume Next
+    ' Set environment variables for running DISM during task sequence
     htaLog.WriteLine(Now & " ***** Begin Sub runDISM_TS *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     htaLog.WriteLine(Now & " || Setting Environment Variables")
 
@@ -619,7 +687,12 @@ End Sub
 '						        Function: copyWallpaper
 '**********************************************************************************************************************
 Sub copyWallpaper
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub copyWallpaper *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     Dim strComputer, strHivePath, strKeyPath, userName, objshell, getUser, getUserSID, strWallpaperPath, strWallpaperRegPath,strSourceDrive, strDestDrive
     set objshell = CreateObject("Wscript.shell")
@@ -680,7 +753,12 @@ End Sub
 '						        Function: usmtScanstate(buttonClicked)
 '**********************************************************************************************************************
 Function usmtScanstate(buttonClicked)
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub usmtScanstate(buttonClicked) *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     Dim getUser, WshShell, strCurrentDir, destDrive, scanStateDiv, returnCode, userArray, userArraySize, userIncludeString, windowsDrive
     userArray = Array()
@@ -758,7 +836,12 @@ End Function
 '						        Function: usmtLoadstate
 '**********************************************************************************************************************
 Sub usmtLoadstate
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     Dim ReturnCode, getUser, usmtDrive, strCurrentDir
     Dim objShell : Set objShell = CreateObject("WScript.Shell")
@@ -862,7 +945,12 @@ End Sub
 '						        Function: usmtLoadstate_TS
 '**********************************************************************************************************************
 Function usmtLoadstate_TS
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub usmtLoadstate_TS *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     env("envUsmtLoadstate") = "True"
     env("envWindowsDrive") = document.getElementById("input-windows-drive").Value
@@ -883,7 +971,12 @@ End Function
 '						        Function: runFlushFill
 '**********************************************************************************************************************
 Sub runFlushFill
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub runFlushFill *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     Dim dismError, scanstateError
     iWindowsDrive = document.getElementById("input-windows-drive").Value
@@ -943,7 +1036,12 @@ End Sub
 '						        Function: ButtonExitClick
 '**********************************************************************************************************************
 Sub ButtonExitClick
+    On Error Resume Next
     htaLog.WriteLine(Now & " ***** Begin Sub ButtonExitClick *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
 
     window.close
     
@@ -955,7 +1053,7 @@ End Sub
 
 
 Sub runFlushFill2(vars)
-
+    On Error Resume Next
     'Remove beginning and trailing {} brackets
     strVars = Mid(vars, 2, Len(vars)-2)
     'Create dictionary object and remove al of the quotes from everything
