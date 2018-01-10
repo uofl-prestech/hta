@@ -55,4 +55,9 @@ Next
 wscript.echo "Sleeping for 2 minutes"
 wscript.sleep 120000
 
+Set WshShell = CreateObject("Wscript.Shell")
+Result = WshShell.Run ("cmd /c echo n | gpupdate /target:computer /force", 1, true)
+WshShell.Run ("cmd /c shutdown /a", 1, true)
+WshShell.Run ("cmd /c shutdown /r /t 0", 1, true)
+
 wscript.quit(0)

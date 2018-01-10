@@ -1,6 +1,9 @@
 'Define Variables and Objects.
 Set WshShell = CreateObject("Wscript.Shell")
 
+WshShell.Run ("cmd /c xcopy Post-TS.bat %WinDir%\Temp\ /E /H /C /I /Q /Y")
+WshShell.Run ("cmd /c xcopy MBAM_ReportStatus.vbs %WinDir%\Temp\ /E /H /C /I /Q /Y")
+
 WshShell.Run ("cmd /c reg add ""HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{827D319E-6EAC-11D2-A4EA-00C04F79F83A}"" /v MaxNoGPOListChangesInterval /t REG_DWORD /d 960 /f")
 
 WshShell.Run ("powershell.exe -executionpolicy bypass -command ""stop-service gpsvc -force""", 1, true)
