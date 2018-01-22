@@ -513,6 +513,7 @@ Sub ButtonFinishClick
     iMBAM = document.getElementById("MBAM").Checked
     ifnfOsdCheckBox = document.getElementById("input-fnfosd-checkbox").Checked
     icompName = document.getElementById("input-comp-name").Value
+    iLoadStateCheckBox = document.getElementById("osd-input-loadstate-checkbox").Checked
 
     ' Set value of variable to true/false based on whether the checkbox is selected or not
     htaLog.Write(Now & " || Adobe Reader DC checked?")
@@ -520,7 +521,7 @@ Sub ButtonFinishClick
 
     If iAdobeReaderDC Then
         strAdobeReaderDC = "true"
-        else strAdobeReaderDC = "false"
+    else strAdobeReaderDC = "false"
     End If
 
     htaLog.Write(Now & " || Adobe Acrobat Pro XI checked?")
@@ -528,7 +529,7 @@ Sub ButtonFinishClick
 
 	If iAdobeAcrobatProXI Then
 		strAdobeAcrobatProXI = "true"
-		else strAdobeAcrobatProXI="false"
+	else strAdobeAcrobatProXI="false"
 	End If		
 
     htaLog.Write(Now & " || Chrome checked?")
@@ -536,7 +537,7 @@ Sub ButtonFinishClick
 
     If iChrome Then
         strChrome = "true"
-        else strChrome = "false"
+    else strChrome = "false"
     End If
 
     htaLog.Write(Now & " || FileMaker checked?")
@@ -544,7 +545,7 @@ Sub ButtonFinishClick
 
 	If iFileMaker Then
         strFileMaker = "true"
-        else strFileMaker = "false"
+    else strFileMaker = "false"
     End If
 
     htaLog.Write(Now & " || Office2016 checked?")
@@ -552,7 +553,7 @@ Sub ButtonFinishClick
 
     If iOffice2016 Then
         strOffice2016 = "true"
-        else strOffice2016 = "false"
+    else strOffice2016 = "false"
     End If
 
     htaLog.Write(Now & " || OSD checked?")
@@ -562,14 +563,14 @@ Sub ButtonFinishClick
         strOSD = "true"
         iMBAM = "true"
         strCompName = icompName
-        else strOSD = "false"
+    else strOSD = "false"
     End If
 
     htaLog.Write(Now & " || MBAM checked?")
     htaLog.WriteLine(" || MBAM.Checked = " & iMBAM)
     If iMBAM Then
         strMBAM = "true"
-        else strMBAM = "false"
+    else strMBAM = "false"
     End If
 	
     ' Set value of variables that will be used by the task sequence, then close the window and allow the task sequence to continue.
@@ -585,6 +586,20 @@ Sub ButtonFinishClick
     env("envOSD") = strOSD
     env("OSDComputerName") = strCompName
     env("envMBAM") = strMBAM
+
+    'Optional section to handle loadState during OSD when we have to swap hard drives out, instead of backing up and restoring to the same drive
+    If iLoadStateCheckBox Then
+        htaLog.WriteLine(Now & " || Set LoadState environment variables")
+        env("envUsmtLoadstate") = "True"
+        env("envWindowsDrive") = "C"
+        env("envExternalDrive") = document.getElementById("input-external-drive").Value
+        env("envPrimaryUsername") = document.getElementById("input-primary-username").Value
+
+        htaLog.WriteLine(Now & " || env(""envUsmtLoadstate"") = " & env("envUsmtLoadstate"))
+        htaLog.WriteLine(Now & " || env(""envWindowsDrive"") = " & env("envWindowsDrive"))
+        htaLog.WriteLine(Now & " || env(""envExternalDrive"") = " & env("envExternalDrive"))
+        htaLog.WriteLine(Now & " || env(""envPrimaryUsername"") = " & env("envPrimaryUsername"))
+    End If
 
     'For each v in env.GetVariables 
     '    htaLog.WriteLine(v & " = " & env(v)) 

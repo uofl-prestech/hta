@@ -150,6 +150,13 @@ function loadPage(targetOperation, event) {
     $('#page-usmt #run-usmt').css('display', 'inline-block');
     $('#page-usmt #run-LoadState').css('display', 'none');
 
+    if(targetOperation == "osd")
+    {
+        $('#input-osd-checkbox').prop("checked", true);
+        $('#MBAM').prop("checked", true);
+        $('#page-osd .loadState').css('display', 'none');
+    }
+
     dimElements();
 }
 
@@ -177,6 +184,15 @@ function osdCheckboxChange(e) {
     }
     else {
         $('#MBAM').prop("checked", false);
+    }
+}
+
+function loadStateCheckboxChange(e) {
+    if (e.checked == true) {
+        $('#page-osd .loadState').css('display', 'list-item');
+    }
+    else {
+        $('#page-osd .loadState').css('display', 'none');
     }
 }
 

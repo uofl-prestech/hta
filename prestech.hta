@@ -337,6 +337,8 @@
             </h3>
             <div id="div-format-drive" class="ui-widget-content">
                 <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox" onchange="javascript:osdCheckboxChange(this)"> Format Drive and Deploy Image (OSD)?
+                <br>
+                <input id="osd-input-loadstate-checkbox" class="input-objects" type="checkbox" name="OSDloadStateCheckBox" onchange="javascript:loadStateCheckboxChange(this)"> Restore User Data after OSD (USMT Loadstate)?
             </div>
         </li>
     </template>
@@ -387,8 +389,8 @@
     </template>
 
     <!--    Primary Username    -->
-    <template id="temp-primary-username" class="flushfill dism usmt">
-        <li id="li-primary-username" class="li-steps li-win-required">
+    <template id="temp-primary-username" class="osd flushfill dism usmt">
+        <li id="li-primary-username" class="li-steps li-win-required loadState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user we are copying data for
             </h3>
@@ -422,8 +424,8 @@
     </template>
 
     <!--    External Drive    -->
-    <template id="temp-external-drive" class="flushfill dism usmt">
-        <li id="li-external-drive" class="li-steps li-win-required">
+    <template id="temp-external-drive" class="osd flushfill dism usmt">
+        <li id="li-external-drive" class="li-steps li-win-required loadState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the image will be stored
             </h3>

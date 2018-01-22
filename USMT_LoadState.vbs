@@ -38,7 +38,27 @@ strHivePath = "C:\Users\"& getUser & "\NTUSER.DAT"
 htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
 strWallpaperRegPath = "TempUser\Control Panel\Desktop"
 strValueName = "WallPaper"
-strWallpaperFile = env("envWallpaperFile")
+
+Set fso = CreateObject("Scripting.FileSystemObject")
+If fso.FileExists(env("envWallpaperFile")) Then
+	strWallpaperFile = env("envWallpaperFile")
+	htaLog.WriteLine(Now & " || strWallpaperFile set by env(""envWallpaperFile"")")
+Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpg")
+	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpg"
+	htaLog.WriteLine(Now & " || strWallpaperFile set by jpg")
+Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpeg")
+	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpeg"
+	htaLog.WriteLine(Now & " || strWallpaperFile set by jpeg")
+Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".png")
+	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".png"
+	htaLog.WriteLine(Now & " || strWallpaperFile set by png")
+Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".bmp")
+	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".bmp"
+	htaLog.WriteLine(Now & " || strWallpaperFile set by bmp")
+Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".gif")
+	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".gif"
+	htaLog.WriteLine(Now & " || strWallpaperFile set by gif")
+End If
 htaLog.WriteLine(Now & " || strWallpaperFile = " & strWallpaperFile)
 
 htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKLM\TempUser " & strHivePath & ", 0, true")
