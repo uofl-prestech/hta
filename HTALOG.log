@@ -676,3 +676,7 @@
 11/14/2017 10:55:47 AM || Error: Must run as Administrator to check TPM status!
 11/14/2017 10:56:17 AM ***** Begin Sub ButtonExitClick *****
 11/14/2017 10:56:17 AM ***** End Sub ButtonExitClick *****
+
+====================== Begin Logging at 1/19/2018 11:18:09 AM ======================
+1/19/2018 11:18:15 AM ***** Begin Sub TPMCheck *****
+1/19/2018 11:18:15 AM || Error: Must run as Administrator to check TPM status!
