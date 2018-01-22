@@ -14,8 +14,8 @@ input:focus {
 }
 body {
     color: rgba(255, 255, 255, .8);
-    height: 768px;
-    width: 1024px;
+    height: 100%;
+    width: 100%;
     margin: 0px;
     padding: 0px;
 }
@@ -29,8 +29,8 @@ div{
 html {
     color: #333;
     background-size: cover;
-    height: 768px;
-    width: 1024px;
+    height: 100%;
+    width: 100%;
     font-family: "Segoe UI";
 }
 h1, h2, h3, h4 {
@@ -114,11 +114,22 @@ p {
     padding-top: 0;
 }
 #container {
-    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: url(images/backgrounds/dark-polygons.jpg);
+    position: absolute;
+}
+#sub-container {
+    position: relative;
     height: 768px;
     width: 1024px;
-    background: url(images/backgrounds/abstract01a.png);
-    z-index: -10;
+    margin: auto;
+    top: 50%;
+    margin-top: -384px;
+    /* z-index: -10; */
+    background-color: rgba(25, 25, 25, 0.25);
+    border: 1px solid rgba(108, 111, 112, 0.35);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);
 }
 #content {
     display: inline-block;
@@ -346,8 +357,8 @@ p {
     padding: 3px;
 }
 .icon-tools {
-    height: 25px;
-    width: 25px;
+    height: 22px;
+    width: 22px;
     margin-right: 5px;
 }
 .launch-box {
@@ -381,6 +392,7 @@ p {
 .output-icons{
     background-color: rgba(241, 40, 40, 0.5);
     border-radius: 5px;
+    float: right;
 }
 .pages {
     position: relative;
@@ -475,7 +487,6 @@ p {
     left: 35px;
     display: block;
     width: 200px;
-    /* padding: 25px 40px; */
 }
 .logo{
     max-height: auto;
