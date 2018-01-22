@@ -520,57 +520,57 @@ Sub ButtonFinishClick
     htaLog.WriteLine(" || AdobeReaderDC.Checked = " & iAdobeReaderDC)
 
     If iAdobeReaderDC Then
-        strAdobeReaderDC = "true"
-    else strAdobeReaderDC = "false"
+        strAdobeReaderDC = "True"
+    else strAdobeReaderDC = "False"
     End If
 
     htaLog.Write(Now & " || Adobe Acrobat Pro XI checked?")
     htaLog.WriteLine(" || AdobeAcrobatProXI.Checked = " & iAdobeAcrobatProXI)
 
 	If iAdobeAcrobatProXI Then
-		strAdobeAcrobatProXI = "true"
-	else strAdobeAcrobatProXI="false"
+		strAdobeAcrobatProXI = "True"
+	else strAdobeAcrobatProXI="False"
 	End If		
 
     htaLog.Write(Now & " || Chrome checked?")
     htaLog.WriteLine(" || Chrome.Checked = " & iChrome)
 
     If iChrome Then
-        strChrome = "true"
-    else strChrome = "false"
+        strChrome = "True"
+    else strChrome = "False"
     End If
 
     htaLog.Write(Now & " || FileMaker checked?")
     htaLog.WriteLine(" || FileMaker.Checked = " & iFileMaker)
 
 	If iFileMaker Then
-        strFileMaker = "true"
-    else strFileMaker = "false"
+        strFileMaker = "True"
+    else strFileMaker = "False"
     End If
 
     htaLog.Write(Now & " || Office2016 checked?")
     htaLog.WriteLine(" || Office2016.Checked = " & iOffice2016)
 
     If iOffice2016 Then
-        strOffice2016 = "true"
-    else strOffice2016 = "false"
+        strOffice2016 = "True"
+    else strOffice2016 = "False"
     End If
 
     htaLog.Write(Now & " || OSD checked?")
     htaLog.WriteLine(" || OSD.Checked = " & iOSD)
 
     If iOSD OR ifnfOsdCheckBox Then
-        strOSD = "true"
-        iMBAM = "true"
+        strOSD = "True"
+        iMBAM = "True"
         strCompName = icompName
-    else strOSD = "false"
+    else strOSD = "False"
     End If
 
     htaLog.Write(Now & " || MBAM checked?")
     htaLog.WriteLine(" || MBAM.Checked = " & iMBAM)
     If iMBAM Then
-        strMBAM = "true"
-    else strMBAM = "false"
+        strMBAM = "True"
+    else strMBAM = "False"
     End If
 	
     ' Set value of variables that will be used by the task sequence, then close the window and allow the task sequence to continue.

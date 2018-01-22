@@ -5,4 +5,12 @@ End If
 
 Set WshShell = CreateObject("Wscript.Shell")
 Dim GetScriptPath : GetScriptPath = Left(WScript.ScriptFullName, InstrRev(WScript.ScriptFullName, "\", -1, 1) - 1)
-ReturnCode = WshShell.Run (GetScriptPath & "\mshta.EXE " & GetScriptPath & "\Prestech.hta", 1, True)	
+
+Set fso = CreateObject("Scripting.FileSystemObject")
+If fso.FileExists(GetScriptPath & "\Prestech.hta") Then
+  ReturnCode = WshShell.Run (GetScriptPath & "\mshta.EXE " & GetScriptPath & "\Prestech.hta", 1, True)
+Else
+  GetScriptPath = Left(WScript.ScriptFullName, InstrRev(WScript.ScriptFullName, "\", -1, 1) - 1) & "\SMS\PKG\DP200077"
+  ReturnCode = WshShell.Run (GetScriptPath & "\mshta.EXE " & GetScriptPath & "\Prestech.hta", 1, True)
+End If
+
