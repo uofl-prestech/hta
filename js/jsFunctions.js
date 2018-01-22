@@ -1,5 +1,6 @@
 /* Globals */
 var objDrives = {};
+var isAdmin = Elevated();
 
 /**********************************************************************************************************************
 *						        Document ready functions
@@ -308,6 +309,7 @@ function WMIListDrives() {
 
 function WMIEncryptableVolumes(driveID, DriveLetter){
     /*  ********* Get Encryption information **********/
+    if (isAdmin == false){return;}
     // objDrives["Physical Drives"][driveID]["Volumes"] = {};
     var arEncryptionMethod = [null, "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown"];
     var arProtectionStatus = ["Protection Off", "Protection On", "Protection Unknown"];
@@ -901,6 +903,7 @@ function dimElements() {
 }
 
 function writeToLog(text){
+    if (isAdmin == false){return;}
     try{
         var stamp = new Date();
         stamp = stamp.toUTCString();
