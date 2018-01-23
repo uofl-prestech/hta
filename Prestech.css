@@ -109,6 +109,9 @@ p {
     border: 1px solid rgba(80, 80, 80, 0.5);
     color: #CCC;
 }
+#bl-info-output{
+    color: rgb(143, 143, 143);
+}
 #button-osd {
     margin-top: 5px;
     padding-top: 0;
@@ -314,11 +317,18 @@ p {
 .drive-input {
     text-align: center;
 }
+.drivePhysicalSpan{
+    color: rgb(255, 255, 255);
+}
 .driveLetterSpan {
-    color: rgb(164, 173, 189);
+    color: rgb(255, 255, 255);
+}
+.driveLetterValue{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 .driveLocked {
-    color: rgb(219, 193, 46);
+    color: rgb(219, 193, 46) !important;
 }
 .h3-win-not-found {
     background-color: rgba(75, 58, 58, 0.6);
@@ -466,6 +476,10 @@ p {
 .win-not-found:hover{
     background-color: rgba(95, 95, 95, 0.5)!important;
     color: #808080;
+}
+.windowsSpan{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 #portal{
     overflow: hidden;

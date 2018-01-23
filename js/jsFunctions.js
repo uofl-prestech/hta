@@ -280,13 +280,13 @@ function WMIListDrives() {
             vKeys.sort();
             vLength = vKeys.length;
 
-            outputDiv.append("<span class='driveLetterSpan'>Physical Drive ID:</span> " + pKey);
+            outputDiv.append("<span class='drivePhysicalSpan'>Physical Drive ID:</span> " + pKey);
             outputDiv.append("<br><span>Drive Model:</span> " + objDrives["Physical Drives"][pKey]["Model"]);
             for (var j = 0; j < vLength; j++) {
                 var vKey = vKeys[j];
 
                 objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"] ? outputDiv.append("<br>Partition: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"]) : "";
-                outputDiv.append("<br><span class='driveLetterSpan'>Drive Letter:</span> " + vKey);
+                outputDiv.append("<br><span class='driveLetterSpan'>Drive Letter:</span> <span class='driveLetterValue'>" + vKey + "</span>");
                 objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"] ? outputDiv.append("<br>Drive Type: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"]) : "";
                 objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] == "Locked" ? outputDiv.append(" <span class=\"driveLocked\">(" + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] + ")</span> ") : "";
                 objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Label"] ? outputDiv.append(" | Label: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Label"]) : "";
@@ -389,7 +389,7 @@ function WMIVolumes(driveID, DriveLetter){
             //var DriveLetter = objItem.DriveLetter.replace(":", "");
 
             if (!objDrives["Physical Drives"][driveID]["Volumes"].hasOwnProperty(DriveLetter)) { objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = { "Drive Letter": DriveLetter }; }
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = objItem.Label;
+            // objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = objItem.Label;
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Free Space"] = ConvertSize(objItem.Freespace);
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Capacity"] = ConvertSize(objItem.Capacity);
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Drive Type"] = arDriveTypes[objItem.DriveType];
@@ -397,6 +397,7 @@ function WMIVolumes(driveID, DriveLetter){
             DriveLetter != "X" ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] = ReportFolderStatus(DriveLetter + ":\\Windows") : objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] = false;
             //Set $("#windows-drive-letter").val = true if a windows drive was found, otherwise null
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] == true ? $("#windows-drive-letter").val(DriveLetter) : null;
+    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] == true ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = "<span class='windowsSpan'>Windows</span>" : null;
         //}
     //}
 

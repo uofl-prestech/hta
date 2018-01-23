@@ -738,10 +738,13 @@ Sub copyWallpaper
         Exit Sub
     End If
     
-    htaLog.WriteLine(Now & " || Executing command: strWallpaperPath = objshell.regRead(strWallpaperRegPath)")
+    htaLog.WriteLine(Now & " || Executing command: strWallpaperPath = objshell.regRead(" & strWallpaperRegPath & ")")
 
     strWallpaperPath = objshell.regRead(strWallpaperRegPath)
-    strWallpaperPath = strSourceDrive & Right(String, Len(String)-1)
+    htaLog.WriteLine(Now & " || Wallpaper path from registry = " & strWallpaperPath)
+    htaLog.WriteLine(Now & " || Updating path in case Windows drive isn't mounted as C:")
+    strWallpaperPath = strSourceDrive & Right(strSourceDrive, Len(strSourceDrive)-1)
+    htaLog.WriteLine(Now & " || Wallpaper path = " & strWallpaperPath)
 
     If Err <> 0 Then
         'Couldn't find Wallpaper registry key at the specified location
@@ -801,7 +804,7 @@ Function usmtScanstate(buttonClicked)
 
 	getUser = document.getElementById("input-primary-username").Value
 	destDrive = document.getElementById("input-external-drive").Value
-    strSourcePath = document.getElementById("input-windows-drive").Value
+    windowsDrive = document.getElementById("input-windows-drive").Value
 
     htaLog.WriteLine(Now & " || usmtUsername.Value = " & getUser)
     htaLog.WriteLine(Now & " || usmtDrive.Value = " & destDrive)
@@ -818,7 +821,7 @@ Function usmtScanstate(buttonClicked)
 
         If returnCode = 0 Then
             htaLog.WriteLine(Now & " || Scanstate Complete!")
-            htaLog.WriteLine(Now & " || Copying WallPaper file from C:\Users\<getUser>\ to <windowsDrive>:\USMT\<getUser>\")
+            htaLog.WriteLine(Now & " || Copying WallPaper file from " & windowsDrive & ":\Users\" & getUser & "\ to & " & destDrive & ":\USMT\" & getUser & "\")
             copyWallpaper
             scanStateDiv.innerHTML = "Scanstate Complete! <br> Log files can be found in "&destDrive&":\USMT\"&getUser&"\"
         Else

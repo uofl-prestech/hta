@@ -22,18 +22,14 @@
                 this[drive][k] = v;
             }
         }
-
         function CreateJsObj() {
             return new jsObj();
         }
     </script>
     <script src="./HTAfunctions.vbs" type="text/vbscript" language="vbscript"></script>
     <script src="./bitlockerFunctions.vbs" type="text/vbscript" language="vbscript"></script>
-    <script type="text/vbscript" language="vbscript">
-        window.resizeTo 1024,768
-    </script>
     <link rel="stylesheet" href="Prestech.css">
-    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="no" scroll="no" windowstate="normal"></hta:application>
+    <hta:application applicationname="OOP Task Sequence Selections" border="thin" innerborder="no" caption="no" scroll="no" windowstate="maximize"></hta:application>
 </head>
 
 <body>
@@ -41,249 +37,250 @@
         <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
         <input id="input-tpm-checkbox" class="input-objects" type="hidden" name="TPMCheckBox">
     </div>
-    <div id="watermark">
-        <img src="images/uofl-white.png" class="logo">
-        <img src="images/oop-text.png" class="logo">
-    </div>
-
     <div id="container">
-        <!-- ******************** Page Header Section ******************** -->
-        <div id="header">
-            <div id="header-left">
-                <!-- Home Button -->
-                <button id="button-landing" class="button-header button-exithome">
-                    <div class="button-background">
-                        <img src="images/home-45.svg" class="icon-only" title="Home page">
-                    </div>
-                </button>
-                <!-- Expand Accordion Button -->
-                <button class="button-header" id="button-ShowAll">
-                    <div class="button-background">
-                        <img src="images/expand-45.svg" class="icon-only" title="Expand Accordion">
-                    </div>
-                </button>
-                <!-- Collapse Accordion Button -->
-                <button class="button-header" id="button-HideAll">
-                    <div class="button-background">
-                        <img src="images/minimize-45.svg" class="icon-only" title="Collapse Accordion">
-                    </div>
-                </button>
+        <div id="sub-container">
+            <div id="watermark">
+                <img src="images/uofl-white.png" class="logo">
+                <img src="images/oop-text.png" class="logo">
             </div>
-            <div id="header-middle" class="category-header">
-                <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
-                <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
-                <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
-                <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
-                <h4 id="header-usmt" class="header-text">
-                    <button id="button-ScanState" class="button-header" title="Scanstate">
+            <!-- ******************** Page Header Section ******************** -->
+            <div id="header">
+                <div id="header-left">
+                    <!-- Home Button -->
+                    <button id="button-landing" class="button-header button-exithome">
                         <div class="button-background">
-                            <img src="images/usmt-launch-grey-45.svg" class="icon-only">
+                            <img src="images/home-45.svg" class="icon-only" title="Home page">
                         </div>
                     </button>
-                    <button id="button-LoadState" class="button-header" title="Loadstate">
+                    <!-- Expand Accordion Button -->
+                    <button class="button-header" id="button-ShowAll">
                         <div class="button-background">
-                            <img src="images/load-state-grey-45.svg" class="icon-only">
+                            <img src="images/expand-45.svg" class="icon-only" title="Expand Accordion">
                         </div>
                     </button>
-                    <span>User State Migration Tool</span>
-                </h4>
-                <h4 id="header-software" class="header-text">Software Installation</h4>
-                <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
-            </div>
-            <div id="header-right">
-                <!-- Exit Button -->
-                <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
-                    <div id="div-exit" class="button-background">
-                        <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
-                        <div id="portal">
-                            <img src="images/exit-no-circle-45.svg" id="portal-exit" class="icon-only">
+                    <!-- Collapse Accordion Button -->
+                    <button class="button-header" id="button-HideAll">
+                        <div class="button-background">
+                            <img src="images/minimize-45.svg" class="icon-only" title="Collapse Accordion">
                         </div>
-                    </div>
-                </button>
+                    </button>
+                </div>
+                <div id="header-middle" class="category-header">
+                    <h4 id="header-landing" class="header-text active-header">OOP Task Sequence Selections</h4>
+                    <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
+                    <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
+                    <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
+                    <h4 id="header-usmt" class="header-text">
+                        <button id="button-ScanState" class="button-header" title="Scanstate">
+                            <div class="button-background">
+                                <img src="images/usmt-launch-grey-45.svg" class="icon-only">
+                            </div>
+                        </button>
+                        <button id="button-LoadState" class="button-header" title="Loadstate">
+                            <div class="button-background">
+                                <img src="images/load-state-grey-45.svg" class="icon-only">
+                            </div>
+                        </button>
+                        <span>User State Migration Tool</span>
+                    </h4>
+                    <h4 id="header-software" class="header-text">Software Installation</h4>
+                    <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
+                </div>
+                <div id="header-right">
+                    <!-- Exit Button -->
+                    <button id="button-exit" class="button-header button-exithome" onclick="vbscript:ButtonExitClick()" title="Exit program">
+                        <div id="div-exit" class="button-background">
+                            <img src="images/exit-just-circle-45.svg" id="portal-exit-circle" class="icon-only">
+                            <div id="portal">
+                                <img src="images/exit-no-circle-45.svg" id="portal-exit" class="icon-only">
+                            </div>
+                        </div>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div id="main" class="on-load">
+            <div id="main" class="on-load">
 
-            <!-- ******************** Navigation Button Section ******************** -->
-            <div class="navigation-bar">
-                <ul>
-                    <li id="button-osd" class="button-nav">
-                        <img src="images/osd-monitor-75.svg" class="icon">
-                        <span>OSD</span>
-                    </li>
-                    <li id="button-flushfill" class="button-nav require-win-dir">
-                        <img src="images/flush-and-fill-monitor-75.svg" class="icon">
-                        <span>Flush and Fill</span>
-                    </li>
-                    <li id="button-dism" class="button-nav require-win-dir">
-                        <img src="images/dism-monitor-75.svg" class="icon">
-                        <span>DISM</span>
-                    </li>
-                    <li id="button-usmt" class="button-nav require-win-dir">
-                        <img src="images/usmt-monitor-75.svg" class="icon">
-                        <span>USMT</span>
-                    </li>
-                    <!-- <li id="button-software" class="button-nav require-win-dir clearfix">
-                        <img src="images/software-install.png" class="icon">
-                        <span>Software Install</span>
-                    </li> -->
-                    <!-- <li id="button-binary" class="button-nav clearfix">
-                        <img src="images/binary-capture-monitor-75.svg" class="icon">
-                        <span>Binary Capture</span>
-                    </li> -->
-                </ul>
-            </div>
-
-            <!-- ******************** Page Content Section ******************** -->
-            <div id="content">
-                <!--Landing Page-->
-                <div id="page-landing" class="pages active-page">
-                    <ul id="ul-landing" class="accordion ui-accordion ul-elements"></ul>
-                </div>
-
-                <!--OSD Page-->
-                <div id="page-osd" class="pages">
-                    <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box">
-                        <button class="button" id="launch-osd" onclick="javascript:launchOSD()">
-                            <img src="images/osd-launch-45.svg" class="icon-tools">Launch OSD</button>
-                    </div>
-                </div>
-
-                <!-- Flush and Fill Page -->
-                <div id="page-flushfill" class="pages">
-                    <ul id="ul-flushfill" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box">
-                        <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
-                            <img src="images/flush-and-fill-launch-45.svg" class="icon-tools">Launch FnF</button>
-                    </div>
-                </div>
-
-                <!--DISM Page-->
-                <div id="page-dism" class="pages">
-                    <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box">
-                        <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
-                            <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
-                    </div>
-                </div>
-
-                <!--USMT Page-->
-                <div id="page-usmt" class="pages">
-                    <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box">
-                        <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
-                            <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
-                        <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
-                            <img src="images/load-state-45.svg" class="icon-tools">Launch LoadState</button>
-                    </div>
-                </div>
-
-                <!--Software Install Page-->
-                <!-- <div id="page-software" class="pages">
-                    <ul id="ul-software" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box">
-                        <button class="button show-output" id="run-software-install" onclick="javascript:launchSoftwareInstall()">
-                            <img src="images/software-install.png" class="icon-tools">Install Software</button>
-                    </div>
-                </div> -->
-                <!-- <div id="page-binary" class="pages">
-                    <ul id="ul-binary" class="accordion ui-accordion ul-elements"></ul>
-                    <div class="launch-box">
-                        <button class="button show-output" id="run-binary-capture" onclick="javascript:launchBinaryCapture()">
-                            <img src="images/binary-capture-45.svg" class="icon-tools">Launch Binary Capture</button>
-                    </div>
-                </div> -->
-
-                <!-- ******************** Output Section ******************** -->
-                <div id="general-output-scroll">
-                    <ul id="general-output" class="ui-accordion">
-                        <li id="output-bl-info" class="output-list">
-                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/list-view-icon-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Drive List</h3>
-                            <div id="bl-info-output" class="ui-widget-content"></div>
+                <!-- ******************** Navigation Button Section ******************** -->
+                <div class="navigation-bar">
+                    <ul>
+                        <li id="button-osd" class="button-nav">
+                            <img src="images/osd-monitor-75.svg" class="icon">
+                            <span>OSD</span>
                         </li>
-                        <li id="output-bl-unlock" class="output-list">
-                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/unlock-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Unlock</h3>
-                            <div id="bl-unlock-output" class="ui-widget-content"></div>
+                        <li id="button-flushfill" class="button-nav require-win-dir">
+                            <img src="images/flush-and-fill-monitor-75.svg" class="icon">
+                            <span>Flush and Fill</span>
                         </li>
-                        <li id="li-output-network" class="output-list">
-                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/ping-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Network Output</h3>
-                            <div id="div-output-network" class="ui-widget-content"></div>
+                        <li id="button-dism" class="button-nav require-win-dir">
+                            <img src="images/dism-monitor-75.svg" class="icon">
+                            <span>DISM</span>
                         </li>
-                        <li id="output-dism" class="output-list">
-                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/dism-launch-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
-                            <div id="dism-output" class="ui-widget-content"></div>
+                        <li id="button-usmt" class="button-nav require-win-dir">
+                            <img src="images/usmt-monitor-75.svg" class="icon">
+                            <span>USMT</span>
                         </li>
-                        <li id="output-scanstate" class="output-list">
-                            <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                                <img src="images/usmt-launch-45.svg" class="icon-tools output-icons">
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
-                            <div id="scanstate-output" class="ui-widget-content"></div>
-                        </li>
+                        <!-- <li id="button-software" class="button-nav require-win-dir clearfix">
+                            <img src="images/software-install.png" class="icon">
+                            <span>Software Install</span>
+                        </li> -->
+                        <!-- <li id="button-binary" class="button-nav clearfix">
+                            <img src="images/binary-capture-monitor-75.svg" class="icon">
+                            <span>Binary Capture</span>
+                        </li> -->
                     </ul>
-                    <!-- <div id="general-output"></div> -->
                 </div>
-                <!--    End content    -->
-            </div>
-            <!--    End main    -->
-        </div>
 
-        <!-- ******************** Footer Button Bar Section ******************** -->
-        <div id="footer" class="on-load">
-            <div class="tools-button-bar">
-                <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
-                    <div class="button-background button-screen">
-                        <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
+                <!-- ******************** Page Content Section ******************** -->
+                <div id="content">
+                    <!--Landing Page-->
+                    <div id="page-landing" class="pages active-page">
+                        <ul id="ul-landing" class="accordion ui-accordion ul-elements"></ul>
                     </div>
-                </button>
-                <button class="button-toolbar" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
-                    <div class="button-background button-screen">
-                        <img src="images/command-prompt-45.svg" class="icon-only" title="Command Prompt">
+
+                    <!--OSD Page-->
+                    <div id="page-osd" class="pages">
+                        <ul id="ul-osd" class="accordion ui-accordion ul-elements"></ul>
+                        <div class="launch-box">
+                            <button class="button" id="launch-osd" onclick="javascript:launchOSD()">
+                                <img src="images/osd-launch-45.svg" class="icon-tools">Launch OSD</button>
+                        </div>
                     </div>
-                </button>
-                <button class="button-toolbar" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
-                    <div class="button-background button-screen">
-                        <img src="images/Explorerpp-45.svg" class="icon-only" title="Explorer ++">
+
+                    <!-- Flush and Fill Page -->
+                    <div id="page-flushfill" class="pages">
+                        <ul id="ul-flushfill" class="accordion ui-accordion ul-elements"></ul>
+                        <div class="launch-box">
+                            <button class="button show-output" id="fnf-capture" onclick="javascript:launchFNF()">
+                                <img src="images/flush-and-fill-launch-45.svg" class="icon-tools">Launch FnF</button>
+                        </div>
                     </div>
-                </button>
-                <button class="button-toolbar" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
-                    <div class="button-background button-screen">
-                        <img src="images/log-viewer-45.svg" class="icon-only" title="Log Viewer">
+
+                    <!--DISM Page-->
+                    <div id="page-dism" class="pages">
+                        <ul id="ul-dism" class="accordion ui-accordion ul-elements"></ul>
+                        <div class="launch-box">
+                            <button class="button show-output" id="dism-capture" onclick="javascript:launchDISM()">
+                                <img src="images/dism-launch-45.svg" class="icon-tools">Launch DISM</button>
+                        </div>
                     </div>
-                </button>
-                <button class="button-toolbar show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
-                    <div class="button-background button-screen">
-                        <img src="images/ping-45.svg" class="icon-only" title="Ping Test">
+
+                    <!--USMT Page-->
+                    <div id="page-usmt" class="pages">
+                        <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
+                        <div class="launch-box">
+                            <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
+                                <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
+                            <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
+                                <img src="images/load-state-45.svg" class="icon-tools">Launch LoadState</button>
+                        </div>
                     </div>
-                </button>
-                <button class="button-toolbar" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
-                    <div class="button-background button-screen">
-                        <img src="images/powershell-45.svg" class="icon-only" title="Powershell">
+
+                    <!--Software Install Page-->
+                    <!-- <div id="page-software" class="pages">
+                        <ul id="ul-software" class="accordion ui-accordion ul-elements"></ul>
+                        <div class="launch-box">
+                            <button class="button show-output" id="run-software-install" onclick="javascript:launchSoftwareInstall()">
+                                <img src="images/software-install.png" class="icon-tools">Install Software</button>
+                        </div>
+                    </div> -->
+                    <!-- <div id="page-binary" class="pages">
+                        <ul id="ul-binary" class="accordion ui-accordion ul-elements"></ul>
+                        <div class="launch-box">
+                            <button class="button show-output" id="run-binary-capture" onclick="javascript:launchBinaryCapture()">
+                                <img src="images/binary-capture-45.svg" class="icon-tools">Launch Binary Capture</button>
+                        </div>
+                    </div> -->
+
+                    <!-- ******************** Output Section ******************** -->
+                    <div id="general-output-scroll">
+                        <ul id="general-output" class="ui-accordion">
+                            <li id="output-bl-info" class="output-list">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <img src="images/list-view-icon-45.svg" class="icon-tools output-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Drive List</h3>
+                                <div id="bl-info-output" class="ui-widget-content"></div>
+                            </li>
+                            <li id="output-bl-unlock" class="output-list">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <img src="images/unlock-45.svg" class="icon-tools output-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Bitlocker Unlock</h3>
+                                <div id="bl-unlock-output" class="ui-widget-content"></div>
+                            </li>
+                            <li id="li-output-network" class="output-list">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <img src="images/ping-45.svg" class="icon-tools output-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Network Output</h3>
+                                <div id="div-output-network" class="ui-widget-content"></div>
+                            </li>
+                            <li id="output-dism" class="output-list">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <img src="images/dism-launch-45.svg" class="icon-tools output-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
+                                <div id="dism-output" class="ui-widget-content"></div>
+                            </li>
+                            <li id="output-scanstate" class="output-list">
+                                <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
+                                    <img src="images/usmt-launch-45.svg" class="icon-tools output-icons">
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
+                                <div id="scanstate-output" class="ui-widget-content"></div>
+                            </li>
+                        </ul>
+                        <!-- <div id="general-output"></div> -->
                     </div>
-                </button>
-                <button class="button-toolbar" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
-                    <div class="button-background button-screen">
-                        <img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++">
-                    </div>
-                </button>
-                <button class="button-toolbar" id="button-ftk" name="ftk" onclick="vbscript:FTK()">
-                    <div class="button-background button-screen">
-                        <img src="images/FTK-45.svg" class="icon-only" title="Forensic ToolKit">
-                    </div>
-                </button>
-                <button class="button-toolbar" id="button-WMIExplorer" name="WMIExplorer" onclick="vbscript:WMIExplorer()">
-                    <div class="button-background button-screen">
-                        <img src="images/WMI-viewer-45.svg" class="icon-only" title="WMI Explorer">
-                    </div>
-                </button>
+                    <!--    End content    -->
+                </div>
+                <!--    End main    -->
+            </div>
+
+            <!-- ******************** Footer Button Bar Section ******************** -->
+            <div id="footer" class="on-load">
+                <div class="tools-button-bar">
+                    <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
+                        <div class="button-background button-screen">
+                            <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
+                        <div class="button-background button-screen">
+                            <img src="images/command-prompt-45.svg" class="icon-only" title="Command Prompt">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-explorer" name="explorer" onclick="vbscript:explorer()">
+                        <div class="button-background button-screen">
+                            <img src="images/Explorerpp-45.svg" class="icon-only" title="Explorer ++">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-logviewer" name="logViewer" onclick="vbscript:logViewer()">
+                        <div class="button-background button-screen">
+                            <img src="images/log-viewer-45.svg" class="icon-only" title="Log Viewer">
+                        </div>
+                    </button>
+                    <button class="button-toolbar show-output" id="button-pingtest" name="ping" onclick="vbscript:pingTest()">
+                        <div class="button-background button-screen">
+                            <img src="images/ping-45.svg" class="icon-only" title="Ping Test">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-psPrompt" name="ps" onclick="vbscript:psPrompt()">
+                        <div class="button-background button-screen">
+                            <img src="images/powershell-45.svg" class="icon-only" title="Powershell">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-npp" name="notepadpp" onclick="vbscript:notepadPP()">
+                        <div class="button-background button-screen">
+                            <img src="images/notepadpp-45.svg" class="icon-only" title="Notepad ++">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-ftk" name="ftk" onclick="vbscript:FTK()">
+                        <div class="button-background button-screen">
+                            <img src="images/FTK-45.svg" class="icon-only" title="Forensic ToolKit">
+                        </div>
+                    </button>
+                    <button class="button-toolbar" id="button-WMIExplorer" name="WMIExplorer" onclick="vbscript:WMIExplorer()">
+                        <div class="button-background button-screen">
+                            <img src="images/WMI-viewer-45.svg" class="icon-only" title="WMI Explorer">
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
         <!--    End container    -->
@@ -341,6 +338,8 @@
             </h3>
             <div id="div-format-drive" class="ui-widget-content">
                 <input id="input-osd-checkbox" class="input-objects" type="checkbox" name="OSDCheckBox" onchange="javascript:osdCheckboxChange(this)"> Format Drive and Deploy Image (OSD)?
+                <br>
+                <input id="osd-input-loadstate-checkbox" class="input-objects" type="checkbox" name="OSDloadStateCheckBox" onchange="javascript:loadStateCheckboxChange(this)"> Restore User Data after OSD (USMT Loadstate)?
             </div>
         </li>
     </template>
@@ -391,8 +390,8 @@
     </template>
 
     <!--    Primary Username    -->
-    <template id="temp-primary-username" class="flushfill dism usmt">
-        <li id="li-primary-username" class="li-steps li-win-required">
+    <template id="temp-primary-username" class="osd flushfill dism usmt">
+        <li id="li-primary-username" class="li-steps li-win-required loadState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the username of the user we are copying data for
             </h3>
@@ -426,8 +425,8 @@
     </template>
 
     <!--    External Drive    -->
-    <template id="temp-external-drive" class="flushfill dism usmt">
-        <li id="li-external-drive" class="li-steps li-win-required">
+    <template id="temp-external-drive" class="osd flushfill dism usmt">
+        <li id="li-external-drive" class="li-steps li-win-required loadState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the image will be stored
             </h3>
