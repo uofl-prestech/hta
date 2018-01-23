@@ -741,6 +741,7 @@ Sub copyWallpaper
     htaLog.WriteLine(Now & " || Executing command: strWallpaperPath = objshell.regRead(strWallpaperRegPath)")
 
     strWallpaperPath = objshell.regRead(strWallpaperRegPath)
+    strWallpaperPath = strSourceDrive & Right(String, Len(String)-1)
 
     If Err <> 0 Then
         'Couldn't find Wallpaper registry key at the specified location
@@ -751,9 +752,10 @@ Sub copyWallpaper
     Else
         Dim fsoWallPaper, fsoExtension, strNewPath
         Set fsoWallPaper = CreateObject("Scripting.FileSystemObject")
-        htaLog.WriteLine(Now & " || Executing Command: fsoWallPaper.CopyFile " & strWallpaperPath & ", "& strDestDrive & ":\USMT\" & getUser & "\")
+        htaLog.WriteLine(Now & " || Copying Wallpaper File")
 		fsoExtension = fsoWallPaper.GetExtensionName(strWallpaperPath)
-		strNewPath = strDestDrive & ":\USMT\" & getUser & "\" & getUser & "." & fsoExtension
+        strNewPath = strDestDrive & ":\USMT\" & getUser & "\" & getUser & "." & fsoExtension
+        htaLog.WriteLine(Now & " || Executing Command: fsoWallPaper.CopyFile " & strWallpaperPath & ", " & strNewPath)
         fsoWallPaper.CopyFile strWallpaperPath, strNewPath
         env("envWallpaperFile") = strNewPath
         htaLog.WriteLine(Now & " || Executing command: ""reg.exe unload HKEY_USERS\TempUser"", 0, true")

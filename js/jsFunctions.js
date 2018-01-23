@@ -269,7 +269,7 @@ function WMIListDrives() {
         pLength = pKeys.length;
 
         outputDiv.empty();
-        /*      ********* Output drive info to #bl-info-output div in sorted order **********/
+        /*  ********* Output drive info to #bl-info-output div in sorted order **********/
         for(var i = 0; i < pLength; i++)
         {            
             var vKeys = [], vLength;
