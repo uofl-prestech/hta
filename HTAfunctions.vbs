@@ -743,7 +743,7 @@ Sub copyWallpaper
     strWallpaperPath = objshell.regRead(strWallpaperRegPath)
     htaLog.WriteLine(Now & " || Wallpaper path from registry = " & strWallpaperPath)
     htaLog.WriteLine(Now & " || Updating path in case Windows drive isn't mounted as C:")
-    strWallpaperPath = strSourceDrive & Right(strSourceDrive, Len(strSourceDrive)-1)
+    strWallpaperPath = strSourceDrive & Right(strWallpaperPath, Len(strWallpaperPath)-1)
     htaLog.WriteLine(Now & " || Wallpaper path = " & strWallpaperPath)
 
     If Err <> 0 Then
