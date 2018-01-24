@@ -472,6 +472,25 @@ End Sub
 '**********************************************************************************************************************
 
 '**********************************************************************************************************************
+'						        Function: MBAMHelper
+'**********************************************************************************************************************
+Sub MBAMHelper
+    On Error Resume Next
+    htaLog.WriteLine(Now & " ***** Begin Sub MBAMHelper *****")
+    If Err.number <> 0 Then 
+        MsgBox "Error " & Err.Number & ": " & Err.Description
+    End If
+    Err.Clear
+	Dim cmdShell
+    Set cmdShell = CreateObject("WScript.Shell")
+
+    htaLog.WriteLine(Now & " || Executing command: .\tools\MBAMHelper.exe")
+    cmdShell.Run ".\tools\MBAMHelper.exe"
+    htaLog.WriteLine(Now & " ***** End Sub MBAMHelper *****")
+End Sub
+'**********************************************************************************************************************
+
+'**********************************************************************************************************************
 '						        Function: ConvertSize(Size)
 '**********************************************************************************************************************
 Function ConvertSize(Size)
