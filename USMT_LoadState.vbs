@@ -4,9 +4,10 @@ Dim logShell, strLogDir, objFSO, htaLog
 Set logShell = CreateObject("WScript.Shell")
 strLogDir = logShell.currentDirectory
 Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.log", ForAppending, True)	
-Set env = CreateObject("Microsoft.SMS.TSEnvironment")
+Set htaLog = objFSO.OpenTextFile(strLogDir & "\HTALOG.log", ForAppending, True)
+htaLog.WriteLine(Now & " ***** Begin Script USMT_Loadstate.vbs *****")
 On Error Resume Next
+Set env = CreateObject("Microsoft.SMS.TSEnvironment")
 
 Dim ReturnCode, getUser, usmtDrive, strCurrentDir
 Dim objShell : Set objShell = CreateObject("WScript.Shell")
@@ -31,7 +32,7 @@ End If
 'Registry Key: Computer\HKEY_USERS\<SID>\Control Panel\Desktop\WallPaper
 
 Const HKLM = &H80000002
-Dim objReg, strComputer, strKeyPath, strValueName, strUserSID, strWallpaperFile, profilePath, strSubKeyPath, userName, strHivePath
+Dim objReg, strComputer, strKeyPath, strValueName, strUserSID, strWallpaperFile, profilePath, strSubKeyPath, userName, strHivePath, strWpPath, strFullPathTest
 strKeyPath = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\"
 strComputer = "."
 strHivePath = "C:\Users\"& getUser & "\NTUSER.DAT"
@@ -39,28 +40,37 @@ htaLog.WriteLine(Now & " || strHivePath = " & strHivePath)
 strWallpaperRegPath = "TempUser\Control Panel\Desktop"
 strValueName = "WallPaper"
 
-Set fso = CreateObject("Scripting.FileSystemObject")
-If fso.FileExists(env("envWallpaperFile")) Then
-	strWallpaperFile = env("envWallpaperFile")
-	htaLog.WriteLine(Now & " || strWallpaperFile set by env(""envWallpaperFile"")")
-Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpg")
-	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpg"
-	htaLog.WriteLine(Now & " || strWallpaperFile set by jpg")
-Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpeg")
-	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".jpeg"
-	htaLog.WriteLine(Now & " || strWallpaperFile set by jpeg")
-Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".png")
-	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".png"
-	htaLog.WriteLine(Now & " || strWallpaperFile set by png")
-Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".bmp")
-	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".bmp"
-	htaLog.WriteLine(Now & " || strWallpaperFile set by bmp")
-Else If fso.FileExists(usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".gif")
-	strWallpaperFile = usmtDrive & ":\USMT\" & getUser & "\" & getUser & ".gif"
-	htaLog.WriteLine(Now & " || strWallpaperFile set by gif")
-End If
-htaLog.WriteLine(Now & " || strWallpaperFile = " & strWallpaperFile)
+strWallpaperFile = env("envWallpaperFile")
+'env("envWallpaperFile") should be set during FnF Scanstate, but not if we are running OSD + Loadstate
+fsoWP.GetFile(env("envWallpaperFile"))
+If Err = 0 Then		'env was set during FnF Scanstate
+	htaLog.WriteLine(Now & " || TS env check worked")	
+Else				'env wasn't set or this is an OSD + Loadstate operation
+	htaLog.WriteLine(Now & " || TS env check failed")
+	htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+	htaLog.WriteLine(Now & " || Error Description: " & Err.Description & vbCrLf)
+	Err.Clear
 
+	strWpPath = usmtDrive & ":\USMT\" & getUser & "\" & getUser
+	'Check various image file types to see if the wallpaper file exists in the USMT folder on the external USB drive
+	arrExtensions = Array(".jpg", ".jpeg", ".png", ".gif", ".bmp")
+	For Each extension In arrExtensions
+		strFullPathTest = strWpPath & extension
+		fsoWP.GetFile(strFullPathTest)
+		If Err <> 0 Then
+			htaLog.WriteLine(Now & " || Error. " & strFullPathTest & " not found.")
+			htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
+			htaLog.WriteLine(Now & " || Error Description: " & Err.Description & vbCrLf)
+			Err.Clear
+		Else
+			htaLog.WriteLine(Now & " || Yay! " & strFullPathTest & " found!")
+			strWallpaperFile = strFullPathTest
+			Exit For
+		End IF
+	Next
+End If
+
+htaLog.WriteLine(Now & " || strWallpaperFile = " & strWallpaperFile)
 htaLog.WriteLine(Now & " || Executing command: ""reg.exe load HKLM\TempUser " & strHivePath & ", 0, true")
 Err.Clear
 objshell.Run "reg.exe load HKLM\TempUser " & strHivePath, 0, true
