@@ -13,14 +13,15 @@ Dim ReturnCode, getUser, usmtDrive, strCurrentDir
 Dim objShell : Set objShell = CreateObject("WScript.Shell")
 strCurrentDir = Left(WScript.ScriptFullName, InstrRev(WScript.ScriptFullName, "\", -1, 1) - 1)
 getUser = env("envPrimaryUsername")
-usmtDrive = env("envExternalDrive")
+'usmtDrive = env("envExternalDrive")
+usmtDrive = FindUSMTDrive(getUser)
 
 htaLog.WriteLine(Now & " || strCurrentDir = " & strCurrentDir)
 htaLog.WriteLine(Now & " || getUser = " & getuser)
 htaLog.WriteLine(Now & " || usmtDrive = " & usmtDrive)
-htaLog.WriteLine(Now & " || Executing command: objShell.Run (""cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "&usmtDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&usmtDrive&":\USMT\"&getUser&"\loadstate.log"", 1, True)")
+htaLog.WriteLine(Now & " || Executing command: objShell.Run (""cmd /k " & strCurrentDir & "\USMT\loadstate.exe /c "& usmtDrive &":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&usmtDrive&":\USMT\"&getUser&"\loadstate.log"", 1, True)")
 
-ReturnCode = objShell.Run("cmd /c " & strCurrentDir & "\USMT\loadstate.exe /c "&usmtDrive&":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&usmtDrive&":\USMT\"&getUser&"\loadstate.log", 1, True)
+ReturnCode = objShell.Run("cmd /c " & strCurrentDir & "\USMT\loadstate.exe /c "& usmtDrive &":\USMT\" & getUser & " /i:USMT\migapp.xml /i:USMT\migdocs.xml /v:13 /l:"&usmtDrive&":\USMT\"&getUser&"\loadstate.log", 1, True)
 
 If Err <> 0 Then
 	htaLog.WriteLine(Now & " || Loadstate Error: " & ReturnCode)
@@ -32,7 +33,7 @@ End If
 'Registry Key: Computer\HKEY_USERS\<SID>\Control Panel\Desktop\WallPaper
 
 Const HKLM = &H80000002
-Dim objReg, strComputer, strKeyPath, strValueName, strUserSID, strWallpaperFile, profilePath, strSubKeyPath, userName, strHivePath, strWpPath, strFullPathTest
+Dim objReg, strComputer, strKeyPath, strValueName, strUserSID, strWallpaperFile, profilePath, strSubKeyPath, strHivePath, strWpPath, strFullPathTest
 strKeyPath = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\"
 strComputer = "."
 strHivePath = "C:\Users\"& getUser & "\NTUSER.DAT"
@@ -42,6 +43,8 @@ strValueName = "WallPaper"
 
 strWallpaperFile = env("envWallpaperFile")
 'env("envWallpaperFile") should be set during FnF Scanstate, but not if we are running OSD + Loadstate
+Dim fsoWP, arrExtensions
+Set fsoWP = CreateObject("Scripting.FileSystemObject")
 fsoWP.GetFile(env("envWallpaperFile"))
 If Err = 0 Then		'env was set during FnF Scanstate
 	htaLog.WriteLine(Now & " || TS env check worked")	
@@ -88,14 +91,37 @@ htaLog.WriteLine(Now & " || Executing command: objReg.SetStringValue HKLM, " & s
 objReg.SetStringValue HKLM, strWallpaperRegPath, strValueName, strWallpaperFile
 
 If Err = 0 Then
-	objReg.GetStringValue HKLM, strWallpaperRegPath, strValueName, strWallpaperFile
-	htaLog.WriteLine(Now & " ||  " & strWallpaperRegPath & "\" & strValueName & " contains: " & strWallpaperFile)
+	objReg.GetStringValue HKLM, strWallpaperRegPath, strValueName, wpVerified
+	htaLog.WriteLine(Now & " || HKLM\" & strWallpaperRegPath & "\" & strValueName & " contains: " & wpVerified)
 Else 
-	htaLog.WriteLine(Now & " ||  Error in creating key and REG_SZ value = " & Err.Number)
+	htaLog.WriteLine(Now & " || Error in creating key and REG_SZ value = " & Err.Number)
 End If
 
-htaLog.WriteLine(Now & " || Executing command: objShell.Run(""reg unload HKLM\TempUser"", 0, true)")
-objshell.Run "reg unload HKLM\TempUser", 0, true
+htaLog.WriteLine(Now & " || Executing command: objShell.Run(""reg.exe unload HKLM\TempUser"", 0, true)")
+objshell.Run "reg.exe unload HKLM\TempUser", 0, true
 
 htaLog.WriteLine(Now & " ***** End USMT_LoadState.vbs *****")
 htaLog.Close
+
+
+
+'**********************************************************************************************************************
+'						        Function: FindUSMTDrive()
+'**********************************************************************************************************************
+Function FindUSMTDrive(getUser)
+	On Error Resume Next
+	Dim username : username = getUser
+	Dim alphabet : alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	htaLog.WriteLine(Now & " || Attempting to find USMT Drive")
+	For i=1 To Len(alphabet)
+    	Dim letter : letter = Mid(alphabet,i,1)
+		htaLog.WriteLine(Now & " || Checking for folder - " & letter & ":\USMT\" & username & "\")
+		If fso.FolderExists(letter & ":\USMT\" & username & "\") Then
+			FindUSMTDrive = letter
+			Exit Function
+		End If
+	Next
+End Function
+'**********************************************************************************************************************
