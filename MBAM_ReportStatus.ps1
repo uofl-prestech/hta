@@ -16,6 +16,7 @@ Function LogWrite
 
 LogWrite "***** Begin Script MBAM_ReportStatus.ps1 *****"
 
+
 #Run GPupdate
 LogWrite " || Running GPupdate..."
 Write-Output "|| Running GPupdate..." | timestamp
@@ -87,6 +88,8 @@ catch {
 }
 
 
+#Wait for MBAM client to check in with server
+Read-Host -Prompt "Press any key to continue"
 
 
 #Reset MBAM registry keys back to default values
@@ -113,29 +116,3 @@ catch {
     Write-Output "|| $ErrorMessage" | timestamp
     Write-Output "|| Exiting script" | timestamp
 }
-
-<#
-
-
-mbamLog.WriteLine(Now & " || Sleeping for 3 minutes")
-wscript.echo Now & " || Sleeping for 3 minutes to allow the MBAM client to communicate with the MBAM server..."
-wscript.sleep 180000
-mbamLog.WriteLine(Now & " || Continuing script after 3 minute pause")
-wscript.echo Now & " || Continuing script after 3 minute pause"
-
-
-
-mbamLog.WriteLine(Now & " || Running gpupdate /force")
-wscript.echo Now & " || Running GPupdate..."
-Result = WshShell.Run ("cmd /c echo n | gpupdate /target:computer /force", 1, true)
-wscript.echo Now & " || GPupdate finished"
-wscript.echo Now & " || Script complete!"
-'mbamLog.WriteLine(Now & " || Rebooting computer")
-'WshShell.Run "cmd /c shutdown /a", 1, true
-'WshShell.Run "cmd /c shutdown /r /t 0", 1, true
-mbamLog.WriteLine(Now & " || Finished!")
-mbamLog.Close
-wscript.echo "Press Enter key to continue"
-wscript.StdIn.ReadLine
-wscript.quit(0)
-#>
