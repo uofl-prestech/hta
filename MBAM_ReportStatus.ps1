@@ -20,7 +20,7 @@ LogWrite "***** Begin Script MBAM_ReportStatus.ps1 *****"
 #Run GPupdate
 LogWrite " || Running GPupdate..."
 Write-Output "|| Running GPupdate..." | timestamp
-#Start-Process gpupdate.exe -NoNewWindow -Wait
+Start-Process gpupdate.exe -NoNewWindow -Wait
 LogWrite " || GPupdate Complete"
 Write-Output "|| GPupdate Complete" | timestamp
 
@@ -29,6 +29,8 @@ LogWrite " || Stopping MBAM Service..."
 Write-Output "|| Stopping MBAM Service..." | timestamp
 try {
     Stop-Service MBAMAgent -force -ErrorAction SilentlyContinue #Stop
+    $svc = Get-Service MBAMAgent
+    $svc.WaitForStatus('Stopped', '00:00:15')
     LogWrite " || Successfully stopped MBAM Service"
     Write-Output "|| Successfully stopped MBAM Service" | timestamp
 }
@@ -74,6 +76,8 @@ LogWrite " || Starting MBAM Service..."
 Write-Output "|| Starting MBAM Service..." | timestamp
 try {
     Start-Service MBAMAgent -force -ErrorAction SilentlyContinue #Stop
+    $svc = Get-Service MBAMAgent
+    $svc.WaitForStatus('Running', '00:00:30')
     LogWrite " || Successfully started MBAM Service"
     Write-Output "|| Successfully started MBAM Service" | timestamp
 }
