@@ -47,7 +47,7 @@ Dim fsoWP, arrExtensions
 Set fsoWP = CreateObject("Scripting.FileSystemObject")
 fsoWP.GetFile(env("envWallpaperFile"))
 If Err = 0 Then		'env was set during FnF Scanstate
-	htaLog.WriteLine(Now & " || TS env check worked")	
+	htaLog.WriteLine(Now & " || TS env check worked")
 Else				'env wasn't set or this is an OSD + Loadstate operation
 	htaLog.WriteLine(Now & " || TS env check failed")
 	htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
