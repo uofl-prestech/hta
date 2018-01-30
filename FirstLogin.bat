@@ -1,1 +1,1 @@
-powershell.exe -noprofile -executionpolicy bypass -file ./MBAM_ReportStatus.ps1
+powershell.exe -noprofile -noexit -executionpolicy bypass -file ./MBAM_ReportStatus.ps1
