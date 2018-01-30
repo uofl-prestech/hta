@@ -8,4 +8,4 @@ Dim GetScriptPath : GetScriptPath = Left(WScript.ScriptFullName, InstrRev(WScrip
 Dim cmdShell
 Set cmdShell = CreateObject("WScript.Shell")
 cmdShell.CurrentDirectory = GetScriptPath
-cmdShell.Run "powershell.exe -noprofile -noexit -executionpolicy bypass -file ./MBAM_ReportStatus.ps1", 1, true
+cmdShell.Run "powershell.exe -noprofile -noexit -executionpolicy bypass -file """ & GetScriptPath & "\MBAM_ReportStatus.ps1""", 1, true

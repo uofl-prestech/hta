@@ -1,3 +1,37 @@
+param (
+    [string]$directory = ""
+ )
+$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
+ 
+# Get the security principal for the Administrator role
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+ 
+# Check to see if we are currently running "as Administrator"
+if ($myWindowsPrincipal.IsInRole($adminRole))
+   {
+		# We are running "as Administrator" - so change the title and background color to indicate this
+		$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
+		$Host.UI.RawUI.BackgroundColor = "Red"
+		Set-Location $directory
+   }
+else
+   {
+		# Start the new process
+		$startInfo = New-Object System.Diagnostics.ProcessStartInfo
+    	$startInfo.FileName = "powershell.exe"
+		$startInfo.Arguments = "-executionpolicy bypass -file $($myInvocation.MyCommand.Definition) -directory $($PWD)"
+    	$startInfo.Verb = "Runas"
+
+		$process = New-Object System.Diagnostics.Process
+		$process.StartInfo = $startInfo
+		$process.Start()
+		$process.WaitForExit()
+
+		# Exit from the current, unelevated, process
+		return
+   }
+
 #***********************************************************************************************************************#
 #						        Create Log File                                                                         #
 #***********************************************************************************************************************#
@@ -45,7 +79,7 @@ catch {
     LogWrite " || Error - MBAMAgent Service not found"
     LogWrite " || $ErrorMessage"
     LogWrite " || Exiting script"
-    Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "|| Error - MBAMAgent Service not found" -ForegroundColor Red
+    Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "|| $ErrorMessage" -ForegroundColor Red
     Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "|| Exiting script"
 }
 
@@ -175,3 +209,5 @@ catch {
 
 
 Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "|| Script Finished!" -ForegroundColor Green
+
+#Read-Host -Prompt "Press Enter to continue"
