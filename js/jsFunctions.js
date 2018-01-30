@@ -102,7 +102,10 @@ function loadPage(targetOperation, event) {
     if (targetOperation == "landing") {
         //Find and list drives attached to this machine
         //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
+// var start = new Date().getTime();
         WMIListDrives();
+// var end = new Date().getTime();
+// alert(end - start);
         dimElements();
         event = null;
         try {
@@ -216,9 +219,9 @@ function WMIListDrives() {
     // var arConversionStatus = ["Fully Decrypted", "Fully Encrypted", "Encryption In Progress", "Decryption In Progress", "Encryption Paused", "Decryption Paused"];
     
     var loc = new ActiveXObject("WbemScripting.SWbemLocator");
-    //writeToLog("Executing command: ConnectServer(\".\", \"root\\cimv2\\Security\\MicrosoftVolumeEncryption\")");
+    writeToLog("Executing command: ConnectServer(\".\", \"root\\cimv2\\Security\\MicrosoftVolumeEncryption\")");
     var svc = loc.ConnectServer(".", "root\\cimv2");
-    //writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_EncryptableVolume\")");
+    writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_EncryptableVolume\")");
     var wmiDiskDrives = svc.ExecQuery("SELECT Caption, DeviceID FROM Win32_DiskDrive");
     var enumDrives = new Enumerator(wmiDiskDrives);
 
@@ -244,8 +247,14 @@ function WMIListDrives() {
                     objDrives["Physical Drives"][driveID]["Volumes"] = {};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = {"DriveLetter" : DriveLetter};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Partition"] = partitionID;
+//var start = new Date().getTime();
                     WMIEncryptableVolumes(driveID, DriveLetter);
+//var end = new Date().getTime();
+//alert(end - start);
+//var WMIstart = new Date().getTime();
                     WMIVolumes(driveID, DriveLetter);
+//var WMIend = new Date().getTime();
+//alert(WMIend - WMIstart);
                 }
                 catch(err){}
             }
@@ -923,7 +932,6 @@ function writeToLog(text){
     if (isAdmin == false){return;}
     try{
         var stamp = new Date();
-        stamp = stamp.toUTCString();
         var fso = new ActiveXObject("Scripting.FileSystemObject");
         var ForReading = 1, ForAppending = 8;
         var strCurrentPath = window.location.pathname;
