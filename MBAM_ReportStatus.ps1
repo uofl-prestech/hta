@@ -1,36 +1,38 @@
+#***********************************************************************************************************************#
+#						        Restart as an elevated process if not already elevated                                  #
+#***********************************************************************************************************************#
 param (
     [string]$directory = ""
- )
-$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
+)
+$myWindowsID = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$myWindowsPrincipal = new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
  
 # Get the security principal for the Administrator role
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+$adminRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator
  
 # Check to see if we are currently running "as Administrator"
-if ($myWindowsPrincipal.IsInRole($adminRole))
-   {
-		# We are running "as Administrator" - so change the title and background color to indicate this
-		$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
-		$Host.UI.RawUI.BackgroundColor = "Red"
-		Set-Location $directory
-   }
-else
-   {
-		# Start the new process
-		$startInfo = New-Object System.Diagnostics.ProcessStartInfo
-    	$startInfo.FileName = "powershell.exe"
-		$startInfo.Arguments = "-executionpolicy bypass -file $($myInvocation.MyCommand.Definition) -directory $($PWD)"
-    	$startInfo.Verb = "Runas"
+if ($myWindowsPrincipal.IsInRole($adminRole)) {
+    # We are running "as Administrator" - so change the title and background color to indicate this
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
+    #$Host.UI.RawUI.BackgroundColor = "Red"
+    Set-Location $directory
+}
+else {
+    # Start the new process
+    $startInfo = New-Object System.Diagnostics.ProcessStartInfo
+    $startInfo.FileName = "powershell.exe"
+    $startInfo.Arguments = "-noexit -executionpolicy bypass -file $($myInvocation.MyCommand.Definition) -directory $($PWD)"
+    $startInfo.Verb = "Runas"
 
-		$process = New-Object System.Diagnostics.Process
-		$process.StartInfo = $startInfo
-		$process.Start()
-		$process.WaitForExit()
+    $process = New-Object System.Diagnostics.Process
+    $process.StartInfo = $startInfo
+    $process.Start()
+    $process.WaitForExit()
 
-		# Exit from the current, unelevated, process
-		return
-   }
+    # Exit from the current, unelevated, process
+    return
+}
+
 
 #***********************************************************************************************************************#
 #						        Create Log File                                                                         #
@@ -40,8 +42,7 @@ else
 $logFile = "$currentDir\MBAMLOG.log"
 filter timestamp {"$(Get-Date -Format G) $_"}
 
-Function LogWrite
-{
+Function LogWrite {
     Param ([string]$logString)
     $stamp = (Get-Date).toString("MM/dd/yyyy HH:mm:ss")
     $line = "$stamp $logString"
@@ -87,7 +88,7 @@ catch {
 #*********************************************************************************************************************#
 #						        Modify Registry keys to force the MBAM client to report in every minute               #
 #*********************************************************************************************************************#
-try{
+try {
     #Change Registry key for ClientWakeupFrequency from 90 to 1
     LogWrite " || Change Registry key for ClientWakeupFrequency from 90 minutes to 1 minute"
     Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "|| Change Registry key for ClientWakeupFrequency from 90 minutes to 1 minute"
@@ -100,7 +101,7 @@ try{
     LogWrite " || Setting key HKLM\SOFTWARE\Policies\Microsoft\FVE\MDOPBitLockerManagement\StatusReportingFrequency to 1"
     Set-ItemProperty -Path "hklm:\SOFTWARE\Policies\Microsoft\FVE\MDOPBitLockerManagement" StatusReportingFrequency 1 -ErrorAction SilentlyContinue
 }
-catch{
+catch {
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
     LogWrite " || Error changing registry key $FailedItem"
@@ -143,7 +144,7 @@ LogWrite " || Waiting for the MBAM client to communicate with the MBAM server"
 Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "Waiting for the MBAM client to communicate with the MBAM server" -ForegroundColor Yellow
 $timer = [System.Diagnostics.Stopwatch]::StartNew()
 $timer.start()
-While($timer.Elapsed.Seconds -le 180){
+While ($timer.Elapsed.Seconds -le 180) {
     #Get MBAM log
     $MBAMLog = Get-WinEvent -LogName "Microsoft-Windows-MBAM/Operational" -ErrorAction SilentlyContinue
     LogWrite " || $($timer.Elapsed.Seconds) Seconds elapsed - MBAM Event Log contains $($MBAMLog.Count) item(s)"
@@ -154,7 +155,7 @@ While($timer.Elapsed.Seconds -le 180){
     $entry3 = $MBAMResponse | Where-Object {$_.ID -eq 3} | Select-Object -Last 1
     $entry29 = $MBAMResponse | Where-Object {$_.ID -eq 29} | Select-Object -Last 1
     #If the log has any entries with ID 3 and hasn't reported it yet
-    if($entry3 -and !$entry3Reported){
+    if ($entry3 -and !$entry3Reported) {
         LogWrite " || An Event with ID 3 has been logged"
         LogWrite " || $entry3.Message"
         Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "An Event with ID 3 has been logged" -ForegroundColor Green
@@ -162,14 +163,14 @@ While($timer.Elapsed.Seconds -le 180){
         $entry3Reported = $TRUE
     }
     #If the log has any entries with ID 29 and hasn't reported it yet
-    if($entry29 -and !$entry29Reported){
+    if ($entry29 -and !$entry29Reported) {
         LogWrite " || An Event with ID 29 has been logged"
         LogWrite " || $entry29.Message"
         Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "An Event with ID 29 has been logged" -ForegroundColor Green
         Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") $entry29.Message
         $entry29Reported = $TRUE
     }
-    if($entry3Reported -and $entry29Reported){
+    if ($entry3Reported -and $entry29Reported) {
         LogWrite " || \o/ MBAM communication successful \o/"
         Write-Host (Get-Date).toString("MM/dd/yyyy HH:mm:ss") "\o/ MBAM communication successful \o/`n" -ForegroundColor Green
         break
