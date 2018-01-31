@@ -17,7 +17,6 @@ End Function
 '**********************************************************************************************************************
 Sub TPMCheck
 	htaLog.WriteLine(Now & " ***** Begin Sub TPMCheck *****")
-	
 	Dim bIsEnabled, bIsActivated, bIsOwned, objTPM, strStatusState, nRC, objWMITPM, strConnectionStr1, strStatusMessage, strTPMWarning, TPMBox, CompBox
 	bIsEnabled = "False"
 	bIsActivated = "False"
@@ -27,6 +26,8 @@ Sub TPMCheck
 	Dim outputDiv: set outputDiv = document.getElementById("tpm-check-output")
 	outputDiv.innerHTML = ""
 	document.getElementById("input-tpm-checkbox").Value = false
+	'Check if we are in WinPE
+	document.getElementById("input-isWinPE").Value = env("_SMSTSInWinPE")
 
 	On Error Resume Next
 

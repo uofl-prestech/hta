@@ -280,6 +280,11 @@
                             <img src="images/WMI-viewer-45.svg" class="icon-only" title="WMI Explorer">
                         </div>
                     </button>
+                    <button class="button-toolbar" id="button-MBAMHelper" name="MBAMHelper" onclick="vbscript:MBAMHelper()">
+                        <div class="button-background button-screen">
+                            <img src="images/lock-45.svg" class="icon-only" title="MBAM Helper">
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -453,7 +458,7 @@
 
     <!--    Software Install    -->
     <template id="temp-software-install" class="osd flushfill software binary">
-        <li id="li-software-install" class="li-steps li-win-required">
+        <li id="li-software-install" class="li-steps">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select Software to Install
             </h3>

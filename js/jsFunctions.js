@@ -6,6 +6,7 @@ var isAdmin = Elevated();
 *						        Document ready functions
 **********************************************************************************************************************/
 $(document).ready(function () {
+    var isWinPE = $("#input-isWinPE").val();
     loadPage("landing");
 
     //Initialize replacement scrollbars
@@ -30,6 +31,12 @@ $(document).ready(function () {
     }).next().hide();
     $('#general-output .ui-widget-content').show('fast');
     $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+
+    // alert("In Windows PE? " + isWinPE);
+    if (isWinPE == true) {
+        $('#button-ScanState').css('display', 'none');
+        $('#button-LoadState').css('display', 'none');
+    }
 });
 
 $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
@@ -40,6 +47,7 @@ $(".on-load").delay(200).animate({ "opacity": "1" }, 700);
 $('#button-ShowAll').on('click', function () {
     $('.accordion .ui-widget-content').show('fast');
     $('.accordion .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
+    
 });
 
 $('#button-HideAll').on('click', function () {
@@ -92,6 +100,7 @@ $('#button-ScanState').on('click', function () {
 });
 
 $('#button-LoadState').on('click', function () {
+    //Only show the Loadstate page if we are not in WinPE
     $('#page-usmt .scanState').css('display', 'none');
     $('#page-usmt #run-LoadState').css('display', 'inline-block');
     $('#page-usmt #run-usmt').css('display', 'none');
@@ -102,10 +111,7 @@ function loadPage(targetOperation, event) {
     if (targetOperation == "landing") {
         //Find and list drives attached to this machine
         //If no windows directory was found and an encrypted drive WAS found, recolor list items that require a windows directory
-// var start = new Date().getTime();
         WMIListDrives();
-// var end = new Date().getTime();
-// alert(end - start);
         dimElements();
         event = null;
         try {
@@ -247,14 +253,8 @@ function WMIListDrives() {
                     objDrives["Physical Drives"][driveID]["Volumes"] = {};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = {"DriveLetter" : DriveLetter};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Partition"] = partitionID;
-//var start = new Date().getTime();
                     WMIEncryptableVolumes(driveID, DriveLetter);
-//var end = new Date().getTime();
-//alert(end - start);
-//var WMIstart = new Date().getTime();
                     WMIVolumes(driveID, DriveLetter);
-//var WMIend = new Date().getTime();
-//alert(WMIend - WMIstart);
                 }
                 catch(err){}
             }
@@ -290,19 +290,19 @@ function WMIListDrives() {
             vLength = vKeys.length;
 
             outputDiv.append("<span class='drivePhysicalSpan'>Physical Drive ID:</span> " + pKey);
-            outputDiv.append("<br><span>Drive Model:</span> " + objDrives["Physical Drives"][pKey]["Model"]);
+            outputDiv.append("<br><span class='drives'>&nbsp&nbspDrive Model:</span> " + objDrives["Physical Drives"][pKey]["Model"]);
             for (var j = 0; j < vLength; j++) {
                 var vKey = vKeys[j];
 
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"] ? outputDiv.append("<br>Partition: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"]) : "";
-                outputDiv.append("<br><span class='driveLetterSpan'>Drive Letter:</span> <span class='driveLetterValue'>" + vKey + "</span>");
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"] ? outputDiv.append("<br>Drive Type: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] == "Locked" ? outputDiv.append(" <span class=\"driveLocked\">(" + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] + ")</span> ") : "";
+                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbspPartition:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"]) : "";
+                outputDiv.append("<br><span class='driveLetterSpan drives'>&nbsp&nbspDrive Letter:</span> <span class='driveLetterValue'>" + vKey + "</span>");
+                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspDrive Type:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"]) : "";
+                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] == "Locked" ? outputDiv.append(" <span class='driveLocked'>(" + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] + ")</span> ") : "";
                 objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Label"] ? outputDiv.append(" | Label: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Label"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Capacity"] ? outputDiv.append("<br>Capacity: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Capacity"]) : "";
+                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Capacity"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspCapacity:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Capacity"]) : "";
                 objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Free Space"] ? outputDiv.append(" | Free Space: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Free Space"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Encryption Method"] ? outputDiv.append("<br>Encryption: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Encryption Method"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Numerical Password"] ? outputDiv.append("<br>Recovery Key ID: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Numerical Password"]) : "";
+                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Encryption Method"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspEncryption:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Encryption Method"]) : "";
+                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Numerical Password"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspRecovery Key ID:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Numerical Password"]) : "";
                 outputDiv.append("<br><br>");
                 drivesSorted[vKey] = objDrives["Physical Drives"][pKey]["Volumes"][vKey];
             }
@@ -398,7 +398,7 @@ function WMIVolumes(driveID, DriveLetter){
             //var DriveLetter = objItem.DriveLetter.replace(":", "");
 
             if (!objDrives["Physical Drives"][driveID]["Volumes"].hasOwnProperty(DriveLetter)) { objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = { "Drive Letter": DriveLetter }; }
-            // objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = objItem.Label;
+            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = objItem.Label;
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Free Space"] = ConvertSize(objItem.Freespace);
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Capacity"] = ConvertSize(objItem.Capacity);
             objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Drive Type"] = arDriveTypes[objItem.DriveType];
