@@ -1,12 +1,12 @@
 /* Globals */
 var objDrives = {};
 var isAdmin = Elevated();
+var isWinPE;
 
 /**********************************************************************************************************************
 *						        Document ready functions
 **********************************************************************************************************************/
 $(document).ready(function () {
-    var isWinPE = $("#input-isWinPE").val();
     loadPage("landing");
 
     //Initialize replacement scrollbars
@@ -32,10 +32,14 @@ $(document).ready(function () {
     $('#general-output .ui-widget-content').show('fast');
     $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 
-    // alert("In Windows PE? " + isWinPE);
-    if (isWinPE == true) {
-        $('#button-ScanState').css('display', 'none');
-        $('#button-LoadState').css('display', 'none');
+    isWinPE = $("#input-isWinPE").val();
+    if (isWinPE == "true") {
+        //Booting from flash drive. Don't show Loadstate, since it can only run from from within Windows
+        $('.hideInPE').css('display', 'none');
+    }
+    else{
+        //Booting from Windows, don't show OSD, FnF, DISM, since those need to run from WinPE
+        $('.hideInWindows').css('display', 'none');
     }
 });
 
@@ -93,18 +97,17 @@ $("#screen-test").hover(
     }
 );
 
-$('#button-ScanState').on('click', function () {
-    $('#page-usmt .scanState').css('display', 'list-item');
-    $('#page-usmt #run-usmt').css('display', 'inline-block');
-    $('#page-usmt #run-LoadState').css('display', 'none');
-});
+// $('#button-ScanState').on('click', function () {
+//     $('#page-usmt .scanState').css('display', 'list-item');
+//     $('#page-usmt #run-usmt').css('display', 'inline-block');
+//     $('#page-usmt #run-LoadState').css('display', 'none');
+// });
 
-$('#button-LoadState').on('click', function () {
-    //Only show the Loadstate page if we are not in WinPE
-    $('#page-usmt .scanState').css('display', 'none');
-    $('#page-usmt #run-LoadState').css('display', 'inline-block');
-    $('#page-usmt #run-usmt').css('display', 'none');
-});
+// $('#button-LoadState').on('click', function () {
+//     $('#page-usmt .scanState').css('display', 'none');
+//     $('#page-usmt #run-LoadState').css('display', 'inline-block');
+//     $('#page-usmt #run-usmt').css('display', 'none');
+// });
 
 function loadPage(targetOperation, event) {
     //Rerun listDrives function if returning to landing page
@@ -137,10 +140,17 @@ function loadPage(targetOperation, event) {
         var template = "";
         
         templates.each(function () {
-            //Only show the Bitlocker Unlock template if an encrypted drive is found and locked
-            if (!($(this).attr("id") == "temp-bitlocker-unlock" && objDrives["Encrypted Drive Found"] == false)){
-                template += $(this).html();
+            if (isWinPE != "true" && $(this).hasClass("hideInWindows")) {
+                //If we are in Windows, don't show template items that should be hidden (ie Scanstate)
+                return;
             }
+            if (($(this).attr("id") == "temp-bitlocker-unlock" && objDrives["Encrypted Drive Found"] == false)){
+                //Only show the Bitlocker Unlock template if an encrypted drive is found and locked
+                return;
+            }
+
+            //Append the current template to the template list
+            template += $(this).html();
         });
 
         //Insert the joined templates into the page we are nevigating to
@@ -156,8 +166,8 @@ function loadPage(targetOperation, event) {
     $('#page-' + targetOperation).addClass("active-page");
     $('#header-' + targetOperation).addClass("active-header");
     //Reset Scanstate button, since the template for USMT always starts on Scanstate
-    $('#page-usmt #run-usmt').css('display', 'inline-block');
-    $('#page-usmt #run-LoadState').css('display', 'none');
+    // $('#page-usmt #run-usmt').css('display', 'inline-block');
+    // $('#page-usmt #run-LoadState').css('display', 'none');
 
     if(targetOperation == "osd")
     {
@@ -231,6 +241,7 @@ function WMIListDrives() {
     var wmiDiskDrives = svc.ExecQuery("SELECT Caption, DeviceID FROM Win32_DiskDrive");
     var enumDrives = new Enumerator(wmiDiskDrives);
 
+    //Get Physical Drives
     for (; !enumDrives.atEnd(); enumDrives.moveNext()) {
         var objDrive = enumDrives.item();
         var driveID = objDrive.DeviceID;
@@ -240,17 +251,24 @@ function WMIListDrives() {
         objDrives["Physical Drives"][driveID] = {};
         objDrives["Physical Drives"][driveID]["Model"] = objDrive.Caption;
 
+        //Get Partitions for each Physical Drive
         for (; !enumPartitions.atEnd(); enumPartitions.moveNext()) {
             var objPartition = enumPartitions.item();
             var partitionID = objPartition.DeviceID;
             var wmiLogicalDisks = svc.ExecQuery("ASSOCIATORS OF {Win32_DiskPartition.DeviceID='" + partitionID + "'} WHERE AssocClass = Win32_LogicalDiskToPartition");
             var enumLogicalDisks = new Enumerator(wmiLogicalDisks);
-            
+
+            //Get Drive Letters for each Partition
             for (; !enumLogicalDisks.atEnd(); enumLogicalDisks.moveNext()) {
                 try{
                     var objLogicalDisk = enumLogicalDisks.item();
                     var DriveLetter = objLogicalDisk.DeviceID.replace(":", "");
-                    objDrives["Physical Drives"][driveID]["Volumes"] = {};
+                    //If a Physical Disk has more than one Volume, only create the Volumes object the first time we loop through the volumes
+                    //Otherwise, the second volume will overwrite the first
+                    if (!(objDrives["Physical Drives"][driveID].hasOwnProperty("Volumes"))){
+                        objDrives["Physical Drives"][driveID]["Volumes"] = {};
+                    }
+                
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = {"DriveLetter" : DriveLetter};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Partition"] = partitionID;
                     WMIEncryptableVolumes(driveID, DriveLetter);
@@ -259,60 +277,108 @@ function WMIListDrives() {
                 catch(err){}
             }
         }
+        //$("#tpm-check-output").append("<pre>" + JSON.stringify(objDrives["Physical Drives"], null, 3) + "</pre><br><br>");
     }
-
+    
     /*  ********* Update Windows Drive Found and Encrypted Drive Found status **********/
     objDrives["Encrypted Drive Found"] = false;
     objDrives["Windows Drive Found"] = false;
     objDrives["Encrypted Drives"] = [];
     objDrives["Windows Drives"] = [];
 
-    /*  ********* Sort the objDrives object by Drive Letter **********/
-    writeToLog("Sorting drives by drive letter");
-    var pKeys = [], pKey, pLength, drivesSorted = {};
+    /*  ********* Sort the objDrives object by physical drive ID **********/
+    writeToLog("Sorting drives by Drive Letter");
+    var pKeys = [], pKey, pLength, drivesSorted = [];
     try {
+        //Loop through each Physical Drive
         for (var k in objDrives["Physical Drives"]) {
-            pKeys.push(k);
-        }
-        pKeys.sort();
-        pLength = pKeys.length;
-
-        outputDiv.empty();
-        /*  ********* Output drive info to #bl-info-output div in sorted order **********/
-        for(var i = 0; i < pLength; i++)
-        {            
-            var vKeys = [], vLength;
-            pKey = pKeys[i];
-            for (var j in objDrives["Physical Drives"][pKey]["Volumes"]) {
+            var vKeys = [];
+            //Loop through each Volume in the current Physical Drive
+            for (var j in objDrives["Physical Drives"][k]["Volumes"]) {
+                //Push the drive letter of each Volume in this Physical Drive into an array
                 vKeys.push(j);
             }
+            //Sort the Volumes array so the Drive Letters are in alphabetical order
             vKeys.sort();
-            vLength = vKeys.length;
+            //Set the Sort property of the current Physical Drive to the lowest Drive Letter found in its Volumes array
+            objDrives["Physical Drives"][k]["Sort"] = vKeys[0];
+            objDrives["Physical Drives"][k]["DriveID"] = k;
+            //Push the current Physical Drive onto an array to be sorted later by Drive Letter
+            drivesSorted.push(objDrives["Physical Drives"][k]);
+        }
 
-            outputDiv.append("<span class='drivePhysicalSpan'>Physical Drive ID:</span> " + pKey);
-            outputDiv.append("<br><span class='drives'>&nbsp&nbspDrive Model:</span> " + objDrives["Physical Drives"][pKey]["Model"]);
-            for (var j = 0; j < vLength; j++) {
-                var vKey = vKeys[j];
-
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbspPartition:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Partition"]) : "";
-                outputDiv.append("<br><span class='driveLetterSpan drives'>&nbsp&nbspDrive Letter:</span> <span class='driveLetterValue'>" + vKey + "</span>");
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspDrive Type:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Drive Type"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] == "Locked" ? outputDiv.append(" <span class='driveLocked'>(" + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Lock Status"] + ")</span> ") : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Label"] ? outputDiv.append(" | Label: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Label"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Capacity"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspCapacity:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Capacity"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Free Space"] ? outputDiv.append(" | Free Space: " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Free Space"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Encryption Method"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspEncryption:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Encryption Method"]) : "";
-                objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Numerical Password"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspRecovery Key ID:</span> " + objDrives["Physical Drives"][pKey]["Volumes"][vKey]["Numerical Password"]) : "";
-                outputDiv.append("<br><br>");
-                drivesSorted[vKey] = objDrives["Physical Drives"][pKey]["Volumes"][vKey];
+        //Sort Physical Drives according to their lowest Drive Letters
+        drivesSorted.sort(function (a, b) {
+            //Sort Drive Letters under objDrives["Physical Drives"][]["Volumes"] first
+            var driveLetter1 = a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"].toUpperCase();
+            var driveLetter2 = b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"].toUpperCase();
+            if (driveLetter1 < driveLetter2) {
+                return -1;
             }
+            if (driveLetter1 > driveLetter2) {
+                return 1;
+            }
+            return 0;
+        }).sort(function (a, b) {
+            //Sort Physical Drives by their lowest Drive Letter now
+            var driveLetter1 = a["Sort"].toUpperCase();
+            var driveLetter2 = b["Sort"].toUpperCase();
+            if (driveLetter1 < driveLetter2) {
+                return -1;
+            }
+            if (driveLetter1 > driveLetter2) {
+                return 1;
+            }
+            return 0;
+        });
 
-            for (var drive in objDrives["Physical Drives"][pKey]["Volumes"]) {
-                if (objDrives["Physical Drives"][pKey]["Volumes"][drive]["isEncrypted"] == true) {
+        outputDiv.empty();
+
+        /*******************************************************************************
+        *********** Output drive info to #bl-info-output div in sorted order ***********
+        *******************************************************************************/
+        //Loop through each physical drive and enumerate volume info
+        for (var i = 0; i < drivesSorted.length; i++)
+        {
+            //Store the Physical Drive ID
+            var pDrive = drivesSorted[i];
+
+            //Physical Drive ID
+            outputDiv.append("<span class='drivePhysicalSpan'>Physical Drive ID:</span> " + pDrive["DriveID"]);
+            //Drive Model
+            outputDiv.append("<br><span class='drives'>&nbsp&nbspDrive Model:</span> " + pDrive["Model"]);
+
+            //Loop through each volume of the current physical drive to output the volume information
+            for (var j in pDrive["Volumes"]) {
+                //Volumes
+                drivesSorted[i]["Volumes"][j]["Partition"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbspPartition:</span> " + drivesSorted[i]["Volumes"][j]["Partition"]) : "";
+                //Drive Letter
+                outputDiv.append("<br><span class='driveLetterSpan drives'>&nbsp&nbspDrive Letter:</span> <span class='driveLetterValue'>" + j + "</span>");
+                //Drive Type
+                drivesSorted[i]["Volumes"][j]["Drive Type"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspDrive Type:</span> " + drivesSorted[i]["Volumes"][j]["Drive Type"]) : "";
+                //Lock Status
+                drivesSorted[i]["Volumes"][j]["Lock Status"] == "Locked" ? outputDiv.append(" <span class='driveLocked'>(" + drivesSorted[i]["Volumes"][j]["Lock Status"] + ")</span> ") : "";
+                //Volume Label
+                drivesSorted[i]["Volumes"][j]["Label"] ? outputDiv.append(" | Label: " + drivesSorted[i]["Volumes"][j]["Label"]) : "";
+                //Capacity
+                drivesSorted[i]["Volumes"][j]["Capacity"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspCapacity:</span> " + drivesSorted[i]["Volumes"][j]["Capacity"]) : "";
+                //Free Space
+                drivesSorted[i]["Volumes"][j]["Free Space"] ? outputDiv.append(" | Free Space: " + drivesSorted[i]["Volumes"][j]["Free Space"]) : "";
+                //Encryption Method
+                drivesSorted[i]["Volumes"][j]["Encryption Method"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspEncryption:</span> " + drivesSorted[i]["Volumes"][j]["Encryption Method"]) : "";
+                //Recovery Key ID
+                drivesSorted[i]["Volumes"][j]["Numerical Password"] ? outputDiv.append("<br><span class='drives'>&nbsp&nbsp&nbsp&nbspRecovery Key ID:</span> " + drivesSorted[i]["Volumes"][j]["Numerical Password"]) : "";
+                drivesSorted[j] = drivesSorted[i]["Volumes"][j];
+            }
+            outputDiv.append("<br><br>");
+
+            //Check for encrypted drives and Windows partitions
+            for (var drive in objDrives["Physical Drives"][pDrive["DriveID"]]["Volumes"]) {
+                if (objDrives["Physical Drives"][pDrive["DriveID"]]["Volumes"][drive]["isEncrypted"] == true) {
                     objDrives["Encrypted Drives"].push(drive);
                     objDrives["Encrypted Drive Found"] = true;
                 }
-                if (objDrives["Physical Drives"][pKey]["Volumes"][drive]["isWindowsFound"] == true) {
+                if (objDrives["Physical Drives"][pDrive["DriveID"]]["Volumes"][drive]["isWindowsFound"] == true) {
                     objDrives["Windows Drives"].push(drive);
                     objDrives["Windows Drive Found"] = true;
                 }
@@ -328,7 +394,7 @@ function WMIListDrives() {
         objDrives["Windows Drive Probably Locked"] = true;
     }
 
-    writeToLog(JSON.stringify(objDrives, null, "\t"));
+    writeToLog(JSON.stringify(drivesSorted, null, "\t"));
     return drivesSorted;
 }
 

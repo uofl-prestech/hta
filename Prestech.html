@@ -36,6 +36,7 @@
     <div id="hidden-inputs" class="accordion">
         <input id="windows-drive-letter" class="input-objects" type="hidden" name="windowsDriveLetter">
         <input id="input-tpm-checkbox" class="input-objects" type="hidden" name="TPMCheckBox">
+        <input id="input-isWinPE" class="" type="hidden" name="isWinPE">
     </div>
     <div id="container">
         <div id="sub-container">
@@ -70,20 +71,20 @@
                     <h4 id="header-osd" class="header-text">Operating System Deployment</h4>
                     <h4 id="header-flushfill" class="header-text">OS Upgrade with User Data Migration: "Flush and Fill"</h4>
                     <h4 id="header-dism" class="header-text">Deployment Image Servicing and Management</h4>
-                    <h4 id="header-usmt" class="header-text">
-                        <button id="button-ScanState" class="button-header" title="Scanstate">
+                    <!-- <h4 id="header-usmt" class="header-text">
+                        <button id="button-ScanState" class="button-header hideInPE" title="Scanstate">
                             <div class="button-background">
                                 <img src="images/usmt-launch-grey-45.svg" class="icon-only">
                             </div>
                         </button>
-                        <button id="button-LoadState" class="button-header" title="Loadstate">
+                        <button id="button-LoadState" class="button-header hideInPE" title="Loadstate">
                             <div class="button-background">
                                 <img src="images/load-state-grey-45.svg" class="icon-only">
                             </div>
                         </button>
                         <span>User State Migration Tool</span>
-                    </h4>
-                    <h4 id="header-software" class="header-text">Software Installation</h4>
+                    </h4> -->
+                    <!-- <h4 id="header-software" class="header-text">Software Installation</h4> -->
                     <h4 id="header-tools" class="header-text">Troubleshooting Tools</h4>
                 </div>
                 <div id="header-right">
@@ -103,15 +104,15 @@
                 <!-- ******************** Navigation Button Section ******************** -->
                 <div class="navigation-bar">
                     <ul>
-                        <li id="button-osd" class="button-nav">
+                        <li id="button-osd" class="button-nav hideInWindows">
                             <img src="images/osd-monitor-75.svg" class="icon">
                             <span>OSD</span>
                         </li>
-                        <li id="button-flushfill" class="button-nav require-win-dir">
+                        <li id="button-flushfill" class="button-nav require-win-dir hideInWindows">
                             <img src="images/flush-and-fill-monitor-75.svg" class="icon">
                             <span>Flush and Fill</span>
                         </li>
-                        <li id="button-dism" class="button-nav require-win-dir">
+                        <li id="button-dism" class="button-nav require-win-dir hideInWindows">
                             <img src="images/dism-monitor-75.svg" class="icon">
                             <span>DISM</span>
                         </li>
@@ -168,9 +169,9 @@
                     <div id="page-usmt" class="pages">
                         <ul id="ul-usmt" class="accordion ui-accordion ul-elements"></ul>
                         <div class="launch-box">
-                            <button class="button show-output" id="run-usmt" onclick="javascript:launchScanstate()">
+                            <button class="button show-output hideInWindows" id="run-usmt" onclick="javascript:launchScanstate()">
                                 <img src="images/usmt-launch-45.svg" class="icon-tools">Launch Scanstate</button>
-                            <button class="button show-output" id="run-LoadState" onclick="javascript:launchLoadstate()">
+                            <button class="button show-output hideInPE" id="run-LoadState" onclick="javascript:launchLoadstate()">
                                 <img src="images/load-state-45.svg" class="icon-tools">Launch LoadState</button>
                         </div>
                     </div>
@@ -212,7 +213,7 @@
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Network Output</h3>
                                 <div id="div-output-network" class="ui-widget-content"></div>
                             </li>
-                            <li id="output-dism" class="output-list">
+                            <li id="output-dism" class="output-list hideInWindows">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <img src="images/dism-launch-45.svg" class="icon-tools output-icons">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>DISM Output</h3>
@@ -221,7 +222,7 @@
                             <li id="output-scanstate" class="output-list">
                                 <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                                     <img src="images/usmt-launch-45.svg" class="icon-tools output-icons">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Scanstate Output</h3>
+                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>USMT Output</h3>
                                 <div id="scanstate-output" class="ui-widget-content"></div>
                             </li>
                         </ul>
@@ -237,7 +238,7 @@
                 <div class="tools-button-bar">
                     <button class="button-toolbar button-bl-info show-output" id="button-bitlocker" onclick="javascript:blInfoClick()">
                         <div class="button-background button-screen">
-                            <img src="images/lock-45.svg" class="icon-only" title="Bitlocker Info">
+                            <img src="images/list-view-45.svg" class="icon-only" title="List Drives">
                         </div>
                     </button>
                     <button class="button-toolbar" id="button-cmdprompt" name="cmdWindow" onclick="vbscript:cmdPrompt()">
@@ -280,9 +281,9 @@
                             <img src="images/WMI-viewer-45.svg" class="icon-only" title="WMI Explorer">
                         </div>
                     </button>
-                    <button class="button-toolbar" id="button-MBAMHelper" name="MBAMHelper" onclick="vbscript:MBAMHelper()">
+                    <button class="button-toolbar hideInPE" id="button-MBAMHelper" name="MBAMHelper" onclick="vbscript:MBAMHelper()">
                         <div class="button-background button-screen">
-                            <img src="images/lock-45.svg" class="icon-only" title="MBAM Helper">
+                            <img src="images/MBAM-45.svg" class="icon-only" title="MBAM Helper">
                         </div>
                     </button>
                 </div>
@@ -304,21 +305,21 @@
         </li>
     </template>
 
-    <!--    Bitlocker Info    -->
-    <template id="temp-bitlocker-info" class="flushfill dism usmt">
+    <!--    List Drives    -->
+    <template id="temp-bitlocker-info" class="flushfill dism usmt hideInWindows">
         <li id="li-bitlocker-info" class="li-steps scanState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Bitlocker Info
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Get Drive Info
             </h3>
             <div id="div-bitlocker-info" class="ui-widget-content">
                 <button id="bl-info" class="button button-bl-info show-output" onclick="javascript:blInfoClick()">
-                    <img src="images/lock-45.svg" class="icon-tools">Bitlocker Info</button>
+                    <img src="images/list-view-45.svg" class="icon-tools">List Drives</button>
             </div>
         </li>
     </template>
 
     <!--    Bitlocker Unlock    -->
-    <template id="temp-bitlocker-unlock" class="landing flushfill dism usmt">
+    <template id="temp-bitlocker-unlock" class="landing flushfill dism usmt hideInWindows">
         <li id="li-bitlocker-unlock" class="li-steps scanState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the Drive Letter and Recovery Key to unlock Bitlocker
@@ -381,10 +382,10 @@
     </template>
 
     <!--    Windows Drive    -->
-    <template id="temp-windows-drive" class="flushfill dism usmt">
+    <template id="temp-windows-drive" class="flushfill dism usmt hideInWindows">
         <li id="li-windows-drive" class="li-steps scanState li-win-required">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the Windows partition to be imaged
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the Windows partition
             </h3>
             <div id="div-windows-drive" class="ui-widget-content">
                 <span>Drive Letter: &nbsp&nbsp </span>
@@ -433,7 +434,7 @@
     <template id="temp-external-drive" class="osd flushfill dism usmt">
         <li id="li-external-drive" class="li-steps li-win-required loadState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
-                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB drive where the image will be stored
+                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Enter the drive letter of the External USB storage drive
             </h3>
             <div id="div-external-drive" class="ui-widget-content">
                 <span>Drive Letter: &nbsp&nbsp </span>
@@ -444,7 +445,7 @@
     </template>
 
     <!--    Select Users    -->
-    <template id="temp-select-users" class="flushfill usmt">
+    <template id="temp-select-users" class="flushfill usmt hideInWindows">
         <li id="li-select-users" class="li-steps li-win-required scanState">
             <h3 class="ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons">
                 <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Select users for which data will be copied

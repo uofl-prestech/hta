@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>OOP Task Sequence Selections</title>
+        <meta http-equiv="x-ua-compatible" content="ie=9">
+        <script type="text/javascript">
+            var drives = {
+                "Physical Drives": {
+                    "\\\\.\\PHYSICALDRIVE1": {
+                        "Model": "WDC WD10EURX-63C57Y0",
+                        "Volumes": {
+                            "A": {
+                                "DriveLetter": "A",
+                                "Partition": "Disk #1, Partition #0",
+                                "Label": "Data",
+                                "Free Space": "596 GB",
+                                "Capacity": "932 GB",
+                                "Drive Type": "Local Disk",
+                                "isWindowsFound": false
+                            }
+                        }
+                    },
+                    "\\\\.\\PHYSICALDRIVE2": {
+                        "Model": "PNY USB 3.0 FD USB Device",
+                        "Volumes": {
+                            "F": {
+                                "DriveLetter": "F",
+                                "Partition": "Disk #2, Partition #0",
+                                "Encryption Method": null,
+                                "Protection Status": "Protection Off",
+                                "Lock Status": "Unlocked",
+                                "isEncrypted": false,
+                                "Label": "CMBOOT",
+                                "Free Space": "24 GB",
+                                "Capacity": "32 GB",
+                                "Drive Type": "Removable Disk",
+                                "isWindowsFound": false
+                            }
+                        }
+                    },
+                    "\\\\.\\PHYSICALDRIVE0": {
+                        "Model": "Samsung SSD 850 EVO 250GB",
+                        "Volumes": {
+                            "C": {
+                                "DriveLetter": "C",
+                                "Partition": "Disk #0, Partition #2",
+                                "Encryption Method": null,
+                                "Protection Status": "Protection Off",
+                                "Lock Status": "Unlocked",
+                                "isEncrypted": false,
+                                "Label": "<span class='windowsSpan'>Windows</span>",
+                                "Free Space": "108 GB",
+                                "Capacity": "231 GB",
+                                "Drive Type": "Local Disk",
+                                "isWindowsFound": true
+                            },
+                            "Q": {
+                                "DriveLetter": "Q",
+                                "Partition": "Disk #0, Partition #2",
+                                "Encryption Method": null,
+                                "Protection Status": "Protection Off",
+                                "Lock Status": "Unlocked",
+                                "isEncrypted": false,
+                                "Label": "<span class='windowsSpan'>Windows</span>",
+                                "Free Space": "108 GB",
+                                "Capacity": "231 GB",
+                                "Drive Type": "Local Disk",
+                                "isWindowsFound": true
+                            },
+                            "B": {
+                                "DriveLetter": "B",
+                                "Partition": "Disk #0, Partition #2",
+                                "Encryption Method": null,
+                                "Protection Status": "Protection Off",
+                                "Lock Status": "Unlocked",
+                                "isEncrypted": false,
+                                "Label": "<span class='windowsSpan'>Windows</span>",
+                                "Free Space": "108 GB",
+                                "Capacity": "231 GB",
+                                "Drive Type": "Local Disk",
+                                "isWindowsFound": true
+                            }
+                        }
+                    }
+                },
+                "Encrypted Drive Found": false,
+                "Windows Drive Found": true,
+                "Encrypted Drives": [],
+                "Windows Drives": [
+                    "C"
+                ]
+            }
+
+
+    // function compare(value1, value2) {
+    //     if (value1 < value2) return -1;
+    //     else if (value1 == value2) return 0;
+    //     else return 1;
+    // }
+
+    // items = items.sort(function (item1, item2) { // First sorting criteria, e.g. by id.data
+    //     return compare(item1.id.data, item2.id.data);
+    // }).sort(function (item1, item2) { // Second sorting criteria, e.g. by active.data
+    //     return compare(item1.active.data, item2.active.data);
+    // }).sort(function (item1, item2) {  // Third sorting criteria, e.g. by name.data
+    //     return compare(item1.name.data, item2.name.data);
+    // });
+
+
+var driveArr = [];
+            var pKeys = [], pKey, pLength, drivesSorted = {};
+        try{
+                for (var k in drives["Physical Drives"]) {
+                    //pKeys.push(k);
+                    var vKeys = [];
+                    for (var j in drives["Physical Drives"][k]["Volumes"]) {
+                        vKeys.push(j);
+                    }
+                    vKeys.sort();
+                    drives["Physical Drives"][k]["Sort"] = vKeys[0];
+                    pKeys.push(k);
+                    driveArr.push(drives["Physical Drives"][k]);
+                }
+            }
+            catch (err) { }
+
+    for (var k in driveArr) {
+        console.log(driveArr[k]);
+    }
+
+
+driveArr = driveArr.sort(function (a, b) {
+        var driveLetter1 = a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"].toUpperCase();
+        var driveLetter2 = b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"].toUpperCase();
+        if (driveLetter1 < driveLetter2) {
+            return -1;
+        }
+        if (driveLetter1 > driveLetter2) {
+            return 1;
+        }
+
+        return 0;
+    }).sort(function (a, b){
+        var driveLetter1 = a["Sort"].toUpperCase();
+        var driveLetter2 = b["Sort"].toUpperCase();
+        if (driveLetter1 < driveLetter2) {
+            return -1;
+        }
+        if (driveLetter1 > driveLetter2) {
+            return 1;
+        }
+
+        return 0;
+    });
+
+var test = 0;
+
+
+
+
+
+
+
+
+    // driveArr = driveArr.sort(function (a, b) {
+    //     return compare(a, b);
+    // }).sort(function(a, b){
+    //     return compare(a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"], b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"]);
+    // });
+
+
+function compare(a, b) {
+    var driveLetter1 = a.toUpperCase();
+    var driveLetter2 = b.toUpperCase();
+    if (driveLetter1 < driveLetter2) {
+        return -1;
+    }
+    if (driveLetter1 > driveLetter2) {
+        return 1;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+            pKeys.sort();
+            pLength = pKeys.length;
+
+
+        </script>
+    </head>
+    <body>
+
+
+    </body>
+</html>

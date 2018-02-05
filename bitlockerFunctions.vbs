@@ -25,22 +25,26 @@ Sub TPMCheck
 	strTPMWarning = "<p class=""tpm-error""><span>!</span><span>!</span><span>!</span> CHECK TPM SETTINGS <span>!</span><span>!</span><span>!</span></p>"
 	Dim outputDiv: set outputDiv = document.getElementById("tpm-check-output")
 	outputDiv.innerHTML = ""
+	On Error Resume Next
 	document.getElementById("input-tpm-checkbox").Value = false
 	'Check if we are in WinPE
 	document.getElementById("input-isWinPE").Value = env("_SMSTSInWinPE")
-
-	On Error Resume Next
+	Err.Clear
+	
 
     CreateObject("WScript.Shell").RegRead("HKEY_USERS\S-1-5-19\Environment\TEMP")
-    If Err.number = 0 Then 
+    If Err.Number = 0 Then 
         admin = true
         htaLog.WriteLine(Now & " || User is running script as admin")
-    Else
+	ElseIf Err.Number = -2147024891 Then
 		admin = false
 		strStatusMessage = "<p class=""tpm-error"">Error: Must run as Administrator to check TPM status!</p>"
 		htaLog.WriteLine(Now & " || Error: Must run as Administrator to check TPM status!")
 		outputDiv.innerHTML = outputDiv.innerHTML & strStatusMessage
 		Exit Sub
+	Else
+		htaLog.WriteLine(Now & " || Error " & Err.Number & ": " & Err.Description)
+		outputDiv.innerHTML = outputDiv.innerHTML & "Error " & Err.Number & ": " & Err.Description
     End If
     Err.Clear
 	'---------------------------------------------------------------------------------------- 

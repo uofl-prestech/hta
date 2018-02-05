@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome",
-            "url": "http://localhost/prestech.html",
+            "url": "http://localhost/drivekeys.html",
             "webRoot": "${workspaceRoot}"
         },
     {
