@@ -279,7 +279,8 @@ Sub enumUsers
     If Err <> 0 Then
         htaLog.WriteLine(Now & " || Error Number: " & Err.Number)
         htaLog.WriteLine(Now & " || Error Description: " & Err.Description)
-        htaLog.WriteLine(Now & " || Could not load HKLM\TempSoftware")
+        htaLog.WriteLine(Now & " || Error: Could not load HKLM\TempSoftware")
+        htaLog.WriteLine(Now & " || Loading Software\Microsoft\Windows NT\CurrentVersion\ProfileList instead")
         userNameDiv.innerHTML = userNameDiv.innerHTML & "Could not load offline registry<br><br>"
         strKeyPath = "Software\Microsoft\Windows NT\CurrentVersion\ProfileList"
 
@@ -297,13 +298,19 @@ Sub enumUsers
     selectLength = 0
     htaLog.WriteLine(Now & " || Looping through registry subkeys to extract usernames that exist in this Windows installation")
     On Error Resume Next
+
+    'Loop through registry subkeys in HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\ProfileImagePath
+    'to enumerate user profiles that exist on the system
     For Each subkey In arrSubKeys
+        Err.Clear
         strSubKeyPath = "HKEY_LOCAL_MACHINE\" & strKeyPath & "\" & subkey & "\ProfileImagePath"
         htaLog.WriteLine(Now & " || strSubKeyPath = " & strSubKeyPath)
+        'Get the path to the user profile (ex. C:\Users\rcmcda01)
         profilePath = objshell.regRead(strSubKeyPath)
         htaLog.WriteLine(Now & " || profilePath = " & profilePath)
-        profilePath = Split(profilePath, "\")
-        userName = profilePath(Ubound(profilePath))
+        'Extraxt the username from the end of the profile path
+        profileUsername = Split(profilePath, "\")
+        userName = profileUsername(Ubound(profileUsername))
         htaLog.WriteLine(Now & " || userName = " & userName)
 
         If Err <> 0 Then
@@ -311,9 +318,17 @@ Sub enumUsers
             Err.Clear
         End If
 
+        'Store username in an html options list, but ignore accounts such as sccmpush, defaultuser0, etc
         If NOT (strcomp(userName,"systemprofile",0) = 0 OR strcomp(userName,"LocalService",0) = 0 OR strcomp(userName,"NetworkService",0) = 0 _
             OR strcomp(userName,"defaultuser0",0) = 0 OR strcomp(userName,"sccmpush",0) = 0) Then
-            htmlString = htmlString & "<option value=" & subkey & ">" & userName & "</option>"
+
+            'Get profile size
+            Set fso = CreateObject("Scripting.FileSystemObject")
+            Set objFolder = fso.GetFolder(profilePath)
+            profileSize = ConvertSize(getFolderSize(objFolder))
+
+            'Set values in HTML option list for selecting users for scanstate
+            htmlString = htmlString & "<option value=" & subkey & ">" & userName & " (" & profileSize & ") </option>"
             env("env" & userName & "SID") = subkey
             selectLength = selectLength + 1
         End If
@@ -512,6 +527,35 @@ Function ConvertSize(Size)
 	    Case " TB" Size = Round(Size / 1099511627776, 1) 
 	End Select
     ConvertSize = Size & Suffix
+End Function
+'**********************************************************************************************************************
+
+'**********************************************************************************************************************
+'						        Function: getFolderSize(folderName)
+'**********************************************************************************************************************
+Function getFolderSize(folderName)	
+    On Error Resume Next
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    size = 0
+    hasSubfolders = False
+    Set folder = fso.GetFolder(folderName)
+    Err.Clear
+    size = folder.Size
+
+    If Err.Number <> 0 then   
+        For Each subfolder in folder.SubFolders
+            size = size + getFolderSize(subfolder.Path)
+            hasSubfolders = True
+        Next
+
+        If not hasSubfolders then
+            size = folder.Size
+        End If
+    End If
+
+    getFolderSize = size
+
+    Set folder = Nothing        
 End Function
 '**********************************************************************************************************************
 

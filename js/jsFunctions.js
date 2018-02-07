@@ -32,7 +32,7 @@ $(document).ready(function () {
     $('#general-output .ui-widget-content').show('fast');
     $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 
-    isWinPE = $("#input-isWinPE").val();
+    isWinPE = "true"; //$("#input-isWinPE").val();
     if (isWinPE == "true") {
         //Booting from flash drive. Don't show Loadstate, since it can only run from from within Windows
         $('.hideInPE').css('display', 'none');
@@ -305,32 +305,32 @@ function WMIListDrives() {
             objDrives["Physical Drives"][k]["DriveID"] = k;
             //Push the current Physical Drive onto an array to be sorted later by Drive Letter
             drivesSorted.push(objDrives["Physical Drives"][k]);
-        }
 
-        //Sort Physical Drives according to their lowest Drive Letters
-        drivesSorted.sort(function (a, b) {
-            //Sort Drive Letters under objDrives["Physical Drives"][]["Volumes"] first
-            var driveLetter1 = a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"].toUpperCase();
-            var driveLetter2 = b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"].toUpperCase();
-            if (driveLetter1 < driveLetter2) {
-                return -1;
-            }
-            if (driveLetter1 > driveLetter2) {
-                return 1;
-            }
-            return 0;
-        }).sort(function (a, b) {
-            //Sort Physical Drives by their lowest Drive Letter now
-            var driveLetter1 = a["Sort"].toUpperCase();
-            var driveLetter2 = b["Sort"].toUpperCase();
-            if (driveLetter1 < driveLetter2) {
-                return -1;
-            }
-            if (driveLetter1 > driveLetter2) {
-                return 1;
-            }
-            return 0;
-        });
+            //Sort Physical Drives according to their lowest Drive Letters
+            drivesSorted.sort(function (a, b) {
+                //Sort Drive Letters under objDrives["Physical Drives"][]["Volumes"] first
+                var driveLetter1 = a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"].toUpperCase();
+                var driveLetter2 = b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"].toUpperCase();
+                if (driveLetter1 < driveLetter2) {
+                    return -1;
+                }
+                if (driveLetter1 > driveLetter2) {
+                    return 1;
+                }
+                return 0;
+            }).sort(function (a, b) {
+                //Sort Physical Drives by their lowest Drive Letter now
+                var driveLetter1 = a["Sort"].toUpperCase();
+                var driveLetter2 = b["Sort"].toUpperCase();
+                if (driveLetter1 < driveLetter2) {
+                    return -1;
+                }
+                if (driveLetter1 > driveLetter2) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
 
         outputDiv.empty();
 
