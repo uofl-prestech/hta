@@ -32,7 +32,7 @@ $(document).ready(function () {
     $('#general-output .ui-widget-content').show('fast');
     $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 
-    isWinPE = "true"; //$("#input-isWinPE").val();
+    isWinPE = $("#input-isWinPE").val();
     if (isWinPE == "true") {
         //Booting from flash drive. Don't show Loadstate, since it can only run from from within Windows
         $('.hideInPE').css('display', 'none');
@@ -237,7 +237,7 @@ function WMIListDrives() {
     var loc = new ActiveXObject("WbemScripting.SWbemLocator");
     writeToLog("Executing command: ConnectServer(\".\", \"root\\cimv2\\Security\\MicrosoftVolumeEncryption\")");
     var svc = loc.ConnectServer(".", "root\\cimv2");
-    writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_EncryptableVolume\")");
+    writeToLog("Executing command: ExecQuery(\"SELECT Caption, DeviceID FROM Win32_DiskDrive\")");
     var wmiDiskDrives = svc.ExecQuery("SELECT Caption, DeviceID FROM Win32_DiskDrive");
     var enumDrives = new Enumerator(wmiDiskDrives);
 
@@ -246,23 +246,30 @@ function WMIListDrives() {
         var objDrive = enumDrives.item();
         var driveID = objDrive.DeviceID;
         query = "ASSOCIATORS OF {Win32_DiskDrive.DeviceID='" + driveID + "'} WHERE AssocClass = Win32_DiskDriveToDiskPartition"
+        writeToLog("Executing command: ExecQuery(\"" + query + "\")");
         var wmiPartitions = svc.ExecQuery(query);
         var enumPartitions = new Enumerator(wmiPartitions);
         objDrives["Physical Drives"][driveID] = {};
+        writeToLog("objDrives[\"Physical Drives\"]["+driveID+"][\"Model\"] = " + objDrive.Caption);
         objDrives["Physical Drives"][driveID]["Model"] = objDrive.Caption;
 
+        writeToLog("Getting partitions for drive " + objDrive.Caption);
         //Get Partitions for each Physical Drive
         for (; !enumPartitions.atEnd(); enumPartitions.moveNext()) {
             var objPartition = enumPartitions.item();
             var partitionID = objPartition.DeviceID;
+            writeToLog("partitionID = " + partitionID);
+            writeToLog("Executing command: ExecQuery(\"ASSOCIATORS OF {Win32_DiskPartition.DeviceID='" + partitionID + "'} WHERE AssocClass = Win32_LogicalDiskToPartition\")");
             var wmiLogicalDisks = svc.ExecQuery("ASSOCIATORS OF {Win32_DiskPartition.DeviceID='" + partitionID + "'} WHERE AssocClass = Win32_LogicalDiskToPartition");
             var enumLogicalDisks = new Enumerator(wmiLogicalDisks);
 
-            //Get Drive Letters for each Partition
+            writeToLog("Getting drive letter for partition " + partitionID);
+            //Get Drive Letter for each Partition
             for (; !enumLogicalDisks.atEnd(); enumLogicalDisks.moveNext()) {
                 try{
                     var objLogicalDisk = enumLogicalDisks.item();
                     var DriveLetter = objLogicalDisk.DeviceID.replace(":", "");
+                    writeToLog("DriveLetter = " + DriveLetter);
                     //If a Physical Disk has more than one Volume, only create the Volumes object the first time we loop through the volumes
                     //Otherwise, the second volume will overwrite the first
                     if (!(objDrives["Physical Drives"][driveID].hasOwnProperty("Volumes"))){
@@ -271,15 +278,21 @@ function WMIListDrives() {
                 
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = {"DriveLetter" : DriveLetter};
                     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Partition"] = partitionID;
+                    writeToLog("objDrives[\"Physical Drives\"]["+driveID+"] = " + JSON.stringify(objDrives["Physical Drives"][driveID], null, 1));
                     WMIEncryptableVolumes(driveID, DriveLetter);
                     WMIVolumes(driveID, DriveLetter);
                 }
-                catch(err){}
+                catch(err){
+                    writeToLog("Error in WMIListDrives\n" + err.message);
+                }
             }
         }
         //$("#tpm-check-output").append("<pre>" + JSON.stringify(objDrives["Physical Drives"], null, 3) + "</pre><br><br>");
     }
     
+    writeToLog("Finished gathering drive info\n");
+    writeToLog("objDrives[\"Physical Drives\"] = " + JSON.stringify(objDrives["Physical Drives"], null, 1));
+
     /*  ********* Update Windows Drive Found and Encrypted Drive Found status **********/
     objDrives["Encrypted Drive Found"] = false;
     objDrives["Windows Drive Found"] = false;
@@ -287,56 +300,71 @@ function WMIListDrives() {
     objDrives["Windows Drives"] = [];
 
     /*  ********* Sort the objDrives object by physical drive ID **********/
-    writeToLog("Sorting drives by Drive Letter");
+    writeToLog("Prepare Physical Drive objects for sorting drives by Drive Letter");
     var pKeys = [], pKey, pLength, drivesSorted = [];
     try {
         //Loop through each Physical Drive
         for (var k in objDrives["Physical Drives"]) {
+            writeToLog("Physical Drive: " + k);
             var vKeys = [];
             //Loop through each Volume in the current Physical Drive
             for (var j in objDrives["Physical Drives"][k]["Volumes"]) {
                 //Push the drive letter of each Volume in this Physical Drive into an array
+                writeToLog("Pushing key " + j + " onto vKeys array");
                 vKeys.push(j);
             }
             //Sort the Volumes array so the Drive Letters are in alphabetical order
+            writeToLog("Sorting Drive Letters for Physical Drive: " + k);
             vKeys.sort();
             //Set the Sort property of the current Physical Drive to the lowest Drive Letter found in its Volumes array
+            writeToLog("Adding property \"Sort\": " + vKeys[0] + " to JSON object Physical Drive: " + k);
             objDrives["Physical Drives"][k]["Sort"] = vKeys[0];
+            writeToLog("Adding property \"DriveID\": " + k + " to JSON object Physical Drive: " + k);
             objDrives["Physical Drives"][k]["DriveID"] = k;
             //Push the current Physical Drive onto an array to be sorted later by Drive Letter
+            writeToLog("Push the current Physical Drive object onto array drivesSorted");
             drivesSorted.push(objDrives["Physical Drives"][k]);
-
-            //Sort Physical Drives according to their lowest Drive Letters
-            drivesSorted.sort(function (a, b) {
-                //Sort Drive Letters under objDrives["Physical Drives"][]["Volumes"] first
-                var driveLetter1 = a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"].toUpperCase();
-                var driveLetter2 = b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"].toUpperCase();
-                if (driveLetter1 < driveLetter2) {
-                    return -1;
-                }
-                if (driveLetter1 > driveLetter2) {
-                    return 1;
-                }
-                return 0;
-            }).sort(function (a, b) {
-                //Sort Physical Drives by their lowest Drive Letter now
-                var driveLetter1 = a["Sort"].toUpperCase();
-                var driveLetter2 = b["Sort"].toUpperCase();
-                if (driveLetter1 < driveLetter2) {
-                    return -1;
-                }
-                if (driveLetter1 > driveLetter2) {
-                    return 1;
-                }
-                return 0;
-            });
         }
 
-        outputDiv.empty();
+        writeToLog("Sort drivesSorted array by Physical Drives with lowest drive letter");
+        //Sort Physical Drives according to their lowest Drive Letters
+        drivesSorted.sort(function (a, b) {
+            //Sort Drive Letters under objDrives["Physical Drives"][]["Volumes"] first
+            var driveLetter1 = a["Volumes"][Object.keys(a["Volumes"])[0]]["DriveLetter"].toUpperCase();
+            var driveLetter2 = b["Volumes"][Object.keys(b["Volumes"])[0]]["DriveLetter"].toUpperCase();
+            if (driveLetter1 < driveLetter2) {
+                return -1;
+            }
+            if (driveLetter1 > driveLetter2) {
+                return 1;
+            }
+            return 0;
+        }).sort(function (a, b) {
+            //Sort Physical Drives by their lowest Drive Letter now
+            var driveLetter1 = a["Sort"].toUpperCase();
+            var driveLetter2 = b["Sort"].toUpperCase();
+            if (driveLetter1 < driveLetter2) {
+                return -1;
+            }
+            if (driveLetter1 > driveLetter2) {
+                return 1;
+            }
+            return 0;
+        });
+        writeToLog("Finished sorting drives");
+        writeToLog("drivesSorted = " + JSON.stringify(drivesSorted, null, "\t"));
+    }
+    catch(e){
+        writeToLog("Error sorting drives");
+        writeToLog("drivesSorted = " + JSON.stringify(drivesSorted, null, "\t"));
+    }
+
+    outputDiv.empty();
 
         /*******************************************************************************
         *********** Output drive info to #bl-info-output div in sorted order ***********
         *******************************************************************************/
+    try{
         //Loop through each physical drive and enumerate volume info
         for (var i = 0; i < drivesSorted.length; i++)
         {
@@ -384,7 +412,6 @@ function WMIListDrives() {
                 }
             }
         }
-
     }
     catch (err) {
        outputDiv.append(err.message);
@@ -394,13 +421,13 @@ function WMIListDrives() {
         objDrives["Windows Drive Probably Locked"] = true;
     }
 
-    writeToLog(JSON.stringify(drivesSorted, null, "\t"));
     return drivesSorted;
 }
 
 function WMIEncryptableVolumes(driveID, DriveLetter){
     /*  ********* Get Encryption information **********/
     if (isAdmin == false){return;}
+    writeToLog(">>>> Executing function WMIEncryptableVolumes(" + driveID + ", " + DriveLetter + ") >>>>");
     // objDrives["Physical Drives"][driveID]["Volumes"] = {};
     var arEncryptionMethod = [null, "AES 128 With Diffuser", "AES 256 With Diffuser", "AES 128", "AES 256", "Hardware Encryption", "XTS AES 128", "XTS AES 256", "Unknown"];
     var arProtectionStatus = ["Protection Off", "Protection On", "Protection Unknown"];
@@ -410,72 +437,84 @@ function WMIEncryptableVolumes(driveID, DriveLetter){
         var loc = new ActiveXObject("WbemScripting.SWbemLocator");
         writeToLog("Executing command: ConnectServer(\".\", \"root\\cimv2\\Security\\MicrosoftVolumeEncryption\")");
         var svc = loc.ConnectServer(".", "root\\cimv2\\Security\\MicrosoftVolumeEncryption");
-        writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_EncryptableVolume\")");
-
+        writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_EncryptableVolume WHERE DriveLetter='" + DriveLetter + ":'\")");
         var colItems = svc.ExecQuery("SELECT * FROM Win32_EncryptableVolume WHERE DriveLetter='" + DriveLetter + ":'");
         var enumItems = new Enumerator(colItems);
-        //var objItem1 = enumItems.item();
-        //for (; !enumItems.atEnd(); enumItems.moveNext()) {
-            
-            var objItem = enumItems.item();
-            
-            //var objItem = colItems.item();
-            var VolumeKeyID;
-            // var DriveLetter = objItem.DriveLetter.replace(":", "");
-            writeToLog("Drive Letter: " + DriveLetter);
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Encryption Method"] = arEncryptionMethod[objItem.ExecMethod_(objItem.Methods_.Item("GetEncryptionMethod").Name).EncryptionMethod];
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Protection Status"] = arProtectionStatus[objItem.ExecMethod_(objItem.Methods_.Item("GetProtectionStatus").Name).ProtectionStatus];
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Lock Status"] = arLockStatus[objItem.ExecMethod_(objItem.Methods_.Item("GetLockStatus").Name).LockStatus];
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Lock Status"] == "Locked" ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isEncrypted"] = true : objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isEncrypted"] = false;
 
-            /*          ********* Check for Encryption Keys **********/
-            try {
-                var method = objItem.Methods_.Item("GetKeyProtectors");
-                var inparams = method.InParameters.SpawnInstance_();
-                inparams.KeyProtectorType = 3;
-                VolumeKeyID = objItem.ExecMethod_(method.Name, inparams).VolumeKeyProtectorID(0);
-                method = objItem.Methods_.Item("GetKeyProtectorType");
-                inparams = method.InParameters.SpawnInstance_();
-                inparams.VolumeKeyProtectorID = VolumeKeyID;
-                var VolumeKeyProtectorType = objItem.ExecMethod_(method.Name, inparams).KeyProtectorType;
+        var objItem = enumItems.item();
+        var VolumeKeyID;
+        writeToLog("WMIEncryptableVolumes - Drive Letter: " + DriveLetter);
+        writeToLog("Setting Encryption Method for objDrives[\"Physical Drives\"][" + driveID + "][\"Volumes\"][" + DriveLetter + "]");
+        objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Encryption Method"] = arEncryptionMethod[objItem.ExecMethod_(objItem.Methods_.Item("GetEncryptionMethod").Name).EncryptionMethod];
+        writeToLog("Setting Protection Status for objDrives[\"Physical Drives\"][" + driveID + "][\"Volumes\"][" + DriveLetter + "]");
+        objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Protection Status"] = arProtectionStatus[objItem.ExecMethod_(objItem.Methods_.Item("GetProtectionStatus").Name).ProtectionStatus];
+        writeToLog("Setting Lock Status for objDrives[\"Physical Drives\"][" + driveID + "][\"Volumes\"][" + DriveLetter + "]");
+        objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Lock Status"] = arLockStatus[objItem.ExecMethod_(objItem.Methods_.Item("GetLockStatus").Name).LockStatus];
+        objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Lock Status"] == "Locked" ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isEncrypted"] = true : objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isEncrypted"] = false;
 
-                if (VolumeKeyProtectorType != "") {
-                    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Numerical Password"] = VolumeKeyID;
-                }
-            }
-            catch (err) { }
-        //}
+        /********** Check for Encryption Keys **********/
+        writeToLog("Getting Encryption Keys for objDrives[\"Physical Drives\"][" + driveID + "][\"Volumes\"][" + DriveLetter + "]");
+        var method = objItem.Methods_.Item("GetKeyProtectors");
+        var inparams = method.InParameters.SpawnInstance_();
+
+        inparams.KeyProtectorType = 3;
+        VolumeKeyID = objItem.ExecMethod_(method.Name, inparams).VolumeKeyProtectorID(0);
+        method = objItem.Methods_.Item("GetKeyProtectorType");
+        inparams = method.InParameters.SpawnInstance_();
+        inparams.VolumeKeyProtectorID = VolumeKeyID;
+
+        var VolumeKeyProtectorType = objItem.ExecMethod_(method.Name, inparams).KeyProtectorType;
+        if (VolumeKeyProtectorType != "") {
+            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Numerical Password"] = VolumeKeyID;
+        }
     }
-    catch (err) { }
+    catch (err) {
+        if(err.number == -2146823281){
+            writeToLog("This drive is not encryptable - " + err.message);
+        }
+        else if (err.number == -2147352565){
+            writeToLog("No protectors found. This drive is not encrypted - " + err.message);
+        }
+        else{
+            writeToLog("Error in WMIEncryptableVolumes function\n Error # " + err.number + " - " + err.message);
+        }
+     }
+    writeToLog("<<<< Exiting function WMIEncryptableVolumes(" + driveID + ", " + DriveLetter + ") <<<<\n");
 }
 
 function WMIVolumes(driveID, DriveLetter){
     /*  ********* Get Volume information **********/
+    writeToLog(">>>> Executing function WMIVolumes(" + driveID + ", " + DriveLetter + ") >>>>");
     var arDriveTypes = ["Unknown", "No Root Directory", "Removable Disk", "Local Disk", "Network Drive", "Compact Disk", "RAM"];
     var loc = new ActiveXObject("WbemScripting.SWbemLocator");
     writeToLog("Executing command: ConnectServer(\".\", \"root\\cimv2\")");
     var svc = loc.ConnectServer(".", "root\\cimv2");
-    writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_Volume\")");
+    writeToLog("Executing command: ExecQuery(\"SELECT * FROM Win32_Volume WHERE DriveLetter = '" + DriveLetter + ":'\")");
+
     colItems = svc.ExecQuery("SELECT * FROM Win32_Volume WHERE DriveLetter = '" + DriveLetter + ":'");
     enumItems = new Enumerator(colItems);
-    //for (; !enumItems.atEnd(); enumItems.moveNext()) {
-        var objItem = enumItems.item();
-        //if (objItem.DriveLetter) {
-            //var DriveLetter = objItem.DriveLetter.replace(":", "");
+    var objItem = enumItems.item();
 
-            if (!objDrives["Physical Drives"][driveID]["Volumes"].hasOwnProperty(DriveLetter)) { objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = { "Drive Letter": DriveLetter }; }
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = objItem.Label;
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Free Space"] = ConvertSize(objItem.Freespace);
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Capacity"] = ConvertSize(objItem.Capacity);
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Drive Type"] = arDriveTypes[objItem.DriveType];
-            //Check for a Windows path
-            DriveLetter != "X" ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] = ReportFolderStatus(DriveLetter + ":\\Windows") : objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] = false;
-            //Set $("#windows-drive-letter").val = true if a windows drive was found, otherwise null
-            objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] == true ? $("#windows-drive-letter").val(DriveLetter) : null;
+    writeToLog("Adding Drive " + DriveLetter + " to objDrives[\"Physical Drives\"]["+driveID+"][\"Volumes\"]");
+    //If an object for this Drive Letter hasn't already been added under objDrives["Physical Drives"][driveID]["Volumes"], create one
+    if (!objDrives["Physical Drives"][driveID]["Volumes"].hasOwnProperty(DriveLetter)) { objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter] = { "Drive Letter": DriveLetter }; }
+    writeToLog("Adding property \"Label\": " + objItem.Label);
+    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = objItem.Label;
+    writeToLog("Adding property \"Free Space\": " + ConvertSize(objItem.Freespace));
+    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Free Space"] = ConvertSize(objItem.Freespace);
+    writeToLog("Adding property \"Capacity\": " + ConvertSize(objItem.Capacity));
+    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Capacity"] = ConvertSize(objItem.Capacity);
+    writeToLog("Adding property \"Drive Type\": " + arDriveTypes[objItem.DriveType]);
+    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Drive Type"] = arDriveTypes[objItem.DriveType];
+
+    //Check for a Windows path
+    DriveLetter != "X" ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] = ReportFolderStatus(DriveLetter + ":\\Windows") : objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] = false;
+
+    //Set $("#windows-drive-letter").val = true if a windows drive was found, otherwise null
+    objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] == true ? $("#windows-drive-letter").val(DriveLetter) : null;
     objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["isWindowsFound"] == true ? objDrives["Physical Drives"][driveID]["Volumes"][DriveLetter]["Label"] = "<span class='windowsSpan'>Windows</span>" : null;
-        //}
-    //}
 
+    writeToLog("<<<< Exiting function WMIVolumes(" + driveID + ", " + DriveLetter + ") <<<<\n");
 }
 
 function ConvertSize(Size) {
