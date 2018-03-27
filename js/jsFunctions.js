@@ -32,7 +32,7 @@ $(document).ready(function () {
     $('#general-output .ui-widget-content').show('fast');
     $('#general-output .ui-widget-content').prev().children().removeClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-s");
 
-    isWinPE = "true"; //$("#input-isWinPE").val();
+    isWinPE = $("#input-isWinPE").val();
     if (isWinPE == "true") {
         //Booting from flash drive. Don't show Loadstate, since it can only run from from within Windows
         $('.hideInPE').css('display', 'none');
