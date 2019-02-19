@@ -626,6 +626,8 @@ Sub ButtonFinishClick
 
     htaLog.Write(Now & " || OSD checked?")
     htaLog.WriteLine(" || OSD.Checked = " & iOSD)
+    htaLog.Write(Now & " || FnF OSD checked?")
+    htaLog.WriteLine(" || FnFOSD.Checked = " & ifnfOsdCheckBox)
 
     If iOSD OR ifnfOsdCheckBox Then
         strOSD = "True"
